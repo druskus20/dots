@@ -1,0 +1,104 @@
+#
+#   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+#   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+#   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+#   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗ 
+#   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+#   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+#
+
+include-file = ~/.config/polybar/modules.config
+
+# General Settings ---------------------------------------------------- foldstart
+
+[global/wm]
+margin-top = 
+margin-bottom = 
+
+[colors]
+foreground     = #ffffff
+foreground-alt = #243340
+background     = #0e1419
+black          = #000000
+red            = #ff6565
+green          = #b8cc52
+yellow         = #e6c446
+blue           = #68d4ff
+magenta        = #ffa3aa
+cyan           = #36a3d9
+white          = #ffffff
+
+[settings]
+throttle-output     = 5
+throttle-output-for = 10
+#throttle-input-for  = 30
+screenchange-reload = true
+
+#compositing-background = xor
+#compositing-background = screen
+#compositing-foreground = source
+#compositing-border     = over
+pseudo-transparency     = true
+
+# Fallback values for all formats
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+format-underline  =
+format-overline   =
+format-spacing    = 
+format-padding    = 2
+format-margin     = 
+format-offset     = 
+
+# foldend
+
+# Bar Settings ---------------------------------------------------- foldstart
+
+[bar/top-desktop]
+monitor     = ${env:MONITOR:HDMI-0}
+
+background  = ${colors.background}
+foreground  = ${colors.foreground}
+
+### Fonts ###
+
+# For normal text
+font-0  = "Noto Sans:size=10;2"
+
+# For icons
+font-1 = "Font Awesome 5 Free:style=Solid:size=10;2"
+font-2 = "Font Awesome 5 Free:style=Regular:size=10;2"
+font-3 = "Font Awesome 5 Brands:style=Regular:size=10;2"
+
+# For smaller icons (specifically workspaces)
+font-4 = "Font Awesome 5 Free:style=Solid:size=8;2"
+font-5 = "Font Awesome 5 Free:style=Regular:size=8;2"
+
+# For weird cpu box-style ramp
+#font-3  = "DejaVuSansMono Nerd Font:size=11"
+
+height = 25
+width  = 100%
+bottom = false
+enable-ipc = true
+
+padding-right   = 1
+padding-left    = 1
+module-margin   = 2
+
+# override-redirect = true
+wm-restack          = bspwm
+cursor-click = pointer
+
+### Modules ###
+fixed-center   = true 
+modules-left   = bspwm spotify
+modules-center = 
+modules-right  = noisetorch github updates trash trash-interval pulseaudio ping network root-fs memory nvidia cpu date time 
+
+# foldend
+
+
+# vim:ft=dosini
+# vim:foldmarker=foldstart,foldend
+
