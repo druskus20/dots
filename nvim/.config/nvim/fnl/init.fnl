@@ -166,6 +166,17 @@
 
 
 (se undodir  (.. vim.env.XDG_DATA_HOME "/nvim/undo"))
+
+
+(vim.cmd "
+         augroup my-latex
+         autocmd FileType tex set spell spelllang=es
+         autocmd FileType tex hi SpellBad guibg=#eca8a8 guifg=#29283c
+         autocmd FileType tex set wrap linebreak 
+         augroup END")
+
+  
+
 ; (set directory XDG_DATA_HOME/nvim/swap)
 ; (set backupdir XDG_DATA_HOME/nvim/backup)
 
