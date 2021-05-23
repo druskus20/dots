@@ -6,7 +6,7 @@
   :rktjmp/lush.nvim {}
   :druskus20/sourcery {:mod "dots.plugins.sourcery"
                        :requires [:rktjmp/lush.nvim]}
-  :lervag/vimtex {:mod "dots.plugins.vimtex"}
+;  :lervag/vimtex {:mod "dots.plugins.vimtex"}
   :nvim-telescope/telescope.nvim {:mod "dots.plugins.telescope"
                                   :cmd ["Telescope"]
                                   :requires [:nvim-lua/popup.nvim :nvim-lua/plenary.nvim]}
@@ -91,8 +91,8 @@
   ;:bhurlow/vim-parinfer {:ft ["fennel" "carp" "lisp" "elisp"]}
 
   :eraserhd/parinfer-rust {:run "cargo build --release"}
-  :bduggan/vim-raku {:ft ["raku"]}
-  :LnL7/vim-nix {:ft ["nix"]}
+ ;  :bduggan/vim-raku {:ft ["raku"]}
+  ; :LnL7/vim-nix {:ft ["nix"]}
   :kevinoid/vim-jsonc {}
   :norcalli/nvim-colorizer.lua {:mod "dots.plugins.nvim-colorizer"}
   :pangloss/vim-javascript {} ; syntax highlighting JS
