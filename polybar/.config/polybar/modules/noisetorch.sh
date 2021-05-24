@@ -1,5 +1,5 @@
 #!/bin/sh
 
 nmodules="$(pactl list modules short | grep -c noisetorch)"
-[ "$nmodules" = 0 ] && echo "" || echo ""
+[ "$nmodules" = 0 ] && echo "off" || echo "on"
 
