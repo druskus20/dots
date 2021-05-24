@@ -8,11 +8,11 @@ display_volume() {
 	mute=$(pacmd list-sources | grep "index: $DEFAULT_SOURCE_INDEX" -A 11 | grep "muted")
 
 	if [ -z "$volume" ]; then
-	  echo "No"
+	  echo "no"
 	else
 	  volume="${volume//[[:blank:]]/}" 
 	  if [[ "$mute" == *"yes"* ]]; then
-	    echo " $volume"
+	    echo " muted"
 	  elif [[ "$mute" == *"no"* ]]; then
 	    echo " $volume"
 	  else
