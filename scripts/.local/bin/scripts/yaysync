@@ -1,0 +1,5 @@
+# yaysync -- a script to sync yay package repos
+
+### DO NOT USE, MIGHT CREATE DEPENDENCY ERRORS
+
+yay -Sy

@@ -1,0 +1,11 @@
+#!/bin/sh
+#  Script that sets the background via feh
+#  Note, it needs an absolute path to work
+
+
+[ $# -eq 0 ] && >&2 echo "No argument provided" && exit 1
+
+
+feh --no-fehbg --bg-scale "$@"
+betterlockscreen -u "$@"
+ realpath "$1" > "$XDG_CACHE_HOME"/background 

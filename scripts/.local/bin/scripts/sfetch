@@ -1,0 +1,67 @@
+#!/bin/sh
+
+# --- sfetch ---
+#     __     
+#    ( ->      
+#    / )\      
+#   <_/_/   
+#    " " 
+# My personal version of ufetch
+
+
+user=$USER
+host="$(hostname)"
+os='Manjaro'
+packages="$(pacman -Q | wc -l)"
+shell="$(basename "$SHELL")"
+term="$(ps -o comm= -p "$(($(ps -o ppid= -p "$(($(ps -o sid= -p "$$")))")))")"
+
+
+## WM DETECTION
+if [ -f "${HOME}/.xinitrc" ]; then
+	wm="$(tail -n 1 "${HOME}"/.xinitrc | cut -d ' ' -f 2)"
+elif [ -f "${XDG_CONFIG_HOME}"/X11/xinitrc ]; then
+	wm="$(tail -n 1 "${XDG_CONFIG_HOME}"/X11/xinitrc | cut -d ' ' -f 2)"
+else
+	wm='unknown'
+fi
+
+## DEFINE COLORS
+
+# probably don't change these
+if [ -x "$(command -v tput)" ]; then
+	bold="$(tput bold)"
+	black="$(tput setaf 0)"
+	red="$(tput setaf 1)"
+	green="$(tput setaf 2)"
+	yellow="$(tput setaf 3)"
+	blue="$(tput setaf 4)"
+	magenta="$(tput setaf 5)"
+	cyan="$(tput setaf 6)"
+	white="$(tput setaf 7)"
+	reset="$(tput sgr0)"
+    palette="[7m$red  $green  $yellow  $blue  $magenta  $cyan  [m"
+fi
+
+# you can change these
+lc="${reset}${bold}${blue}"           # labels
+nc="${reset}${bold}${blue}"           # user and hostname
+ic="${reset}"                         # info
+c0="${reset}${blue}"               # first color
+
+
+
+## OUTPUT
+cat <<EOF
+
+${nc}           ${user}${ic}@${nc}${host}${reset}
+${c0} (    /\   ${lc}wm:        ${ic}${wm}${reset}
+${c0}  )  ( ${cyan}'${c0})  ${lc}terminal:  ${ic}${term}${reset}
+${c0} (  /  )   ${lc}shell:     ${ic}${shell}${reset}
+${c0}  \(__)|   ${lc}packages:  ${ic}${packages}${reset}
+
+EOF
+
+#            ${palette} 
+
+

@@ -1,0 +1,84 @@
+#!/bin/bash
+
+# --- dmenu_launcher ---
+#   a script to launch programs
+#   based on dmenu_recency
+
+[ -z "$TERMINAL" ] && echo "No \$TERMINAL set"
+terminal_cmd="$TERMINAL -e"
+
+# Dmenu settings
+height=22
+lines=15
+dmenu_cmd="dmenu -h $height -l $lines"
+
+# Cache settings
+max_recent=200 # Number of recent commands to track
+cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/dmenu-recent"
+config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu-recent"
+recent_cache="$cache_dir/recent"
+rest_cache="$cache_dir/all"
+
+known_types=" background terminal "
+
+mkdir -p "$cache_dir"
+mkdir -p "$config_dir"
+touch "$recent_cache"
+
+# Without this, it won't remember $type
+#GREP_OPTIONS='--color=never'
+
+get_type () {
+    while type=$(echo $known_types | xargs -n1 | $dmenu_cmd); do
+        [[ $known_types =~ " $type " ]] || continue
+        echo "$word0" >> "$config_dir/$type"
+        break
+    done
+    echo $type
+}
+
+## Creates cache file if not present
+IFS=:
+if stest -dqr -n "$rest_cache" $PATH 2>/dev/null; then
+    stest -flx $PATH | sort -u | grep --color=auto -vxFf "$recent_cache" > "$rest_cache"
+fi
+
+IFS=" "
+
+cmd=$(cat "$recent_cache" "$rest_cache" | $dmenu_cmd "$@") || exit
+
+## Updates cache file with new programs
+if ! grep --color=never -qx "$cmd" "$recent_cache" &> /dev/null; then
+    grep --color=never -vx "$cmd" "$rest_cache" > "$rest_cache.$$"
+    if [ -s "$rest_cache.$$" ]; then
+        mv "$rest_cache.$$" "$rest_cache"
+    else
+        rm "$rest_cache.$$"
+    fi
+fi
+if [[ ! $cmd == *[[]* ]]; then
+    echo "$cmd" > "$recent_cache.$$"
+    grep --color=never -vx "$cmd" "$recent_cache" | head -n "$max_recent" >> "$recent_cache.$$"
+    mv "$recent_cache.$$"  "$recent_cache"
+fi
+
+# Figure out how to run the command based on the command name, disregarding
+# arguments, if any.
+word0=${cmd%% *}
+match="^$word0$"
+
+if ! type=$(grep --color=never -lx "$match" -R "$config_dir"); then
+    type=$(get_type)
+    echo 1
+else
+    echo 2
+    type=${type##*/}
+    if ! [[ $known_types =~ " $type " ]]; then
+        rm "$config_dir/$type"
+        type=$(get_type)
+    fi
+fi
+
+echo "$type t"
+[ "$type" = "background" ] && exec "$cmd"
+[ "$type" = "terminal" ] && exec $terminal_cmd "$cmd"
