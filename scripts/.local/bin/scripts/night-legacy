@@ -1,0 +1,13 @@
+#!/bin/sh
+# Sets a red light mode for night reading
+
+[ -z "$MONITOR" ] && echo "\"\$MONITOR\" not found."
+
+if [ $(xrandr --verbose | grep Gamma | awk '{print $2}') = "1.0:1.0:1.0" ]; then
+        notify-send "Switching to night mode"
+        xrandr --output "$MONITOR" --gamma 1.05:0.9:0.9 --brightness 1.0
+else
+        notify-send "Switching to day mode"
+        xrandr --output "$MONITOR" --gamma 1:1:1 --brightness 1.0
+fi
+
