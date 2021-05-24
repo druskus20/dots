@@ -1,0 +1,10 @@
+#!/bin/sh
+# https://raw.githubusercontent.com/LukeSmithxyz/voidrice/master/.local/bin/dmenupass
+
+# This script is used by the SUDO_ASKPASS variable, meaning that it will be used as a
+# password prompt if needed.
+
+# Check specifically for the right dmenu executable.
+#   so that I can have a rofi wrapper named dmenu for everything else
+
+dmenu -p "password" -P  <&- && echo

@@ -1,0 +1,13 @@
+#!/bin/sh
+# Init script for xob bar
+
+# Terminate already running xob instances
+killall -q xob
+
+# Wait until the processes have been shut down
+sleep 1;
+while pgrep -x xob >/dev/null; do sleep 1; done
+
+mkfifo /tmp/xobpipe 2> /dev/null
+tail -f /tmp/xobpipe | xob & disown
+

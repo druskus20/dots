@@ -1,0 +1,5 @@
+#!/bin/sh
+# Runs urxvt client, if fails, then runs a daemon first
+
+urxvtc "$@" 2> /dev/null || ( urxvtd -q -o -f && urxvtc "$@" )
+

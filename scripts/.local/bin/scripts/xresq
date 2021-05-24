@@ -1,0 +1,23 @@
+#!/bin/sh
+# Queries for the Xresources values given a resource name and a class 
+
+[ -z "$1" ] || [ -z "$2" ] && exit
+
+x="$(xrdb -query | grep -E "^(\*|$2)\.$1")"
+echo "${x##*:?}"
+
+
+# Same thing, 50% faster
+#  might not be working tho
+# while read -r l; do
+# 	case ${l} in
+#         *\*.${1}|Bspwm.${1}*)
+#             echo "${l##*:?}"
+#             ;;
+#         esac
+#     done <<EOF
+# $(xrdb -query)
+# EOF
+# 
+
+

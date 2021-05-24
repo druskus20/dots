@@ -1,0 +1,14 @@
+#!/bin/sh
+# Creates a power menu with dmenu
+
+[ "$(id -u)" -eq 0 ] && echo "Do not run this as root" && exit
+
+case "$(printf "Lock\nLogout\nSuspend\nShutdown\nReboot" | dmenu \
+    -i -p \
+    "Power:" -l 5)" in
+        Lock) exec betterlockscreen -l blur;;
+        Logout) exec bspc quit;;
+        Suspend) exec systemctl suspend;;
+        Shutdown) exec systemctl poweroff;;
+        Reboot) exec systemctl reboot;;
+esac
