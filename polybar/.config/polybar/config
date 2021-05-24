@@ -94,8 +94,9 @@ cursor-click = pointer
 fixed-center   = true 
 modules-left   = bspwm spotify
 modules-center = 
-modules-right  = noisetorch github updates trash trash-interval pulseaudio ping network root-fs memory nvidia cpu date time 
+modules-right  = noisetorch github updates trash trash-update microphone microphone-update volume ping network root-fs memory nvidia cpu date time 
 
+#modules-right  = noisetorch github updates volume ping network root-fs memory nvidia cpu date time 
 # foldend
 
 
