@@ -1,23 +1,16 @@
 #!/bin/sh
 # A script for checking new yay updates
 
-## DO NOT USE, MIGHT CREATE DEPENDENCY ERRORS DUE TO yay -Sy
-
-
-# Requires sudo permisions to run 
 
 ping -q -c 1 1.1.1.1 > /dev/null || exit
 
-notify-send "📦 Repository Sync" "Checking for package updates..."
+notify-send " Repository Sync" "Checking for package updates..."
 
-# Hardcoded !!!
-sudo "$HOME"/.local/bin/scripts/yaysync || notify-send "Error checking for updates" 
-
-nupdates=$(yay -Qu | wc -l)
+nupdates="$(arch-aur-updates)"
 
 if [ "$nupdates" -eq 0 ];
 then
-	notify-send "📦 No updates found"
+	notify-send " No updates found"
 else 
-	notify-send "📦 There are $nupdates package updates"
+	notify-send " There are $nupdates package updates"
 fi
