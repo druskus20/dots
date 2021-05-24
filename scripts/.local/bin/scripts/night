@@ -3,10 +3,9 @@
 # Depends on redshift
 
 # Usage night [temp]
+temp=4000
 
-
-if [ $(xrandr --verbose | grep Gamma | awk '{print $2}') = "1.0:1.0:1.0" ]; then
-  temp=4000
+if [ -n "$1" ] || [ "$(xrandr --verbose | grep Gamma | awk '{print $2}')" = "1.0:1.0:1.0" ]; then
   [ -z "$1" ] || temp="$1"
   redshift -m randr -P -O "$temp" > /dev/null
   notify-send " Switching to night mode"
