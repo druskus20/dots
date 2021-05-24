@@ -1,0 +1,24 @@
+#!/bin/sh
+# A script to control backlight and display a visual indicator
+
+# Set a default increase/decrease of 5 if there is no $2
+
+if [ -z "$2" ]; then
+        VAL=5
+else
+        VAL="$2" 
+fi 
+
+if [ "$1" = "-i" ]; then
+        sudo light -A "$VAL" || (echo "Error running light (check sudoers file)" && exit)
+elif [ "$1" = "-d" ]; then
+        sudo light -U "$VAL" || (echo "Error running light (check sudoers file)" && exit)
+else
+        echo "Option $1 not found, use either \"-i\" or \"-d\"" && exit
+fi
+
+# Workaround to timeout if there is a broken pipe.
+#  a subshell seems to be necessary to make it work
+timeout 1s sh <<EOT
+        [ -w /tmp/xobpipe ] && printf "%.0f\n" $(light) > /tmp/xobpipe
+EOT

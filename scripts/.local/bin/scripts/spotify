@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# A wrapper so that spotify doesnt create an empty ~/Downloads directory
+#   intended to be called in ~/.local/share/applications/spotify.desktop
+
+export HOME="$HOME/.cache/spotify/HOME" && /bin/spotify $@ &
+#rmdir ~/Downloads

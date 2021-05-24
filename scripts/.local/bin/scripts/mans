@@ -1,0 +1,7 @@
+#!/bin/sh
+# --- mans ---
+# A dmenu based selector of manuals
+
+man_name=$(man -k .  | dmenu -l 20 | awk '{print $1}')
+[ -z "$man_name" ] || man -Tpdf "$man_name" | zathura - & 
+

@@ -1,0 +1,6 @@
+#!/bin/sh
+DIRS="dl doc img mus code"
+
+for dir in $DIRS; do
+  mkdir -p "$HOME"/"$dir" 
+done
