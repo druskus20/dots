@@ -24,7 +24,7 @@ element-icon {
 
 #window {
   width: 50%;
-  height: 44%;
+  height: 46%;
   padding: 30px 30px;
 }
 
