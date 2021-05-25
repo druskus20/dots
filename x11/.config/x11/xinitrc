@@ -10,9 +10,10 @@ xset r rate 300 50 &
 setxkbmap -option caps:escape
 #setxkbmap es # Can be done in /etc/X11/xorg.conf
 
+
 # Set bg, generate lockscreen, set locker, fix cursor
 setbg /home/druskus/img/bg/purple_coast.jpg &
-#xautolock -time 10 -locker "betterlockscreen --lock blur" &
+xautolock -time 10 -locker "betterlockscreen --lock blur" &
 xsetroot -cursor_name left_ptr &
 
 # Launch overlay
@@ -23,6 +24,8 @@ dunst &
 # Launch compositor
 picom &
 #phicom -b --config ~/.config/picom/picom.conf > /dev/null 2> /dev/null & # Phisch's version
+
+noisetorch -i 2> /dev/null &
 
 # Load keybindings
 sxhkd & 
