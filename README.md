@@ -67,4 +67,4 @@ I use [stow](https://www.gnu.org/software/stow) to manage my dotfiles.
 - [ ] Redo zsh config
 - [ ] Redo nvim config using fennel
 - [ ] Create eww config, replace dunst (?), polybar (?)...
-
+- [ ] Migrate scripts to rofi
