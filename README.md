@@ -1,4 +1,15 @@
-# dots •••
+<p align="center">
+  <img width="100%" src=".github/cover.svg">
+</p>
+
+
+## Why? 
+Having a backup of my config files is generally handy.
+
+
+## How? 
+I use [stow](https://www.gnu.org/software/stow) to manage my dotfiles.
+
 
 ## Programs I use
 
@@ -14,7 +25,7 @@
 - **zathura**: pdf viewer.
 - **pipr**: a program to test shell pipes interactively.
 
-## Scripts
+## Scripts I use
 
 - **0x0st**: uploads an image to 0x0.st.
 - **arch-aur-updates**: checks the number of updates pending.
@@ -54,3 +65,4 @@
 - [ ] Redo zsh config
 - [ ] Redo nvim config using fennel
 - [ ] Create eww config, replace dunst (?), polybar (?)...
+
