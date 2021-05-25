@@ -1,3 +1,0 @@
-echo wooo | sadsad | asdsa d| 1
----
-gh api notifications | jq '. | length'
