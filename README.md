@@ -66,6 +66,7 @@ I use [stow](https://www.gnu.org/software/stow) to manage my dotfiles.
 - **Terminal Font**: DejaVu Sans Mono
 - **Icon Fonts**: Font Awesome 5 Free & Brands
 - **GTK Theme**: [Phocus](https://github.com/phocus)
+- **GTK Icon Theme**: Papirus
 
 
 
