@@ -60,6 +60,14 @@ I use [stow](https://www.gnu.org/software/stow) to manage my dotfiles.
 - *xresq*: queries a value in Xresources.
 - *yaysync*: downloads fresh yay package databases.
 
+## Other things I use
+
+- **UI Font**: NotoSans Nerd Font
+- **Terminal Font**: DejaVu Sans Mono
+- **Icon Fonts**: Font Awesome 5 Free & Brands
+- **GTK Theme**: [Phocus](https://github.com/phocus)
+
+
 
 ## TODO
 - [ ] Look into Jsonnet to: split configs between multiple machines, have unified colors...
