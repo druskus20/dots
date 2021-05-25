@@ -1,0 +1,78 @@
+* {
+  accent:           #5E8D87;
+  background:       #1D1F21;
+  background-light: #282A2E;
+  foreground:       #C5C8C6;
+  on:               #8C9440;
+  off:              #A54242;
+}
+
+* {
+  text-font:                            "NotoSans Nerd Font 11";
+  inputbar-margin:                      3px 3px;
+  prompt-padding:                       10px 10px;
+  entry-padding:                        10px 0px 10px 0px;
+  list-element-padding:                 8px 10px 8px 10px;
+  list-element-margin:                  3px;
+  list-element-border:                  0px 0px 0px 4px;
+  apps-textbox-prompt-colon-padding:    10px -5px 0px 0px;
+}
+
+#window {
+  width: 50%;
+  height: 44%;
+  padding: 30px 30px;
+}
+
+* {
+  background-color: @background;
+  text-color: @foreground;
+  font: @text-font;
+}
+
+inputbar,
+prompt,
+textbox-prompt-colon,
+entry {
+  background-color: @background-light;
+}
+
+#inputbar {
+  children: [ prompt, textbox-prompt-colon, entry ];
+  margin: @inputbar-margin;
+}
+
+#prompt {
+  padding: @prompt-padding;
+  background-color: @accent;
+  text-color: @background;
+}
+
+#textbox-prompt-colon {
+  expand: false;
+  str: "  ::  ";
+  padding: @apps-textbox-prompt-colon-padding;
+}
+
+#entry {
+  text-color: @accent;
+  padding: @entry-padding;
+}
+
+#element {
+  padding: @list-element-padding;
+  margin: @list-element-margin;
+  border: @list-element-border;
+  background-color: @background-light;
+  border-color: @background-light;
+}
+
+#element.selected {
+  background-color: @background-focus;
+  text-color: @accent;
+  border-color: @accent;
+}
+
+/*
+vim:ft=css 
+*/
