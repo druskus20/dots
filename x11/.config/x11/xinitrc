@@ -1,0 +1,30 @@
+# xinitrc 
+
+# Fix dual boot time issue
+sudo timedatectl set-ntp true
+
+# Speed up keyboard input
+xset r rate 300 50 &	
+
+# Set kb layout and remap escape to capslock
+setxkbmap -option caps:escape
+#setxkbmap es # Can be done in /etc/X11/xorg.conf
+
+# Set bg, generate lockscreen, set locker, fix cursor
+setbg /home/druskus/img/bg/purple_coast.jpg &
+#xautolock -time 10 -locker "betterlockscreen --lock blur" &
+xsetroot -cursor_name left_ptr &
+
+# Launch overlay
+$HOME/.config/polybar/launch.sh > /dev/null 2> /dev/null  &
+dunst &
+#conky --pause=5 -q &
+
+# Launch compositor
+picom &
+#phicom -b --config ~/.config/picom/picom.conf > /dev/null 2> /dev/null & # Phisch's version
+
+# Load keybindings
+sxhkd & 
+
+exec bspwm

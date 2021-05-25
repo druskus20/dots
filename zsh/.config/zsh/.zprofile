@@ -46,7 +46,7 @@ export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export TEXMFHOME=$XDG_DATA_HOME/texmf
 export TEXMFVAR=$XDG_CACHE_HOME/texlive/texmf-var 
 export TEXMFCONFIG=$XDG_CONFIG_HOME/texlive/texmf-config
-export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
+export XINITRC="$XDG_CONFIG_HOME"/x11/xinitrc
 
 # Fails with LightDM
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
