@@ -17,6 +17,8 @@ margin-bottom =
 
 [colors]
 foreground     = #ffffff
+grey           = #aaaaaa
+
 foreground-alt = #243340
 background     = #0e1419
 black          = #000000
