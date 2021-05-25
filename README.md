@@ -15,7 +15,7 @@ I use [stow](https://www.gnu.org/software/stow) to manage my dotfiles.
 
 - **x11**: display server.
 - **bspwm**: window manager.
-- **shxkd**: hotkey daemon.
+- **sxhkd**: hotkey daemon.
 - **picom**: compositor.
 - **polybar**: status bar.
 - **dunst**: notification daemon.
