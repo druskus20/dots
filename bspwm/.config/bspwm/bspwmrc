@@ -1,0 +1,41 @@
+#! /bin/sh
+
+#  _                                          
+# | |__  ___ _ ____      ___ __ ___  _ __ ___ 
+# | '_ \/ __| '_ \ \ /\ / / '_ ` _ \| '__/ __|
+# | |_) \__ \ |_) \ V  V /| | | | | | | | (__ 
+# |_.__/|___/ .__/ \_/\_/ |_| |_| |_|_|  \___|
+#           |_|                               
+#				By Druskus 
+
+
+# This prevents from loading multiple times the same options on reload
+bspc rule -r "*"
+
+bspc monitor -d 1 2 3 4 5 6
+
+bspc config border_width 2
+bspc config window_gap 10
+bspc config focus_follows_pointer true
+bspc config split_ratio                   0.50
+
+bspc config borderless_monocle   true
+bspc config gapless_monocle      false
+bspc config single_monocle                false
+
+bspc config pointer_modifier mod4
+bspc config pointer_action1 move
+bspc config pointer_action2 resize_side
+bspc config pointer_action3 resize_corner
+
+## Colors ##
+bspc config normal_border_color   "#2e3440"
+bspc config active_border_color   "#2e3440"
+bspc config focused_border_color  "#535E73"
+bspc config presel_feedback_color "#2e3440"
+
+
+## Custom Rules ## 
+bspc rule -a Matplotlib state=floating
+bspc rule -a Zathura state=tiled
+
