@@ -20,6 +20,7 @@ I use [stow](https://www.gnu.org/software/stow) to manage my dotfiles.
 - **dunst**: notification daemon.
 - **alacritty**: terminal.
 - **zsh**: shell.
+- **rofi**: program launcher. (based on what I yoinked from [elkowar](https://github.com/elkowar))
 - **nvim**: editor. (based on what I yoinked from [elkowar](https://github.com/elkowar))
 - **gtk**: gui framework.
 - **zathura**: pdf viewer.
