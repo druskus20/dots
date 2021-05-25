@@ -5,7 +5,7 @@ configuration {
 
   fixed-num-lines: true;
   show-icons: true;
-/*  icon-theme:  */
+  icon-theme: "Papirus";
 
   font: "NotoSans Nerd Font 10";
   columns: 2;
@@ -38,7 +38,7 @@ configuration {
 /*	disable-history: false;*/
 /*	ignored-prefixes: "";*/
 /*	sort: false;*/
-/*	sorting-method: "normal";*/
+/*	so-rting-method: "normal";*/
 /*	case-sensitive: false;*/
 /*	cycle: true;*/
 /*	sidebar-mode: false;*/

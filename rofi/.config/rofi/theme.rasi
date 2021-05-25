@@ -18,6 +18,10 @@
   apps-textbox-prompt-colon-padding:    10px -5px 0px 0px;
 }
 
+element-icon { 
+  size: 3ch ; 
+}
+
 #window {
   width: 50%;
   height: 44%;
