@@ -9,7 +9,16 @@
 ; undo autopairs fuckup    
 (set vim.g.AutoPairsShortcutBackInsert "<M-b>")
 
-(utils.keymap [:n] :<C-p> "<cmd>Telescope find_files<cr>")
+
+(utils.keymap :n :<C-p> "<cmd>Telescope find_files<cr>")
+(utils.keymap :n :<C-y> "<cmd>Telescope find_files cwd=~/doc/tfg<cr>")
+;(utils.keymap :n :<C-l> (.. "<cmd>cd ~/doc/tfg | Telescope find_files | cd " telescope_currentdir " <cr>"))
+
+
+; Correct las suggestion
+(utils.keymap :i :<C-L> "<Esc>[s1z=`]a")
+
+(utils.keymap :n :Q "<Nop>")
 (utils.keymap :n :K "<Nop>")
 (utils.keymap :v :K "<Nop>")
 
