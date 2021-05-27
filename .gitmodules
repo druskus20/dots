@@ -1,3 +1,3 @@
-[submodule "stowskus"]
-	path = stowskus
+[submodule "chest"]
+	path = chest
 	url = https://github.com/druskus20/chest
