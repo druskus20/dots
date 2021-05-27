@@ -12,6 +12,6 @@ album=$(echo "$meta" | sed -nr '/xesam:album"/,+2s/^ +variant +string "(.*)"$/\1
 title=$(echo "$meta" | sed -nr '/xesam:title"/,+2s/^ +variant +string "(.*)"$/\1/p' | tail -1 | sed -e 's/\&/\\&/g' -e 's#\/#\\/#g')
 
 [ -z "$artist" ] || [ -z "$title" ] && { echo "" && exit; }
-echo "${*:-%artist% - %title%}" | sed "s/%artist%/$artist/g;s/%title%/$title/g;s/%album%/$album/g"i | sed -e "s/\&/\&/g" -e "s#\/#\/#g"
+echo "  ${*:-%artist% - %title%}" | sed "s/%artist%/$artist/g;s/%title%/$title/g;s/%album%/$album/g"i | sed -e "s/\&/\&/g" -e "s#\/#\/#g"
 
 
