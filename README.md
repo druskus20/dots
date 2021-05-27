@@ -71,7 +71,7 @@ I use [chest](https://github.com/druskus20/chest) to manage my dotfiles.
 
 
 ## TODO
-- [ ] Look into Jsonnet to: split configs between multiple machines, have unified colors...
+- [x] Look into Jsonnet to: split configs between multiple machines, have unified colors...
 - [ ] Switch to xmonad
 - [ ] Redo zsh config
 - [ ] Redo nvim config using fennel
