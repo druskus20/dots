@@ -1,0 +1,4 @@
+#!/bin/sh
+
+
+xdg-mime default zathura.desktop application/pdf

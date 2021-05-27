@@ -1,5 +1,5 @@
 #!/bin/sh
-DIRS="dl doc img mus code"
+DIRS="dl doc img mus code bld"
 
 for dir in $DIRS; do
   mkdir -p "$HOME"/"$dir" 
