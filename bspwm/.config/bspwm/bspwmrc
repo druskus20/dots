@@ -38,4 +38,5 @@ bspc config presel_feedback_color "#2e3440"
 ## Custom Rules ## 
 bspc rule -a Matplotlib state=floating
 bspc rule -a Zathura state=tiled
+bspc rule -a Zathura mpv state=floating rectangle=WidthxHeight+Xoffset+Yoffset
 
