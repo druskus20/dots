@@ -67,6 +67,7 @@
 (init-lsp :yamlls)
 (init-lsp :html)
 (init-lsp :cssls)
+(init-lsp :gopls)
 
 (init-lsp :texlab
           {:settings {:texlab {:chktex {:onOpenAndSave true :onEdit true}
