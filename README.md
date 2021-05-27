@@ -1,5 +1,4 @@
-<p align="center">
-  <img width="100%" src=".github/cover.svg">
+<p align="center"> <img width="100%" src=".github/cover.svg">
 </p>
 
 
@@ -8,7 +7,8 @@ Having a backup of my config files is generally handy.
 
 
 ## How? 
-I use [stow](https://www.gnu.org/software/stow) to manage my dotfiles.
+I use [chest](https://github.com/druskus20/chest) to manage my dotfiles.
+
 
 
 ## Programs I use
