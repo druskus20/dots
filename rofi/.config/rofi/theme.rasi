@@ -19,7 +19,7 @@
 }
 
 element-icon { 
-  size: 3ch ; 
+  size: 1.625ch; 
 }
 
 #window {
