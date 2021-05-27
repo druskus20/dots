@@ -19,7 +19,7 @@ for source_path in $(find dotfiles -type f | grep -v ".gitignore"); do
     printf "\t},\n"
     printf "\t%s: {\n" "$program_name"
   fi
-  printf "\t\t'%s': importstr '%s',\n" "$dest_path" "$source_path"
+  printf "\t\t'%s': importstr '../%s',\n" "$dest_path" "$source_path"
 
   last_program_name="$program_name"
 
