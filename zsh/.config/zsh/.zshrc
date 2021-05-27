@@ -72,6 +72,7 @@ bindkey '^X^R' fzf-history-widget-accept
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh 
+#source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 
 # Keysbindings for plugins
 bindkey '^[[A' history-substring-search-up
