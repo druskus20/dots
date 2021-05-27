@@ -3,9 +3,13 @@
              telescope telescope
              actions telescope.actions}})
 
-(telescope.setup 
-  {:defaults {:mappings {:i {:<esc> actions.close}}}})
-                  
-;(telescope.load_extension "dap")
+(defn open-zathura [buffnumber] 
+  (print "HEYYO")
+  (let [selected_entry (actions.get_selected_entry)]
+    (vim.fn.system (.. "zathura " selected_entry.cwd "/" (. selected_entry 1) " & "))))
 
-(utils.keymap :n :<C-p> ":Telescope find_files<CR>")
+
+
+(telescope.setup 
+  {:defaults {:mappings {:n {:<C-z> open-zathura} 
+                         :i {:<esc> actions.close}}}})

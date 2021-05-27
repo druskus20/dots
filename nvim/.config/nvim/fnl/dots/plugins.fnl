@@ -2,6 +2,7 @@
   {require-macros [macros]})
 
 (packer-use
+  :home/druskus/code/telescope-tfg {}
   :elkowar/kmonad.vim {} :elkowar/antifennel-nvim {}
   :rktjmp/lush.nvim {}
   :druskus20/sourcery {:mod "dots.plugins.sourcery"
@@ -115,7 +116,9 @@
   :qnighy/lalrpop.vim {}
 ;  :edwinb/idris2-vim {:ft ["idris2"]}
 ;  :vmchale/ats-vim {:ft ["ats" "dats" "sats"]}
-  :bakpakin/fennel.vim {})
+  :bakpakin/fennel.vim {}
+  :google/vim-jsonnet {})
+  
 ; >>>
 
 
