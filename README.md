@@ -17,7 +17,8 @@ I use [stow](https://www.gnu.org/software/stow) to manage my dotfiles.
 - **bspwm**: window manager.
 - **sxhkd**: hotkey daemon.
 - **picom**: compositor.
-- **polybar**: status bar.
+- *polybar*: status bar.
+- **eww**: status bar and widgets.
 - **dunst**: notification daemon.
 - **alacritty**: terminal.
 - **zsh**: shell.
@@ -26,6 +27,7 @@ I use [stow](https://www.gnu.org/software/stow) to manage my dotfiles.
 - **gtk**: gui framework.
 - **zathura**: pdf viewer.
 - **pipr**: a program to test shell pipes interactively.
+- **paru**: package manager.
 
 ## Scripts I use
 
