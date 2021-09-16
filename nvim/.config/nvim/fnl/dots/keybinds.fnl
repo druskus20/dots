@@ -17,10 +17,15 @@
 
 ; Correct las suggestion
 (utils.keymap :i :<C-L> "<Esc>[s1z=`]a")
+(utils.keymap :n :<C-L> "[s1z=`]")
+
+
 
 (utils.keymap :n :Q "<Nop>")
 (utils.keymap :n :K "<Nop>")
 (utils.keymap :v :K "<Nop>")
+
+; (utils.keymap :n :q: "<Nop>")
 
 
 (utils.keymap :n :MM "<cmd>lua require('nvim-gehzu').go_to_definition()<CR>" {})
@@ -69,8 +74,8 @@
  
   "v" {:name "+view-and-layout"
        "n" (cmd "set relativenumber!"             "toggle relative numbers") 
-       "m" (cmd "set nonumber! norelativenumber"  "toggle numbers") 
-       "g" (cmd "Goyo | set linebreak"            "toggle focus mode") 
+       "r" (cmd "set nonumber! norelativenumber"  "toggle numbers") 
+       "z" (cmd "ZenMode"                         "toggle zen mode") 
        "i" (cmd "IndentGuidesToggle"              "toggle indent guides")}
 
   "b" {:name "+buffers"

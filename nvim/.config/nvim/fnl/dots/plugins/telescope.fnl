@@ -4,7 +4,6 @@
              actions telescope.actions}})
 
 (defn open-zathura [buffnumber] 
-  (print "HEYYO")
   (let [selected_entry (actions.get_selected_entry)]
     (vim.fn.system (.. "zathura " selected_entry.cwd "/" (. selected_entry 1) " & "))))
 
