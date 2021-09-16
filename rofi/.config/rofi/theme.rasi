@@ -1,10 +1,11 @@
 * {
-  accent:           #5E8D87;
-  background:       #1D1F21;
-  background-light: #282A2E;
-  foreground:       #C5C8C6;
-  on:               #8C9440;
-  off:              #A54242;
+  accent:           #a5c6e1;
+  background:       #282e38;
+  background-light: #2e3440;
+  background-focus: #373e4d;
+  foreground:       #bfbfcb;
+  on:               #ccd389;
+  off:              #eca8a8;
 }
 
 * {
@@ -19,12 +20,13 @@
 }
 
 element-icon { 
-  size: 1.625ch; 
+  padding: 5px 5px 5px 0px;
+  size: 2ch; 
 }
 
 #window {
   width: 50%;
-  height: 46%;
+  height: 47%;
   padding: 30px 30px;
 }
 
@@ -41,29 +43,30 @@ entry {
   background-color: @background-light;
 }
 
-#inputbar {
+
+inputbar {
   children: [ prompt, textbox-prompt-colon, entry ];
   margin: @inputbar-margin;
 }
 
-#prompt {
+prompt {
   padding: @prompt-padding;
   background-color: @accent;
   text-color: @background;
 }
 
-#textbox-prompt-colon {
+textbox-prompt-colon {
   expand: false;
   str: "  ::  ";
   padding: @apps-textbox-prompt-colon-padding;
 }
 
-#entry {
+entry {
   text-color: @accent;
   padding: @entry-padding;
 }
 
-#element {
+element {
   padding: @list-element-padding;
   margin: @list-element-margin;
   border: @list-element-border;
@@ -71,7 +74,16 @@ entry {
   border-color: @background-light;
 }
 
-#element.selected {
+element,
+element-icon,
+element-text {
+  background-color: @background-light;
+  border-color: @background-light;
+}
+
+element.selected, 
+element-icon.selected,
+element-text.selected  {
   background-color: @background-focus;
   text-color: @accent;
   border-color: @accent;
