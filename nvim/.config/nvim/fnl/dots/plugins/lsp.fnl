@@ -56,9 +56,9 @@
        ;{:properties ["documentation" "detail" "additionalTextEdits"]})
   ;(init-lsp :rust_analyzer {:capabilities capabilities}))
 
-(init-lsp :tsserver {:root_dir (lsp.util.root_pattern "package.json")})
+(init-lsp :tsserver)
 (init-lsp :jsonls   {:commands {:Format [ #(vim.lsp.buf.range_formatting [] [0 0] [(vim.fn.line "$") 0])]}})
-(init-lsp :denols   {:root_dir (better_root_pattern [".git"] ["package.json"])})
+;(init-lsp :denols   {:root_dir (better_root_pattern [".git"] ["package.json"])})
 (init-lsp :hls      {:settings {:languageServerHaskell {:formattingProvider "stylish-haskell"}}})
 (init-lsp :ocamllsp)
 (init-lsp :vimls)
@@ -66,8 +66,17 @@
 (init-lsp :erlangls)
 (init-lsp :yamlls)
 (init-lsp :html)
-(init-lsp :cssls)
 (init-lsp :gopls)
+(init-lsp :purescriptls)
+
+(init-lsp :cssls {:filestypes ["css" "scss" "less" "stylus"]
+                  :root_dir (lsp.util.root_pattern ["package.json" ".git"])
+                  :settings {:css  {:validate true} 
+                             :less {:validate true}
+                             :scss {:validate true}}})
+
+
+
 
 (init-lsp :texlab
           {:settings {:texlab {:chktex {:onOpenAndSave true :onEdit true}

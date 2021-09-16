@@ -32,6 +32,8 @@
 (vim.cmd "filetype plugin indent on")
 (vim.cmd "syntax on")
 
+
+
 (se foldmethod "marker")
 (se showmode false)
 ; (se undodir (.. vim.env.HOME "/.vim/undo-dir"))
@@ -165,17 +167,25 @@
 ; foldend
 
 
+; DUMP
+
 (se undodir  (.. vim.env.XDG_DATA_HOME "/nvim/undo"))
 
+(vim.cmd "hi Search guibg=#485164")
 
 (vim.cmd "
          augroup my-latex
-         autocmd FileType tex set spell spelllang=es
-         autocmd FileType tex hi SpellBad guibg=#eca8a8 guifg=#29283c
+         autocmd FileType tex set spell spelllang=es,en_us
+         autocmd FileType tex hi SpellBad  gui=underline guifg=#cc6666
          autocmd FileType tex set wrap linebreak 
          augroup END")
 
+(vim.cmd "set ic")
+ 
   
+
+
+;         autocmd FileType tex hi SpellBad guibg=#cc6666 guifg=#29283c)
 
 ; (set directory XDG_DATA_HOME/nvim/swap)
 ; (set backupdir XDG_DATA_HOME/nvim/backup)
