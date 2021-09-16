@@ -2,9 +2,13 @@
   {require-macros [macros]})
 
 (packer-use
-  :home/druskus/code/telescope-tfg {}
-  :elkowar/kmonad.vim {} :elkowar/antifennel-nvim {}
+  :elkowar/kmonad.vim {} 
+  :elkowar/antifennel-nvim {}
+  :elkowar/yuck.vim {} 
   :rktjmp/lush.nvim {}
+;  :lukas-reineke/indent-blankline.nvim {:mod "dots.plugins.indent_blankline"}
+
+
   :druskus20/sourcery {:mod "dots.plugins.sourcery"
                        :requires [:rktjmp/lush.nvim]}
 ;  :lervag/vimtex {:mod "dots.plugins.vimtex"}
@@ -26,12 +30,14 @@
   ;:code-biscuits/nvim-biscuits {:requires [:nvim-treesitter/nvim-treesitter]
                                 ;:event ["BufReadPost"]
                                 ;:config #((. (require "nvim-biscuits") :setup) {})}
+
+  :prettier/vim-prettier {}
   :jiangmiao/auto-pairs {}
   :folke/which-key.nvim {}
   ; json query stuff
   ;:gennaro-tedesco/nvim-jqx {:ft ["json"]}
-  :Olical/aniseed {:branch "develop"}; :tag "v3.16.0"}
-  ;:Olical/aniseed {}; :tag "v3.16.0"}
+  ;:Olical/aniseed {:branch "develop"}; :tag "v3.16.0"}
+  :Olical/aniseed {}; :tag "v3.16.0"}
   ; general purpose lua wrappers for nvim stuff
   :norcalli/nvim.lua {}
   :Famiu/feline.nvim {:mod "dots.plugins.feline"}
@@ -41,7 +47,10 @@
                            :mod "dots.plugins.diffview"}
   :tweekmonster/startuptime.vim {:cmd ["StartupTime"]}
   :tpope/vim-repeat {}
-  :junegunn/goyo.vim {:cmd "Goyo"}
+;  :junegunn/goyo.vim {:cmd "Goyo"}
+;  :Pocco81/TrueZen.nvim {}
+  :folke/zen-mode.nvim {:mod "dots.plugins.zen-mode"}
+
   :lewis6991/gitsigns.nvim {:mod "dots.plugins.gitsigns"}
   :tpope/vim-fugitive {}
   :preservim/nerdcommenter {}
@@ -104,10 +113,11 @@
   :mxw/vim-jsx {}
   :mattn/emmet-vim {:mod "dots.plugins.emmet"}
 
-;  :purescript-contrib/purescript-vim {}
+  :purescript-contrib/purescript-vim {}
 
 
 ;  :derekelkins/agda-vim {:ft ["agda"]}
+  :vmchale/dhall-vim {}
   :neovimhaskell/haskell-vim { :ft ["haskell"]}
   :rust-lang/rust.vim {:ft ["rust"]
                        :requires ["mattn/webapi-vim"]
