@@ -8,6 +8,6 @@ playerctl --follow metadata --format '{{artist}} ¿¿¿¿¿ {{ title }}' 2> /dev
      *) text="" && should_show="no" ;;
   esac
 
-  echo "{\"show\": \"$should_show\", \"content\": \"(box (label :text \\\"$text\\\"))\"}"
+  echo "{\"show\": \"$should_show\", \"content\": \"(box (label :limit-width 50 :text \\\"$text\\\"))\"}"
 done 
 
