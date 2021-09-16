@@ -8,7 +8,7 @@ export MONITOR="HDMI-0"
 export TERMINAL="/bin/alacritty"
 
 # Set custom PATH
-export PATH="$HOME"/.local/bin:"$HOME"/.local/bin/scripts:"$PATH"
+export PATH="$HOME"/.local/bin:"$HOME"/.local/bin/scripts:"$HOME"/.local/share/npm/bin:"$PATH"
 
 # Force XDG base directories
 export XDG_CONFIG_HOME="$HOME/.config"
