@@ -12,17 +12,21 @@ setxkbmap -option caps:escape
 
 
 # Set bg, generate lockscreen, set locker, fix cursor
-setbg /home/druskus/img/bg/purple_coast.jpg &
+setbg /home/druskus/img/bg/purple_coast.jpg > /dev/null &
 xautolock -time 10 -locker "betterlockscreen --lock blur" &
 xsetroot -cursor_name left_ptr &
 
 # Launch overlay
-$HOME/.config/polybar/launch.sh > /dev/null 2> /dev/null  &
-dunst &
+#$HOME/.config/polybar/launch.sh > /dev/null 2> /dev/null  &
+eww open bar > /dev/null 2> /dev/null &
+
+
+
+#dunst & # Tiramisu + Eww > Dunst
 #conky --pause=5 -q &
 
 # Launch compositor
-picom &
+picom 2> /dev/null &
 #phicom -b --config ~/.config/picom/picom.conf > /dev/null 2> /dev/null & # Phisch's version
 
 noisetorch -i 2> /dev/null &
@@ -30,4 +34,5 @@ noisetorch -i 2> /dev/null &
 # Load keybindings
 sxhkd & 
 
-exec bspwm
+exec bspwm 
+
