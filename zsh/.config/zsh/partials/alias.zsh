@@ -13,8 +13,6 @@ alias rm='echo "Fuck you:"'
 alias open="xdg-open"
 alias vim="nvim"
 
-alias todo="vim ~/doc/todo.md"
-
 # Fix commands
 alias fehs="feh --scale-down --auto-zoom"
 alias zathura="nohup zathura > /dev/null 2> /dev/null" 
@@ -38,9 +36,3 @@ alias wget="wget --hsts-file="$XDG_CACHE_HOME"/wget-hsts"
 alias svn="svn --config-dir "$XDG_CONFIG_HOME"/subversion"
 alias picom="picom --config $PICOM_CONFIG_PATH"
 alias startx="startx \"$XDG_CONFIG_HOME/X11/xinitrc\""
-
-
-
-
-
-

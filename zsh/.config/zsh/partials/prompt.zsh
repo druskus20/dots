@@ -7,8 +7,11 @@
 # 	- nerd-fonts: \ue702 for the git symbol
 # 	- powerline fonts
 
+# Enable colors and change prompt:
+autoload -U colors && colors
+
 # This allows expansions
-setopt prompt_subst
+setopt PROMPT_SUBST
 
 # This part is for the virtualenv indicator
 export VIRTUAL_ENV_DISABLE_PROMPT=yes
@@ -37,21 +40,3 @@ PROMPT+='%F{black}%K{magenta}%2.'
 PROMPT+='$(git rev-parse --is-inside-work-tree &>/dev/null && echo "  ")'
 PROMPT+='%F{magenta}'
 PROMPT+='%k%b%f '
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
