@@ -15,8 +15,6 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 HISTFILE="$XDG_CACHE_HOME"/zsh/history
 
-# Clear default keybinds
-clear-keybinds
 
 # Basic auto/tab complete:
 autoload -U compinit
