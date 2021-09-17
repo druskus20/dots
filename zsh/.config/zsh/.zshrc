@@ -28,7 +28,7 @@ zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'
 
 # Emacs mode
 bindkey -e
-export KEYTIMEOUT=1
+# export KEYTIMEOUT=1   # Vi mode timeout for key sequences
 
 # Keybindings 
 bindkey "^[[1;5C" forward-word
@@ -59,7 +59,6 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 [ -f "$HOME/.config/zsh/aliasrc" ] && source "$HOME/.config/zsh/aliasrc"
 
 # Other rc
-unsetopt flow_control    # Disable Ctrl+S and Ctrl+Q (in zsh)
 
 fzf-history-widget-accept() {
   fzf-history-widget
@@ -78,22 +77,27 @@ source /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
+# Completion
 setopt AUTO_LIST               # automatically list choices on ambiguous completion
 setopt AUTO_MENU               # show completion menu on a successive tab press
 setopt AUTO_PARAM_SLASH        # if completed parameter is a directory, add a trailing slash
-# setopt AUTO_PUSHD              # `cd` pushes directories to the directory stack
 setopt COMPLETE_IN_WORD        # complete from the cursor rather than from the end of the word
-
-setopt HIST_VERIFY             # if a command triggers history expansion, show it instead of running
-setopt INTERACTIVE_COMMENTS    # allow comments in command line
-setopt NO_BANG_HIST            # disable old history syntax
-setopt PATH_DIRS               # perform path search even on command names with slashes
-setopt SHARE_HISTORY           # write and import history on every command
-setopt C_BASES                 # print hex/oct numbers as 0xFF/077 instead of 16#FF/8#77
-
-unsetopt MENU_COMPLETE        # do not autoselect the first completion entry
-
-setopt INC_APPEND_HISTORY
-
+setopt NO_MENU_COMPLETE        # do not autoselect the first completion entry
 setopt HASH_LIST_ALL
 setopt ALWAYS_TO_END
+
+# History
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt SHARE_HISTORY           # write and import history on every command
+#setopt INC_APPEND_HISTORY  # shouldnt be enabled at the same time as SHARE_HISTORY
+#setopt HIST_VERIFY             # if a command triggers history expansion, show it instead of running
+#setopt NO_BANG_HIST            # disable old history syntax
+
+# ZLE
+setopt NOBEEP
+
+# OTHER
+setopt NO_FLOW_CONTROL          # Disable Ctrl+S and Ctrl+Q 
+#setopt INTERACTIVE_COMMENTS    # allow comments in command line
+#setopt PATH_DIRS               # perform path search even on command names with slashes
+#setopt C_BASES                 # print hex/oct numbers as 0xFF/077 instead of 16#FF/8#77
