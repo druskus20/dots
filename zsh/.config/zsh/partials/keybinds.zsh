@@ -14,7 +14,7 @@ setopt NO_FLOW_CONTROL  # Disable Ctrl+S and Ctrl+Q
 bindkey "^[[1;5C" forward-word            # C-ArrowRight
 bindkey "^[[1;5D" backward-word           # C-ArrowLeft
 bindkey "^H"      backward-kill-word      # C-Backspace
-bindkey '\e[3~'   delete-char             # Del
-bindkey '^A'      beginning-of-line       # Home
-bindkey '^E'      end-of-line             # End
-
+bindkey "\e[3~"   delete-char             # Del
+bindkey "^A"      beginning-of-line       # Home
+bindkey "^E"      end-of-line             # End
+bindkey "^R"      fzf-history
