@@ -11,8 +11,8 @@
 source "$ZDOTDIR/utils/utils.zsh"
 
 # History in cache directory:
-HISTSIZE=1000000
-SAVEHIST=1000000
+HISTSIZE=50000
+SAVEHIST=50000
 HISTFILE="$XDG_CACHE_HOME"/zsh/history
 
 
@@ -28,9 +28,10 @@ compinit
 # foldend
 
 # Partials foldstart
+source "$ZDOTDIR/partials/functions.zsh"
 source "$ZDOTDIR/partials/keybinds.zsh"
-source "$ZDOTDIR/partials/alias.zsh"
 source "$ZDOTDIR/partials/prompt.zsh"
+source "$ZDOTDIR/partials/alias.zsh"
 # foldend
 
 # Plugins foldstart
