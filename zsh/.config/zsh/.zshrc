@@ -42,13 +42,14 @@ source "$ZDOTDIR/partials/prompt.zsh"
 # load-plugin "zsh-completions"
 
 load-plugin    "zsh-autosuggestions"
-load-plugin    "zsh-syntax-highlighting"
+#load-plugin    "zsh-syntax-highlighting"
+load-plugin    "fast-syntax-highlighting"
 load-plugin    "zsh-history-substring-search"   
 load-plugin    "zsh-you-should-use" # This is annoying, the actual name is: zsh-you-should-use/you-should-use.plugin.zsh 
 # load-plugin "zsh-vi-mode"
 
 # Some quick plugin settings
-ZSH_HIGHLIGHT_MAXLENGTH=100
+ZSH_HIGHLIGHT_MAXLENGTH=100  
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#85858f,bold,underline"
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
