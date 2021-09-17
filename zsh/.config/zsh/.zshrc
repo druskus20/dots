@@ -7,10 +7,7 @@
 #  By Druskus               
 #
 
-# Enable colors and change prompt:
-autoload -U colors && colors
-source $HOME/.config/zsh/prompt.zsh
-
+# General Setting foldstart
 # History in cache directory:
 HISTSIZE=1000000
 SAVEHIST=1000000
@@ -25,58 +22,45 @@ _comp_options+=(globdots)		# Include hidden files.
 
 # I think this autocompletes from the middle of the word
 zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'
+# foldend
 
-# Emacs mode
-bindkey -e
-# export KEYTIMEOUT=1   # Vi mode timeout for key sequences
+# Partials foldstart
+() {
+  local partials=(
+    "keybinds" # Has to be before plugins
+    "alias"
+    "prompt"
+  )
 
-# Keybindings 
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
-#bindkey '\e[2~'   overwrite-mode          # Insert
-bindkey '\e[3~'   delete-char             # Del
-bindkey '\e[5~'   history-search-backward # PgUp
-bindkey '\e[6~'   history-search-forward  # PgDn
-#bindkey '^A'      beginning-of-line       # Home
-#bindkey '^D'      delete-char             # Del
-#bindkey '^E'      end-of-line             # End
-#bindkey '^R'      history-incremental-pattern-search-backward 
-
-# Zsh syntax hightlighting fix
-export ZSH_HIGHLIGHT_MAXLENGTH=100
-
-# Man pages color support
-export LESS_TERMCAP_mb=$'\e[1;32m'
-export LESS_TERMCAP_md=$'\e[1;32m'
-export LESS_TERMCAP_me=$'\e[0m'
-export LESS_TERMCAP_se=$'\e[0m'
-export LESS_TERMCAP_so=$'\e[01;33m'
-export LESS_TERMCAP_ue=$'\e[0m'
-export LESS_TERMCAP_us=$'\e[1;4;31m'
-
-# Load aliases and shortcuts if existent.
-[ -f "$HOME/.config/zsh/shortcutrc" ] && source "$HOME/.config/zsh/shortcutrc"
-[ -f "$HOME/.config/zsh/aliasrc" ] && source "$HOME/.config/zsh/aliasrc"
-
-# Other rc
-
-fzf-history-widget-accept() {
-  fzf-history-widget
-  zle accept-line
+  for partial in $partials; do
+    source "$XDG_CONFIG_HOME/zsh/partials/$partial.zsh"
+  done
 }
-zle     -N     fzf-history-widget-accept
-bindkey '^X^R' fzf-history-widget-accept
+# foldend
 
-# Load plugins
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh 2>/dev/null
-source /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh 
-#source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+# Plugins foldstart
+() {
+  local plugins=(
+    # "zsh-autosuggestions"   
+    "zsh-syntax-highlighting"
+    "zsh-history-substring-search"   
+    "zsh-you-should-use" # This is annoying, the actual name is: zsh-you-should-use/you-should-use.plugin.zsh 
+  )
 
-# Keysbindings for plugins
+  for plugin in $plugins; do
+    source "/usr/share/zsh/plugins/$plugin/$plugin.zsh"
+    [ -f "$XDG_CONFIG_HOME/zsh/plugins/$plugin.zsh" ] && source "$XDG_CONFIG_HOME/zsh/plugins/$plugin.zsh"
+  done
+}
+
+# Some quick plugin settings
+export ZSH_HIGHLIGHT_MAXLENGTH=100
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
+# foldend
+
+# Options foldstart
 # Completion
 setopt AUTO_LIST               # automatically list choices on ambiguous completion
 setopt AUTO_MENU               # show completion menu on a successive tab press
@@ -89,15 +73,17 @@ setopt ALWAYS_TO_END
 # History
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt SHARE_HISTORY           # write and import history on every command
-#setopt INC_APPEND_HISTORY  # shouldnt be enabled at the same time as SHARE_HISTORY
-#setopt HIST_VERIFY             # if a command triggers history expansion, show it instead of running
-#setopt NO_BANG_HIST            # disable old history syntax
+# setopt INC_APPEND_HISTORY  # shouldnt be enabled at the same time as SHARE_HISTORY
+# setopt HIST_VERIFY             # if a command triggers history expansion, show it instead of running
+# setopt NO_BANG_HIST            # disable old history syntax
 
 # ZLE
 setopt NOBEEP
 
 # OTHER
-setopt NO_FLOW_CONTROL          # Disable Ctrl+S and Ctrl+Q 
-#setopt INTERACTIVE_COMMENTS    # allow comments in command line
-#setopt PATH_DIRS               # perform path search even on command names with slashes
-#setopt C_BASES                 # print hex/oct numbers as 0xFF/077 instead of 16#FF/8#77
+# setopt INTERACTIVE_COMMENTS    # allow comments in command line
+# setopt PATH_DIRS               # perform path search even on command names with slashes
+# setopt C_BASES                 # print hex/oct numbers as 0xFF/077 instead of 16#FF/8#77
+# foldend
+
+# vim:foldmarker=foldstart,foldend
