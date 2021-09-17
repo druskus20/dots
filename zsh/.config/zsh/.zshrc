@@ -8,70 +8,50 @@
 #
 
 # General Setting foldstart
+source "$ZDOTDIR/utils/utils.zsh"
+
 # History in cache directory:
 HISTSIZE=1000000
 SAVEHIST=1000000
-HISTFILE=~/.cache/zsh/history
+HISTFILE="$XDG_CACHE_HOME"/zsh/history
+
+# Clear default keybinds
+clear-keybinds
 
 # Basic auto/tab complete:
 autoload -U compinit
-zstyle ':completion:*' menu select
 zmodload zsh/complist
-compinit
-_comp_options+=(globdots)		# Include hidden files.
-
-# I think this autocompletes from the middle of the word
+zstyle ':completion:*' menu select
+# Include hidden files.
+_comp_options+=(globdots)		
+# Autocomplete from the middle of the word
 zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'
+compinit
 # foldend
 
 # Partials foldstart
-() {
-  local partials=(
-    "keybinds" # Has to be before plugins
-    "alias"
-    "prompt"
-  )
-
-  for partial in $partials; do
-    source "$XDG_CONFIG_HOME/zsh/partials/$partial.zsh"
-  done
-}
+source "$ZDOTDIR/partials/keybinds.zsh"
+source "$ZDOTDIR/partials/alias.zsh"
+source "$ZDOTDIR/partials/prompt.zsh"
 # foldend
 
 # Plugins foldstart
-() {
-  local plugins=(
 
-    # installed through pacman, no need to source, might need to run compinit
-    #  (in usr/share/zsh/site-functions)
-    # "zsh-completions"
-   
-    # "zsh-vi-mode"
-    "zsh-autosuggestions"
-    "zsh-syntax-highlighting"
-    "zsh-history-substring-search"   
-    "zsh-you-should-use" # This is annoying, the actual name is: zsh-you-should-use/you-should-use.plugin.zsh 
-  )
+# installed through pacman, no need to source, might need to run compinit
+#  (in usr/share/zsh/site-functions)
+# load-plugin "zsh-completions"
 
-  for plugin in $plugins; do
-    if [ -f "/usr/share/zsh/plugins/$plugin/$plugin.plugin.zsh" ]; then
-      source "/usr/share/zsh/plugins/$plugin/$plugin.plugin.zsh"
-    elif [ -f "/usr/share/zsh/plugins/$plugin/$plugin.zsh" ]; then
-      source "/usr/share/zsh/plugins/$plugin/$plugin.zsh"
-    else 
-      echo "zshrc: Error couldn't load \"$plugin\"."
-    fi
-
-    [ -f "$XDG_CONFIG_HOME/zsh/plugins/$plugin.zsh" ] && source "$XDG_CONFIG_HOME/zsh/plugins/$plugin.zsh"
-  done
-}
+load-plugin    "zsh-autosuggestions"
+load-plugin    "zsh-syntax-highlighting"
+load-plugin    "zsh-history-substring-search"   
+load-plugin    "zsh-you-should-use" # This is annoying, the actual name is: zsh-you-should-use/you-should-use.plugin.zsh 
+# load-plugin "zsh-vi-mode"
 
 # Some quick plugin settings
-export ZSH_HIGHLIGHT_MAXLENGTH=100
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="#ffffff"
+ZSH_HIGHLIGHT_MAXLENGTH=100
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#85858f,bold,underline"
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
-
 # foldend
 
 # Options foldstart
@@ -86,18 +66,11 @@ setopt ALWAYS_TO_END
 
 # History
 setopt HIST_EXPIRE_DUPS_FIRST
-setopt SHARE_HISTORY           # write and import history on every command
-# setopt INC_APPEND_HISTORY  # shouldnt be enabled at the same time as SHARE_HISTORY
-# setopt HIST_VERIFY             # if a command triggers history expansion, show it instead of running
-# setopt NO_BANG_HIST            # disable old history syntax
-
-# ZLE
-setopt NOBEEP
+setopt SHARE_HISTORY             # write and import history on every command
 
 # OTHER
-# setopt INTERACTIVE_COMMENTS    # allow comments in command line
-# setopt PATH_DIRS               # perform path search even on command names with slashes
-# setopt C_BASES                 # print hex/oct numbers as 0xFF/077 instead of 16#FF/8#77
+setopt INTERACTIVE_COMMENTS    # allow comments in command line
+setopt NOBEEP
 # foldend
 
 # vim:foldmarker=foldstart,foldend
