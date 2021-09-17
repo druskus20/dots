@@ -41,20 +41,34 @@ zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'
 # Plugins foldstart
 () {
   local plugins=(
-    # "zsh-autosuggestions"   
+
+    # installed through pacman, no need to source, might need to run compinit
+    #  (in usr/share/zsh/site-functions)
+    # "zsh-completions"
+   
+    # "zsh-vi-mode"
+    "zsh-autosuggestions"
     "zsh-syntax-highlighting"
     "zsh-history-substring-search"   
     "zsh-you-should-use" # This is annoying, the actual name is: zsh-you-should-use/you-should-use.plugin.zsh 
   )
 
   for plugin in $plugins; do
-    source "/usr/share/zsh/plugins/$plugin/$plugin.zsh"
+    if [ -f "/usr/share/zsh/plugins/$plugin/$plugin.plugin.zsh" ]; then
+      source "/usr/share/zsh/plugins/$plugin/$plugin.plugin.zsh"
+    elif [ -f "/usr/share/zsh/plugins/$plugin/$plugin.zsh" ]; then
+      source "/usr/share/zsh/plugins/$plugin/$plugin.zsh"
+    else 
+      echo "zshrc: Error couldn't load \"$plugin\"."
+    fi
+
     [ -f "$XDG_CONFIG_HOME/zsh/plugins/$plugin.zsh" ] && source "$XDG_CONFIG_HOME/zsh/plugins/$plugin.zsh"
   done
 }
 
 # Some quick plugin settings
 export ZSH_HIGHLIGHT_MAXLENGTH=100
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="#ffffff"
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
