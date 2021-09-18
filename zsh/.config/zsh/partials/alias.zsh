@@ -1,5 +1,3 @@
-#!/bin/sh
-
 # sudo not required for some system commands
 for command in mount umount sv pacman updatedb su shutdown poweroff reboot ; do
 	alias $command="sudo $command"
