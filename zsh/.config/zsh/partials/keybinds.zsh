@@ -1,4 +1,4 @@
-# Vi mode
+# Vi mode foldstart
 bindkey -v
 
 # https://superuser.com/questions/476532/how-can-i-make-zshs-vi-mode-behave-more-like-bashs-vi-mode
@@ -27,6 +27,7 @@ bindkey -M viins '^X,' _history-complete-newer \
 # Don't use vi mode in backward delete word/char because it cannot delete
 # characters on the left of position you were in insert mode.
 bindkey "^?" backward-delete-char
+# foldend
 
 # Use C + hjkl in completion menu.
 bindkey -M menuselect '^J' vi-down-line-or-history
@@ -53,3 +54,5 @@ bindkey -M viins "^Q" edit-command-line
 bindkey -M vicmd "^Q" edit-command-line
 
 setopt NO_FLOW_CONTROL  # Disable Ctrl+S and Ctrl+Q 
+
+# vim:foldmarker=foldstart,foldend
