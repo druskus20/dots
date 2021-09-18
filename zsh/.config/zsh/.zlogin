@@ -7,7 +7,7 @@ zcompare() {
   fi
 }
 
-emulate zsh -o extended_glob -c "local files=(*/*.zsh)"
+emulate zsh -o extended_glob -c "local files=($ZDOTDIR/*/*.zsh)"
 for file in "${files[@]}"; do
   zcompare $file
 done
