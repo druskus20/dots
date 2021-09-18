@@ -72,7 +72,8 @@ setopt HASH_LIST_ALL
 setopt ALWAYS_TO_END
 
 # History
-setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
 setopt SHARE_HISTORY             # write and import history on every command
 setopt HIST_FIND_NO_DUPS 
 
