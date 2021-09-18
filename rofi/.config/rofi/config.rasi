@@ -8,7 +8,6 @@ configuration {
   icon-theme: "Papirus";
 
   font: "NotoSans Nerd Font 10";
-  columns: 2;
 }
 
 /*	modi: "window,run,ssh";*/
