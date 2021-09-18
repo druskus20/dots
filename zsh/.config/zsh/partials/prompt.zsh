@@ -6,21 +6,16 @@ autoload -U colors && colors
 setopt PROMPT_SUBST
 
 # Updates editor information when the keymap changes.
-function zle-line-init zle-keymap-select() {
-  zle reset-prompt
+function zle-line-init zle-keymap-select {
+    case $KEYMAP in
+      vicmd)      VI_INDICATOR="NORMAL"   ;;
+      main|viins) VI_INDICATOR="INSERT"   ;;
+    esac
+    zle reset-prompt
 }
 
 zle -N zle-line-init
 zle -N zle-keymap-select
-
-function vi_mode() {
-  case $KEYMAP in
-    vicmd)      echo "NORMAL"   ;;
-    main|viins) echo "INSERT"   ;;
-    viopp)      echo "OPERATOR" ;;
-    visual)     echo "VISUAL"   ;;
-  esac
-}
 
 function gitstatus_prompt_update() {
   emulate -L zsh
@@ -80,7 +75,7 @@ add-zsh-hook precmd gitstatus_prompt_update
 # This needs to be in simple quotes
 # https://unix.stackexchange.com/questions/32124/set-variables-in-zsh-precmd-and-reference-them-in-the-prompt
 PROMPT='%B'
-PROMPT+='$(vi_mode)'
+PROMPT+='$VI_INDICATOR'
 PROMPT+='%1v'
 PROMPT+='%F{black}%(?:%K{green} ✓%F{green}%K{yellow}:%K{red} ✕%F{red}%K{yellow})'
 PROMPT+='%F{black}%n'
