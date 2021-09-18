@@ -1,7 +1,7 @@
 #!/bin/sh
 # Open and edit dotfiles tracked in my dotfile repo
 
-file=$(dots ls-tree --full-tree -r --name-only HEAD | sed -E '/\.(png|jpg)$/d' | dmenu -l 15) 
+file=$(dots ls-tree --full-tree -r --name-only HEAD | sed -E '/\.(png|jpg)$/d' | rofi -dmenu) 
 [ -z "$file" ] || "$EDITOR" "$file" || vim "$file" || echo "Neither vim or $EDITOR found"
 
 

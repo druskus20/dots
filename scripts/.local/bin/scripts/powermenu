@@ -1,9 +1,9 @@
 #!/bin/sh
-# Creates a power menu with dmenu
+# Creates a power menu with rofi
 
 [ "$(id -u)" -eq 0 ] && echo "Do not run this as root" && exit
 
-case "$(printf "Lock\nLogout\nSuspend\nShutdown\nReboot" | dmenu \
+case "$(printf "Lock\nLogout\nSuspend\nShutdown\nReboot" | rofi -dmenu \
     -i -p \
     "Power:" -l 5)" in
         Lock) exec betterlockscreen -l blur;;

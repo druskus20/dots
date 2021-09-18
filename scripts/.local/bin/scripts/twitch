@@ -2,11 +2,11 @@
 #
 # http://github.com/mitchweaver/bin
 #
-# play twitch streams via dmenu/mpv/youtube-dl
+# play twitch streams via rofi/mpv/youtube-dl
 # Modified by Druskus
 
 : ${TWITCH_STREAM_FILE:=~/.local/share/scripts/twitch/channels.txt}
-: ${MENU_PROG:=dmenu -l 10}
+: ${MENU_PROG:=rofi -dmenu}
 : ${MPV_OPTS:=--really-quiet}
 log=~/.cache/twitch
 :>"$log"
