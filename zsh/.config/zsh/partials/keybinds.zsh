@@ -4,6 +4,18 @@ bindkey -v
 # https://superuser.com/questions/476532/how-can-i-make-zshs-vi-mode-behave-more-like-bashs-vi-mode
 export KEYTIMEOUT=1   # Vi mode timeout for key sequences
 bindkey -M vicmd '^[' undefined-key
+
+# Remove keybinds that begin with esc (so ESC doesnt hang)
+bindkey -M vicmd -r "^[OA"    # up-line-or-history
+bindkey -M vicmd -r "^[OB"    # down-line-or-history
+bindkey -M vicmd -r "^[OC"    # vi-forward-char
+bindkey -M vicmd -r "^[OD"    # vi-backward-char
+bindkey -M vicmd -r "^[[200~" # bracketed-paste
+bindkey -M vicmd -r "^[[A"    # up-line-or-history
+bindkey -M vicmd -r "^[[B"    # down-line-or-history
+bindkey -M vicmd -r "^[[C"    # vi-forward-char
+bindkey -M vicmd -r "^[[D"    # vi-backward-char
+
 bindkey -rM viins '^X'
 bindkey -M viins '^X,' _history-complete-newer \
                  '^X/' _history-complete-older \
@@ -11,9 +23,7 @@ bindkey -M viins '^X,' _history-complete-newer \
 
 # Don't use vi mode in backward delete word/char because it cannot delete
 # characters on the left of position you were in insert mode.
-# !!! Not working?
-zle -A .backward-kill-word vi-backward-kill-word
-zle -A .backward-delete-char vi-backward-delete-char
+bindkey "^?" backward-delete-char
 
 # Use C + hjkl in completion menu.
 bindkey -M menuselect '^J' vi-down-line-or-history
@@ -27,9 +37,6 @@ bindkey "^[[1;5D" backward-word           # C-ArrowLeft
 bindkey "^H"      backward-kill-word      # C-Backspace
 bindkey "\e[3~"   delete-char             # Del
 bindkey "^R"      fzf-history             # C-R
-
-# Just delete char in command mode on backspace.
-bindkey -M vicmd "^?" vi-backward-delete-char
 
 # / to search through history
 bindkey -M vicmd '/' fzf-history
