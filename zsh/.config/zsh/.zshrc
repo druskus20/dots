@@ -15,6 +15,8 @@ HISTSIZE=50000
 SAVEHIST=50000
 HISTFILE="$XDG_CACHE_HOME"/zsh/history
 
+# Clear default keybinds
+clear-keybinds
 
 # Basic auto/tab complete:
 autoload -U compinit
@@ -25,13 +27,6 @@ _comp_options+=(globdots)
 # Autocomplete from the middle of the word
 zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'
 compinit
-# foldend
-
-# Partials foldstart
-source "$ZDOTDIR/partials/functions.zsh"
-source "$ZDOTDIR/partials/keybinds.zsh"
-source "$ZDOTDIR/partials/prompt.zsh"
-source "$ZDOTDIR/partials/alias.zsh"
 # foldend
 
 # Plugins foldstart
@@ -45,13 +40,25 @@ load-plugin    "zsh-autosuggestions"
 load-plugin    "fast-syntax-highlighting"
 load-plugin    "zsh-history-substring-search"   
 load-plugin    "zsh-you-should-use" # This is annoying, the actual name is: zsh-you-should-use/you-should-use.plugin.zsh 
-# load-plugin "zsh-vi-mode"
+
+# Too slow
+# ZVM_INIT_MODE=sourcing # Fixes overriding keybinds problem (* git version)
+# load-plugin    "zsh-vi-mode"
 
 # Some quick plugin settings
 ZSH_HIGHLIGHT_MAXLENGTH=100  
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#85858f,bold,underline"
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+bindkey '^[[A' history-substring-search-up    # Arrow up
+bindkey '^[[B' history-substring-search-down  # Arrow down
+bindkey '^K'   history-substring-search-up    # Arrow up
+bindkey '^J'   history-substring-search-down    # Arrow up
+# foldend
+
+# Partials foldstart
+source "$ZDOTDIR/partials/functions.zsh"
+source "$ZDOTDIR/partials/keybinds.zsh"
+source "$ZDOTDIR/partials/prompt.zsh"
+source "$ZDOTDIR/partials/alias.zsh"
 # foldend
 
 # Options foldstart
@@ -67,6 +74,7 @@ setopt ALWAYS_TO_END
 # History
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt SHARE_HISTORY             # write and import history on every command
+setopt HIST_FIND_NO_DUPS 
 
 # OTHER
 setopt INTERACTIVE_COMMENTS    # allow comments in command line
