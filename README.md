@@ -18,8 +18,8 @@ I use [stow](https://www.gnu.org/software/stow) to manage my dotfiles.
 - **sxhkd**: hotkey daemon.
 - **picom**: compositor.
 - *polybar*: status bar.
-- **eww**: status bar and widgets.
-- **dunst**: notification daemon.
+- **eww**: status bar, notifications via [tiramisu](https://github.com/Sweets/tiramisu) and widgets.
+- *dunst*: notification daemon.
 - **alacritty**: terminal.
 - **zsh**: shell.
 - **rofi**: program launcher. (based on what I yoinked from [elkowar](https://github.com/elkowar))
