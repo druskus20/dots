@@ -16,6 +16,9 @@ bindkey -M vicmd -r "^[[B"    # down-line-or-history
 bindkey -M vicmd -r "^[[C"    # vi-forward-char
 bindkey -M vicmd -r "^[[D"    # vi-backward-char
 
+# Remove execute because Im dumb
+bindkey -M vicmd -r ":"       # execute
+
 bindkey -rM viins '^X'
 bindkey -M viins '^X,' _history-complete-newer \
                  '^X/' _history-complete-older \
