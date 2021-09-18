@@ -1,17 +1,30 @@
-# Druskus rainbow-like zsh theme
-# Features: 
-# 	- Last command status indicator
-#	- Git indicator
-#
-# Requirements:
-# 	- nerd-fonts: \ue702 for the git symbol
-# 	- powerline fonts
+#autoload -U colors && colors
 
-# Enable colors and change prompt:
-autoload -U colors && colors
+source /usr/share/gitstatus/gitstatus.prompt.zsh
 
 # This allows expansions
 setopt PROMPT_SUBST
+
+# Updates editor information when the keymap changes.
+function zle-line-init zle-keymap-select() {
+  zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+function vi_mode_prompt_info() {
+  case $KEYMAP in
+    vicmd) echo "NORMAL";;
+    main|viins) echo "INSERT";;
+    viopp) echo "OPERATOR";;
+    visual) echo "VISUAL";;
+  esac
+}
+
+# define right prompt, regardless of whether the theme defined it
+RPS1='$(vi_mode_prompt_info)'
+RPS2=$RPS1
 
 # This part is for the virtualenv indicator
 export VIRTUAL_ENV_DISABLE_PROMPT=yes
@@ -38,5 +51,6 @@ PROMPT+='%F{black}%m'
 PROMPT+='%F{blue}%K{magenta}'
 PROMPT+='%F{black}%K{magenta}%2.'
 PROMPT+='$(git rev-parse --is-inside-work-tree &>/dev/null && echo "  ")'
+PROMPT+='$GITSTATUS_PROMPT'
 PROMPT+='%F{magenta}'
 PROMPT+='%k%b%f '
