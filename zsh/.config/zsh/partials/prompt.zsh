@@ -1,36 +1,34 @@
 source /usr/share/gitstatus/gitstatus.plugin.zsh
 
+# To be able to use: "%{$fg[red]$bg[red]%}"
 autoload -U colors && colors
 
 # This allows expansions
 setopt PROMPT_SUBST
 
-# Updates editor information when the keymap changes.
+# Updates editor information when the keymap changes. foldstart
 function zle-line-init zle-keymap-select {
     case $KEYMAP in
-      vicmd)      VI_INDICATOR="NORMAL"   ;;
-      main|viins) VI_INDICATOR="INSERT"   ;;
+      vicmd)      VI_INDICATOR="%{$fg[magenta]%}"   ;;
+      main|viins) VI_INDICATOR="%{$fg[blue]%}ﴨ"   ;;
     esac
     zle reset-prompt
 }
 
 zle -N zle-line-init
 zle -N zle-keymap-select
+# foldend
 
+# Gitstatus foldstart
 # https://github.com/romkatv/gitstatus/blob/master/gitstatus.prompt.zsh
 function gitstatus_prompt_update() {
   emulate -L zsh
   typeset -g  GITSTATUS_PROMPT=''
 
-# Call gitstatus_query synchronously. Note that gitstatus_query can also be called
-  # asynchronously; see documentation in gitstatus.plugin.zsh.
+  # Call gitstatus_query synchronously. Note that gitstatus_query can also be called
+  #  asynchronously; see documentation in gitstatus.plugin.zsh.
   gitstatus_query 'MY'                  || return 1  # error
   [[ $VCS_STATUS_RESULT == 'ok-sync' ]] || return 0  # not a git repo
-  
-  local cl="%{$fg[black]%}" # green foreground
-  local mo="%{$fg[black]%}" # yellow foreground
-  local un="%{$fg[black]%}" # blue foreground
-  local co="%{$fg[black]%}" # red foreground
 
   local p
   local where  # branch name, tag or commit
@@ -46,16 +44,11 @@ function gitstatus_prompt_update() {
 
   (( $#where > 32 )) && where[13,-13]="…"  # truncate long branch names and tags
   p+="${cl}${where//\%/%%}"             # escape %
-  # 'merge' if the repo is in an unusual state.
-  [[ -n $VCS_STATUS_ACTION     ]] && p+=" ${co}${VCS_STATUS_ACTION}"
-  # ~42 if have merge conflicts.
-  (( VCS_STATUS_NUM_CONFLICTED )) && p+=" ${co}~${VCS_STATUS_NUM_CONFLICTED}"
-  # +42 if have staged changes.
-  (( VCS_STATUS_NUM_STAGED     )) && p+=" ${mo}+${VCS_STATUS_NUM_STAGED}"
-  # !42 if have unstaged changes.
-  (( VCS_STATUS_NUM_UNSTAGED   )) && p+=" ${mo}!${VCS_STATUS_NUM_UNSTAGED}"
-  # ?42 if have untracked files. It's really a question mark, your font isn't broken.
-  (( VCS_STATUS_NUM_UNTRACKED  )) && p+=" ${un}?${VCS_STATUS_NUM_UNTRACKED}"
+  [[ -n $VCS_STATUS_ACTION     ]] && p+=" ${VCS_STATUS_ACTION}" # 'merge'
+  (( VCS_STATUS_NUM_CONFLICTED )) && p+=" ~${VCS_STATUS_NUM_CONFLICTED}"
+  (( VCS_STATUS_NUM_STAGED     )) && p+=" +${VCS_STATUS_NUM_STAGED}"
+  (( VCS_STATUS_NUM_UNSTAGED   )) && p+=" !${VCS_STATUS_NUM_UNSTAGED}"
+  (( VCS_STATUS_NUM_UNTRACKED  )) && p+=" ?${VCS_STATUS_NUM_UNTRACKED}"
 
   GITSTATUS_PROMPT="  ${p}%f"
 }
@@ -68,22 +61,36 @@ gitstatus_stop 'MY' && gitstatus_start -s -1 -u -1 -c -1 -d -1 'MY'
 # On every prompt, fetch git status and set GITSTATUS_PROMPT.
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd gitstatus_prompt_update
+# foldend
+
+# Virtualenv foldstart
+function virtenv_indicator {
+    if [[ -z $VIRTUAL_ENV ]] then
+        VIRTUAL_ENV_INDICATOR=''
+    else
+        VIRTUAL_ENV_INDICATOR=" ${VIRTUAL_ENV##*/} "
+    fi
+}
+
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd virtenv_indicator
 
 # Disable default virtualenv prompt
 export VIRTUAL_ENV_DISABLE_PROMPT=1 
+# foldend
 
 # This needs to be in simple quotes
 # https://unix.stackexchange.com/questions/32124/set-variables-in-zsh-precmd-and-reference-them-in-the-prompt
-PROMPT='%B'
-PROMPT+='%F{black}%K{magenta}$VI_INDICATOR'
-PROMPT+='%F{magenta}%K{green}'
-PROMPT+='%F{black}%(?:%K{green} ✓%F{green}%K{yellow}:%K{red} ✕%F{red}%K{yellow})'
-PROMPT+='%F{black}%n'
-PROMPT+='%F{yellow}%K{blue}'
-PROMPT+='%F{black}%m'
-PROMPT+='%F{blue}%K{magenta}'
-PROMPT+='%F{black}%K{magenta}%2.'
-PROMPT+='$GITSTATUS_PROMPT'
-PROMPT+='%F{magenta}'
-PROMPT+='${VIRTUAL_ENV##*/}'
-PROMPT+='%k%b%f '
+PROMPT=''
+PROMPT+='%B'  # Bold
+PROMPT+='%(?:%{$fg[green]%}✓:%{$fg[red]%}✕) '
+PROMPT+='%{$fg[yellow]%}%n '
+PROMPT+='%{$fg[blue]%}%m '
+PROMPT+='%{$fg[magenta]%}%2.'
+PROMPT+='%{$fg[green]%}$GITSTATUS_PROMPT '
+PROMPT+='%{$fg[red]%}$VIRTUAL_ENV_INDICATOR'
+PROMPT+=$'\n' # Second line
+PROMPT+='$VI_INDICATOR '
+PROMPT+='%k%f%b' # Clean
+
+# vim:foldmarker=foldstart,foldend
