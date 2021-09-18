@@ -1,6 +1,6 @@
-#autoload -U colors && colors
+source /usr/share/gitstatus/gitstatus.plugin.zsh
 
-source /usr/share/gitstatus/gitstatus.prompt.zsh
+autoload -U colors && colors
 
 # This allows expansions
 setopt PROMPT_SUBST
@@ -13,44 +13,82 @@ function zle-line-init zle-keymap-select() {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
-function vi_mode_prompt_info() {
+function vi_mode() {
   case $KEYMAP in
-    vicmd) echo "NORMAL";;
-    main|viins) echo "INSERT";;
-    viopp) echo "OPERATOR";;
-    visual) echo "VISUAL";;
+    vicmd)      echo "NORMAL"   ;;
+    main|viins) echo "INSERT"   ;;
+    viopp)      echo "OPERATOR" ;;
+    visual)     echo "VISUAL"   ;;
   esac
 }
 
-# define right prompt, regardless of whether the theme defined it
-RPS1='$(vi_mode_prompt_info)'
-RPS2=$RPS1
+function gitstatus_prompt_update() {
+  emulate -L zsh
+  typeset -g  GITSTATUS_PROMPT=''
+  typeset -gi GITSTATUS_PROMPT_LEN=0
 
-# This part is for the virtualenv indicator
-export VIRTUAL_ENV_DISABLE_PROMPT=yes
+  # Call gitstatus_query synchronously. Note that gitstatus_query can also be called
+  # asynchronously; see documentation in gitstatus.plugin.zsh.
+  gitstatus_query 'MY'                  || return 1  # error
+  [[ $VCS_STATUS_RESULT == 'ok-sync' ]] || return 0  # not a git repo
+  
+  local cl="%{$fg[black]%}" # green foreground
+  local mo="%{$fg[black]%}" # yellow foreground
+  local un="%{$fg[black]%}" # blue foreground
+  local co="%{$fg[black]%}" # red foreground
 
-function virtenv_indicator {
-    if [[ -z $VIRTUAL_ENV ]] then
-        psvar[1]=''
-    else
-        psvar[1]="${VIRTUAL_ENV##*/}"
-    fi
+  local p
+  local where  # branch name, tag or commit
+  if [[ -n $VCS_STATUS_LOCAL_BRANCH ]]; then
+    where=$VCS_STATUS_LOCAL_BRANCH
+  elif [[ -n $VCS_STATUS_TAG ]]; then
+    p+='%f#'
+    where=$VCS_STATUS_TAG
+  else
+    p+='%f@'
+    where=${VCS_STATUS_COMMIT[1,8]}
+  fi
+
+  (( $#where > 32 )) && where[13,-13]="…"  # truncate long branch names and tags
+  p+="${cl}${where//\%/%%}"             # escape %
+  # 'merge' if the repo is in an unusual state.
+  [[ -n $VCS_STATUS_ACTION     ]] && p+=" ${co}${VCS_STATUS_ACTION}"
+  # ~42 if have merge conflicts.
+  (( VCS_STATUS_NUM_CONFLICTED )) && p+=" ${co}~${VCS_STATUS_NUM_CONFLICTED}"
+  # +42 if have staged changes.
+  (( VCS_STATUS_NUM_STAGED     )) && p+=" ${mo}+${VCS_STATUS_NUM_STAGED}"
+  # !42 if have unstaged changes.
+  (( VCS_STATUS_NUM_UNSTAGED   )) && p+=" ${mo}!${VCS_STATUS_NUM_UNSTAGED}"
+  # ?42 if have untracked files. It's really a question mark, your font isn't broken.
+  (( VCS_STATUS_NUM_UNTRACKED  )) && p+=" ${un}?${VCS_STATUS_NUM_UNTRACKED}"
+
+  GITSTATUS_PROMPT="  ${p}%f"
+
+  # The length of GITSTATUS_PROMPT after removing %f and %F.
+  GITSTATUS_PROMPT_LEN="${(m)#${${GITSTATUS_PROMPT//\%\%/x}//\%(f|<->F)}}"
 }
 
+# Start gitstatusd instance with name "MY". The same name is passed to
+# gitstatus_query in gitstatus_prompt_update. The flags with -1 as values
+# enable staged, unstaged, conflicted and untracked counters.
+gitstatus_stop 'MY' && gitstatus_start -s -1 -u -1 -c -1 -d -1 'MY'
+
+# On every prompt, fetch git status and set GITSTATUS_PROMPT.
 autoload -Uz add-zsh-hook
-add-zsh-hook precmd virtenv_indicator
+add-zsh-hook precmd gitstatus_prompt_update
 
 # This needs to be in simple quotes
 # https://unix.stackexchange.com/questions/32124/set-variables-in-zsh-precmd-and-reference-them-in-the-prompt
-
 PROMPT='%B'
+PROMPT+='$(vi_mode)'
+PROMPT+='%1v'
 PROMPT+='%F{black}%(?:%K{green} ✓%F{green}%K{yellow}:%K{red} ✕%F{red}%K{yellow})'
 PROMPT+='%F{black}%n'
 PROMPT+='%F{yellow}%K{blue}'
 PROMPT+='%F{black}%m'
 PROMPT+='%F{blue}%K{magenta}'
 PROMPT+='%F{black}%K{magenta}%2.'
-PROMPT+='$(git rev-parse --is-inside-work-tree &>/dev/null && echo "  ")'
 PROMPT+='$GITSTATUS_PROMPT'
 PROMPT+='%F{magenta}'
+PROMPT+='${VIRTUAL_ENV##*/}'
 PROMPT+='%k%b%f '
