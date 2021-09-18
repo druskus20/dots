@@ -17,12 +17,12 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
+# https://github.com/romkatv/gitstatus/blob/master/gitstatus.prompt.zsh
 function gitstatus_prompt_update() {
   emulate -L zsh
   typeset -g  GITSTATUS_PROMPT=''
-  typeset -gi GITSTATUS_PROMPT_LEN=0
 
-  # Call gitstatus_query synchronously. Note that gitstatus_query can also be called
+# Call gitstatus_query synchronously. Note that gitstatus_query can also be called
   # asynchronously; see documentation in gitstatus.plugin.zsh.
   gitstatus_query 'MY'                  || return 1  # error
   [[ $VCS_STATUS_RESULT == 'ok-sync' ]] || return 0  # not a git repo
@@ -57,10 +57,7 @@ function gitstatus_prompt_update() {
   # ?42 if have untracked files. It's really a question mark, your font isn't broken.
   (( VCS_STATUS_NUM_UNTRACKED  )) && p+=" ${un}?${VCS_STATUS_NUM_UNTRACKED}"
 
-  GITSTATUS_PROMPT="  ${p}%f"
-
-  # The length of GITSTATUS_PROMPT after removing %f and %F.
-  GITSTATUS_PROMPT_LEN="${(m)#${${GITSTATUS_PROMPT//\%\%/x}//\%(f|<->F)}}"
+  GITSTATUS_PROMPT="  ${p}%f"
 }
 
 # Start gitstatusd instance with name "MY". The same name is passed to
@@ -72,11 +69,14 @@ gitstatus_stop 'MY' && gitstatus_start -s -1 -u -1 -c -1 -d -1 'MY'
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd gitstatus_prompt_update
 
+# Disable default virtualenv prompt
+export VIRTUAL_ENV_DISABLE_PROMPT=1 
+
 # This needs to be in simple quotes
 # https://unix.stackexchange.com/questions/32124/set-variables-in-zsh-precmd-and-reference-them-in-the-prompt
 PROMPT='%B'
-PROMPT+='$VI_INDICATOR'
-PROMPT+='%1v'
+PROMPT+='%F{black}%K{magenta}$VI_INDICATOR'
+PROMPT+='%F{magenta}%K{green}'
 PROMPT+='%F{black}%(?:%K{green} ✓%F{green}%K{yellow}:%K{red} ✕%F{red}%K{yellow})'
 PROMPT+='%F{black}%n'
 PROMPT+='%F{yellow}%K{blue}'

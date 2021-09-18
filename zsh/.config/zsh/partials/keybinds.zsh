@@ -37,14 +37,16 @@ bindkey "^[[1;5D" backward-word           # C-ArrowLeft
 bindkey "^H"      backward-kill-word      # C-Backspace
 bindkey "\e[3~"   delete-char             # Del
 bindkey "^R"      fzf-history             # C-R
+bindkey "^E"      end-of-line             # C-E
+bindkey "^A"      beginning-of-line       # C-A
 
 # / to search through history
 bindkey -M vicmd '/' fzf-history
 
-# C-E to edit command in $EDITOR
+# C-Q to edit command in $EDITOR
 autoload -U edit-command-line
 zle -N edit-command-line
-bindkey -M viins "^E" edit-command-line
-bindkey -M vicmd "^E" edit-command-line
+bindkey -M viins "^Q" edit-command-line
+bindkey -M vicmd "^Q" edit-command-line
 
 setopt NO_FLOW_CONTROL  # Disable Ctrl+S and Ctrl+Q 
