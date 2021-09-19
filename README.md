@@ -28,6 +28,7 @@ I use [stow](https://www.gnu.org/software/stow) to manage my dotfiles.
 - **zathura**: pdf viewer.
 - **pipr**: a program to test shell pipes interactively.
 - **paru**: package manager.
+- **flashfocus**: window focus indicator.
 
 ## Scripts I use
 
