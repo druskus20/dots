@@ -12,7 +12,7 @@ setxkbmap -option caps:escape
 
 
 # Set bg, generate lockscreen, set locker, fix cursor
-setbg /home/druskus/img/bg/purple_coast.jpg > /dev/null &
+setbg /home/druskus/img/bg/abstract_mountains.jpg > /dev/null &
 xautolock -time 10 -locker "betterlockscreen --lock blur" &
 xsetroot -cursor_name left_ptr &
 
@@ -29,7 +29,10 @@ eww open bar > /dev/null 2> /dev/null &
 picom 2> /dev/null &
 #phicom -b --config ~/.config/picom/picom.conf > /dev/null 2> /dev/null & # Phisch's version
 
+# Noise cancellation
 noisetorch -i 2> /dev/null &
+
+flashfocus & 2> /dev/null
 
 # Load keybindings
 sxhkd & 
