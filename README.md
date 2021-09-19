@@ -18,8 +18,8 @@ I use [stow](https://www.gnu.org/software/stow) to manage my dotfiles.
 - **sxhkd**: hotkey daemon.
 - **picom**: compositor.
 - *polybar*: status bar.
-- **eww**: status bar and widgets.
-- **dunst**: notification daemon.
+- **eww**: status bar, notifications via [tiramisu](https://github.com/Sweets/tiramisu) and widgets.
+- *dunst*: notification daemon.
 - **alacritty**: terminal.
 - **zsh**: shell.
 - **rofi**: program launcher. (based on what I yoinked from [elkowar](https://github.com/elkowar))
@@ -42,21 +42,21 @@ I use [stow](https://www.gnu.org/software/stow) to manage my dotfiles.
 - **cronupdate**: sends a notification if there are updates pending.
 - **dlaunch**: program launcher using dmenu.
 - **dmount**: mount partitions using dmenu.
-- *doted*: access dotfiles quickly using dmenu.
+- *doted*: access dotfiles quickly using rofi.
 - *dots*: wrapper around git in order to use a bare repo for dofile management.
 - **dpass**: password prompt using dmenu.
 - *firefox*: wrapper around firefox in order to declutter home.
 - *lightctrl*: controls the backlight.
-- **mans**: manpage selection through dmenu.
+- **mans**: manpage selection through rofi.
 - **night**: toogles night mode using redshift
 - *night-legacy*: toogles night mode.
-- **powermenu**: power menu using dmenu.
+- **powermenu**: power menu using rofi.
 - **scr**: takes a screenshot and copies it to the clipboard and stdout.
 - **setbg**: sets the background and caches it (for betterlockscreen).
 - **sfetch**: fetches system information.
 - **spotify**: wrapper around spotify in order to declutter home.
 - *tdaemon*: wrapper around urxvt to run a urxvtd.
-- *twitch*: checks live streams and prompts the user using dmenu.
+- *twitch*: checks live streams and prompts the user using rofi.
 - *xobinit*: wrapper around xob.
 - *xrdbr*: reloads xresources and generates configs for other programs.
 - *xresq*: queries a value in Xresources.
@@ -73,9 +73,9 @@ I use [stow](https://www.gnu.org/software/stow) to manage my dotfiles.
 
 
 ## TODO
-- [ ] Look into Jsonnet to: split configs between multiple machines, have unified colors...
-- [ ] Switch to xmonad
-- [ ] Redo zsh config
+- [x] Look into Jsonnet to: split configs between multiple machines, have unified colors...
+- [ ] Switch to xmonad (or wayland... if nvidia wants...)
+- [x] Redo zsh config
 - [ ] Redo nvim config using fennel
-- [ ] Create eww config, replace dunst (?), polybar (?)...
-- [ ] Migrate scripts to rofi
+- [x] Create eww config, replace dunst (?), polybar (?)...
+- [x] Migrate scripts to rofi
