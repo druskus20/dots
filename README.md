@@ -69,7 +69,7 @@ I use [stow](https://www.gnu.org/software/stow) to manage my dotfiles.
 - **Icon Fonts**: Font Awesome 5 Free & Brands
 - **GTK Theme**: [Phocus](https://github.com/phocus)
 - **GTK Icon Theme**: Papirus
-
+- **Google Chrome Theme**: My own, (chrome-theme)
 
 
 ## TODO
