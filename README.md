@@ -73,6 +73,7 @@ I use [stow](https://www.gnu.org/software/stow) to manage my dotfiles.
 
 ## See also
 [eugh](https://github.com/druskus20/eugh)
+
 [ora](https://github.com/druskus20/ora)
 
 ## TODO
