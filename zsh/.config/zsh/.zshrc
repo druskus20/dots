@@ -54,11 +54,11 @@ bindkey '^K'   history-substring-search-up    # Arrow up
 bindkey '^J'   history-substring-search-down    # Arrow up
 # foldend
 
-# Partials foldstart
-source "$ZDOTDIR/partials/functions.zsh"
-source "$ZDOTDIR/partials/keybinds.zsh"
-source "$ZDOTDIR/partials/prompt.zsh"
-source "$ZDOTDIR/partials/alias.zsh"
+# Modules foldstart
+source "$ZDOTDIR/modules/functions.zsh"
+source "$ZDOTDIR/modules/keybinds.zsh"
+source "$ZDOTDIR/modules/prompt.zsh"
+source "$ZDOTDIR/modules/alias.zsh"
 # foldend
 
 # Options foldstart

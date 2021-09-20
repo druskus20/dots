@@ -79,11 +79,25 @@ add-zsh-hook precmd virtenv_indicator
 export VIRTUAL_ENV_DISABLE_PROMPT=1 
 # foldend
 
+# function last_command_dice {
+#    local d=$(( ( $RANDOM % 6 ) + 1 ))
+#    [ $d -eq 1 ] && CMD_DICE=""
+#    [ $d -eq 2 ] && CMD_DICE=""
+#    [ $d -eq 3 ] && CMD_DICE=""
+#    [ $d -eq 4 ] && CMD_DICE=""
+#    [ $d -eq 5 ] && CMD_DICE=""
+#    [ $d -eq 6 ] && CMD_DICE=""
+# }
+# 
+# autoload -Uz add-zsh-hook
+# add-zsh-hook precmd last_command_dice
+
 # This needs to be in simple quotes
 # https://unix.stackexchange.com/questions/32124/set-variables-in-zsh-precmd-and-reference-them-in-the-prompt
 PROMPT=''
 PROMPT+='%B'  # Bold
-PROMPT+='%(?:%{$fg[green]%}✓:%{$fg[red]%}✕) '
+PROMPT+='%(?:%{$fg[green]%}✓:%{$fg[red]%}✕)$CMD_DICE '
+# PROMPT+='%(?:%{$fg[green]%}:%{$fg[red]%})$CMD_DICE '
 PROMPT+='%{$fg[yellow]%}%n '
 PROMPT+='%{$fg[blue]%}%m '
 PROMPT+='%{$fg[magenta]%}%2.'
