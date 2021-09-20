@@ -34,12 +34,12 @@ The config is structured in the following way:
 * .zshrc: This file is sourced in interactive shells. It serves as the root of the config.
 * .zlogin: This file is sourced in login shells, after .zshrc.
 * .zprofile: This file is sourced in login shells, before .zshrc.
-* partials: Contains different parts of my config: keybinds, prompt, aliases...
+* modules: Contains different parts of my config: keybinds, prompt, aliases...
 * plugins: May contain specific plugin configs that get loaded at startup.
 * utils: Contains different utility functions.
 
 ## Vi mode
-I use zsh's vi-mode, it comes with several inconveniences that I attempt to fix in partials/keybinds.zsh.
+I use zsh's vi-mode, it comes with several inconveniences that I attempt to fix in modules/keybinds.zsh.
 See [this post](https://superuser.com/questions/476532/how-can-i-make-zshs-vi-mode-behave-more-like-bashs-vi-mode).
 
 ## Why not use a plugin manager
