@@ -13,7 +13,7 @@ function clear-keybinds() {
     "^[u"  "^[w"  "^[y"  "^[z"  "^[|"  "^[~"  "^[^I" "^[^J" "^[^_" "^[\"" "^[\$" "^X^B"
     "^X^F" "^X^J" "^X^K" "^X^N" "^X^O" "^X^R" "^X^U" "^X^X" "^[^D" "^[^G")
   for key in $keys; do
-    bindkey $key do-nothing
+    bindkey -r $key 
   done
 }
 zle -N clear-keybinds clear-keybinds
