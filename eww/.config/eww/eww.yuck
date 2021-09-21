@@ -89,8 +89,8 @@
 (deflisten notifications_listen :initial '{"show": "no", "content": ""}' "./modules/notifications.sh")
 
 ; Make this cleaner at some point
-(defpoll microphone_poll :interval "999h" "./modules/microphone.sh")
-(defpoll speaker_poll :interval "999h" "./modules/speaker.sh")
+(defpoll microphone_poll :initial "{}" :interval "999h" "./modules/microphone.sh")
+(defpoll speaker_poll :initial "{}" :interval "999h" "./modules/speaker.sh")
 ; foldend
 
 ; Modules foldstart
