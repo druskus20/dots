@@ -6,6 +6,8 @@
 [ $# -eq 0 ] && >&2 echo "No argument provided" && exit 1
 
 
-feh --no-fehbg --bg-scale "$@"
+set_bg="feh --no-fehbg --bg-fill $1"
+[ -n "$2" ] && set_bg="$set_bg --bg-fill $2"
+$($set_bg)
 betterlockscreen -u "$@"
- realpath "$1" > "$XDG_CACHE_HOME"/background 
+realpath "$1" > "$XDG_CACHE_HOME"/background 

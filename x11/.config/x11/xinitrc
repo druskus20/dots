@@ -1,5 +1,7 @@
 # xinitrc 
 
+./2screens.sh 2> /dev/null
+
 # Fix dual boot time issue
 sudo timedatectl set-ntp true
 
@@ -32,7 +34,9 @@ picom 2> /dev/null &
 # Noise cancellation
 noisetorch -i 2> /dev/null &
 
-flashfocus & 2> /dev/null
+flashfocus 2> /dev/null &
+
+night 2> /dev/null
 
 # Load keybindings
 sxhkd & 

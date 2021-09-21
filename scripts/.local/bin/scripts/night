@@ -5,11 +5,11 @@
 # Usage night [temp]
 temp=4000
 
-if [ -n "$1" ] || [ "$(xrandr --verbose | grep Gamma | awk '{print $2}')" = "1.0:1.0:1.0" ]; then
+if [ -n "$1" ] || [ "$(xrandr --verbose | grep Gamma | awk '{print $2}' | head -n 1)" = "1.0:1.0:1.0" ]; then
   [ -z "$1" ] || temp="$1"
-  redshift -m randr -P -O "$temp" > /dev/null
+  redshift -P -O "$temp" > /dev/null
   notify-send " Switching to night mode"
 else 
-  redshift -m randr -x > /dev/null
+  redshift -x > /dev/null
   notify-send " Switching to day mode"
 fi 

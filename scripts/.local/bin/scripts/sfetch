@@ -11,17 +11,23 @@
 
 user=$USER
 host="$(hostname)"
-os='Manjaro'
 packages="$(pacman -Q | wc -l)"
 shell="$(basename "$SHELL")"
 term="$(ps -o comm= -p "$(($(ps -o ppid= -p "$(($(ps -o sid= -p "$$")))")))")"
 
 
 ## WM DETECTION
-if [ -f "${HOME}/.xinitrc" ]; then
-	wm="$(tail -n 1 "${HOME}"/.xinitrc | cut -d ' ' -f 2)"
+if [ -f "${XINITRC}" ]; then
+	xinit_path="$XINITRC"
+elif [ -f "${HOME}/.xinitrc" ]; then
+	xinit_path="$HOME/.xinitrc"
 elif [ -f "${XDG_CONFIG_HOME}"/X11/xinitrc ]; then
+	xinit_path="$XDG_CONFIG_HOME/.xinitrc"
 	wm="$(tail -n 1 "${XDG_CONFIG_HOME}"/X11/xinitrc | cut -d ' ' -f 2)"
+fi
+
+if [ -n "$xinit_path" ]; then
+	wm="$(cat "$xinit_path" | grep exec | tail -n 1 | cut -d ' ' -f 2)"
 else
 	wm='unknown'
 fi
