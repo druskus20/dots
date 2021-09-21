@@ -12,24 +12,33 @@
 ; muted ? "no spek" : '["quiet", "loud", "bruh"]'[round(volume / something, 0)]
 
 ; Windows foldstart
-(defwindow bar
+(defwindow bar0
   :monitor 0
   :hexpand false
   :vexpand false
-  :geometry (geometry :x 0 :y 0 :width "100%")
+  :geometry (geometry :x 0 :y 0 :width "100%" :height "20px")
   :anchor "top left"
-  :reserve (struts :distance "10px" :side "top")
-  (bar :screen 0))
+  :reserve (struts :distance "20px" :side "top")
+  (bar0))
+
+(defwindow bar1
+  :monitor 1
+  :hexpand false
+  :vexpand false
+  :geometry (geometry :x 0 :y 0 :width "100%" :height "20px")
+  :anchor "top left"
+  :reserve (struts :distance "20px" :side "top")
+  (bar1))
 ; foldend
 
 ; Bar foldstart
-(defwidget bar [screen]
+(defwidget bar0 []
   (box :orientation "h"
        :space-evenly false
        :class "bar"
     (box :halign "start"
          :space-evenly false
-      (workspaces)
+      (workspaces0)
       (player))
     (box :halign "end"
          :spacing 12
@@ -50,6 +59,18 @@
       (cpu)
       (date)
       (time))))
+
+(defwidget bar1 []
+  (box :orientation "h"
+       :space-evenly false
+       :class "bar"
+    (box :halign "start"
+         :space-evenly false
+      (workspaces1))
+    (box :halign "end"
+         :spacing 12
+         :hexpand true
+         :space-evenly false)))
 ; foldend
 
 ; Variables foldstart
@@ -61,7 +82,8 @@
 (defpoll github_poll :initial "" :interval "1m" "./modules/github.sh")
 (defpoll ping_poll :interval "10s" "./modules/ping.sh")
 
-(deflisten workspaces_listen "./modules/workspaces.sh")
+(deflisten workspaces0_listen "./modules/workspaces.sh HDMI-0")
+(deflisten workspaces1_listen "./modules/workspaces.sh HDMI-1")
 (deflisten player_listen :initial '{"show": "no", "content": ""}' "./modules/player.sh")
 (deflisten nvidia_listen "./modules/nvidia.sh")
 (deflisten notifications_listen :initial '{"show": "no", "content": ""}' "./modules/notifications.sh")
@@ -84,8 +106,11 @@
 ; foldend
 
 ; Polybar-Style modules foldstart
-(defwidget workspaces []
-  (literal :content workspaces_listen))
+(defwidget workspaces0 []
+  (literal :content workspaces0_listen))
+
+(defwidget workspaces1 []
+  (literal :content workspaces1_listen))
 
 (defwidget player []
   (icon-module :class "player" :icon "" :visible {player_listen.show == "yes"}
