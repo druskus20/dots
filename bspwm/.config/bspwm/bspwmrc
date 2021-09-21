@@ -12,7 +12,8 @@
 # This prevents from loading multiple times the same options on reload
 bspc rule -r "*"
 
-bspc monitor -d 1 2 3 4 5 6
+bspc monitor "HDMI-0" -d 1 2 3 4 5 6
+bspc monitor "HDMI-1" -d 7 8 9 
 
 bspc config border_width 2
 bspc config window_gap 10
