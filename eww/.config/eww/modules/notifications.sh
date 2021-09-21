@@ -2,7 +2,7 @@
 
 print_notification() {
   content=$(echo "$1" | tr '\n' ' ')
-  content="(label :max-width 50 :text '$content')"
+  content="(label :limit-width 50 :text '$content')"
   echo "{\"show\": \"$2\", \"content\": \"$content\"}"
 }
 

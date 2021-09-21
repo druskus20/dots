@@ -20,7 +20,8 @@ xsetroot -cursor_name left_ptr &
 
 # Launch overlay
 #$HOME/.config/polybar/launch.sh > /dev/null 2> /dev/null  &
-eww open bar > /dev/null 2> /dev/null &
+eww open bar0 > /dev/null 2> /dev/null &
+eww open bar1 > /dev/null 2> /dev/null &
 
 
 
