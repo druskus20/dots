@@ -30,6 +30,10 @@ export _JAVA_AWT_WM_NONREPARTENTING=1
 # Give permision to do stuff to noisetorch
 #sudo setcap 'CAP_SYS_RESOURCE=+ep' /bin/noisetorch
 
+# sxhkd uses $SHELL by default (zsh)
+set -U SXHKD_SHELL sh
+
+# Clean home foldstart
 # Move junk
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
@@ -73,12 +77,14 @@ init-module=${XDG_CONFIG_HOME}/npm/config/npm-init.js
 EOF
 fi
 
-# Give too many problems
+# Gives too many problems
 #export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 #export VIMINIT=":source $XDG_CONFIG_HOME/nvim/init.vim"
+# foldend
 
 ## Launches X11 on session start
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   startx "$XINITRC"
 fi
 
+# vim:foldmarker=foldstart,foldend
