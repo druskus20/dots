@@ -11,3 +11,8 @@ emulate zsh -o extended_glob -c "local files=($ZDOTDIR/*/*.zsh)"
 for file in "${files[@]}"; do
   zcompare $file
 done
+
+
+zcompare .zprofile
+zcompare .zshrc
+
