@@ -45,20 +45,27 @@ load-plugin    "zsh-you-should-use" # This is annoying, the actual name is: zsh-
 # ZVM_INIT_MODE=sourcing # Fixes overriding keybinds problem (* git version)
 # load-plugin    "zsh-vi-mode"
 
-# Some quick plugin settings
-ZSH_HIGHLIGHT_MAXLENGTH=100  
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#85858f,bold,underline"
-bindkey '^[[A' history-substring-search-up    # Arrow up
-bindkey '^[[B' history-substring-search-down  # Arrow down
-bindkey '^K'   history-substring-search-up    # Arrow up
-bindkey '^J'   history-substring-search-down    # Arrow up
-# foldend
 
 # Modules foldstart
 source "$ZDOTDIR/modules/functions.zsh"
 source "$ZDOTDIR/modules/keybinds.zsh"
 source "$ZDOTDIR/modules/prompt.zsh"
 source "$ZDOTDIR/modules/alias.zsh"
+# foldend
+
+# Some quick plugin settings
+ZSH_HIGHLIGHT_MAXLENGTH=100  
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#85858f,bold,underline"
+
+# vicmd '^[[A' shouldnt be bound because its the same keycode as ESC (causes problems with vi-mode)
+bindkey -M viins '^[[A' history-substring-search-up    # Arrow up
+bindkey -M viins '^[[B' history-substring-search-down  # Arrow down
+bindkey -M vicmd '^K'   history-substring-search-up    
+bindkey -M viins '^K'   history-substring-search-up    
+bindkey -M vicmd 'k'   history-substring-search-up    
+bindkey -M vicmd '^J'   history-substring-search-down  
+bindkey -M vicmd 'j'   history-substring-search-down  
+bindkey -M viins '^J'   history-substring-search-down  
 # foldend
 
 # Options foldstart

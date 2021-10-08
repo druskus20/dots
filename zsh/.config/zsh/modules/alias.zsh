@@ -34,3 +34,7 @@ alias wget="wget --hsts-file="$XDG_CACHE_HOME"/wget-hsts"
 alias svn="svn --config-dir "$XDG_CONFIG_HOME"/subversion"
 alias picom="picom --config $PICOM_CONFIG_PATH"
 alias startx="startx \"$XDG_CONFIG_HOME/X11/xinitrc\""
+
+alias ewwt="cargo run -- -c ~/.config/eww-testing"
+alias vimt="nvim -u ~/.config/nvim-testing/init.lua"
+alias nvimt="nvim -u ~/.config/nvim-testing/init.lua"
