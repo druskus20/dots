@@ -1,15 +1,15 @@
 # xinitrc 
 
-/home/druskus/.config/x11/2screens.sh 2> /dev/null &
+/home/druskus/.config/x11/2screens-horiz.sh 2> /dev/null 
 
 # Fix dual boot time issue
-sudo timedatectl set-ntp true
+sudo timedatectl set-ntp true &
 
 # Speed up keyboard input
 xset r rate 300 50 &	
 
 # Set kb layout and remap escape to capslock
-setxkbmap -option caps:escape
+setxkbmap -option caps:escape &
 #setxkbmap es # Can be done in /etc/X11/xorg.conf
 
 
@@ -18,10 +18,11 @@ setbg /home/druskus/img/bg/abstract_mountains.jpg > /dev/null &
 xautolock -time 10 -locker "betterlockscreen --lock blur" &
 xsetroot -cursor_name left_ptr &
 
+sleep 1
+
 # Launch overlay
 #$HOME/.config/polybar/launch.sh > /dev/null 2> /dev/null  &
-eww open bar0 > /dev/null 2> /dev/null &
-eww open bar1 > /dev/null 2> /dev/null &
+eww open-many bar0 bar1 > /dev/null 2> /dev/null &
 
 
 
