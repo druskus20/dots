@@ -12,7 +12,5 @@ for file in "${files[@]}"; do
   zcompare $file
 done
 
-
-zcompare .zprofile
 zcompare .zshrc
-
+# Dont compile .zprofile because it apparently breaks
