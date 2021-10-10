@@ -1,26 +1,33 @@
+-- INIT.LUA 
+-- We simply bootstrap packer and Aniseed here.
+-- It's then up to Aniseed to compile and load fnl/init.fnl
+-- Taken from https://github.com/Olical/dotfiles/blob/master/stowed/.config/nvim/init.lua
 
 
+local execute = vim.api.nvim_command
+local fn = vim.fn
+local pack_path = fn.stdpath("data") .. "/site/pack"
+local fmt = string.format
 
-
--- not even used, but epic. stores the path to the root config directory.
-local vim_config_root = vim.fn.expand("<sfile>:p:h")
-
-local pack_path = vim.fn.stdpath("data") .. "/site/pack"
-
-function ensure(user, repo)
+function ensure (user, repo)
   -- Ensures a given github.com/USER/REPO is cloned in the pack/packer/start directory.
-  local install_path = string.format("%s/packer/start/%s", pack_path, repo, repo)
-  if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-    --vim.api.nvim_command(string.format("!git clone https://github.com/%s/%s %s", user, repo, install_path))
-    vim.fn.system({"git", "clone", "https://github.com/" .. user .. "/" .. repo, install_path})
-    vim.api.nvim_command(string.format("packadd %s", repo))
+  local install_path = fmt("%s/packer/start/%s", pack_path, repo, repo)
+  if fn.empty(fn.glob(install_path)) > 0 then
+    execute(fmt("!git clone https://github.com/%s/%s %s", user, repo, install_path))
+    execute(fmt("packadd %s", repo))
   end
 end
 
 -- Bootstrap essential plugins required for installing and loading the rest.
 ensure("wbthomason", "packer.nvim")
 ensure("Olical", "aniseed")
+ensure("lewis6991", "impatient.nvim")
 
-vim.g["aniseed#env"] = { 
+-- Load impatient which pre-compiles and caches Lua modules.
+require("impatient")
+
+-- Enable Aniseed's automatic compilation and loading of Fennel source code.
+vim.g["aniseed#env"] = {
+  module = "init",
   compile = true
 }

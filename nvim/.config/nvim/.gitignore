@@ -1,2 +1,5 @@
 lua
 plugin
+spell
+undo
+autoload

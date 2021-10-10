@@ -1,8 +1,13 @@
-(module dots.utils
+; utils.fnl
+; Various functions used across the rest of the config
+
+(module config.utils
   {autoload {a aniseed.core
              nvim aniseed.nvim
              str aniseed.string}
-   require-macros [macros]})
+   require-macros [config.macros]})
+
+
 
 (defn plugin-installed? [name]
   (~= nil (. packer_plugins name)))
@@ -102,11 +107,6 @@
           (surround-if-present " guibg='"colset.bg"'")
           (surround-if-present " guifg='"colset.fg"'")
           (surround-if-present " gui='"colset.gui"'")))))
-
-
-
-
-
 
 (defn shorten-path [path seg-length shorten-after]
   "shorten a filepath by truncating the segments to n characters, if the path exceeds a given length"

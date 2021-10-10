@@ -1,8 +1,7 @@
-(module dots.plugins.nvim-colorizer
+(module config.plugins.colorizer
   {autoload {colorizer colorizer}})
 
-
-; this really shouldn't be necessary,.. but it is
+; This is annoying
 (set vim.o.termguicolors true)
 
 (colorizer.setup
