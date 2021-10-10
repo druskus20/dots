@@ -1,3 +1,4 @@
+# https://github.com/zimfw/zimfw/issues/86
 # Function to determine the need of a zcompile. If the .zwc file
 # does not exist, or the base file is newer, we need to compile.
 # These jobs are asynchronous, and will not impact the interactive shell
