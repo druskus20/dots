@@ -8,6 +8,13 @@
        (nvim.ex.autocmd_)
        ,...
        (nvim.ex.augroup :END)))
+
+  :set-opts (fn [...]
+             `(let [options# [,...]]
+                (for [i# 1 (length options#) 2]
+                  (let [key# (. options# i#)
+                        value# (. options# (+ i# 1))]
+                    (tset vim.opt key# value#)))))
   
   :req
   (fn [name ...]

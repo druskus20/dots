@@ -15,6 +15,7 @@
     (when (not ok?)
       (print (.. "dotfiles error: " val-or-err)))))
 
+
 (defn use [...]
   (let [pkgs [...]]
     (packer.startup
@@ -23,19 +24,19 @@
              (let [name (. pkgs i)
                    opts (. pkgs (+ i 1))]
                (use (a.assoc opts 1 name)))))
-
       ; https://github.com/lewis6991/impatient.nvim#installation
        :config {:compile_path (.. (vim.fn.stdpath "config") "/lua/packer_compiled.lua")}})))
+
 ; foldend                                                                 
 
 ; Plugins foldstart                                                                   
 ;; Plugins to be managed by packer.
 (use
-  :wbthomason/packer.nvim {}
   :lewis6991/impatient.nvim {} ; try
   :Olical/aniseed {:opt false}
   :Olical/conjure {} ; test
 
+ ; :wbthomason/packer.nvim {}
   ; lsp stuff
   :neovim/nvim-lspconfig {:config (mod :lsp)}
   :ray-x/lsp_signature.nvim {:events [:BufEnter]}
@@ -62,6 +63,9 @@
   :lewis6991/gitsigns.nvim {:opt false
                             :config (mod :gitsigns)}
   :kyazdani42/nvim-web-devicons {}
+
+  :folke/twilight.nvim {:config (mod :twilight)}
+  ;:folke/zen-mode.nvim {:after [:gitsigns.nvim] :config (mod :zen-mode)}
 
   :nvim-telescope/telescope.nvim {:requires [:nvim-lua/popup.nvim :nvim-lua/plenary.nvim]} ; change how it looks but yes
   ;:Olical/nvim-local-fennel {}
@@ -103,5 +107,10 @@
 ; https://github.com/lewis6991/impatient.nvim#installation
 (require "packer_compiled")
 ; foldend                                                                                   
+
+;    use {}
+;        'nvim-telescope/telescope.nvim',
+;        requires = { {'nvim-lua/plenary.nvim', cmd = 'Telescope'} },
+;        cmd = {'Telescope'},)
 
 ; vim:foldmarker=foldstart,foldend

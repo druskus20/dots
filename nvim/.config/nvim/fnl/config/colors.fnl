@@ -1,5 +1,5 @@
 ; colors.fnl
-; colors used across the config
+; Colors used across the config
 
 (module config.colors
   {}

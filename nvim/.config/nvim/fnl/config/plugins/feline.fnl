@@ -10,6 +10,7 @@
             devicons nvim-web-devicons}
   require-macros [config.macros]})
 
+(set vim.opt.termguicolors true)
 (def components {:active {} :inactive {}})
 
 (local modes 
