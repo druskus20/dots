@@ -79,11 +79,12 @@ and `./lua`, and then reinstalling everything as shown in
 * [Nvim Lua Guide](https://github.com/nanotee/nvim-lua-guide)
 
 ## To Do
-* Colors 
-* which-key and keymaps
-* Navigation
-* Redo Lsp
-* Fix a gitsigns for feline
-* Bufferline styling
-* Completion
-
+[] Colors 
+[] which-key and keymaps
+[] Navigation
+[] Redo Lsp
+[x] Fix a gitsigns for feline
+[] Bufferline styling
+[] Completion
+[] Dashboard
+[x] ZenMode and Twilight
