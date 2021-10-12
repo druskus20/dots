@@ -52,6 +52,7 @@
   :splitright true
   :mouse "a"
   :shell "zsh"
+  :ruler false
   :background "dark"
   :switchbuf "usetab"
   :number false
