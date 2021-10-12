@@ -45,7 +45,7 @@
 (defn or-empty [x] (or x ""))
 (defn spaces [x] (if x (.. " " x " ") ""))
 
-; Active Components >>>
+; Helper Functions >>>
 (defn get-current-filepath []
    (let [file (utils.shorten-path (vim.fn.bufname) 5 30)]
       (if (a.empty? file) ""
@@ -57,17 +57,12 @@
    (let [color (. modes (vim.fn.mode) :color)] 
       (if use-as-fg? {:bg bar-bg :fg color} {:bg color :fg bar-bg})))
 
-; TODO: Not working
 (defn git-status-provider []
    (or-empty (utils.keep-if #(~= "master" $1) ; TODO: Why only master?
                             (?. vim.b :gitsigns_status_dict :head))))
 
-(tset components.active 1
-     [{:provider #(.. " " (or (. modes (vim.fn.mode) :text) vim.fn.mode) " ")
-       :hl #(vim-mode-hl false)} 
-      {:provider get-current-filepath :left_sep "slant_right" :hl {:bg bar-bg}}
-      {:provider git-status-provider :left_sep " " :hl #(vim-mode-hl true)}]) 
-
+(defn vim-mode []
+  (.. " " (or (. modes (vim.fn.mode) :text) vim.fn.mode) " "))
 
 (defn lsp-progress-provider []
    (let [msgs (vim.lsp.util.get_progress_messages)
@@ -75,11 +70,6 @@
                      (when msg.message
                         (.. msg.title " " msg.message)))]
       (or-empty (str.join " | " s))))
-
-(tset components.active 2
-     [{:provider lsp-progress-provider
-       :enabled #(< 0 (length (vim.lsp.buf_get_clients)))}])
-
 
 (defn lsp-diagnostic-component [kind color]
    {:enabled #(~= 0 (vim.lsp.diagnostic.get_count 0 kind))
@@ -97,28 +87,40 @@
 (defn filetype []
   vim.bo.filetype)
 
-(tset components.active 3
-     [{:provider " "}
-      {:provider filetype-with-icon :hl #(vim-mode-hl true) :right_sep " "}
-      (lsp-diagnostic-component "Information" colors.neutral_purple)
-      (lsp-diagnostic-component "Hint" colors.neutral_blue)
-      (lsp-diagnostic-component "Warn" colors.neutal_yellow) ; TODO: Not working
-      (lsp-diagnostic-component "Error" colors.neutral_red)
-      {:provider #(let [[line col] (vim.api.nvim_win_get_cursor 0)] (.. " " line ":" col " "))
-       :hl #(vim-mode-hl false)}])
-; <<<
+(defn coordinates []
+  (let [[line col] (vim.api.nvim_win_get_cursor 0)] (.. " #" line " ")))
 
-; Inactive Components >>>
+(tset components.active 3
+     [{:provider filetype-with-icon :hl #(vim-mode-hl true) :right_sep " "}
+      (lsp-diagnostic-component "Information" colors.neutral_purple)
+      (lsp-diagnostic-component "Hint" colors.neutral_purple)
+      (lsp-diagnostic-component "Warn" colors.neutral_yellow)  ; TODO: Not Working
+      (lsp-diagnostic-component "Error" colors.neutral_red)
+      {:provider coordinates :hl #(vim-mode-hl false)}])
+
+; Fills the bar with an horizontal line
 (defn inactive-separator-provider []
   (if (not= (vim.fn.winnr) (vim.fn.winnr :j))
     (string.rep "─" (vim.api.nvim_win_get_width 0))
     ""))
+; <<<
+        
+; Components >>>
+(tset components.active 1
+     [{:provider vim-mode :hl #(vim-mode-hl false)} 
+      {:provider get-current-filepath :left_sep "slant_right" :hl {:bg bar-bg}}
+      {:provider git-status-provider :left_sep " " :hl #(vim-mode-hl true)}]) 
+
+(tset components.active 2
+     [{:provider lsp-progress-provider
+       :enabled #(< 0 (length (vim.lsp.buf_get_clients)))}])
 
 (tset components.inactive 1
      [{:provider inactive-separator-provider 
        :hl {:bg "NONE" :fg separator-color}}])
-; <<<
-        
+
+; <<< 
+
 (feline.setup 
   {:colors {:fg colors.light1 :bg colors.dark0}
    :default_hl  {:inactive 
