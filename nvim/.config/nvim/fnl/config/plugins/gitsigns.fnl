@@ -3,7 +3,8 @@
              colors config.colors
              gitsigns gitsigns}})
 
-; https://github.com/lewis6991/gitsigns.nvim
+
+;  https://github.com/lewis6991/gitsigns.nvim
 (gitsigns.setup 
   {:signs {:add          {:text "▍"}
            :change       {:text "▍"}
@@ -16,12 +17,13 @@
    :update_debounce 100})
 
 
+; TODO Change
 (vim.cmd
   (..
     "
     augroup gitsignsHighlight
-    autocmd ColorScheme * :hi! GitSignsAdd    gui='NONE' guibg='NONE' guifg='" colors.bright_aqua "'
-    autocmd ColorScheme * :hi! GitSignsDelete gui='NONE' guibg='NONE' guifg='" colors.neutral_red "'
-    autocmd ColorScheme * :hi! GitSignsChange gui='NONE' guibg='NONE' guifg='" colors.bright_blue "'
+    autocmd ColorScheme * :hi! GitSignsAdd    gui='NONE' guibg='NONE' guifg='" colors.bright_purple "'
+    autocmd ColorScheme * :hi! GitSignsDelete gui='NONE' guibg='NONE' guifg='" colors.bright_red "'
+    autocmd ColorScheme * :hi! GitSignsChange gui='NONE' guibg='NONE' guifg='" colors.bright_aqua "'
     augroup END
     "))

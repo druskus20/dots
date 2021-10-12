@@ -10,7 +10,7 @@
                       :number false
                       :cursorline false}
             :plugins 
-              {:gitsigns {:enabled false}
+              {:gitsigns {:enabled true}
                :options {:showcmd false
                          :ruler false
                          :enabled true}
