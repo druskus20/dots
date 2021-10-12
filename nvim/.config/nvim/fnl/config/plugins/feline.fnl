@@ -11,7 +11,6 @@
   require-macros [config.macros]})
 
 (set vim.opt.termguicolors true)
-(def components {:active {} :inactive {}})
 
 (local modes 
    {:n   {:text "NORMAL"       :color colors.neutral_purple}
@@ -99,9 +98,11 @@
 ; <<<
         
 ; Components >>>
+(def components {:active {} :inactive {}})
+
 (tset components.active 1
      [{:provider vim-mode :hl #(vim-mode-hl false)} 
-      {:provider get-current-filepath :left_sep " " :hl {:bg bar-bg}}
+      {:provider get-current-filepath :left_sep " "}
       {:provider git-status-provider :left_sep " " :hl #(vim-mode-hl true)}]) 
 
 (tset components.active 2
