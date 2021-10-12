@@ -3,6 +3,7 @@
 
 (set vim.g.dashboard_disable_at_vimenter 0)
 (set vim.g.dashboard_disable_statusline 1)
+(set vim.g.dashboard_disable_tabline 1)
 (set vim.g.dashboard_default_executive :telescope)
 
 ; Ascii Art >>>

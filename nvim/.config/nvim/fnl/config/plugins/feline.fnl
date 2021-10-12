@@ -47,7 +47,7 @@
 
 ; Active Components >>>
 (defn get-current-filepath []
-   (let [file (utils.shorten-path (vim.fn.bufname) 5 50)]
+   (let [file (utils.shorten-path (vim.fn.bufname) 5 30)]
       (if (a.empty? file) ""
          nvim.bo.readonly (.. "RO " file)
          (and nvim.bo.modifiable nvim.bo.modified) (.. file " ●")
@@ -99,7 +99,7 @@
 
 (tset components.active 3
      [{:provider " "}
-      {:provider filetype :hl #(vim-mode-hl true) :right_sep " "}
+      {:provider filetype-with-icon :hl #(vim-mode-hl true) :right_sep " "}
       (lsp-diagnostic-component "Information" colors.neutral_purple)
       (lsp-diagnostic-component "Hint" colors.neutral_blue)
       (lsp-diagnostic-component "Warn" colors.neutal_yellow) ; TODO: Not working
