@@ -50,7 +50,7 @@ function gitstatus_prompt_update() {
   (( VCS_STATUS_NUM_UNSTAGED   )) && p+=" !${VCS_STATUS_NUM_UNSTAGED}"
   (( VCS_STATUS_NUM_UNTRACKED  )) && p+=" ?${VCS_STATUS_NUM_UNTRACKED}"
 
-  GITSTATUS_PROMPT="  ${p}%f"
+  GITSTATUS_PROMPT=" ${p}%f "
 }
 
 # Start gitstatusd instance with name "MY". The same name is passed to
@@ -100,8 +100,8 @@ PROMPT+='%(?:%{$fg[green]%}✓:%{$fg[red]%}✕)$CMD_DICE '
 # PROMPT+='%(?:%{$fg[green]%}:%{$fg[red]%})$CMD_DICE '
 PROMPT+='%{$fg[yellow]%}%n '
 PROMPT+='%{$fg[blue]%}%m '
-PROMPT+='%{$fg[magenta]%}%2.'
-PROMPT+='%{$fg[green]%}$GITSTATUS_PROMPT '
+PROMPT+='%{$fg[magenta]%}%2. '
+PROMPT+='%{$fg[green]%}$GITSTATUS_PROMPT'
 PROMPT+='%{$fg[red]%}$VIRTUAL_ENV_INDICATOR'
 PROMPT+=$'\n' # Second line
 PROMPT+='$VI_INDICATOR '

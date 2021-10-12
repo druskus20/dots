@@ -112,7 +112,8 @@ font:
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
     # family: "DejaVuSansMono Nerd Font Mono"
-     family: "Codelia Nerd Font"
+    # family: "Codelia Nerd Font"
+     family: "JetBrains Mono"
     # family: "Iosevka Custom"
     # family: "TerminessTTF Nerd Font"
     #     family: "Terminus"
@@ -153,9 +154,6 @@ font:
 
     # The `style` can be specified to pick a specific face.
     #style: Bold Italic
-
-  # Point size
-  size: 15
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
