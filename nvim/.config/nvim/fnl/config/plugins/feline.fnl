@@ -34,7 +34,7 @@
 
 ;(def bar-bg colors.dark1)
 (def bar-bg colors.dark0)
-(def separator-color colors.light1) 
+(def horiz-separator-color colors.light1) 
 
 ; https://github.com/famiu/feline.nvim/blob/master/USAGE.md#thin-line-for-horizontal-splits
 ; Not working I think because of plugin order?
@@ -90,13 +90,6 @@
 (defn coordinates []
   (let [[line col] (vim.api.nvim_win_get_cursor 0)] (.. " #" line " ")))
 
-(tset components.active 3
-     [{:provider filetype-with-icon :hl #(vim-mode-hl true) :right_sep " "}
-      (lsp-diagnostic-component "Information" colors.neutral_purple)
-      (lsp-diagnostic-component "Hint" colors.neutral_purple)
-      (lsp-diagnostic-component "Warn" colors.neutral_yellow)  ; TODO: Not Working
-      (lsp-diagnostic-component "Error" colors.neutral_red)
-      {:provider coordinates :hl #(vim-mode-hl false)}])
 
 ; Fills the bar with an horizontal line
 (defn inactive-separator-provider []
@@ -108,26 +101,33 @@
 ; Components >>>
 (tset components.active 1
      [{:provider vim-mode :hl #(vim-mode-hl false)} 
-      {:provider get-current-filepath :left_sep "slant_right" :hl {:bg bar-bg}}
+      {:provider get-current-filepath :left_sep " " :hl {:bg bar-bg}}
       {:provider git-status-provider :left_sep " " :hl #(vim-mode-hl true)}]) 
 
 (tset components.active 2
      [{:provider lsp-progress-provider
+       :left_sep " "
+       :right_sep " "
        :enabled #(< 0 (length (vim.lsp.buf_get_clients)))}])
+
+(tset components.active 3
+     [{:provider filetype-with-icon :right_sep " " :hl #(vim-mode-hl true)}
+      (lsp-diagnostic-component "Information" colors.neutral_purple)
+      (lsp-diagnostic-component "Hint" colors.neutral_purple)
+      (lsp-diagnostic-component "Warn" colors.neutral_yellow)  ; TODO: Not Working
+      (lsp-diagnostic-component "Error" colors.neutral_red)
+      {:provider coordinates :hl #(vim-mode-hl false)}])
 
 (tset components.inactive 1
      [{:provider inactive-separator-provider 
-       :hl {:bg "NONE" :fg separator-color}}])
-
+       :hl {:bg "NONE" :fg horiz-separator-color}}])
 ; <<< 
 
 (feline.setup 
   {:colors {:fg colors.light1 :bg colors.dark0}
    :default_hl  {:inactive 
-                 {:fg separator-color 
+                 {:fg horiz-separator-color 
                   :bg "NONE"}}
    :components components})
-
-(print (devicons.get_icon vim.bo.filetype)) 
 
 ; vim:foldmarker=>>>,<<<

@@ -95,8 +95,8 @@
   :druskus20/sourcery {:opt false :requires [:rktjmp/lush.nvim] :config (mod :sourcery)}
   ;:w0rp/ale {:mod :ale} ; dont think so? errors and stuff
 
-  ;:druskus20/dashboard-nvim {:config (mod :dashboard)}
-  :/home/druskus/code/dashboard-nvim {:config (mod :dashboard)}
+  :druskus20/dashboard-nvim {:config (mod :dashboard)}
+  ;:/home/druskus/code/dashboard-nvim {:config (mod :dashboard)}
   :rust-lang/rust.vim {:ft ["rust"]
                        :requires ["mattn/webapi-vim"]
                        :opt false :config #(do (set vim.g.rustfmt_fail_silently 1))}
