@@ -113,9 +113,9 @@
 
 (tset components.active 3
      [{:provider filetype-with-icon :right_sep " " :hl #(vim-mode-hl true)}
-      (lsp-diagnostic-component "Information" colors.neutral_purple)
-      (lsp-diagnostic-component "Hint" colors.neutral_purple)
-      (lsp-diagnostic-component "Warn" colors.neutral_yellow)  ; TODO: Not Working
+      (lsp-diagnostic-component "Information" colors.neutral_green)
+      (lsp-diagnostic-component "Hint" colors.neutral_aqua)
+      (lsp-diagnostic-component "Warning" colors.neutral_yellow)  
       (lsp-diagnostic-component "Error" colors.neutral_red)
       {:provider coordinates :hl #(vim-mode-hl false)}])
 
