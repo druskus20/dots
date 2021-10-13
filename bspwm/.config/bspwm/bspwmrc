@@ -1,14 +1,5 @@
 #! /bin/sh
 
-#  _                                          
-# | |__  ___ _ ____      ___ __ ___  _ __ ___ 
-# | '_ \/ __| '_ \ \ /\ / / '_ ` _ \| '__/ __|
-# | |_) \__ \ |_) \ V  V /| | | | | | | | (__ 
-# |_.__/|___/ .__/ \_/\_/ |_| |_| |_|_|  \___|
-#           |_|                               
-#				By Druskus 
-
-
 # This prevents from loading multiple times the same options on reload
 bspc rule -r "*"
 
