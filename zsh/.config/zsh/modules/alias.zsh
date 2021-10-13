@@ -38,3 +38,12 @@ alias startx="startx \"$XDG_CONFIG_HOME/X11/xinitrc\""
 alias ewwt="cargo run -- -c ~/.config/eww-testing"
 alias vimt="nvim -u ~/.config/nvim-testing/init.lua"
 alias nvimt="nvim -u ~/.config/nvim-testing/init.lua"
+
+# Swallow some applications
+alias devour="devour"
+alias google-chrome-stable="devour google-chrome-stable"
+alias chrome="devour google-chrome-stable"
+alias sxiv="devour sxiv"
+alias zathura="devour zathura"
+alias thunar="devour thunar"
+alias pavucontrol="devour pavucontrol"
