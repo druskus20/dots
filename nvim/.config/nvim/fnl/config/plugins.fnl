@@ -43,9 +43,9 @@
   :tami5/lspsaga.nvim { :config (mod :lspsaga)}
 
   ; cmp stuff
-  :PaterJason/cmp-conjure {} 
+  :PaterJason/cmp-conjure {}
   :hrsh7th/cmp-vsnip {}
-  :hrsh7th/cmp-nvim-lsp {}
+  :hrsh7th/cmp-nvim-lsp {} ; Configured in plguins/lsp.fnl
   :hrsh7th/cmp-buffer {}
   :hrsh7th/cmp-path {}
   :hrsh7th/cmp-nvim-lua {}
@@ -59,6 +59,8 @@
                                 :hrsh7th/cmp-calc
                                 :hrsh7th/cmp-path]
                      :config (mod :cmp)}
+
+  ;:ms-jpq/coq_nvim {:opt false :config (mod :coq)}
 
   :lewis6991/gitsigns.nvim {:opt false
                             :config (mod :gitsigns)}

@@ -52,6 +52,7 @@
   (let [capabilities (vim.lsp.protocol.make_client_capabilities)]
     (set capabilities.textDocument.completion.completionItem.snippetSupport true)
     (cmp_nvim_lsp.update_capabilities capabilities)))
+;    capabilities))
 
 (fn init-lsp [lsp-name ?opts]
   "initialize a language server with defaults"

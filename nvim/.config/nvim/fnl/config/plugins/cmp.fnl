@@ -10,39 +10,35 @@
     (when details
       (set vim-item.abbr (.. vim-item.abbr padding " " details))))
   vim-item)
- 
-(cmp.setup
-  {:snippet {:expand (fn [args] ((. vim.fn :vsnip#anonymous) args.body))}
 
-   :completion {:autocomplete false}
-
-   :mapping {:<C-d> (cmp.mapping.scroll_docs -4)
+(cmp.setup 
+  {:mapping {:<C-d> (cmp.mapping.scroll_docs (- 4))
              :<C-f> (cmp.mapping.scroll_docs 4)
-             :<C-space> (cmp.mapping.complete)
-             :<esc> #(do (cmp.mapping.close) (vim.cmd "stopinsert"))
-             :<CR>  (cmp.mapping.confirm {:select true})}
+             :<C-k> (cmp.mapping.select_prev_item {:behavior cmp.SelectBehavior.Insert})
+             :<C-j> (cmp.mapping.select_next_item {:behavior cmp.SelectBehavior.Insert})
+             :<C-e> (cmp.mapping.close)
+             :<CR> (cmp.mapping.confirm {:select true})
+             :<TAB> (cmp.mapping.confirm {:select true})
+             :<C-Space> (cmp.mapping.complete)}
 
-   ;:experimental {:custom_menu true}
+   :snippet {:expand (fn [args] ((. vim.fn "vsnip#anonymous") args.body))}
+   :sources [{:name :nvim_lsp} 
+             {:name :vsnip} 
+             {:name :calc}
+             {:name :path}
+             {:name :conjure}
+             {:name :crates}]
+             ;{:name :buffer}]
 
-   :sources [{:name "nvim_lsp" :priority 5}
-             {:name "vsnip" :priority 3}
-             {:name "nvim_lua"}
-             {:name "calc"}
-             {:name "path"}
-             {:name "conjure"}
-             {:name "crates"}]
-             ;{:name "buffer"}]
+   :completion {:completeopt "menu,menuone,noinsert"}
 
-   :formatting {:format item-formatter}
-
-   :sorting {:comparators [#(do 
-                              ;(print ($1:get_kind) $1.completion_item.label "--" ($2:get_kind) $2.completion_item.label) 
-                              (if (= 15 ($1:get_kind)) false nil)) ; 15 means "SNIPPET", see https://github.com/hrsh7th/nvim-cmp/blob/main/lua/cmp/types/lsp.lua
+   :sorting {:comparators [#(do (if (= 15 ($1:get_kind)) false nil)) ; 15 means "SNIPPET", see https://github.com/hrsh7th/nvim-cmp/blob/main/lua/cmp/types/lsp.lua
                            cmp.config.compare.offset
                            cmp.config.compare.exact
                            cmp.config.compare.score
                            cmp.config.compare.kind
                            cmp.config.compare.sort_text
                            cmp.config.compare.length
-                           cmp.config.compare.order]}})
+                           cmp.config.compare.order]}
 
+   :formatting {:format item-formatter}})

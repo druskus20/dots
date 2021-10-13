@@ -66,8 +66,7 @@
   :shiftround true
   :softtabstop -1
   :cmdheight 2
-  :backspace "indent,eol,start"
-  :completeopt "menu,menuone,noselect") ; preview
+  :backspace "indent,eol,start")
 ; <<< 
 
 ; TODO Move once colors are done >>>
