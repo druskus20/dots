@@ -9,12 +9,14 @@
 (macro mod [name]
   `#(require ,(.. "config.plugins." name)))
 
+(macro setup [name]
+  `#((. (require ,name) :setup)))
+
 ; Taken from https://github.com/Olical/dotfiles/blob/master/stowed/.config/nvim/fnl/dotfiles/plugin.fnl#L12
 (defn safe-require-plugin-config [name]
   (let [(ok? val-or-err) (pcall require (.. :dotfiles.plugin. name))]
     (when (not ok?)
       (print (.. "dotfiles error: " val-or-err)))))
-
 
 (defn use [...]
   (let [pkgs [...]]
@@ -40,7 +42,14 @@
   ; lsp stuff
   :neovim/nvim-lspconfig {:config (mod :lsp)}
   :ray-x/lsp_signature.nvim {:events [:BufEnter]}
-  :tami5/lspsaga.nvim { :config (mod :lspsaga)}
+  :tami5/lspsaga.nvim {:config (mod :lspsaga)}
+
+
+  :Saecki/crates.nvim {:requires [:nvim-lua/plenary.nvim]
+                       :event ["BufRead Cargo.toml"]
+                       :config (setup :crates)}
+
+  :hrsh7th/vim-vsnip {}
 
   ; cmp stuff
   :PaterJason/cmp-conjure {}
@@ -57,7 +66,8 @@
                                 :hrsh7th/cmp-vsnip
                                 :hrsh7th/cmp-nvim-lua
                                 :hrsh7th/cmp-calc
-                                :hrsh7th/cmp-path]
+                                :hrsh7th/cmp-path
+                                :Saecki/crates.nvim] ; TODO TEST
                      :config (mod :cmp)}
 
   ;:ms-jpq/coq_nvim {:opt false :config (mod :coq)}
