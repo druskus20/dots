@@ -6,7 +6,7 @@ done; unset command
 alias la="ls -A"
 alias lh="ls -d -A .?*" # Shows only hidden files (only on current directory)
 alias rm="rm -i"
-alias rm='echo "Fuck you:"' 
+alias rm='echo "Fuck you"' 
 
 alias open="xdg-open"
 alias vim="nvim"
