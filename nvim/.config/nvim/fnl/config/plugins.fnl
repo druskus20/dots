@@ -93,6 +93,7 @@
   :tweekmonster/startuptime.vim {} ; ye
   :eraserhd/parinfer-rust {:run "cargo build --release"}
   :druskus20/sourcery {:opt false :requires [:rktjmp/lush.nvim] :config (mod :sourcery)}
+  ;:mcchrish/zenbones.nvim {} 
   ;:w0rp/ale {:mod :ale} ; dont think so? errors and stuff
 
   :druskus20/dashboard-nvim {:config (mod :dashboard)}
