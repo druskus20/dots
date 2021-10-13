@@ -1,0 +1,46 @@
+! XResources: sourced by xinitrc
+
+! Color Theme >>> 
+! special
+*.foreground:   #bfbfcb
+*.background:   #2e3440
+*.cursorColor:  #bfbfcb
+! black 
+*.color0:       #29283c
+*.color8:       #2e2e3f
+! red                  
+*.color1:       #eca8a8
+*.color9:       #ffc4c4
+! green                
+*.color2:       #ccd389
+*.color10:      #eff6ab
+! yellow               
+*.color3:       #efd5a0
+*.color11:      #ffe6b5
+! blue                 
+*.color4:       #a5c6e1
+*.color12:      #c9e6fd
+! magenta              
+*.color5:       #e1bee9
+*.color13:      #f7d7ff
+! cyan                 
+*.color6:       #c7ebe6
+*.color14:      #ddfcf8
+! white                
+*.color7:       #bbbbcb
+*.color15:      #e1e1ef
+!<<<
+
+! -------------------- XCURSOR ------------------
+Xcursor.theme: cursor-theme
+
+! -------------------- XFT ---------------------- 
+Xft.dpi:       96
+Xft.antialias: true
+Xft.hinting:   true
+Xft.rgba:      rgb
+Xft.autohint:  false
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+
+! vim:foldmarker=>>>,<<<
