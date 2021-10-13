@@ -84,7 +84,7 @@ and `./lua`, and then reinstalling everything as shown in
 * [ ] Navigation
 * [ ] Redo Lsp
 * [x] Fix a gitsigns for feline
-* [ ] Bufferline styling
-* [ ] Completion
-* [ ] Dashboard
+* [x] Bufferline styling
+* [x] Completion
+* [ ] ~~Dashboard~~
 * [x] ZenMode and Twilight
