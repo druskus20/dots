@@ -41,8 +41,6 @@
                   "LspSagaDiagnosticHeader"] 
                  {:fg colors.bright_aqua})
 
-
 (utils.highlight "LspFloatWinNormal" {:bg colors.dark0_hard})
-(utils.highlight "LspFloatWinBorder" {:bg colors.dark0_hard 
-                                      :fg colors.dark0_hard})
+(utils.highlight "LspFloatWinBorder" {:bg colors.dark0_hard}) 
 (utils.highlight "TargetWord" {:fg colors.bright_aqua})
