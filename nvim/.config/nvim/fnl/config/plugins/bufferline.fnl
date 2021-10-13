@@ -8,7 +8,7 @@
   (bufferline.setup 
     {:options 
      {:diagnostics "nvim_lsp"
-      :diagnostics_indicator (fn [cnt lvl diagnostics-dict] cnt)
+      :diagnostics_indicator (fn [cnt lvl diagnostics-dict] (tostring cnt))
       :show_buffer_close_icons false
       :show_buffer_icons false
       :show_close_icon false
