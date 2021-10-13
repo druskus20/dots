@@ -25,6 +25,7 @@
    :sources [{:name :nvim_lsp} 
              {:name :vsnip} 
              {:name :calc}
+             {:name :nvim_lua}
              {:name :path}
              {:name :conjure}
              {:name :crates}]
