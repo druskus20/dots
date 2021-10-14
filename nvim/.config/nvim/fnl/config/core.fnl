@@ -69,7 +69,11 @@
   :backspace "indent,eol,start")
 ; <<< 
 
-; Extra highlights (TODO: actually redo colors) >>>
+; Some temporal settings (TODO: actually redo this) >>>
+; Disable command history and Ex mode
+(vim.api.nvim_set_keymap :n "q:" :<nop> {:noremap true :silent true})
+(vim.api.nvim_set_keymap :n "Q" :<nop> {:noremap true :silent true})
+; Highlights
 (utils.highlight-add :EndOfBuffer {:fg colors.dark1}) ; ~ 
 (utils.highlight-add :CursorLineNr {:fg colors.light2 :bg colors.dark4}) ; This line number
 (utils.highlight-add :LineNr {:fg colors.light5}) ; Other line numbers
