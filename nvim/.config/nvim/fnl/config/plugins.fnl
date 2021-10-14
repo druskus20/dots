@@ -40,7 +40,8 @@
   ; lsp stuff
   :neovim/nvim-lspconfig {:config (mod :lsp)}
   :ray-x/lsp_signature.nvim {:events [:BufEnter]}
-  :tami5/lspsaga.nvim {:config (mod :lspsaga)}
+  :tami5/lspsaga.nvim {:commit "373bc031b39730cbfe492533c3acfac36007899a"
+                       :config (mod :lspsaga)}
 
 
   :Saecki/crates.nvim {:requires [:nvim-lua/plenary.nvim]
