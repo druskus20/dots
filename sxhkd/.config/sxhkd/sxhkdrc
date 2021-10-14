@@ -11,18 +11,21 @@ set -U SXHKD_SHELL sh
 
 # terminal emulator
 alt + Return
-        alacritty
+  "$TERMINAL"
+
+alt + b 
+  "$BROWSER"
 
 # program launcher
 alt + d
-    rofi -modi "run,drun" -show drun
+  rofi -modi "run,drun" -show drun
 
 alt + r
-    rofi -modi "run,drun" -show run
+  rofi -modi "run,drun" -show run
 
 # reload sxhkd
 super + Escape
-    pkill -USR1 -x sxhkd
+  pkill -USR1 -x sxhkd
 
 # open powermenu
 alt + control + q
