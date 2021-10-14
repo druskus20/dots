@@ -7,8 +7,7 @@
 
    require-macros [config.macros]})
 
-; TODO check https://github.com/neovim/nvim-lspconfig/blob/master/ADVANCED_README.md for default config for all of them
-
+; Check https://github.com/neovim/nvim-lspconfig/blob/master/ADVANCED_README.md for default config for all of them
 
 ; Helper Functions >>>
 (fn on_attach [client bufnr]
@@ -52,6 +51,7 @@
 
 ; <<<
 
+; Lsp Stuff >>>
 (tset vim.lsp.handlers :textDocument/publishDiagnostics
   (vim.lsp.with vim.lsp.diagnostic.on_publish_diagnostics 
                 {:update_in_insert false
@@ -98,6 +98,7 @@
                       :workspace {:library {(vim.fn.expand "$VIMRUNTIME/lua") true
                                             (vim.fn.expand "$VIMRUNTIME/lua/vim/lsp") true}}
                       :telemetry false}}}))
+; <<< 
 
 (vim.cmd "highlight link LspSemantic_type Include")
 (vim.cmd "highlight link LspSemantic_function Identifier")

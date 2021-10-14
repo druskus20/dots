@@ -3,19 +3,18 @@
 
 (module config.keybinds
   {autoload {nvim aniseed.nvim
-             wk which-key}
+             wk which-key
+             utils config.utils}
    require-macros [config.macros]})
 
-
-(utils.keymap :n :<C-p> ":Telescope find_files<CR>")
+;(utils.keymap :n :<C-p> ":Telescope find_files<CR>")
 
 (vim-let mapleader "\\<Space>")
 (vim-let maplocalleader ",")
 
 (wk.setup {})
 (wk.register 
-  {:f {:b {1 (fn []
-              (print :bar))
+  {:f {:b {1 (fn [] (print :bar))
            2 :Foobar}
        :f {1 "<cmd>Telescope find_files<cr>" 2 "Find File"}
        :1 :which_key_ignore
@@ -23,6 +22,5 @@
        :name :file
        :e "Edit File"}}
   {:prefix :<leader>})
-
 
 (set nvim.o.timeoutlen 200)

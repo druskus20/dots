@@ -71,7 +71,7 @@
 
 ; Some temporal settings (TODO: actually redo this) >>>
 ; Disable command history and Ex mode
-(vim.api.nvim_set_keymap :n "q:" :<nop> {:noremap true :silent true})
+; (vim.api.nvim_set_keymap :n "q:" :<nop> {:noremap true :silent true}) TODO: No work
 (vim.api.nvim_set_keymap :n "Q" :<nop> {:noremap true :silent true})
 ; Highlights
 (utils.highlight-add :EndOfBuffer {:fg colors.dark1}) ; ~ 
@@ -81,6 +81,27 @@
 (utils.highlight-add :Normal {:bg colors.dark1}) 
 ; Completion popups
 (utils.highlight-add :Pmenu {:bg colors.dark0}) 
+(utils.highlight-add :NormalFloat {:bg colors.dark0}) 
+(utils.highlight-add :VertSplit {:bg colors.dark0}) 
+
+; Visual yank
+(vim.cmd "autocmd! TextYankPost * silent! lua vim.highlight.on_yank {higroup=\"IncSearch\", timeout=300}")
+; rust.vim
+(set vim.g.rust_clip_command "xclip -selection clipboard")
+(set vim.g.vim_parinfer_filetypes ["carp" "fennel" "clojure"])
+(set vim.g.parinfer_additional_filetypes ["yuck"])
+
+(fn _G.clean_no_name_empty_buffers []
+  (let [bufs (a.filter #(and (a.empty? (vim.fn.bufname $1))
+                             (< (vim.fn.bufwinnr $1) 0)
+                             (vim.api.nvim_buf_is_loaded $1)
+                             (= "" (str.join (utils.buffer-content $1)))
+                             (vim.api.nvim_buf_get_option $1 "buflisted"))
+                       (vim.fn.range 1 (vim.api.nvim_buf_get_number "$")))]
+    (when (not (a.empty? bufs))
+      (vim.cmd (.. "bdelete " (str.join " " bufs))))))
+
+(vim.cmd "autocmd! BufCreate * :call v:lua.clean_no_name_empty_buffers()")
 <<< 
 
 ; vim:foldmarker=>>>,<<<
