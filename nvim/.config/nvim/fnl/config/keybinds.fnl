@@ -7,6 +7,8 @@
    require-macros [config.macros]})
 
 
+(utils.keymap :n :<C-p> ":Telescope find_files<CR>")
+
 (vim-let mapleader "\\<Space>")
 (vim-let maplocalleader ",")
 
