@@ -40,7 +40,7 @@
    "p"  (cmd "Telescope find_files"   "Browse files")
    ":"  (cmd "Telescope commands"     "Search commands")
    "s"  (cmd "w"                      "Save file")
-   "h"  (cmd "sp"                     "Split Horizontally")
+   "s"  (cmd "sp"                     "Split Horizontally")
    "v"  (cmd "vs"                     "Split vertically")
 
    "m" {:name "+Code actions"
@@ -75,7 +75,7 @@
         "c" (cmd "bdelete!"  "Close buffer")
         "w" (cmd "bwipeout!" "Wipeout buffer")}
    
-   "l" {:name "+Layout"
+   "v" {:name "+View"
         "n" (cmd "set nonumber! norelativenumber!"  "Numbers") 
         "c" (cmd "set nocursorline!"                "Cursor line") 
         "z" (cmd "ZenMode"                          "Zen mode") 
