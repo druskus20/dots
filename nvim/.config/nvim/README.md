@@ -16,7 +16,7 @@ configure nvim using [Fennel](https://fennel-lang.org/).
 * Comfortable navigation
 * Aesthetically pleasing
 
-## Instalation
+## Installation
 My distro of choice is Arch Linux, I've not tested this config in any other
 systems other than my own. 
 
