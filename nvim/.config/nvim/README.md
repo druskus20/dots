@@ -1,6 +1,10 @@
-# nvim 
+<h1 align="center">Neovim</h1>
 
-[Neovim](https://neovim.io) is my editor of choice. Since version 0.5 it
+<p align="center">
+    <img width="700" src=".github/vim-showcase.gif">
+</p>
+
+I use [Neovim](https://neovim.io) as my editor. Since version 0.5 it
 supports configuration through lua. Lua is much faster than vimscript, and,
 even if its syntax isnt perfect, its still much better. On top of that I
 decided to use [Aniseed](https://github.com/Olical/aniseed), which allows me to
@@ -79,10 +83,10 @@ and `./lua`, and then reinstalling everything as shown in
 * [Nvim Lua Guide](https://github.com/nanotee/nvim-lua-guide)
 
 ## To Do
-* [ ] Colors 
-* [ ] which-key and keymaps
+* [ ] Redo Colorscheme 
+* [x] which-key and keymaps
 * [ ] Navigation
-* [ ] Redo Lsp
+* [x] Redo Lsp
 * [x] Fix a gitsigns for feline
 * [x] Bufferline styling
 * [x] Completion
