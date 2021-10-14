@@ -11,4 +11,3 @@
 (better-errors (require :config.plugins))
 (better-errors (require :config.core))
 (better-errors (require :config.keybinds))
-
