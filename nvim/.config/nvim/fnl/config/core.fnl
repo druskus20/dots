@@ -3,7 +3,7 @@
 
 (module config.core 
   {autoload { nvim aniseed.nvim 
-              core aniseed.core str aniseed.string
+              a aniseed.core str aniseed.string
               utils config.utils
               colors config.colors}
    require-macros [config.macros]})
@@ -16,8 +16,8 @@
 ; Custom foldtext >>>
 (fn _G.custom_foldtext []:
   (if (= vim.opt.foldmethod._value "marker")
-    (str.join (core.butlast (str.split (vim.fn.getline vim.v.foldstart)
-                                       (core.first (str.split vim.opt.foldmarker._value ",")))))
+    (str.join (a.butlast (str.split (vim.fn.getline vim.v.foldstart)
+                                    (a.first (str.split vim.opt.foldmarker._value ",")))))
     (vim.fn.getline vim.v.foldstart)))
 
 (set vim.opt.foldtext "v:lua.custom_foldtext()")
