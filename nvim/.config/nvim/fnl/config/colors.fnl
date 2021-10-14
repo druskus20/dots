@@ -2,9 +2,10 @@
 ; Colors used across the config
 
 (module config.colors
-  {}
-  {
-   :dark0             "#292f3a"
+  {autoload {utils config.utils}})
+  
+(local colors 
+  {:dark0             "#292f3a"
    :dark1             "#2e3440"
    :dark2             "#343346"
    :dark3             "#3e3d50"
@@ -45,3 +46,7 @@
    :faded_orange      "#E69E83"
 
    :gray              "#c5c8c6"})
+
+colors
+
+; vim:foldmarker=>>>,<<<
