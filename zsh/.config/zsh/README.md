@@ -1,6 +1,6 @@
 # zsh 
 
-## Instalation
+## Installation
 I install zsh via pacman:
 ```sh
 sudo pacman -S zsh
