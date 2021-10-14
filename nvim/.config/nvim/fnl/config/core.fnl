@@ -81,6 +81,9 @@
 (utils.highlight-add :Normal {:bg colors.dark1}) 
 ; Completion popups
 (utils.highlight-add :Pmenu {:bg colors.dark0}) 
+(utils.highlight-add :PmenuSbar {:fg colors.dark0 :bg colors.dark0}) 
+(utils.highlight-add :PmenuThumb {:fg colors.dark0 :bg colors.dark0}) 
+(utils.highlight-add :PmenuSel {:bg colors.neutral_purple :fg colors.dark0}) 
 (utils.highlight-add :NormalFloat {:bg colors.dark0}) 
 (utils.highlight-add :VertSplit {:bg colors.dark0}) 
 
