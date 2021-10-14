@@ -28,7 +28,6 @@
                (use (a.assoc opts 1 name)))))
       ; https://github.com/lewis6991/impatient.nvim#installation
        :config {:compile_path (.. (vim.fn.stdpath "config") "/lua/packer_compiled.lua")}})))
-
 ; foldend                                                                 
 
 ; Plugins foldstart                                                                   
@@ -70,8 +69,7 @@
 
   ;:ms-jpq/coq_nvim {:opt false :config (mod :coq)}
 
-  :lewis6991/gitsigns.nvim {:opt false
-                            :config (mod :gitsigns)}
+  :lewis6991/gitsigns.nvim {:opt false :config (mod :gitsigns)}
   :kyazdani42/nvim-web-devicons {}
 
   :folke/twilight.nvim {:config (mod :twilight)}
@@ -92,7 +90,7 @@
   :norcalli/nvim-colorizer.lua {:config (mod :colorizer)} ; I do want one of those
   ;:radenling/vim-dispatch-neovim {} ; dont think I want this
   ;:tami5/compe-conjure {} ; yes but cmp conjure
-  ; :tpope/vim-abolish {} ; dont think so?
+  ;:tpope/vim-abolish {} ; dont think so?
   ;:tpope/vim-commentary {} ; one of theese?
   ;:tpope/vim-repeat {} ; do I want this????
   ;:tpope/vim-sexp-mappings-for-regular-people {} ; might be nice
@@ -105,6 +103,7 @@
   :tweekmonster/startuptime.vim {} ; ye
   :eraserhd/parinfer-rust {:run "cargo build --release"}
   :druskus20/sourcery {:opt false :requires [:rktjmp/lush.nvim] :config (mod :sourcery)}
+  ;:/home/druskus/code/sourcery {:opt false :requires [:rktjmp/lush.nvim] :config (mod :sourcery)}
   ;:mcchrish/zenbones.nvim {} 
   ;:w0rp/ale {:mod :ale} ; dont think so? errors and stuff
 
@@ -114,6 +113,7 @@
                        :requires ["mattn/webapi-vim"]}
                                   
   :simrat39/rust-tools.nvim {:requires ["nvim-lua/popup.nvim" "nvim-lua/plenary.nvim"]}
+  ;:mg979/vim-visual-multi {} interesting
   :elkowar/antifennel-nvim {})
 ; foldend                                                                                   
 
