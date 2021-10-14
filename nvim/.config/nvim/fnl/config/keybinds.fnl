@@ -16,7 +16,6 @@
 (utils.keymap :v :K :<Nop>)
 (utils.keymap :i :<C-l> :<DEL>)
 (utils.keymap :n :<C-p> ":Telescope find_files<CR>")
-(utils.keymap :n :<C-p> ":Telescope live_grep<CR>")
 (utils.keymap :n :<C-b> ":BufferLinePick<CR>")
 (utils.keymap :i :<C-b> "<ESC>:BufferLinePick<CR>")
 ; <<<
