@@ -103,6 +103,7 @@
   :tweekmonster/startuptime.vim {} ; ye
   :eraserhd/parinfer-rust {:run "cargo build --release"}
   :druskus20/sourcery {:opt false :requires [:rktjmp/lush.nvim] :config (mod :sourcery)}
+  :folke/persistence.nvim {:config (mod :persistence)}
   ;:/home/druskus/code/sourcery {:opt false :requires [:rktjmp/lush.nvim] :config (mod :sourcery)}
   ;:mcchrish/zenbones.nvim {} 
   ;:w0rp/ale {:mod :ale} ; dont think so? errors and stuff
@@ -111,7 +112,7 @@
   :rust-lang/rust.vim {:ft ["rust"]
                        :config #(do (set vim.g.rustfmt_fail_silently 1))
                        :requires ["mattn/webapi-vim"]}
-                                  
+
   :simrat39/rust-tools.nvim {:requires ["nvim-lua/popup.nvim" "nvim-lua/plenary.nvim"]}
   ;:mg979/vim-visual-multi {} interesting
   :elkowar/antifennel-nvim {})
