@@ -69,12 +69,14 @@
   :backspace "indent,eol,start")
 ; <<< 
 
-; TODO Move once colors are done >>>
+; Extra highlights (TODO: actually redo colors) >>>
 (utils.highlight-add :EndOfBuffer {:fg colors.dark1}) ; ~ 
 (utils.highlight-add :CursorLineNr {:fg colors.light2 :bg colors.dark4}) ; This line number
 (utils.highlight-add :LineNr {:fg colors.light5}) ; Other line numbers
 ; Fixes twilight issue
 (utils.highlight-add :Normal {:bg colors.dark1}) 
+; Completion popups
+(utils.highlight-add :Pmenu {:bg colors.dark0}) 
 <<< 
 
 ; vim:foldmarker=>>>,<<<

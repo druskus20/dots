@@ -38,7 +38,6 @@
   :Olical/aniseed {:opt false}
   :Olical/conjure {} ; test
 
- ; :wbthomason/packer.nvim {}
   ; lsp stuff
   :neovim/nvim-lspconfig {:config (mod :lsp)}
   :ray-x/lsp_signature.nvim {:events [:BufEnter]}
@@ -48,7 +47,6 @@
   :Saecki/crates.nvim {:requires [:nvim-lua/plenary.nvim]
                        :event ["BufRead Cargo.toml"]
                        :config (setup :crates)}
-
   :hrsh7th/vim-vsnip {}
 
   ; cmp stuff
@@ -60,6 +58,7 @@
   :hrsh7th/cmp-nvim-lua {}
   :hrsh7th/cmp-calc {}
   :hrsh7th/nvim-cmp {:opt false 
+                     :config (mod :cmp)
                      :requires [:hrsh7th/cmp-nvim-lsp 
                                 :hrsh7th/cmp-buffer
                                 :hrsh7th/cmp-conjure
@@ -67,8 +66,7 @@
                                 :hrsh7th/cmp-nvim-lua
                                 :hrsh7th/cmp-calc
                                 :hrsh7th/cmp-path
-                                :Saecki/crates.nvim] ; TODO TEST
-                     :config (mod :cmp)}
+                                :Saecki/crates.nvim]} ; TODO TEST
 
   ;:ms-jpq/coq_nvim {:opt false :config (mod :coq)}
 
@@ -77,9 +75,11 @@
   :kyazdani42/nvim-web-devicons {}
 
   :folke/twilight.nvim {:config (mod :twilight)}
-  ;:folke/zen-mode.nvim {:after [:gitsigns.nvim] :config (mod :zen-mode)}
-
-  :nvim-telescope/telescope.nvim {:requires [:nvim-lua/popup.nvim :nvim-lua/plenary.nvim]} ; change how it looks but yes
+  :folke/zen-mode.nvim {:after [:gitsigns.nvim] :config (mod :zen-mode)}
+  
+  :nvim-telescope/telescope.nvim {:cmd ["Telescope"]
+                                  :config (mod :telescope)
+                                  :requires [:nvim-lua/popup.nvim :nvim-lua/plenary.nvim]} ; change how it looks but yes
   ;:Olical/nvim-local-fennel {}
   ;:Olical/vim-enmasse {} ; interesting, edit in quickfix windows
   ;:PeterRincker/vim-argumentative {} ; interesing, navigation through arguments
@@ -110,20 +110,14 @@
 
   ;:druskus20/dashboard-nvim {:config (mod :dashboard)}
   :rust-lang/rust.vim {:ft ["rust"]
-                       :requires ["mattn/webapi-vim"]
-                       :opt false :config #(do (set vim.g.rustfmt_fail_silently 1))}
+                       :config #(do (set vim.g.rustfmt_fail_silently 1))
+                       :requires ["mattn/webapi-vim"]}
                                   
   :simrat39/rust-tools.nvim {:requires ["nvim-lua/popup.nvim" "nvim-lua/plenary.nvim"]}
-
   :elkowar/antifennel-nvim {})
-  
-; https://github.com/lewis6991/impatient.nvim#installation
-(require "packer_compiled")
 ; foldend                                                                                   
 
-;    use {}
-;        'nvim-telescope/telescope.nvim',
-;        requires = { {'nvim-lua/plenary.nvim', cmd = 'Telescope'} },
-;        cmd = {'Telescope'},)
+; https://github.com/lewis6991/impatient.nvim#installation
+(require "packer_compiled")
 
 ; vim:foldmarker=foldstart,foldend
