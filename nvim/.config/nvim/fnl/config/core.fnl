@@ -72,7 +72,7 @@
 
 ; Some temporal settings (TODO: actually redo this) >>>
 ; Disable command history and Ex mode
-; (vim.api.nvim_set_keymap :n "q:" :<nop> {:noremap true :silent true}) TODO: No work
+; (vim.api.nvim_set_keymap :n "q:" :<nop> {:noremap true :silent true}) ; FIX: No work
 (utils.highlight :Search {:bg colors.dark4})  
 (utils.highlight :IncSearch {:fg colors.neutral_aqua :bg colors.dark4})  
 (vim.api.nvim_set_keymap :n "Q" :<nop> {:noremap true :silent true})

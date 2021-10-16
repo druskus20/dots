@@ -96,7 +96,8 @@
                        :config #(do (set vim.g.rustfmt_fail_silently 1))
                        :requires ["mattn/webapi-vim"]}
 
-  :simrat39/rust-tools.nvim {:requires ["nvim-lua/popup.nvim" "nvim-lua/plenary.nvim"]}
+  :simrat39/rust-tools.nvim {:tag "ec6028323cc9cd37187eccb7ffdc5bab8c249d08"
+                             :requires ["nvim-lua/popup.nvim" "nvim-lua/plenary.nvim"]}
   ;:mg979/vim-visual-multi {} interesting
   :elkowar/yuck.vim {:ft ["yuck"]}
   :elkowar/antifennel-nvim {}
@@ -109,7 +110,8 @@
   :ciaranm/detectindent {:config (mod :detectindent)}
   :pechorin/any-jump.vim {}
   :psliwka/vim-smoothie {}
-  :editorconfig/editorconfig-vim {})
+  :editorconfig/editorconfig-vim {}
+  :jbyuki/instant.nvim {:config (mod :instant)})
   
 ; foldend                                                                                   
 
