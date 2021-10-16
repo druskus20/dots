@@ -57,6 +57,7 @@
   :switchbuf "usetab"
   :number false
   :relativenumber false
+  :ignorecase true
   :smartcase true
   :copyindent true
   :previewheight 38
@@ -88,6 +89,9 @@
 (utils.highlight-add :PmenuSel {:bg colors.neutral_purple :fg colors.dark0}) 
 (utils.highlight-add :NormalFloat {:bg colors.dark0}) 
 (utils.highlight-add :VertSplit {:bg colors.dark0}) 
+
+(utils.highlight-add :Sneak {:fg colors.light1 :bg colors.dark5}) ; labels
+(utils.highlight-add :SneakScope {:fg colors.dark1 :bg colors.neutral_aqua}) ; cursor
 
 
 ; Visual yank
