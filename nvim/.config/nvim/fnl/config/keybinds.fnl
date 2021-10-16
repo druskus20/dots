@@ -34,17 +34,20 @@
 (fn sel-cmd [s desc] [(.. "<cmd>'<,'>" s "<cr>") desc])
 (fn rebind [s desc] [s desc])
 
-(wk.register  
-  {"h"  (cmd "bprevious"              "Previous buffer")
-   "l"  (cmd "bnext"                  "Next buffer")
-   "o"  (cmd "Telescope live_grep"    "Grep files")
-   "p"  (cmd "Telescope find_files"   "Browse files")
-   ":"  (cmd "Telescope commands"     "Search commands")
-   "t"  (cmd "TroubleToggle"          "Trouble")
-   "w"  (cmd "w"                      "Save file")
-   "s"  (cmd "sp"                     "Split Horizontally")
-   "S"  (cmd "vs"                     "Split vertically")
 
+(wk.register  
+  {"h"  (cmd "bprevious"                  "Previous buffer")
+   "l"  (cmd "bnext"                      "Next buffer")
+   "L"  [(. (require :persistence) :load)  "Load last session"]
+   "o"  (cmd "Telescope live_grep"        "Grep files")
+   "p"  (cmd "Telescope find_files"       "Browse files")
+   ":"  (cmd "Telescope commands"         "Search commands")
+   "e"  (cmd "TroubleToggle"              "Browse Errors")
+   "t"  (cmd "TodoTrouble"                "Browse TODOs")
+   "w"  (cmd "w"                          "Save file")
+   "s"  (cmd "sp"                         "Split Horizontally")
+   "S"  (cmd "vs"                         "Split vertically")
+   "a" {:name "+AnyJump"}
    "m" {:name "+Code actions"
         "d" (cmd "Lspsaga hover_doc"                       "Show documentation") 
         "b" (cmd "Lspsaga lsp_finder"                      "Find stuff") 
@@ -85,6 +88,26 @@
         "t" (cmd "Twilight"                         "Twilight")}} 
    
   {:prefix :<leader>
+   :mode :n})
+
+
+(wk.register 
+  {"c" {:name "+NerdCommenter"
+        "$"       (cmd "<Plug>NERDCommenterToEOL"         "To EOL")
+        "<space>" (cmd "<Plug>NERDCommenterToggle"        "Toggle")
+        "a"       (cmd "<Plug>NERDCommenterAltDelims"     "Alt Delimiters")  
+        "A"       (cmd "<Plug>NERDCommenterAppend"        "Append") 
+        "b"       (cmd "<Plug>NERDCommenterAlignBoth"     "Align Both") 
+        "c"       (cmd "<Plug>NERDCommenterComment"       "Comment") 
+        "i"       (cmd "<Plug>NERDCommenterInvert"        "Invert") 
+        "l"       (cmd "<Plug>NERDCommenterAlignLeft"     "Align Left") 
+        "m"       (cmd "<Plug>NERDCommenterMinimal"       "Minimal") 
+        "n"       (cmd "<Plug>NERDCommenterNested"        "Nested") 
+        "s"       (cmd "<Plug>NERDCommenterSexy"          "Sexy") 
+        "u"       (cmd "<Plug>NERDCommenterUncomment"     "Uncomment") 
+        "y"       (cmd "<Plug>NERDCommenterYank"          "Yank")}}
+  {:prefix :<leader>
+   :noremap false
    :mode :n})
 ; <<<
 
