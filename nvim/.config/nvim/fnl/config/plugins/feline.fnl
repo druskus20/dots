@@ -57,7 +57,7 @@
       (if use-as-fg? {:bg bar-bg :fg color} {:bg color :fg bar-bg})))
 
 (defn git-status-provider []
-   (or-empty (utils.keep-if #(~= "master" $1) ; TODO: Why only master?
+   (or-empty (utils.keep-if #(~= "master" $1) 
                             (?. vim.b :gitsigns_status_dict :head))))
 
 (defn vim-mode []
