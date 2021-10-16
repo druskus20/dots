@@ -86,6 +86,7 @@
 (utils.highlight-add :PmenuSel {:bg colors.neutral_purple :fg colors.dark0}) 
 (utils.highlight-add :NormalFloat {:bg colors.dark0}) 
 (utils.highlight-add :VertSplit {:bg colors.dark0}) 
+(utils.highlight-add :Search {:bg colors.dark-3}) 
 
 ; Visual yank
 (vim.cmd "autocmd! TextYankPost * silent! lua vim.highlight.on_yank {higroup=\"IncSearch\", timeout=300}")
