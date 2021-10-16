@@ -29,7 +29,7 @@
   :foldmethod "marker"
   :showmode false
   :undofile true
-  :shortmess (.. vim.o.shortmess "c") ; Don't give completion messages like 'match 1 of 2' or 'The only match'
+  :shortmess (.. vim.o.shortmess "Ic") ; Don't give completion messages like 'match 1 of 2' or 'The only match'
   :hidden true
   :encoding "utf-8"
   :compatible false
