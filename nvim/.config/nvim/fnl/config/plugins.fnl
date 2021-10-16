@@ -31,7 +31,6 @@
 ; foldend                                                                 
 
 ; Plugins foldstart                                                                   
-;; Plugins to be managed by packer.
 (use
   :lewis6991/impatient.nvim {} ; try
   :Olical/aniseed {:opt false}
@@ -42,7 +41,6 @@
   :ray-x/lsp_signature.nvim {:events [:BufEnter]}
   :tami5/lspsaga.nvim {:commit "373bc031b39730cbfe492533c3acfac36007899a"
                        :config (mod :lspsaga)}
-
 
   :Saecki/crates.nvim {:requires [:nvim-lua/plenary.nvim]
                        :event ["BufRead Cargo.toml"]
@@ -66,7 +64,7 @@
                                 :hrsh7th/cmp-nvim-lua
                                 :hrsh7th/cmp-calc
                                 :hrsh7th/cmp-path
-                                :Saecki/crates.nvim]} ; TODO TEST
+                                :Saecki/crates.nvim]} 
 
   ;:ms-jpq/coq_nvim {:opt false :config (mod :coq)}
 
@@ -79,36 +77,18 @@
   :nvim-telescope/telescope.nvim {:cmd ["Telescope"]
                                   :config (mod :telescope)
                                   :requires [:nvim-lua/popup.nvim :nvim-lua/plenary.nvim]} ; change how it looks but yes
-  ;:Olical/nvim-local-fennel {}
-  ;:Olical/vim-enmasse {} ; interesting, edit in quickfix windows
-  ;:PeterRincker/vim-argumentative {} ; interesing, navigation through arguments
-  ;:airblade/vim-gitgutter {}
-  ;:easymotion/vim-easymotion {:mod :easymotion} ; I want one of theese
+
   :folke/which-key.nvim {} ; Config is in config/keybinds.fnl
-  ;:guns/vim-sexp {:mod :sexp} ; interesting lisp editing
-  ;:jiangmiao/auto-pairs {:mod :auto-pairs} ; auto closing parents
-  ;:liuchengxu/vim-better-default {:mod :better-default} ; dont want this, but interesting to look at
   :norcalli/nvim-colorizer.lua {:config (mod :colorizer)} ; I do want one of those
-  ;:radenling/vim-dispatch-neovim {} ; dont think I want this
-  ;:tami5/compe-conjure {} ; yes but cmp conjure
-  ;:tpope/vim-abolish {} ; dont think so?
-  ;:tpope/vim-commentary {} ; one of theese?
-  ;:tpope/vim-repeat {} ; do I want this????
-  ;:tpope/vim-sexp-mappings-for-regular-people {} ; might be nice
-  ;:tpope/vim-sleuth {} ; auto detect indentation, probably yes
-  ;:tpope/vim-surround {} ; YE
-  ;:tpope/vim-unimpaired {} ; Dont think so?
-  ;:tpope/vim-vinegar {} ; might be interesting to try
+  :tpope/vim-surround {} 
+  :folke/trouble.nvim {:cmd ["Trouble" "TroubleToggle"] :config (mod :trouble)}
   :Famiu/feline.nvim {:opt false :config (mod :feline)}
   :akinsho/nvim-bufferline.lua {:opt false :config (mod :bufferline)}
-  :tweekmonster/startuptime.vim {} ; ye
+  :tweekmonster/startuptime.vim {:cmd ["StartupTime"]} 
   :eraserhd/parinfer-rust {:run "cargo build --release"}
   :druskus20/sourcery {:opt false :requires [:rktjmp/lush.nvim] :config (mod :sourcery)}
-  :folke/persistence.nvim {:config (mod :persistence)}
-  ;:/home/druskus/code/sourcery {:opt false :requires [:rktjmp/lush.nvim] :config (mod :sourcery)}
   ;:mcchrish/zenbones.nvim {} 
-  ;:w0rp/ale {:mod :ale} ; dont think so? errors and stuff
-
+  :folke/persistence.nvim {:config (mod :persistence)}
   ;:druskus20/dashboard-nvim {:config (mod :dashboard)}
   :rust-lang/rust.vim {:ft ["rust"]
                        :config #(do (set vim.g.rustfmt_fail_silently 1))
@@ -116,7 +96,12 @@
 
   :simrat39/rust-tools.nvim {:requires ["nvim-lua/popup.nvim" "nvim-lua/plenary.nvim"]}
   ;:mg979/vim-visual-multi {} interesting
-  :elkowar/antifennel-nvim {})
+  :elkowar/yuck.vim {:ft ["yuck"]}
+  :elkowar/antifennel-nvim {}
+  :jiangmiao/auto-pairs {}
+  :preservim/nerdcommenter {}
+  :godlygeek/tabular {}
+  :tpope/vim-repeat {})
 ; foldend                                                                                   
 
 ; https://github.com/lewis6991/impatient.nvim#installation
