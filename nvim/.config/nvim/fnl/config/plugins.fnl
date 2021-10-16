@@ -45,6 +45,7 @@
   :Saecki/crates.nvim {:requires [:nvim-lua/plenary.nvim]
                        :event ["BufRead Cargo.toml"]
                        :config (setup :crates)}
+
   :hrsh7th/vim-vsnip {}
 
   ; cmp stuff
@@ -82,7 +83,7 @@
   :norcalli/nvim-colorizer.lua {:config (mod :colorizer)} ; I do want one of those
   :tpope/vim-surround {} 
   ;:folke/trouble.nvim {:cmd ["Trouble" "TroubleToggle"] :config (mod :trouble)}
-  :elkowar/trouble.nvim {:cmd ["Trouble" "TroubleToogle"] :config (mod :trouble) :branch "both-of-em"}
+  :elkowar/trouble.nvim {:cmd ["Trouble" "TroubleToggle"] :config (mod :trouble) :branch "both-of-em"}
   :Famiu/feline.nvim {:opt false :config (mod :feline)}
   :akinsho/nvim-bufferline.lua {:opt false :config (mod :bufferline)}
   :tweekmonster/startuptime.vim {:cmd ["StartupTime"]} 
@@ -109,8 +110,6 @@
   :pechorin/any-jump.vim {}
   :psliwka/vim-smoothie {}
   :editorconfig/editorconfig-vim {})
-  
-  
   
 ; foldend                                                                                   
 
