@@ -70,7 +70,7 @@
 
   :lewis6991/gitsigns.nvim {:opt false :config (mod :gitsigns)}
   :kyazdani42/nvim-web-devicons {}
-
+  :folke/todo-comments.nvim {:config (mod :todo-comments)}
   :folke/twilight.nvim {:config (mod :twilight)}
   :folke/zen-mode.nvim {:after [:gitsigns.nvim] :config (mod :zen-mode)}
   
@@ -81,7 +81,8 @@
   :folke/which-key.nvim {} ; Config is in config/keybinds.fnl
   :norcalli/nvim-colorizer.lua {:config (mod :colorizer)} ; I do want one of those
   :tpope/vim-surround {} 
-  :folke/trouble.nvim {:cmd ["Trouble" "TroubleToggle"] :config (mod :trouble)}
+  ;:folke/trouble.nvim {:cmd ["Trouble" "TroubleToggle"] :config (mod :trouble)}
+  :elkowar/trouble.nvim {:cmd ["Trouble" "TroubleToogle"] :config (mod :trouble) :branch "both-of-em"}
   :Famiu/feline.nvim {:opt false :config (mod :feline)}
   :akinsho/nvim-bufferline.lua {:opt false :config (mod :bufferline)}
   :tweekmonster/startuptime.vim {:cmd ["StartupTime"]} 
