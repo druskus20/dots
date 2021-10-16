@@ -2,16 +2,11 @@
   {autoload {todo-comments todo-comments}}) 
 
 (todo-comments.setup  
-  {:keywords {:TODO {:icon " " :color :info}
-              :WARN {:alt [:WARNING :XXX :!!!]
-                     :icon " "
-                     :color :warning}
-              :NOTE {:alt [:INFO] :icon " " :color :hint}
-              :FIX {:alt [:FIXME :BUG :FIXIT :ISSUE]
-                    :icon " "
-                    :color :error}
-              :HACK {:icon " " :color :warning}
-              :PERF {:icon " "
-                     :alt [:OPTIM :PERFORMANCE :OPTIMIZE]}}})
+  {:keywords {:TODO {:icon " "}
+              :WARN {:icon " " :alt [:WARNING :XXX :!!!]}
+              :NOTE {:icon " " :alt [:INFO]} 
+              :FIX  {:icon " " :alt [:FIXME :BUG :FIXIT :ISSUE :PHIX]} 
+              :PERF {:icon " " :alt [:OPTIM :PERFORMANCE :OPTIMIZE]}
+              :HACK {:icon " "}}}) 
 
 ; vim:foldmarker=>>>,<<<
