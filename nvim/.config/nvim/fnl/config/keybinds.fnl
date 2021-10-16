@@ -18,6 +18,8 @@
 (utils.keymap :n :<C-p> ":Telescope find_files<CR>")
 (utils.keymap :n :<C-b> ":BufferLinePick<CR>")
 (utils.keymap :i :<C-b> "<ESC>:BufferLinePick<CR>")
+(utils.keymap [:n :o] :<DEL>   "<Plug>Sneak_s" {:noremap false})
+(utils.keymap [:n :o] :<S-DEL> "<Plug>Sneak_S" {:noremap false})
 ; <<<
 
 ; Which Key >>> 

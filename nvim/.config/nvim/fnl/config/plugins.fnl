@@ -101,7 +101,16 @@
   :jiangmiao/auto-pairs {}
   :preservim/nerdcommenter {}
   :godlygeek/tabular {}
-  :tpope/vim-repeat {})
+  :tpope/vim-repeat {}
+
+  :justinmk/vim-sneak {:config (mod :sneak)}
+  :ciaranm/detectindent {:config (mod :detectindent)}
+  :pechorin/any-jump.vim {}
+  :psliwka/vim-smoothie {}
+  :editorconfig/editorconfig-vim {})
+  
+  
+  
 ; foldend                                                                                   
 
 ; https://github.com/lewis6991/impatient.nvim#installation
