@@ -24,7 +24,8 @@
 
 ; Which Key >>> 
 (wk.setup 
-  {:icons {:group " "}
+  {:icons {:separator "→"
+           :group ""}
    :layout {:spacing 3
             :align :left
             :width {:min 30 :max 100}
