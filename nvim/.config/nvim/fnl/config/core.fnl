@@ -72,6 +72,8 @@
 ; Some temporal settings (TODO: actually redo this) >>>
 ; Disable command history and Ex mode
 ; (vim.api.nvim_set_keymap :n "q:" :<nop> {:noremap true :silent true}) TODO: No work
+(utils.highlight :Search {:bg colors.dark4})  
+(utils.highlight :IncSearch {:fg colors.neutral_aqua :bg colors.dark4})  
 (vim.api.nvim_set_keymap :n "Q" :<nop> {:noremap true :silent true})
 ; Highlights
 (utils.highlight-add :EndOfBuffer {:fg colors.dark1}) ; ~ 
@@ -86,7 +88,7 @@
 (utils.highlight-add :PmenuSel {:bg colors.neutral_purple :fg colors.dark0}) 
 (utils.highlight-add :NormalFloat {:bg colors.dark0}) 
 (utils.highlight-add :VertSplit {:bg colors.dark0}) 
-(utils.highlight-add :Search {:bg colors.dark-3}) 
+
 
 ; Visual yank
 (vim.cmd "autocmd! TextYankPost * silent! lua vim.highlight.on_yank {higroup=\"IncSearch\", timeout=300}")
