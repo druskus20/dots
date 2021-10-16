@@ -38,7 +38,8 @@
    "o"  (cmd "Telescope live_grep"    "Grep files")
    "p"  (cmd "Telescope find_files"   "Browse files")
    ":"  (cmd "Telescope commands"     "Search commands")
-   "s"  (cmd "w"                      "Save file")
+   "t"  (cmd "TroubleToggle"          "Trouble")
+   "w"  (cmd "w"                      "Save file")
    "s"  (cmd "sp"                     "Split Horizontally")
    "v"  (cmd "vs"                     "Split vertically")
 
