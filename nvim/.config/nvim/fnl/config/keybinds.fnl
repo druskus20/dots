@@ -43,7 +43,7 @@
    "t"  (cmd "TroubleToggle"          "Trouble")
    "w"  (cmd "w"                      "Save file")
    "s"  (cmd "sp"                     "Split Horizontally")
-   "v"  (cmd "vs"                     "Split vertically")
+   "S"  (cmd "vs"                     "Split vertically")
 
    "m" {:name "+Code actions"
         "d" (cmd "Lspsaga hover_doc"                       "Show documentation") 
