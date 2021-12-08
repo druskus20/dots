@@ -123,6 +123,10 @@
     (when (not (a.empty? bufs))
       (vim.cmd (.. "bdelete " (str.join " " bufs))))))
 
+(tset vim.lsp.handlers :textDocument/publishDiagnostics
+      (vim.lsp.with vim.lsp.diagnostic.on_publish_diagnostics
+                    {:severity_sort true}))
+
 (vim.cmd "autocmd! BufCreate * :call v:lua.clean_no_name_empty_buffers()")
 ; <<< 
 

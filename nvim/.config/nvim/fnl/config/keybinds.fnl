@@ -40,6 +40,11 @@
     (vim.lsp.buf.formatting)
     (vim.cmd "Neoformat"))) ; !!!: This is not installed
 
+(defn code-action []
+  (if (= vim.bo.filetype :rust)
+    (vim.cmd "RustCodeAction")
+    (vim.cmd "Lspsaga code_action")))
+
 (wk.register  
   {"h"  (cmd "bprevious"                  "Previous buffer")
    "l"  (cmd "bnext"                      "Next buffer")
@@ -64,8 +69,10 @@
         "s" (cmd "Telescope lsp_dynamic_workspace_symbols" "Symbols in workspace") 
         "T" [vim.lsp.buf.signature_help                    "Show signature help"] 
         "n" (cmd "Lspsaga rename"                          "Rename") 
-        "V" (cmd "CodeActionMenu"                          "Apply codeaction") 
-        "k" (cmd "Lspsaga code_action"                     "Apply lspsaga codeaction") ; It seems to work though
+        ;"v" [code-action                                    "Apply codeaction"] 
+        "v" (cmd "Lspsaga code_action"                     "Apply codeaction") 
+        "V" (cmd "Lspsaga range_code_action"               "Apply range codeaction") 
+        ;"V" (cmd "CodeActionMenu"                           "Apply codeaction") ; It seems to work though
         "A" (cmd "Lspsaga show_cursor_diagnostics"         "Cursor diagnostics") 
         "a" (cmd "Lspsaga show_line_diagnostics"           "Line diagnostics")
         "h" (cmd "RustToggleInlayHints"                    "Toggle inlay hints")
