@@ -111,14 +111,14 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    # family: "DejaVuSansMono Nerd Font Mono"
+     family: "JetBrains Mono" # ~  ads_asd 
+    # family: "DejaVuSansMono Nerd Font Mono" 
     # family: "Codelia Nerd Font"
-     family: "JetBrains Mono"
     # family: "Iosevka Custom"
     # family: "TerminessTTF Nerd Font"
     #     family: "Terminus"
 
-  size: 15
+  size: 12
     # The `style` can be specified to pick a specific face.
     #style: Regular
 

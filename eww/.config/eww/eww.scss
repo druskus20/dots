@@ -17,6 +17,7 @@ $white: #ffffff;
 
 window {
   background: $background;
+//  background: rgba(0, 0, 0, 0.2);
 }
 
 .bar {
@@ -60,5 +61,28 @@ window {
     font-size: 10px;
 //  font-family: "Font Awesome 5 Free Regular"
   }
+}
 
+
+// Test
+.test-box {
+  background-color: #2a2a2a;
+}
+.test-box.red {
+    background-color: red;
+}
+.test-box.blue {
+    background-color: blue;
+}
+.test-box.green {
+    background-color: green;
+}
+
+
+
+.revealer-on-hover .eventbox {
+  color: $grey;
+}
+.revealer-on-hover .eventbox:hover {
+  color: $foreground;
 }

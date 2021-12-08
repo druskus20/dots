@@ -5,18 +5,18 @@
 
 
 (saga.init_lsp_saga 
-  {:border_style "single" ; single double round plus
-   :code_action_prompt {:enable true
-                        :sign false
-                        :virtual_text false}
-   :code_action_keys {:quit "<esc>" :exec "<CR>"} 
-   :rename_action_keys {:quit "<esc>" :exec "<CR>"} 
-   :finder_action_keys {:quit "<esc>"
-                        :open "<CR>" 
-                        :vsplit "v" 
-                        :split "b" 
-                        :scroll_up "<C-u>" 
-                        :scroll_down "<C-d>"}})
+    {:border_style "single" ; single double round plus
+     :code_action_prompt {:enable true
+                          :sign false
+                          :virtual_text false}
+     :code_action_keys {:quit "<esc>" :exec "<CR>"} 
+     :rename_action_keys {:quit "<esc>" :exec "<CR>"} 
+     :finder_action_keys {:quit "<esc>"
+                          :open "<CR>" 
+                          :vsplit "v" 
+                          :split "b" 
+                          :scroll_up "<C-u>" 
+                          :scroll_down "<C-d>"}})
  
 
 (utils.highlight ["LspFloatWinBorder"
