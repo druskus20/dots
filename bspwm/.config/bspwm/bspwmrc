@@ -32,4 +32,7 @@ bspc rule -a Matplotlib state=floating
 bspc rule -a Zathura state=tiled
 bspc rule -a Zathura mpv state=floating rectangle=WidthxHeight+Xoffset+Yoffset
 bspc rule -a "*:*:discord.com is sharing your screen." hidden=on
+bspc rule -a "eww-test" state=floating
+
+bspc rule -a "*:*:Spikes" monitor=HDMI-1 state=floating 
 

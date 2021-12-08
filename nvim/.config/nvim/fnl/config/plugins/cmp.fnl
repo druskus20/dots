@@ -18,7 +18,7 @@
              :<C-j> (cmp.mapping.select_next_item {:behavior cmp.SelectBehavior.Insert})
              :<C-e> (cmp.mapping.close)
              :<CR> (cmp.mapping.confirm {:select true})
-             :<TAB> (cmp.mapping.confirm {:select true})
+             ;:<TAB> (cmp.mapping.confirm {:select true})
              :<C-Space> (cmp.mapping.complete)}
 
    :snippet {:expand (fn [args] ((. vim.fn "vsnip#anonymous") args.body))}

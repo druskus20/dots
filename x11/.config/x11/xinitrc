@@ -1,18 +1,19 @@
 # xinitrc 
 
-"$HOME"/.config/x11/2screens-horiz.sh 2> /dev/null # Screen layout
-sudo timedatectl set-ntp true & # Fix dual boot time issue
+"$HOME"/.config/x11/2screens-vert.sh 2> /dev/null # Screen layout
+sudo timedatectl set-ntp true & # Fix dual boot time issue ; WARN: How is this actually working?
 xset r rate 300 50 & # Speed up keyboard input
+xmodmap -e 'keycode 9=NoSymbol' # Disable ESC key
 #setxkbmap es # set keyboard layout (done in /etc/X11/xorg.conf)
 setxkbmap -option caps:escape & # remap CAPS to ESC
-setbg "$HOME/img/bg/abstract_mountains.jpg" > /dev/null & # Set background
+setbg "$HOME/img/bg/pink_mountains1.jpg" > /dev/null & # Set background
 xautolock -time 10 -locker "betterlockscreen --lock blur" & # Lock Screen 
 xsetroot -cursor_name left_ptr &  # Set cursor for the background
 xrdb "$HOME/.config/x11/Xresources" # Load X11 settings and colors
-sleep 1 && eww open-many bar0 bar1 > /dev/null 2> /dev/null & # Launch eww 
+sleep 1 && eww open-many bar0 bar1 > /dev/null 2> /dev/null & # Launch eww  # TODO: Fix this
 #dunst & # Notifications (replaced by tiramisu in eww)
 #conky --pause=5 -q & # Desktop info
-picom 2> /dev/null & # Compositor
+#picom --experimental-backends -b 2> /dev/null & # Compositor
 noisetorch -i 2> /dev/null & # Noise reduction
 flashfocus 2> /dev/null & # Focus indicator
 night 2> /dev/null # Red light filter

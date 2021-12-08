@@ -38,9 +38,12 @@
 
   ; lsp stuff
   :neovim/nvim-lspconfig {:config (mod :lsp)}
-  :ray-x/lsp_signature.nvim {:events [:BufEnter]}
-  :tami5/lspsaga.nvim {:commit "373bc031b39730cbfe492533c3acfac36007899a"
-                       :config (mod :lspsaga)}
+;  :ray-x/lsp_signature.nvim {:config (mod :lsp-signature) :events [:BufEnter]}
+  :ray-x/lsp_signature.nvim {:config (mod :lsp-signature)}
+  ;:tami5/lspsaga.nvim {:config (mod :lspsaga)}
+
+  :tami5/lspsaga.nvim {:commit "373bc031b39730cbfe492533c3acfac36007899a" :config (mod :lspsaga)}
+  :weilbith/nvim-code-action-menu {}
 
   :Saecki/crates.nvim {:requires [:nvim-lua/plenary.nvim]
                        :event ["BufRead Cargo.toml"]
@@ -82,8 +85,7 @@
   :folke/which-key.nvim {} ; Config is in config/keybinds.fnl
   :norcalli/nvim-colorizer.lua {:config (mod :colorizer)} ; I do want one of those
   :tpope/vim-surround {} 
-  ;:folke/trouble.nvim {:cmd ["Trouble" "TroubleToggle"] :config (mod :trouble)}
-  :elkowar/trouble.nvim {:cmd ["Trouble" "TroubleToggle"] :config (mod :trouble) :branch "both-of-em"}
+  :folke/trouble.nvim {:cmd ["Trouble" "TroubleToggle"] :config (mod :trouble)}
   :Famiu/feline.nvim {:opt false :config (mod :feline)}
   :akinsho/nvim-bufferline.lua {:opt false :config (mod :bufferline)}
   :tweekmonster/startuptime.vim {:cmd ["StartupTime"]} 
@@ -96,7 +98,7 @@
                        :config #(do (set vim.g.rustfmt_fail_silently 1))
                        :requires ["mattn/webapi-vim"]}
 
-  :simrat39/rust-tools.nvim {:tag "ec6028323cc9cd37187eccb7ffdc5bab8c249d08"
+  :simrat39/rust-tools.nvim {:config (mod :rust-tools) 
                              :requires ["nvim-lua/popup.nvim" "nvim-lua/plenary.nvim"]}
   ;:mg979/vim-visual-multi {} interesting
   :elkowar/yuck.vim {:ft ["yuck"]}
@@ -111,7 +113,15 @@
   :pechorin/any-jump.vim {}
   :psliwka/vim-smoothie {}
   :editorconfig/editorconfig-vim {}
-  :jbyuki/instant.nvim {:config (mod :instant)})
+  :jbyuki/instant.nvim {:config (mod :instant)}
+  :luukvbaal/stabilize.nvim { :config (setup :stabilize)}
+  :simrat39/symbols-outline.nvim {:cmd ["SymbolsOutline"]}
+  :rhysd/conflict-marker.vim {}
+  :wfxr/minimap.vim {}
+  :github/copilot.vim {}
+  :druskus20/dostack.vim {})
+  ;:/home/druskus/code/dostack.vim {})
+  ;:kmonad/kmonad-vim {})
   
 ; foldend                                                                                   
 

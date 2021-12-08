@@ -55,11 +55,11 @@ export STACK_ROOT="$XDG_DATA_HOME"/stack
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 export SUDO_ASKPASS="$HOME/.local/bin/scripts/dpass"
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
-export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export TEXMFHOME=$XDG_DATA_HOME/texmf
 export TEXMFVAR=$XDG_CACHE_HOME/texlive/texmf-var 
 export TEXMFCONFIG=$XDG_CONFIG_HOME/texlive/texmf-config
 export XINITRC="$XDG_CONFIG_HOME"/x11/xinitrc
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
 
 # Fails with LightDM
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
