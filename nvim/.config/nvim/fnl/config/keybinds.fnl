@@ -2,7 +2,8 @@
 ; Set up keybinds **and which-key** 
 
 (module config.keybinds
-  {autoload {nvim aniseed.nvim
+  {autoload {a aniseed.core
+             nvim aniseed.nvim
              wk which-key
              utils config.utils}
    require-macros [config.macros]})
@@ -34,7 +35,10 @@
 (fn cmd [s desc] [(.. "<cmd>" s "<cr>") desc])
 (fn sel-cmd [s desc] [(.. "<cmd>'<,'>" s "<cr>") desc])
 (fn rebind [s desc] [s desc])
-
+(defn format []
+  (if (a.some #$1.resolved_capabilities.document_formatting (vim.lsp.get_active_clients))
+    (vim.lsp.buf.formatting)
+    (vim.cmd "Neoformat"))) ; !!!: This is not installed
 
 (wk.register  
   {"h"  (cmd "bprevious"                  "Previous buffer")
@@ -50,15 +54,18 @@
    "S"  (cmd "vs"                         "Split vertically")
    "a" {:name "+AnyJump"}
    "m" {:name "+Code actions"
+        ;"d" [vim.lsp.buf.hover                        "Show documentation"] 
         "d" (cmd "Lspsaga hover_doc"                       "Show documentation") 
-        "b" (cmd "Lspsaga lsp_finder"                      "Find stuff") 
+        ;"b" (cmd "Lspsaga lsp_finder"                      "Find stuff") 
         "x" (cmd "Lspsaga preview_definition"              "Preview definition") 
         "o" (cmd "SymbolsOutline"                          "Outline") 
+        "m" (cmd "MinimapToggle"                           "Minimap") 
         "S" (cmd "Telescope lsp_document_symbols"          "Symbols in document") 
         "s" (cmd "Telescope lsp_dynamic_workspace_symbols" "Symbols in workspace") 
-        "T" (cmd "Lspsaga signature_help"                  "Show signature help") 
+        "T" [vim.lsp.buf.signature_help                    "Show signature help"] 
         "n" (cmd "Lspsaga rename"                          "Rename") 
-        "v" (cmd "Lspsaga code_action"                     "Apply codeaction") 
+        "V" (cmd "CodeActionMenu"                          "Apply codeaction") 
+        "k" (cmd "Lspsaga code_action"                     "Apply lspsaga codeaction") ; It seems to work though
         "A" (cmd "Lspsaga show_cursor_diagnostics"         "Cursor diagnostics") 
         "a" (cmd "Lspsaga show_line_diagnostics"           "Line diagnostics")
         "h" (cmd "RustToggleInlayHints"                    "Toggle inlay hints")

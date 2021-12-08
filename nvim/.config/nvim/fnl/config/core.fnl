@@ -14,7 +14,7 @@
 ;(vim.opt.fillchars:append "stl:─")
 
 ; Custom foldtext >>>
-(fn _G.custom_foldtext []:
+(fn _G.custom_foldtext []
   (if (= vim.opt.foldmethod._value "marker")
     (str.join (a.butlast (str.split (vim.fn.getline vim.v.foldstart)
                                     (a.first (str.split vim.opt.foldmarker._value ",")))))
@@ -92,14 +92,26 @@
 
 (utils.highlight-add :Sneak {:fg colors.light1 :bg colors.dark5}) ; labels
 (utils.highlight-add :SneakScope {:fg colors.dark1 :bg colors.neutral_aqua}) ; cursor
+(utils.highlight-add :RustInlayHint {:fg :#5b5f66}) ; labels
 
 
 ; Visual yank
 (vim.cmd "autocmd! TextYankPost * silent! lua vim.highlight.on_yank {higroup=\"IncSearch\", timeout=300}")
+(set vim.g.AutoPairsMultilineClose 0)
+
 ; rust.vim
 (set vim.g.rust_clip_command "xclip -selection clipboard")
 (set vim.g.vim_parinfer_filetypes ["carp" "fennel" "clojure"])
+(set vim.g.copilot_filetyps {:carp false :fennel false :clojure false})
+
 (set vim.g.parinfer_additional_filetypes ["yuck"])
+(set vim.g.rustfmt_autosave 1)
+
+; Minimap
+(utils.highlight-add :MinimapHighlight {:bg :#3e4452 :fg :5b5f66}) ; labels
+(utils.highlight-add :MinimapBaseHighlight {:fg colors.dark5}) ; labels
+(set vim.g.minimap_highlight "MinimapHighlight")
+(set vim.g.minimap_base_highlight "MinimapBaseHighlight")
 
 (fn _G.clean_no_name_empty_buffers []
   (let [bufs (a.filter #(and (a.empty? (vim.fn.bufname $1))
@@ -112,6 +124,6 @@
       (vim.cmd (.. "bdelete " (str.join " " bufs))))))
 
 (vim.cmd "autocmd! BufCreate * :call v:lua.clean_no_name_empty_buffers()")
-<<< 
+; <<< 
 
 ; vim:foldmarker=>>>,<<<

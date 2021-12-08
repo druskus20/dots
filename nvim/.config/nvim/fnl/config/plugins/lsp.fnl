@@ -27,10 +27,10 @@
       (vim.api.nvim_exec
         "augroup lsp_document_highlight
         autocmd! * <buffer> 
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight() 
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
         augroup END"
         false))))
+        ;autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight())))) 
 
 (fn better_root_pattern [patterns except-patterns]
   "match path if one of the given patterns is matched, EXCEPT if one of the except-patterns is matched"
@@ -72,6 +72,17 @@
 ;(init-lsp :elmls)
 ;(init-lsp :clangd)
 ;(init-lsp :ccls)
+;(init-lsp :ccls)
+
+(init-lsp :texlab
+          {:settings {:texlab {:chktex {:onOpenAndSave true :onEdit true}
+                               :build {:isContinuous true
+                                       :args ["-pdf"
+                                              "-pvc"
+                                              "-synctex=1"
+                                              "-interaction=nonstopmode" 
+                                              "%f"]}}}})
+
 
 (init-lsp :cssls {:filestypes ["css" "scss" "less" "stylus"]
                   :root_dir (lsp.util.root_pattern ["package.json" ".git"])
@@ -82,10 +93,12 @@
 (lsp.tsserver.setup {:root_dir (lsp.util.root_pattern "package.json")
                      :on_attach (fn [client bufnr] 
                                   (set client.resolved_capabilities.document_formatting false)
-                                  (on_attach client bufnr))})
+                                  (on_attach client bufnr))
 ; Sets rust-analyzer too
-(let [rust-tools (require "rust-tools")]
-  (rust-tools.setup {:tools {:inlay_hints {:show_parameter_hints true}}}))
+;(let [rust-tools (require "rust-tools")]
+;  (rust-tools.setup {:server {:settings {:rust-analyzer {:procMacro {:enable false} 
+;                                                         :diagnostics {:disabled {"macro-error" "unresolved-proc-macro"}}}}}
+                     :tools {:inlay_hints {:show_parameter_hints false}}})
 
 (let [sumneko_root_path (.. vim.env.HOME "/.local/share/lua-language-server")
       sumneko_binary (.. sumneko_root_path "/bin/Linux/lua-language-server")]

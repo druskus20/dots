@@ -7,6 +7,7 @@ alias la="ls -A"
 alias lh="ls -d -A .?*" # Shows only hidden files (only on current directory)
 alias rm="rm -i"
 alias rm='echo "Fuck you"' 
+alias "git reset --hard"='echo "Fuck you"' 
 
 alias open="xdg-open"
 alias vim="nvim"
@@ -35,9 +36,10 @@ alias svn="svn --config-dir "$XDG_CONFIG_HOME"/subversion"
 alias picom="picom --config $PICOM_CONFIG_PATH"
 alias startx="startx \"$XDG_CONFIG_HOME/X11/xinitrc\""
 
-alias ewwt="cargo run -- -c ~/.config/eww-testing"
-alias vimt="nvim -u ~/.config/nvim-testing/init.lua"
-alias nvimt="nvim -u ~/.config/nvim-testing/init.lua"
+alias ewwt="eww -c ~/.config/eww-testing"
+alias ewwc="cargo run -- --config ~/.config/eww-circular"
+alias ewwg="cargo run -- --config ~/.config/eww-graph"
+alias ewwt="cargo run -- --config ~/.config/eww-trans"
 
 # Swallow some applications
 alias devour="devour"

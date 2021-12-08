@@ -1,6 +1,5 @@
 configuration {
 
-  theme: "theme";
   modi: "drun,run";
 
   fixed-num-lines: true;
@@ -158,6 +157,7 @@ configuration {
 /*	me-accept-entry: "MouseDPrimary";*/
 /*	me-accept-custom: "Control+MouseDPrimary";*/
 
+@theme "theme"
 
 /*
 vim:ft=css 
