@@ -1,14 +1,24 @@
 (module config.plugins.cmp
   {autoload {a aniseed.core
+             str aniseed.string
              cmp cmp}})
 
+
+(defn shorten-string [s n]
+  (let [len (length s)]
+    (if (> len n) 
+      (string.sub s 1 (- n len))
+      s)))
 ; check this for coloring maybe
 ; https://github.com/hrsh7th/nvim-cmp/blob/ada9ddeff71e82ad0e52c9a280a1e315a8810b9a/lua/cmp/entry.lua#L199
 (defn item-formatter [item vim-item]
-  (let [padding (string.rep " " (- 10 (vim.fn.strwidth vim-item.abbr)))
-        details (?. item :completion_item :detail)]
+  (let [abbr vim-item.abbr
+        ;abbr (shorten-string vim-item.abbr 1 25)
+        padding (string.rep " " (- 10 (vim.fn.strwidth abbr)))
+        details (?. item :detail)]
+        ;details (?. item :completion_item :detail)]
     (when details
-      (set vim-item.abbr (.. vim-item.abbr padding " " details))))
+      (set vim-item.abbr (.. abbr padding " " details))))
   vim-item)
 
 (cmp.setup 

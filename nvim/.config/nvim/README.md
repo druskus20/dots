@@ -16,6 +16,14 @@ configure nvim using [Fennel](https://fennel-lang.org/).
 * Comfortable navigation
 * Aesthetically pleasing
 
+## Changelog 
+These are (some of) the changes that I've been making
+- 09-12-2021: Added range_code_action keybinds
+- 09-12-2021: Added lsp_signature for function signature hints
+- 09-12-2021: Reversed the order of lsp diagnostics
+- 09-12-2021: Disabled cmp-vsnip
+
+
 ## Installation
 My distro of choice is Arch Linux, I've not tested this config in any other
 systems other than my own. 

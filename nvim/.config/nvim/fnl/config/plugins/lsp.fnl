@@ -41,8 +41,8 @@
 (def default-capabilities
   (let [capabilities (vim.lsp.protocol.make_client_capabilities)]
     (set capabilities.textDocument.completion.completionItem.snippetSupport true)
-    (cmp_nvim_lsp.update_capabilities capabilities))) ; cmp stuff
-;    capabilities))                                   ; non cmp stuff
+;   (cmp_nvim_lsp.update_capabilities capabilities))) ; cmp stuff
+    capabilities))                                   ; non cmp stuff
 
 (fn init-lsp [lsp-name ?opts]
   "initialize a language server with defaults"

@@ -123,6 +123,14 @@
   {:prefix :<leader>
    :noremap false
    :mode :n})
+
+
+(wk.register  
+  {"m" {:name "+Code actions"
+        "v" (cmd "Lspsaga range_code_action"               "Apply range codeaction") 
+        "V" (cmd "Lspsaga range_code_action"               "Apply range codeaction")}} 
+  {:prefix :<leader>
+   :mode :v})
 ; <<<
 
 ; vim:foldmarker=>>>,<<<

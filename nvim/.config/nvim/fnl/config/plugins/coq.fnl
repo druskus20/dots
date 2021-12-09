@@ -7,5 +7,5 @@
                          :clients.tree_sitter.enabled false
                          :display.icons.mode "short"})
                          
-;(vim.cmd "autocmd! InsertEnter * COQnow --shut-up")
+(vim.cmd "autocmd! InsertEnter * COQnow --shut-up")
 

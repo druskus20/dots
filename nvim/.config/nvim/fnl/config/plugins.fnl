@@ -53,7 +53,7 @@
 
   ; cmp stuff
   :PaterJason/cmp-conjure {}
-  :hrsh7th/cmp-vsnip {}
+  ;:hrsh7th/cmp-vsnip {}
   :hrsh7th/cmp-nvim-lsp {} ; Configured in plguins/lsp.fnl
   :hrsh7th/cmp-buffer {}
   :hrsh7th/cmp-path {}
@@ -64,7 +64,7 @@
                      :requires [:hrsh7th/cmp-nvim-lsp 
                                 :hrsh7th/cmp-buffer
                                 :hrsh7th/cmp-conjure
-                                :hrsh7th/cmp-vsnip
+  ;                              :hrsh7th/cmp-vsnip
                                 :hrsh7th/cmp-nvim-lua
                                 :hrsh7th/cmp-calc
                                 :hrsh7th/cmp-path
