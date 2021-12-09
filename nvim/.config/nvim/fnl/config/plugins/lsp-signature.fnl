@@ -5,4 +5,5 @@
 
 (lsp-signature.setup {:hint_enable false
                       :doc_lines 0
+                      :use_lspsaga false
                       :handler_opts {:border :rounded}})
