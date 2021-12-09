@@ -79,8 +79,8 @@ I use [stow](https://www.gnu.org/software/stow) to manage my dotfiles.
 
 ## TODO
 - [x] Look into Jsonnet to: split configs between multiple machines, have unified colors...
-- [ ] Switch to xmonad (or wayland... if nvidia wants...)
+- [ ] Switch to xmonad (or wayland... if ~~nvidia~~ sway wants...)
 - [x] Redo zsh config
-- [ ] Redo nvim config using fennel
+- [x] Redo nvim config using fennel
 - [x] Create eww config, replace dunst (?), polybar (?)...
 - [x] Migrate scripts to rofi
