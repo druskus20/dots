@@ -13,6 +13,26 @@
 (vim.opt.fillchars:append "fold:─")
 ;(vim.opt.fillchars:append "stl:─")
 
+; Clean empty buffers  >>>
+(fn _G.clean_no_name_empty_buffers []
+  (let [bufs (a.filter #(and (a.empty? (vim.fn.bufname $1))
+                             (< (vim.fn.bufwinnr $1) 0)
+                             (vim.api.nvim_buf_is_loaded $1)
+                             (= "" (str.join (utils.buffer-content $1)))
+                             (vim.api.nvim_buf_get_option $1 "buflisted"))
+                       (vim.fn.range 1 (vim.api.nvim_buf_get_number "$")))]
+    (when (not (a.empty? bufs))
+      (vim.cmd (.. "bdelete " (str.join " " bufs))))))
+
+(vim.cmd "autocmd! BufCreate * :call v:lua.clean_no_name_empty_buffers()")
+; <<<
+
+; Set LSP diagnostic order >>>
+(tset vim.lsp.handlers :textDocument/publishDiagnostics
+      (vim.lsp.with vim.lsp.diagnostic.on_publish_diagnostics
+                    {:severity_sort true}))
+; <<<
+
 ; Custom foldtext >>>
 (fn _G.custom_foldtext []
   (if (= vim.opt.foldmethod._value "marker")
@@ -81,7 +101,7 @@
 (utils.highlight-add :CursorLineNr {:fg colors.light2 :bg colors.dark4}) ; This line number
 (utils.highlight-add :LineNr {:fg colors.light5}) ; Other line numbers
 ; Fixes twilight issue
-(utils.highlight-add :Normal {:bg colors.dark1}) 
+;(utils.highlight-add :Normal {:bg colors.dark1})  TODO: 
 ; Completion popups
 (utils.highlight-add :Pmenu {:bg colors.dark0}) 
 (utils.highlight-add :PmenuSbar {:fg colors.dark0 :bg colors.dark0}) 
@@ -94,6 +114,8 @@
 (utils.highlight-add :SneakScope {:fg colors.dark1 :bg colors.neutral_aqua}) ; cursor
 (utils.highlight-add :RustInlayHint {:fg :#5b5f66}) ; labels
 
+
+(utils.highlight-add :LspSignatureActiveParameter {:bg colors.dark3})  
 
 ; Visual yank
 (vim.cmd "autocmd! TextYankPost * silent! lua vim.highlight.on_yank {higroup=\"IncSearch\", timeout=300}")
@@ -113,21 +135,6 @@
 (set vim.g.minimap_highlight "MinimapHighlight")
 (set vim.g.minimap_base_highlight "MinimapBaseHighlight")
 
-(fn _G.clean_no_name_empty_buffers []
-  (let [bufs (a.filter #(and (a.empty? (vim.fn.bufname $1))
-                             (< (vim.fn.bufwinnr $1) 0)
-                             (vim.api.nvim_buf_is_loaded $1)
-                             (= "" (str.join (utils.buffer-content $1)))
-                             (vim.api.nvim_buf_get_option $1 "buflisted"))
-                       (vim.fn.range 1 (vim.api.nvim_buf_get_number "$")))]
-    (when (not (a.empty? bufs))
-      (vim.cmd (.. "bdelete " (str.join " " bufs))))))
-
-(tset vim.lsp.handlers :textDocument/publishDiagnostics
-      (vim.lsp.with vim.lsp.diagnostic.on_publish_diagnostics
-                    {:severity_sort true}))
-
-(vim.cmd "autocmd! BufCreate * :call v:lua.clean_no_name_empty_buffers()")
 ; <<< 
 
 ; vim:foldmarker=>>>,<<<

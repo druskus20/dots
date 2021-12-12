@@ -90,7 +90,10 @@
   :akinsho/nvim-bufferline.lua {:opt false :config (mod :bufferline)}
   :tweekmonster/startuptime.vim {:cmd ["StartupTime"]} 
   :eraserhd/parinfer-rust {:run "cargo build --release"}
-  :druskus20/sourcery {:opt false :requires [:rktjmp/lush.nvim] :config (mod :sourcery)}
+  ;:druskus20/sourcery-lush {:opt false :requires [:rktjmp/lush.nvim] :config (mod :sourcery)}
+  ;:folke/tokyonight.nvim {}
+  ;:druskus20/sourcery.nvim {:config #(vim.cmd "colorscheme sourcery")} 
+  :/home/druskus/code/sourcery.nvim {:config #(vim.cmd "colorscheme sourcery")} 
   ;:mcchrish/zenbones.nvim {} 
   :folke/persistence.nvim {:config (mod :persistence)}
   ;:druskus20/dashboard-nvim {:config (mod :dashboard)}
