@@ -98,14 +98,14 @@
 ;(let [rust-tools (require "rust-tools")]
 ;  (rust-tools.setup {:server {:settings {:rust-analyzer {:procMacro {:enable false} 
 ;                                                         :diagnostics {:disabled {"macro-error" "unresolved-proc-macro"}}}}}
-                     :tools {:inlay_hints {:show_parameter_hints false}}})
+                     :tools {:inlay_hints {:show_parameter_hints false}}}
 
-(let [sumneko_root_path (.. vim.env.HOME "/.local/share/lua-language-server")
-      sumneko_binary (.. sumneko_root_path "/bin/Linux/lua-language-server")]
+;(let [sumneko_root_path "/bin/lua-language-server"
+;      ;sumneko_root_path (.. vim.env.HOME "/.local/share/lua-language-server")
+;      sumneko_binary (.. sumneko_root_path "/bin/Linux/lua-language-server")
   (init-lsp 
     :sumneko_lua
-    {:cmd [sumneko_binary "-E" (.. sumneko_root_path "/main.lua")]
-     :settings {:Lua {:runtime {:version "LuaJIT"
+    {:settings {:Lua {:runtime {:version "LuaJIT"
                                 :path (vim.split package.path ";")}
                       :diagnostics {:globals ["vim"]}
                       :workspace {:library {(vim.fn.expand "$VIMRUNTIME/lua") true
