@@ -53,6 +53,7 @@
    "p"  (cmd "Telescope find_files"       "Browse files")
    ":"  (cmd "Telescope commands"         "Search commands")
    "e"  (cmd "TroubleToggle"              "Browse Errors")
+   "y"  (rebind "\"+y"                    "Yank to system clipboard")
    "t"  (cmd "TodoTrouble"                "Browse TODOs")
    "w"  (cmd "w"                          "Save file")
    "s"  (cmd "sp"                         "Split Horizontally")

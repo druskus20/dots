@@ -8,10 +8,10 @@
             :options {:wrap true
                       :relativenumber false
                       :number false
-                      :cursorline false}
-            :plugins 
-              {:gitsigns {:enabled true}
-               :options {:showcmd false
-                         :ruler false
-                         :enabled true}
-               :twilight {:enabled true}}}})
+                      :cursorline false}}
+   :plugins 
+     {:gitsigns {:enabled true}
+      :options {:showcmd false
+                :ruler false
+                :enabled true}
+      :twilight {:enabled true}}})
