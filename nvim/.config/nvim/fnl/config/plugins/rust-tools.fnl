@@ -2,7 +2,7 @@
   {autoload {rust-tools rust-tools}})
 
 (rust-tools.setup {:tools 
-                   {:autoSetHints false
+                   {:autoSetHints true
                     :inlay_hints {:show_parameter_hints true
                                   :other_hints_prefix "» "
                                   :only_current_line_autocmd :CursorHold

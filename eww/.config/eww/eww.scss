@@ -86,3 +86,17 @@ window {
 .revealer-on-hover .eventbox:hover {
   color: $foreground;
 }
+
+
+.clock {
+  padding: 30px;
+  font-family: "Roboto Mono";
+  font-size: 1rem;
+  > .title {
+    font-size: 1.5rem;
+  }
+  > .remaining_time {
+    color: $red;
+    font-size: 6em;
+  }
+}

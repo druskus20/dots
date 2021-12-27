@@ -69,8 +69,8 @@
 ;(init-lsp :yamlls)
 ;(init-lsp :html)
 ;(init-lsp :svelte)
-;(init-lsp :elmls)
-;(init-lsp :clangd)
+(init-lsp :elmls)
+(init-lsp :clangd)
 ;(init-lsp :ccls)
 ;(init-lsp :ccls)
 

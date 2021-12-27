@@ -33,6 +33,7 @@
 
 ! -------------------- XCURSOR ------------------
 Xcursor.theme: cursor-theme
+Xcursor.size:  32
 
 ! -------------------- XFT ---------------------- 
 Xft.dpi:       96

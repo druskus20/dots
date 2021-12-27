@@ -16,8 +16,7 @@
   :monitor 0
   :hexpand false
   :vexpand false
-  :geometry (geometry :x 0 :y 0 :width "100%" :height "20px")
-  :anchor "top left"
+  :geometry (geometry :anchor "top left" :x 0 :y 0 :width "100%" :height "20px")
   :reserve (struts :distance "20px" :side "top")
   (bar0))
 
@@ -25,11 +24,19 @@
   :monitor 1
   :hexpand false
   :vexpand false
-  :geometry (geometry :x 0 :y 0 :width "100%" :height "20px")
-  :anchor "top left"
+  :geometry (geometry :anchor "top left" :x 0 :y 0 :width "100%" :height "20px")
   :reserve (struts :distance "20px" :side "top")
   (bar1))
+
+(defwindow clock
+  :monitor 1
+  :hexpand false
+  :vexpand false
+  :geometry (geometry :anchor "bottom right" :x 0 :y 0 :width "100%" :height "200px")
+  :reserve (struts :distance "200px" :side "bottom")
+  (clock))
 ; foldend
+
 
 ; Bar foldstart
 (defwidget bar0 []
@@ -71,6 +78,7 @@
          :spacing 12
          :hexpand true
          :space-evenly false)))
+
 ; foldend
 
 ; Variables foldstart
@@ -82,6 +90,7 @@
 (defpoll github_poll :initial "" :interval "1m" "./modules/github.sh")
 (defpoll ping_poll :interval "10s" "./modules/ping.sh")
 
+(deflisten remaining_listen :initial "" "remaining-time")
 (deflisten workspaces0_listen "./modules/workspaces.sh HDMI-0")
 (deflisten workspaces1_listen "./modules/workspaces.sh HDMI-1")
 (deflisten player_listen :initial '{"show": "no", "content": ""}' "./modules/player.sh")
@@ -181,6 +190,19 @@
     (eventbox :onscroll `eww update microphone_poll="$(./modules/microphone.sh {})"`
       (button :onclick `eww update microphone_poll="$(./modules/microphone.sh toogle)"`
         (label :text {microphone_poll.content})))))
+; foldend
+
+; foldend
+
+; Clock foldstart 
+(defwidget clock []
+  (box :orientation "v"
+       :space-evenly false
+       :class "clock"
+
+    (label :class "title" :text "Remaining time today") 
+    (label :vexpand true :class "remaining_time" :text remaining_listen)))
+
 ; foldend
 
 ; vim:foldmarker=foldstart,foldend

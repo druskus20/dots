@@ -1,0 +1,4 @@
+#!/bin/sh
+
+~/bld/godot-jvm/godot.x11.opt.tools.64 %f
+

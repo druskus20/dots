@@ -1,3 +1,3 @@
 #!/bin/bash
 # Screenshots an image after letting the user select the area
-maim -s | tee >(xclip -selection clipboard -t image/png) ~/img/screenshots/"$(date +%s)".png
+maim -u -s | tee >(xclip -selection clipboard -t image/png) ~/img/screenshots/"$(date +%s)".png
