@@ -35,4 +35,7 @@ bspc rule -a "*:*:discord.com is sharing your screen." hidden=on
 bspc rule -a "eww-test" state=floating
 
 bspc rule -a "*:*:Spikes" monitor=HDMI-1 state=floating 
+bspc rule -a "*:Godot_Engine:*" state=floating 
 
+# Stop intellij IDEs from being dumb 
+wmname LG3D

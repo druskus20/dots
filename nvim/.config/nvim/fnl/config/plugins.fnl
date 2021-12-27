@@ -32,9 +32,11 @@
 
 ; Plugins foldstart                                                                   
 (use
-  :lewis6991/impatient.nvim {} ; try
+  :lewis6991/impatient.nvim {} 
   :Olical/aniseed {:opt false}
-  :Olical/conjure {} ; test
+  :Olical/conjure {} 
+  :Olical/nvim-local-fennel {}
+
 
   ; lsp stuff
   :neovim/nvim-lspconfig {:config (mod :lsp)}
@@ -75,7 +77,8 @@
   :lewis6991/gitsigns.nvim {:opt false :config (mod :gitsigns)}
   :kyazdani42/nvim-web-devicons {}
   :folke/todo-comments.nvim {:config (mod :todo-comments)}
-  :folke/twilight.nvim {:config (mod :twilight)}
+  ;:folke/twilight.nvim {:config (mod :twilight)} 
+  :benstockil/twilight.nvim {:config (mod :twilight)} ; Fix black bg
   :folke/zen-mode.nvim {:after [:gitsigns.nvim] :config (mod :zen-mode)}
   
   :nvim-telescope/telescope.nvim {:cmd ["Telescope"]
@@ -122,6 +125,7 @@
   :rhysd/conflict-marker.vim {}
   :wfxr/minimap.vim {}
   :github/copilot.vim {}
+  :bfrg/vim-cpp-modern {}
   :druskus20/dostack.vim {})
   ;:/home/druskus/code/dostack.vim {})
   ;:kmonad/kmonad-vim {})

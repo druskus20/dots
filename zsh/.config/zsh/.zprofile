@@ -24,8 +24,9 @@ export LESS_TERMCAP_so=$'\e[01;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
-# Stop intellij IDEs from being dumb 
+# Stop intellij IDEs from being dumb / configure the IDE
 export _JAVA_AWT_WM_NONREPARTENTING=1
+export JAVA_HOME="$HOME/.local/share/JetBrains/Toolbox/apps/IDEA-C/ch-0/212.5457.46/jbr/"
 
 # Give permision to do stuff to noisetorch
 #sudo setcap 'CAP_SYS_RESOURCE=+ep' /bin/noisetorch
@@ -60,6 +61,7 @@ export TEXMFVAR=$XDG_CACHE_HOME/texlive/texmf-var
 export TEXMFCONFIG=$XDG_CONFIG_HOME/texlive/texmf-config
 export XINITRC="$XDG_CONFIG_HOME"/x11/xinitrc
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
+export ELM_HOME="$XDG_CONFIG_HOME"/elm
 
 # Fails with LightDM
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
