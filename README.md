@@ -2,6 +2,8 @@
   <img width="100%" src=".github/cover.svg">
 </p>
 
+- [zsh](zsh/.config/zsh)
+- [neovim](nvim/.config/nvim)
 
 ## Why? 
 Having a backup of my config files is generally handy.
