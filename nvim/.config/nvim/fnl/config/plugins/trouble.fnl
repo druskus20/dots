@@ -4,21 +4,15 @@
 (trouble.setup
   {:width 50
    :position :bottom
-   :use_lsp_diagnostic_signs false
    :fold_closed ""
    :signs {:error ""
            :hint ""
            :information ""
            :other "﫠"
            :warning ""}
-   :mode :lsp_workspace_diagnostics
-   :auto_open false
    :fold_open ""
-   :auto_fold false
    :icons true
-   :auto_preview true
    :height 10
-   :indent_lines true
    :action_keys {:open_tab {1 :<c-t>}
                  :toggle_mode :m
                  :cancel :<esc>

@@ -1,6 +1,5 @@
 ; core.fnl 
 ; Core settings and options
-
 (module config.core 
   {autoload { nvim aniseed.nvim 
               a aniseed.core str aniseed.string
@@ -134,6 +133,11 @@
 (utils.highlight-add :MinimapBaseHighlight {:fg colors.dark5}) ; labels
 (set vim.g.minimap_highlight "MinimapHighlight")
 (set vim.g.minimap_base_highlight "MinimapBaseHighlight")
+
+; Horizontal separator (feline)
+(utils.highlight-add :StatusLineNC {:bg "NONE" :fg colors.light1})
+
+(set vim.g.copilot_filetypes {:TelescopePrompt false}) 
 
 ; <<< 
 

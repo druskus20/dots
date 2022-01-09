@@ -44,12 +44,12 @@
   :ray-x/lsp_signature.nvim {:config (mod :lsp-signature)}
   ;:tami5/lspsaga.nvim {:config (mod :lspsaga)}
 
-  :tami5/lspsaga.nvim {:commit "373bc031b39730cbfe492533c3acfac36007899a" :config (mod :lspsaga)}
+  :tami5/lspsaga.nvim {:config (mod :lspsaga)}
   :weilbith/nvim-code-action-menu {}
 
-  :Saecki/crates.nvim {:requires [:nvim-lua/plenary.nvim]
-                       :event ["BufRead Cargo.toml"]
-                       :config (setup :crates)}
+  ;:Saecki/crates.nvim {:requires [:nvim-lua/plenary.nvim]
+  ;                     :event ["BufRead Cargo.toml"]
+  ;                     :config (setup :crates)
 
   :hrsh7th/vim-vsnip {}
 
@@ -88,7 +88,8 @@
   :folke/which-key.nvim {} ; Config is in config/keybinds.fnl
   :norcalli/nvim-colorizer.lua {:config (mod :colorizer)} ; I do want one of those
   :tpope/vim-surround {} 
-  :folke/trouble.nvim {:cmd ["Trouble" "TroubleToggle"] :config (mod :trouble)}
+  :folke/trouble.nvim {:config (mod :trouble)}
+  ;:folke/trouble.nvim {:cmd ["Trouble" "TroubleToggle"] :config (mod :trouble)}
   :Famiu/feline.nvim {:opt false :config (mod :feline)}
   :akinsho/nvim-bufferline.lua {:opt false :config (mod :bufferline)}
   :tweekmonster/startuptime.vim {:cmd ["StartupTime"]} 
@@ -134,5 +135,7 @@
 
 ; https://github.com/lewis6991/impatient.nvim#installation
 (require "packer_compiled")
+
+; TODO Set up nvim dap / rust tools dap 
 
 ; vim:foldmarker=foldstart,foldend

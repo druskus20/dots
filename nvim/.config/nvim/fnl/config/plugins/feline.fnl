@@ -33,7 +33,6 @@
 
 ;(def bar-bg colors.dark1)
 (def bar-bg colors.dark0)
-(def horiz-separator-color colors.light1) 
 
 ; https://github.com/famiu/feline.nvim/blob/master/USAGE.md#thin-line-for-horizontal-splits
 ; Not working I think because of plugin order?
@@ -71,8 +70,8 @@
       (or-empty (str.join " | " s))))
 
 (defn lsp-diagnostic-component [kind color]
-   {:enabled #(~= 0 (vim.lsp.diagnostic.get_count 0 kind))
-    :provider #(spaces (vim.lsp.diagnostic.get_count 0 kind))
+   {:enabled #(~= 0 (length (vim.diagnostic.get 0 {:severity kind})))
+    :provider #(spaces (length (vim.diagnostic.get 0 {:severity kind})))
     :left_sep ""
     :right_sep ""
     :hl {:fg bar-bg :bg color}})
@@ -113,10 +112,10 @@
 
 (tset components.active 3
      [{:provider filetype-with-icon :right_sep " " :hl #(vim-mode-hl true)}
-      (lsp-diagnostic-component "Information" colors.neutral_green)
-      (lsp-diagnostic-component "Hint" colors.neutral_aqua)
-      (lsp-diagnostic-component "Warning" colors.neutral_yellow)  
-      (lsp-diagnostic-component "Error" colors.neutral_red)
+      (lsp-diagnostic-component vim.diagnostic.severity.INFO colors.neutral_green)
+      (lsp-diagnostic-component vim.diagnostic.severity.HINT colors.neutral_aqua)
+      (lsp-diagnostic-component vim.diagnostic.severity.WARN colors.neutral_yellow)  
+      (lsp-diagnostic-component vim.diagnostic.severity.ERROR colors.neutral_red)
       {:provider coordinates :hl #(vim-mode-hl false)}])
 
 (tset components.inactive 1
@@ -125,10 +124,7 @@
 ; <<< 
 
 (feline.setup 
-  {:colors {:fg colors.light1 :bg colors.dark0}
-   :default_hl  {:inactive 
-                 {:fg horiz-separator-color 
-                  :bg "NONE"}}
+  {:theme {:fg colors.light1 :bg colors.dark0}
    :components components})
 
 ; vim:foldmarker=>>>,<<<
