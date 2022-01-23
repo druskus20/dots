@@ -37,6 +37,9 @@
   :Olical/conjure {} 
   :Olical/nvim-local-fennel {}
 
+  :nvim-treesitter/nvim-treesitter {:config (mod :treesitter) 
+                                    :event ["BufEnter"]
+                                    :run ":TSUpdate"}
 
   ; lsp stuff
   :neovim/nvim-lspconfig {:config (mod :lsp)}
@@ -47,9 +50,9 @@
   :tami5/lspsaga.nvim {:config (mod :lspsaga)}
   :weilbith/nvim-code-action-menu {}
 
-  ;:Saecki/crates.nvim {:requires [:nvim-lua/plenary.nvim]
-  ;                     :event ["BufRead Cargo.toml"]
-  ;                     :config (setup :crates)
+  :Saecki/crates.nvim {:requires ["nvim-lua/plenary.nvim"]
+                       :event ["BufRead Cargo.toml"]
+                       :config (setup :crates)}
 
   :hrsh7th/vim-vsnip {}
 
@@ -127,6 +130,7 @@
   :wfxr/minimap.vim {}
   :github/copilot.vim {}
   :bfrg/vim-cpp-modern {}
+  :qnighy/lalrpop.vim {}
   :druskus20/dostack.vim {})
   ;:/home/druskus/code/dostack.vim {})
   ;:kmonad/kmonad-vim {})
