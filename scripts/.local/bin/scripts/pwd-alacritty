@@ -1,0 +1,3 @@
+#!/bin/sh
+
+alacritty --working-directory="$(pwd)"
