@@ -93,24 +93,21 @@
 (lsp.tsserver.setup {:root_dir (lsp.util.root_pattern "package.json")
                      :on_attach (fn [client bufnr] 
                                   (set client.resolved_capabilities.document_formatting false)
-                                  (on_attach client bufnr))
+                                  (on_attach client bufnr))})
 ; Sets rust-analyzer too
 ;(let [rust-tools (require "rust-tools")]
 ;  (rust-tools.setup {:server {:settings {:rust-analyzer {:procMacro {:enable false} 
 ;                                                         :diagnostics {:disabled {"macro-error" "unresolved-proc-macro"}}}}}
-                     :tools {:inlay_hints {:show_parameter_hints false}}}
+;                     :tools {:inlay_hints {:show_parameter_hints false}}}
 
-;(let [sumneko_root_path "/bin/lua-language-server"
-;      ;sumneko_root_path (.. vim.env.HOME "/.local/share/lua-language-server")
-;      sumneko_binary (.. sumneko_root_path "/bin/Linux/lua-language-server")
-  (init-lsp 
-    :sumneko_lua
-    {:settings {:Lua {:runtime {:version "LuaJIT"
-                                :path (vim.split package.path ";")}
-                      :diagnostics {:globals ["vim"]}
-                      :workspace {:library {(vim.fn.expand "$VIMRUNTIME/lua") true
-                                            (vim.fn.expand "$VIMRUNTIME/lua/vim/lsp") true}}
-                      :telemetry false}}}))
+(init-lsp 
+  :sumneko_lua
+  {:settings {:Lua {:runtime {:version "LuaJIT"
+                              :path (vim.split package.path ";")}
+                    :diagnostics {:globals ["vim"]}
+                    :workspace {:library {(vim.fn.expand "$VIMRUNTIME/lua") true
+                                          (vim.fn.expand "$VIMRUNTIME/lua/vim/lsp") true}}
+                    :telemetry false}}})
 ; <<< 
 
 (vim.cmd "highlight link LspSemantic_type Include")
