@@ -180,6 +180,10 @@ font:
 
 # Colors 
 colors:
+  cursor:
+    text: '#2C2E43'
+    cursor: '#bfbfcb'
+
   # Default colors
   primary:
     background: '#2C2E43'

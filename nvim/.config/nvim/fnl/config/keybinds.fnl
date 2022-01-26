@@ -45,6 +45,16 @@
     (vim.cmd "RustCodeAction")
     (vim.cmd "Lspsaga code_action")))
 
+(set vim.g.diagnostics_visible true)
+(defn toggle-diagnostics []
+  (if vim.g.diagnostics_visible
+      (do
+        (set vim.g.diagnostics_visible false)
+        (vim.diagnostic.disable))
+      (do
+        (set vim.g.diagnostics_visible true)
+        (vim.diagnostic.enable))))
+
 (wk.register  
   {"h"  (cmd "bprevious"                  "Previous buffer")
    "l"  (cmd "bnext"                      "Next buffer")
@@ -62,6 +72,7 @@
    "m" {:name "+Code actions"
         ;"d" [vim.lsp.buf.hover                        "Show documentation"] 
         "d" (cmd "Lspsaga hover_doc"                       "Show documentation") 
+        "l"  [toggle-diagnostics               "Toggle diagnostics"]
         ;"b" (cmd "Lspsaga lsp_finder"                      "Find stuff") 
         "x" (cmd "Lspsaga preview_definition"              "Preview definition") 
         "o" (cmd "SymbolsOutline"                          "Outline") 
@@ -100,7 +111,7 @@
         "n" (cmd "set nonumber! norelativenumber!"  "Numbers") 
         "c" (cmd "set nocursorline!"                "Cursor line") 
         "z" (cmd "ZenMode"                          "Zen mode") 
-        "i" (cmd "IndentGuidesToggle"               "Indent guides")
+        "i" (cmd "IndentBlanklineToggle"            "Indent guides")
         "t" (cmd "Twilight"                         "Twilight")}} 
    
   {:prefix :<leader>

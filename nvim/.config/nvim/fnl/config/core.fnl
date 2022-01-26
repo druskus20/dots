@@ -113,6 +113,11 @@
 (utils.highlight-add :SneakScope {:fg colors.dark1 :bg colors.neutral_aqua}) ; cursor
 (utils.highlight-add :RustInlayHint {:fg :#5b5f66}) ; labels
 
+;(utils.highlight-add :Cursor {:fg :#ffff00 :bg :#ff0000}) 
+;(utils.highlight-add :lCursor {:fg :#ffff00 :bg :#ff0000})
+;(utils.highlight-add :CursorIM {:fg :#ffff00 :bg #ff0000}) 
+;(utils.highlight-add :TermCursor {:cterm :NONE :bg #ff0000}) 
+;(utils.highlight-add :TermCursorNC {:cterm :NONE :bg #ff0000}) 
 
 (utils.highlight-add :LspSignatureActiveParameter {:bg colors.dark3})  
 
@@ -134,6 +139,7 @@
 (set vim.g.minimap_highlight "MinimapHighlight")
 (set vim.g.minimap_base_highlight "MinimapBaseHighlight")
 
+(utils.highlight-add :IndentBlankLineIndent1 {:fg colors.dark4 :gui :nocombine}) 
 ; Horizontal separator (feline)
 (utils.highlight-add :StatusLineNC {:bg "NONE" :fg colors.light1})
 
