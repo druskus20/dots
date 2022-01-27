@@ -10,6 +10,9 @@
 (def codelldb-path (.. extension-path :adapter/codelldb))
 (def liblldb-path (.. extension-path :lldb/lib/liblldb.so))
 
+(vim.cmd "autocmd FileType rust nnoremap <localleader>d :RustDebuggables<CR>")
+(vim.cmd "autocmd FileType rust nnoremap <localleader>r :RustRunnables<CR>")
+
 (rust-tools.setup {:tools 
                     {:autoSetHints true
                      :inlay_hints {:show_parameter_hints true

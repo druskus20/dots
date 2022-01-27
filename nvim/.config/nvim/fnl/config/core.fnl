@@ -113,6 +113,9 @@
 (utils.highlight-add :SneakScope {:fg colors.dark1 :bg colors.neutral_aqua}) ; cursor
 (utils.highlight-add :RustInlayHint {:fg :#5b5f66}) ; labels
 
+; SymbolsOutline
+(utils.highlight-add :FocusedSymbol {:bg colors.dark6})
+
 ;(utils.highlight-add :Cursor {:fg :#ffff00 :bg :#ff0000}) 
 ;(utils.highlight-add :lCursor {:fg :#ffff00 :bg :#ff0000})
 ;(utils.highlight-add :CursorIM {:fg :#ffff00 :bg #ff0000}) 
@@ -152,6 +155,7 @@
 
 (set vim.g.copilot_filetypes {:TelescopePrompt false}) 
 
+;(set vim.opt.updatetime 500) ;NOTE:  might slow down vim 
 ; <<< 
 
 ; vim:foldmarker=>>>,<<<
