@@ -121,6 +121,13 @@
 
 (utils.highlight-add :LspSignatureActiveParameter {:bg colors.dark3})  
 
+
+(utils.highlight-add :DapBreakpoint {:fg colors.neutral_red}) 
+(utils.highlight-add :DapBreakpointCondition {:fg colors.bright_red}) 
+(utils.highlight-add :DapLogPoint {:fg colors.neutral_blue}) 
+(utils.highlight-add :DapStopped {:fg colors.neutral_yellow}) 
+(utils.highlight-add :DapBrakpointRejected {:fg colors.faded_orange}) 
+
 ; Visual yank
 (vim.cmd "autocmd! TextYankPost * silent! lua vim.highlight.on_yank {higroup=\"IncSearch\", timeout=300}")
 (set vim.g.AutoPairsMultilineClose 0)
