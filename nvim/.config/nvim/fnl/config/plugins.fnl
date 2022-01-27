@@ -150,6 +150,4 @@
 ; https://github.com/lewis6991/impatient.nvim#installation
 (require "packer_compiled")
 
-; TODO: Set up nvim dap / rust tools dap 
-
 ; vim:foldmarker=foldstart,foldend
