@@ -62,11 +62,20 @@
    "o"  (cmd "Telescope live_grep"        "Grep files")
    "p"  (cmd "Telescope find_files"       "Browse files")
    ":"  (cmd "Telescope commands"         "Search commands")
-   "e"  (cmd "TroubleToggle"              "Browse Errors")
+	 "d" {:name "+Debugging"
+				"b" [#(req dap.toggle_breakpoint)    "Toggle breakpoint"]
+				"u" [#(req dapui.toggle)             "Toggle dap ui"]
+				"c" [#(req dap.step_into)            "Continue"]
+				"r" [(. (require "dap") :repl :open) "Open repl"]
+				"s" {:name "+Step"
+						 "o" [#(req dap.step_over)       "Step over"]
+						 "u" [#(req dap.step_out)        "Step out"]
+						 "i" [#(req dap.step_into)       "Step into"]}}
+   "e"  (cmd "TroubleToggle"              "Browse errors")
    "y"  (rebind "\"+y"                    "Yank to system clipboard")
    "t"  (cmd "TodoTrouble"                "Browse TODOs")
    "w"  (cmd "w"                          "Save file")
-   "s"  (cmd "sp"                         "Split Horizontally")
+   "s"  (cmd "sp"                         "Split horizontally")
    "S"  (cmd "vs"                         "Split vertically")
    "a" {:name "+AnyJump"}
    "m" {:name "+Code actions"
@@ -121,12 +130,12 @@
   {"c" {:name "+NerdCommenter"
         "$"       (cmd "<Plug>NERDCommenterToEOL"         "To EOL")
         "<space>" (cmd "<Plug>NERDCommenterToggle"        "Toggle")
-        "a"       (cmd "<Plug>NERDCommenterAltDelims"     "Alt Delimiters")  
+        "a"       (cmd "<Plug>NERDCommenterAltDelims"     "Alt delimiters")  
         "A"       (cmd "<Plug>NERDCommenterAppend"        "Append") 
-        "b"       (cmd "<Plug>NERDCommenterAlignBoth"     "Align Both") 
+        "b"       (cmd "<Plug>NERDCommenterAlignBoth"     "Align both") 
         "c"       (cmd "<Plug>NERDCommenterComment"       "Comment") 
         "i"       (cmd "<Plug>NERDCommenterInvert"        "Invert") 
-        "l"       (cmd "<Plug>NERDCommenterAlignLeft"     "Align Left") 
+        "l"       (cmd "<Plug>NERDCommenterAlignLeft"     "Align left") 
         "m"       (cmd "<Plug>NERDCommenterMinimal"       "Minimal") 
         "n"       (cmd "<Plug>NERDCommenterNested"        "Nested") 
         "s"       (cmd "<Plug>NERDCommenterSexy"          "Sexy") 

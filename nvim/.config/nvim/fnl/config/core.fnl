@@ -139,7 +139,7 @@
 (set vim.g.minimap_highlight "MinimapHighlight")
 (set vim.g.minimap_base_highlight "MinimapBaseHighlight")
 
-(utils.highlight-add :IndentBlankLineIndent1 {:fg colors.dark4 :gui :nocombine}) 
+(utils.highlight-add :IndentBlanklineIndent1 {:fg colors.dark4 :gui :nocombine}) 
 ; Horizontal separator (feline)
 (utils.highlight-add :StatusLineNC {:bg "NONE" :fg colors.light1})
 

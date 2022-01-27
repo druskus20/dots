@@ -1,5 +1,14 @@
 (module config.plugins.rust-tools
-  {autoload {rust-tools rust-tools}})
+  {autoload {rust-tools rust-tools
+             dap rust-tools.dap}})
+
+; TODO: Euuuuuggh also dont hardcode druskus (vim.fn.getenv home)
+(if (> (vim.fn.empty (vim.fn.glob "/home/druskus/.local/share/lldb/*")) 0)
+  (vim.cmd "!/home/druskus/.config/nvim/download_lldb.sh /home/druskus/.local/share/lldb/"))
+  
+(def extension-path :/home/druskus/.local/share/lldb/lldb/)
+(def codelldb-path (.. extension-path :adapter/codelldb))
+(def liblldb-path (.. extension-path :lldb/lib/liblldb.so))
 
 (rust-tools.setup {:tools 
                     {:autoSetHints true
@@ -19,9 +28,8 @@
                       {:procMacro {:enable false} 
                        :diagnostics {:disabled ["macro-error" "unresolved-proc-macro"]}}}}
                    :dap
-                    {:adapter {:type "executable"
-                               :command "lldb-vscode"
-                               :name "rt_lldb"}}})
+                    {:adapter ((. dap :get_codelldb_adapter) codelldb-path liblldb-path)}})
+                             
 
                               
 
