@@ -84,7 +84,7 @@
         "l"  [toggle-diagnostics               "Toggle diagnostics"]
         ;"b" (cmd "Lspsaga lsp_finder"                      "Find stuff") 
         "x" (cmd "Lspsaga preview_definition"              "Preview definition") 
-        "o" (cmd "SymbolsOutline"                          "Outline") 
+        "o" (cmd "SymbolsOutline"                          "Symbols Outline") 
         "m" (cmd "MinimapToggle"                           "Minimap") 
         "S" (cmd "Telescope lsp_document_symbols"          "Symbols in document") 
         "s" (cmd "Telescope lsp_dynamic_workspace_symbols" "Symbols in workspace") 
@@ -92,7 +92,7 @@
         "n" (cmd "Lspsaga rename"                          "Rename") 
         ;"v" [code-action                                    "Apply codeaction"] 
         "v" (cmd "Lspsaga code_action"                     "Apply codeaction") 
-        "V" (cmd "Lspsaga range_code_action"               "Apply range codeaction") 
+        ;"V" (cmd "Lspsaga range_code_action"               "Apply range codeaction") 
         ;"V" (cmd "CodeActionMenu"                           "Apply codeaction") ; It seems to work though
         "A" (cmd "Lspsaga show_cursor_diagnostics"         "Cursor diagnostics") 
         "a" (cmd "Lspsaga show_line_diagnostics"           "Line diagnostics")
@@ -148,8 +148,7 @@
 
 (wk.register  
   {"m" {:name "+Code actions"
-        "v" (cmd "Lspsaga range_code_action"               "Apply range codeaction") 
-        "V" (cmd "Lspsaga range_code_action"               "Apply range codeaction")}} 
+        "v" (cmd "Lspsaga range_code_action"               "Apply range codeaction")}} 
   {:prefix :<leader>
    :mode :v})
 ; <<<
