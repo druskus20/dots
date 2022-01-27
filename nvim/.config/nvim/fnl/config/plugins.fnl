@@ -42,6 +42,7 @@
   :neovim/nvim-lspconfig {:config (mod :lsp)}
   :simrat39/rust-tools.nvim {:config (mod :rust-tools) 
                              :requires ["nvim-lua/popup.nvim" "nvim-lua/plenary.nvim" "mfussenegger/nvim-dap"]}
+  :mfussenegger/nvim-dap {:config (mod :dap)}
   :https://github.com/rcarriga/nvim-dap-ui {:config (mod :dap-ui)
                                             :requires ["mfussenegger/nvim-dap"]}
   :ray-x/lsp_signature.nvim {:config (mod :lsp-signature)}

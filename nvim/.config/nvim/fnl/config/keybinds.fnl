@@ -56,21 +56,21 @@
         (vim.diagnostic.enable))))
 
 (wk.register  
-  {"h"  (cmd "bprevious"                  "Previous buffer")
-   "l"  (cmd "bnext"                      "Next buffer")
-   "L"  [(. (require :persistence) :load)  "Load last session"]
-   "o"  (cmd "Telescope live_grep"        "Grep files")
-   "p"  (cmd "Telescope find_files"       "Browse files")
-   ":"  (cmd "Telescope commands"         "Search commands")
-	 "d" {:name "+Debugging"
-				"b" [#(req dap.toggle_breakpoint)    "Toggle breakpoint"]
-				"u" [#(req dapui.toggle)             "Toggle dap ui"]
-				"c" [#(req dap.step_into)            "Continue"]
-				"r" [(. (require "dap") :repl :open) "Open repl"]
-				"s" {:name "+Step"
-						 "o" [#(req dap.step_over)       "Step over"]
-						 "u" [#(req dap.step_out)        "Step out"]
-						 "i" [#(req dap.step_into)       "Step into"]}}
+  {"h"  (cmd "bprevious"                    "Previous buffer")
+   "l"  (cmd "bnext"                        "Next buffer")
+   "L"  [(. (require :persistence) :load)   "Load last session"]
+   "o"  (cmd "Telescope live_grep"          "Grep files")
+   "p"  (cmd "Telescope find_files"         "Browse files")
+   ":"  (cmd "Telescope commands"           "Search commands")
+   "d" {:name "+Debug"
+        "b" [#(req dap.toggle_breakpoint)    "Toggle breakpoint"]
+        "u" [#(req dapui.toggle)             "Toggle dap ui"]
+        "c" [#(req dap.step_into)            "Continue"]
+        "r" [(. (require "dap") :repl :open) "Open repl"]
+        "s" {:name "+Step"
+             "o" [#(req dap.step_over)       "Step over"]
+             "u" [#(req dap.step_out)        "Step out"]
+             "i" [#(req dap.step_into)       "Step into"]}}
    "e"  (cmd "TroubleToggle"              "Browse errors")
    "y"  (rebind "\"+y"                    "Yank to system clipboard")
    "t"  (cmd "TodoTrouble"                "Browse TODOs")
