@@ -2,11 +2,10 @@
   {autoload {indent_blankline indent_blankline
              utils config.utils}})
 
-(set vim.opt.list true)
 (indent_blankline.setup {:space_char_blankline " "
-                         :char_highlight_list ["IndentBlankLineIndent1"]})
+                         :char_highlight_list ["IndentBlanklineIndent1"]})
 
-
+(set vim.g.indent_blankline_enabled false)
 
 
 
