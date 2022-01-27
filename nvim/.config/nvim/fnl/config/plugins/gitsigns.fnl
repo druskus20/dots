@@ -14,7 +14,7 @@
    :keymaps {:noremap true 
              :buffer true}
    :current_line_blame false
-   :update_debounce 100})
+   :update_debounce 50}) ; less than usual 
 
 
 ; TODO Change
