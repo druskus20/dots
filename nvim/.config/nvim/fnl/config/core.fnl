@@ -89,7 +89,7 @@
   :backspace "indent,eol,start")
 ; <<< 
 
-; Some temporal settings (TODO: actually redo this) >>>
+; Some temporal settings ( TODO: actually redo this ) >>>
 ; Disable command history and Ex mode
 ; (vim.api.nvim_set_keymap :n "q:" :<nop> {:noremap true :silent true}) ; FIX: No work
 (utils.highlight :Search {:bg colors.dark4})  
@@ -155,7 +155,18 @@
 
 (set vim.g.copilot_filetypes {:TelescopePrompt false}) 
 
-;(set vim.opt.updatetime 500) ;NOTE:  might slow down vim 
+(utils.highlight-add :TelescopeBorder {:fg colors.dark1 :bg colors.dark1})
+(utils.highlight-add :TelescopePromptBorder {:fg colors.dark1 :bg colors.dark1})
+(utils.highlight-add :TelescopePromptNormal {:fg colors.light2 :bg colors.dark1})
+(utils.highlight-add :TelescopePromptPrefix {:fg colors.neutral_purple :bg colors.dark1})
+(utils.highlight-add :TelescopeNormal {:bg colors.dark2})
+(utils.highlight-add :TelescopePreviewTitle {:fg colors.dark1 :bg colors.neutral_green})
+(utils.highlight-add :TelescopePromptTitle {:fg colors.dark1 :bg colors.neutral_red})
+(utils.highlight-add :TelescopeResultsTitle {:fg colors.dark1 :bg colors.neutral_aqua})
+
+(utils.highlight-add "TelescopeSelection" {:fg colors.dark1 :bg colors.neutral_purple})
+
+;(set vim.opt.updatetime 500) ; NOTE:  might slow down vim 
 ; <<< 
 
 ; vim:foldmarker=>>>,<<<

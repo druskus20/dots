@@ -8,7 +8,8 @@
      {:highlight_hovered_item false
       :relative_width false
       :width 35
-      :position :left
+      :floating true
+      :position :left ; float
       :show_numbers false
       :symbol_blacklist {}
       :preview_bg_highlight :Pmenu
