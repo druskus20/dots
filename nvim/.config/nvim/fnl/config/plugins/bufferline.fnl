@@ -9,16 +9,17 @@
     {:options 
      {:diagnostics "nvim_lsp"
       :diagnostics_indicator (fn [cnt lvl diagnostics-dict] (tostring cnt))
+      :enforce_regular_tabs true
       :show_buffer_close_icons false
       :show_buffer_icons false
       :show_close_icon false
       :show_tab_indicators false
-      :enforce_regular_tabs false
-      :tab_size 10}
+      :separator_style {1 " " 2 " "}
+      :tab_size 20}
      :highlights 
      {:fill {:guibg colors.dark0 :guifg colors.light0}
       :background visible
-      :separator visible
+      :separator {:guibg colors.neutral_purple :guifg colors.neutral_purple} 
       :buffer_visible visible
       :buffer_selected selected
       :indicator_selected {:guibg colors.neutral_purple :guifg colors.neutral_purple}
