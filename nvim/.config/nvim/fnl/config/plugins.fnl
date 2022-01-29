@@ -96,7 +96,8 @@
 
   ;;; Navigation ;;;
   :pechorin/any-jump.vim {}
-  :simrat39/symbols-outline.nvim {:config (mod :symbols-outline)}
+  ;:simrat39/symbols-outline.nvim {:config (mod :symbols-outline)}
+  :/home/druskus/code/symbols-outline.nvim {:config (mod :symbols-outline)}
   :justinmk/vim-sneak {:config (mod :sneak)}
   :nvim-telescope/telescope.nvim {:cmd ["Telescope"]
                                   :config (mod :telescope)
