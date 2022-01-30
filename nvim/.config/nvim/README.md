@@ -18,6 +18,7 @@ configure nvim using [Fennel](https://fennel-lang.org/).
 
 ## Changelog 
 These are (some of) the changes that I've been making
+- 29-01-2022: Fixed bufferline's inconsistent separators
 - 27-01-2022: Support nvim-dap with nvim-dap-ui
 - 26-01-2022: Indentation guidelines
 - 09-12-2021: Added range_code_action keybinds
