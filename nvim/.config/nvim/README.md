@@ -101,5 +101,5 @@ and `./lua`, and then reinstalling everything as shown in
 * [x] Guidelines
 * [ ] Floating Symbols navigator (Telescope + SymbolsOutline)
 * [ ] Code Lenses
-* [ ] Fix bufferline's inconsistencies
+* [x] Fix bufferline's inconsistencies
 * [x] ZenMode and Twilight
