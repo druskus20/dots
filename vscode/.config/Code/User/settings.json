@@ -12,7 +12,6 @@
     "window.menuBarVisibility": "hidden",
     "editor.inlineSuggest.enabled": true,
     "workbench.startupEditor": "none",
-    "workbench.statusBar.visible": true,
     "editor.scrollbar.verticalScrollbarSize": 12,
     "editor.scrollbar.vertical": "hidden",
     "editor.scrollbar.horizontal": "hidden",
@@ -66,16 +65,6 @@
             "before": [
                 "leader",
                 "m",
-                "d",
-            ],
-            "commands": [
-                "editor.action.showDefinitionPreviewHover"
-            ]
-        },
-        {
-            "before": [
-                "leader",
-                "m",
                 "a",
             ],
             "commands": [
@@ -106,7 +95,7 @@
             "before": [
                 "leader",
                 "m",
-                "d",
+                "g",
             ],
             "commands": [
                 "editor.action.revealDefinition"
@@ -116,7 +105,7 @@
             "before": [
                 "leader",
                 "m",
-                "D",
+                "d",
             ],
             "commands": [
                 "editor.action.peekDefinition"
@@ -129,6 +118,15 @@
             ],
             "commands": [
                 "workbench.actions.view.problems",
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "o",
+            ],
+            "commands": [
+                "vscode-fzf.rg"
             ]
         },
     ],
@@ -172,5 +170,7 @@
         //"hint",
         //"warning"
     ],
+    "vscode-neovim.neovimExecutablePaths.linux": "/bin/nvim",
+    "vim.neovimPath": "/bin/nvim",
     //"errorLens.gutterIconsEnabled": true,
 }
