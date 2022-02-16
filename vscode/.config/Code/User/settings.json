@@ -25,6 +25,8 @@
     "editor.lineDecorationsWidth": 16, // undocumented, width for fold buttons / git indicators
     // "editor.lineNumbersMinChars": 0, // undocumented
     "editor.folding": true,
+    "keyboard.dispatch": "keyCode",
+    "editor.bracketPairColorization.enabled": true,
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": [
@@ -127,6 +129,15 @@
             ],
             "commands": [
                 "vscode-fzf.rg"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "p",
+            ],
+            "commands": [
+                "workbench.action.quickOpen"
             ]
         },
     ],
