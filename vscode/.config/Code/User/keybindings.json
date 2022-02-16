@@ -1013,11 +1013,6 @@
     },
     {
         "key": "ctrl+j",
-        "command": "breadcrumbs.selectFocused",
-        "when": "breadcrumbsActive && breadcrumbsVisible"
-    },
-    {
-        "key": "ctrl+j",
         "command": "history.showNext",
         "when": "historyNavigationForwardsEnabled && historyNavigationWidget && !suggestWidgetVisible"
     },
@@ -1186,5 +1181,73 @@
     {
         "key": "ctrl+k ctrl+p",
         "command": "-workbench.action.showAllEditors"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "breadcrumbs.focusNextWithPicker",
+        "when": "breadcrumbsActive && breadcrumbsVisible && listFocus && !inputFocus"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "breadcrumbs.focusPreviousWithPicker",
+        "when": "breadcrumbsActive && breadcrumbsVisible && listFocus && !inputFocus"
+    },
+    {
+        "key": "k",
+        "command": "list.focusUp",
+        "when": "listFocus && !inputFocus"
+    },
+    {
+        "key": "ctrl+shift+backspace",
+        "command": "workbench.action.showCommands"
+    },
+    {
+        "key": "ctrl+shift+p",
+        "command": "-workbench.action.showCommands"
+    },
+    {
+        "key": "ctrl+shift+p",
+        "command": "breadcrumbs.focus",
+        "when": "breadcrumbsPossible"
+    },
+    {
+        "key": "ctrl+shift+[Period]",
+        "command": "-breadcrumbs.focus",
+        "when": "breadcrumbsPossible"
+    },
+    {
+        "key": "j",
+        "command": "breadcrumbs.selectFocused",
+        "when": "breadcrumbsActive && breadcrumbsVisible && !listFocus"
+    },
+    {
+        "key": "h",
+        "command": "breadcrumbs.focusPrevious",
+        "when": "breadcrumbsActive && breadcrumbsVisible && !listFocus"
+    },
+    {
+        "key": "ctrl+shift+[IntlBackslash]",
+        "command": "-breadcrumbs.toggleToOn",
+        "when": "!config.breadcrumbs.enabled"
+    },
+    {
+        "key": "l",
+        "command": "breadcrumbs.focusNext",
+        "when": "breadcrumbsActive && breadcrumbsVisible && !listFocus"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "breadcrumbs.focusPrevious",
+        "when": "breadcrumbsActive && breadcrumbsVisible"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "breadcrumbs.focusNext",
+        "when": "breadcrumbsActive && breadcrumbsVisible"
+    },
+    {
+        "key": "ctrl+right",
+        "command": "-breadcrumbs.focusNext",
+        "when": "breadcrumbsActive && breadcrumbsVisible"
     }
 ]
