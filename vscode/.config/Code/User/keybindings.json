@@ -1390,4 +1390,8 @@
         "command": "-editor.debug.action.showDebugHover",
         "when": "editorTextFocus && inDebugMode"
     },
+    {
+        "key": "ctrl+o",
+        "command": "vscode-fzf.rg"
+    },
 ]
