@@ -164,9 +164,9 @@
 (utils.highlight-add :TelescopePromptTitle {:fg colors.dark1 :bg colors.neutral_red})
 (utils.highlight-add :TelescopeResultsTitle {:fg colors.dark1 :bg colors.neutral_aqua})
 
-(utils.highlight-add "TelescopeSelection" {:fg colors.dark1 :bg colors.neutral_purple})
+;(utils.highlight-add "TelescopeSelection" {:fg colors.dark1 :bg colors.neutral_purple})
 
-;(set vim.opt.updatetime 500) ; NOTE:  might slow down vim 
+;(set vim.opt.updatetime 500) ;  NOTE:  might slow down vim 
 ; <<< 
 
 ; vim:foldmarker=>>>,<<<
