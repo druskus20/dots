@@ -29,6 +29,34 @@
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": [
+                "leader",
+                "l",
+            ],
+            "commands": [
+                "workbench.action.nextEditorInGroup"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "h",
+            ],
+            "commands": [
+                "workbench.action.previousEditorInGroup"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "b",
+                "w",
+            ],
+            "commands": [
+                "workbench.action.closeActiveEditor"
+            ]
+        },
+        {
+            "before": [
                 "g",
                 "h",
             ],
@@ -48,10 +76,50 @@
             "before": [
                 "leader",
                 "m",
+                "a",
+            ],
+            "commands": [
+                "editor.action.showHover"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "m",
                 "v",
             ],
             "commands": [
                 "keyboard-quickfix.openQuickFix"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "m",
+                "f",
+            ],
+            "commands": [
+                "editor.action.autoFix"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "m",
+                "d",
+            ],
+            "commands": [
+                "editor.action.revealDefinition"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "m",
+                "D",
+            ],
+            "commands": [
+                "editor.action.peekDefinition"
             ]
         },
         {
@@ -64,6 +132,11 @@
             ]
         },
     ],
+    // Weird
+    //"vim.handleKeys": {
+    //    "<C-o>": false,
+    //    "<C-i>": false
+    //},
     "editor.accessibilitySupport": "off",
     "editor.guides.highlightActiveIndentation": false,
     "workbench.colorCustomizations": {
