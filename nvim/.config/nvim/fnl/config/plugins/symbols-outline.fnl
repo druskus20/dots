@@ -8,14 +8,13 @@
      {:highlight_hovered_item false
       :relative_width false
       :width 35
-      :floating true
+      :floating {:enabled true :width 35 :height 30}
       :position :left ; float
       :show_numbers false
       :symbol_blacklist {}
       :preview_bg_highlight :Pmenu
       :auto_preview false
-      :keymaps {;:close {:<Esc> :q}
-                :close {}
+      :keymaps {:close {1 :<Esc> 2 :q}
                 :toggle_preview :K
                 :focus_location :o
                 :goto_location [:<Cr> :<Tab>]
@@ -26,5 +25,4 @@
       :show_relative_numbers false
       :highlight_hovered_item true
       :show_guides true
-      :auto_close false})
-                            
+      :auto_close true})
