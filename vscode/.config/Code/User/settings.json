@@ -25,8 +25,9 @@
     "editor.lineDecorationsWidth": 16, // undocumented, width for fold buttons / git indicators
     // "editor.lineNumbersMinChars": 0, // undocumented
     "editor.folding": true,
+    // Caps instead of escape
     "keyboard.dispatch": "keyCode",
-    "editor.bracketPairColorization.enabled": true,
+    "editor.bracketPairColorization.enabled": false,
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": [
@@ -183,5 +184,9 @@
     ],
     "vscode-neovim.neovimExecutablePaths.linux": "/bin/nvim",
     "vim.neovimPath": "/bin/nvim",
+    "breadcrumbs.symbolPath": "last",
+    "screencastMode.fontSize": 25,
+    "screencastMode.verticalOffset": 5,
+    "screencastMode.keyboardShortcutsFormat": "keys",
     //"errorLens.gutterIconsEnabled": true,
 }
