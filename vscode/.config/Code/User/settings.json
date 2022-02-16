@@ -43,7 +43,26 @@
             "commands": [
                 "editor.action.showDefinitionPreviewHover"
             ]
-        }
+        },
+        {
+            "before": [
+                "leader",
+                "m",
+                "v",
+            ],
+            "commands": [
+                "keyboard-quickfix.openQuickFix"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "e",
+            ],
+            "commands": [
+                "workbench.actions.view.problems",
+            ]
+        },
     ],
     "editor.accessibilitySupport": "off",
     "editor.guides.highlightActiveIndentation": false,
@@ -63,8 +82,22 @@
         //"editorOverviewRuler.warningForeground": "#ff00ff",
         //"editorOverviewRuler.infoForeground": "#00ff00",
         "editorOverviewRuler.bracketMatchForeground": "#0000",
+        "statusBar.background": "#fff0", // The color is totally up to you
+        "statusBar.border": "#aaa0",
+        "errorLens.errorBackground": "#0000",
+        "errorLens.warningBackground": "#0000",
+        "errorLens.infoBackground": "#0000",
+        "errorLens.hintBackground": "#0000",
+        // "errorLens.errorForeground": "#ff0000"
     },
     "editor.lineNumbers": "off",
     "editor.minimap.enabled": false,
-    "window.zoomLevel": 1
+    "window.zoomLevel": 1,
+    "errorLens.enabledDiagnosticLevels": [
+        "error",
+        //"info",
+        //"hint",
+        //"warning"
+    ],
+    "errorLens.gutterIconsEnabled": true,
 }
