@@ -1394,5 +1394,20 @@
     {
         "key": "ctrl+shift+o",
         "command": "workbench.action.files.openFolder"
+    },
+    {
+        "key": "l",
+        "command": "list.expand",
+        "when": "listFocus && treeElementCanExpand && !inputFocus || listFocus && treeElementHasChild && !inputFocus"
+    },
+    {
+        "key": "ctrl+'",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+    {
+        "key": "ctrl+`",
+        "command": "-workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
     }
 ]
