@@ -99,5 +99,5 @@
         //"hint",
         //"warning"
     ],
-    "errorLens.gutterIconsEnabled": true,
+    //"errorLens.gutterIconsEnabled": true,
 }
