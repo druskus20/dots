@@ -16,6 +16,7 @@
 (utils.keymap :n :K :<Nop>)
 (utils.keymap :v :K :<Nop>)
 (utils.keymap :i :<C-l> :<DEL>)
+(utils.keymap :n :<C-S> ":SymbolsOutline<Cr>")
 (utils.keymap :n :<C-p> ":Telescope find_files<CR>")
 (utils.keymap :n :<C-b> ":BufferLinePick<CR>")
 (utils.keymap :i :<C-b> "<ESC>:BufferLinePick<CR>")
@@ -71,7 +72,7 @@
              "o" [#(req dap.step_over)       "Step over"]
              "u" [#(req dap.step_out)        "Step out"]
              "i" [#(req dap.step_into)       "Step into"]}}
-   "e"  (cmd "TroubleToggle"              "Browse errors")
+   "e"  (cmd "TroubleToggle workspace_diagnostics"              "Browse errors")
    "y"  (rebind "\"+y"                    "Yank to system clipboard")
    "t"  (cmd "TodoTrouble"                "Browse TODOs")
    "w"  (cmd "w"                          "Save file")
@@ -97,9 +98,9 @@
         "A" (cmd "Lspsaga show_cursor_diagnostics"         "Cursor diagnostics") 
         "a" (cmd "Lspsaga show_line_diagnostics"           "Line diagnostics")
         "h" (cmd "RustToggleInlayHints"                    "Toggle inlay hints")
-        "r" (cmd "Trouble lsp_references"                  "Show references") 
-        "E" (cmd "Trouble lsp_document_diagnostics"        "List diagnostics")
-        "e" (cmd "Trouble lsp_workspace_diagnostics"       "Show diagnostics")
+        "r" (cmd "TroubleToggle lsp_references"                  "Show references") 
+        "E" (cmd "TroubleToggle document_diagnostics"        "List diagnostics")
+        "e" (cmd "TroubleToggle workspace_diagnostics"       "Show diagnostics")
         "t" [vim.lsp.buf.declaration                       "Go to declaration"] 
         "g" [vim.lsp.buf.definition                        "Go to definition"] 
         "i" (cmd "Trouble lsp_implementations"             "Show implementation") 

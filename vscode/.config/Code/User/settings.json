@@ -1,0 +1,70 @@
+{
+    "workbench.editor.untitled.hint": "hidden",
+    "workbench.colorTheme": "Gruvbox Material Dark",
+    "workbench.activityBar.visible": false,
+    "rust-analyzer.inlayHints.enable": false,
+    "editor.fontFamily": "'Jetbrains Mono', 'monospace', monospace",
+    "terminal.integrated.fontSize": 12,
+    "editor.formatOnSave": true,
+    "editor.cursorBlinking": "solid",
+    "rust-analyzer.lens.enable": false,
+    "editor.smoothScrolling": true,
+    "window.menuBarVisibility": "hidden",
+    "editor.inlineSuggest.enabled": true,
+    "workbench.startupEditor": "none",
+    "workbench.statusBar.visible": true,
+    "editor.scrollbar.verticalScrollbarSize": 12,
+    "editor.scrollbar.vertical": "hidden",
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.overviewRulerBorder": false,
+    "extensions.ignoreRecommendations": true,
+    "vim.leader": " ",
+    "vim.incsearch": true,
+    "vim.hlsearch": true,
+    "editor.glyphMargin": true,
+    //"git.decorations.enabled": false,
+    "editor.lineDecorationsWidth": 16, // undocumented, width for fold buttons / git indicators
+    // "editor.lineNumbersMinChars": 0, // undocumented
+    "editor.folding": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "g",
+                "h",
+            ],
+            "commands": []
+        },
+        {
+            "before": [
+                "leader",
+                "m",
+                "d",
+            ],
+            "commands": [
+                "editor.action.showDefinitionPreviewHover"
+            ]
+        }
+    ],
+    "editor.accessibilitySupport": "off",
+    "editor.guides.highlightActiveIndentation": false,
+    "workbench.colorCustomizations": {
+        // OverviewRuler
+        // https://github.com/microsoft/vscode/issues/85418
+        //"editorOverviewRuler.border": "#0000",
+        "editorOverviewRuler.findMatchForeground": "#fff4",
+        "editorOverviewRuler.rangeHighlightForeground": "#0000",
+        "editorOverviewRuler.selectionHighlightForeground": "#0000",
+        "editorOverviewRuler.wordHighlightForeground": "#0000",
+        "editorOverviewRuler.wordHighlightStrongForeground": "#0000",
+        "editorOverviewRuler.modifiedForeground": "#0000",
+        "editorOverviewRuler.addedForeground": "#0000",
+        "editorOverviewRuler.deletedForeground": "#0000",
+        //"editorOverviewRuler.errorForeground": "#0000ff",
+        //"editorOverviewRuler.warningForeground": "#ff00ff",
+        //"editorOverviewRuler.infoForeground": "#00ff00",
+        "editorOverviewRuler.bracketMatchForeground": "#0000",
+    },
+    "editor.lineNumbers": "off",
+    "editor.minimap.enabled": false,
+    "window.zoomLevel": 1
+}
