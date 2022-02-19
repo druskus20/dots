@@ -28,7 +28,26 @@
     // Caps instead of escape
     "keyboard.dispatch": "keyCode",
     "editor.bracketPairColorization.enabled": false,
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "leader",
+                "m",
+                "v"
+            ],
+            "commands": [
+                "keyboard-quickfix.openQuickFix"
+            ]
+        },
+    ],
     "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "leader",
+                "leader",
+            ],
+            "commands": []
+        },
         {
             "before": [
                 "leader",
@@ -141,6 +160,16 @@
                 "workbench.action.quickOpen"
             ]
         },
+        {
+            "before": [
+                "leader",
+                "m",
+                "n"
+            ],
+            "commands": [
+                "editor.action.rename"
+            ]
+        },
     ],
     // Weird
     //"vim.handleKeys": {
@@ -175,12 +204,9 @@
     },
     "editor.lineNumbers": "off",
     "editor.minimap.enabled": false,
-    "window.zoomLevel": 1,
     "errorLens.enabledDiagnosticLevels": [
         "error",
-        //"info",
-        //"hint",
-        //"warning"
+        "info"
     ],
     "vscode-neovim.neovimExecutablePaths.linux": "/bin/nvim",
     "vim.neovimPath": "/bin/nvim",
@@ -188,5 +214,8 @@
     "screencastMode.fontSize": 25,
     "screencastMode.verticalOffset": 5,
     "screencastMode.keyboardShortcutsFormat": "keys",
+    "window.zoomLevel": 1,
+    "editor.quickSuggestionsDelay": 2,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
     //"errorLens.gutterIconsEnabled": true,
 }
