@@ -214,8 +214,8 @@
     "screencastMode.fontSize": 25,
     "screencastMode.verticalOffset": 5,
     "screencastMode.keyboardShortcutsFormat": "keys",
-    "window.zoomLevel": 1,
     "editor.quickSuggestionsDelay": 2,
     "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "window.zoomLevel": 1,
     //"errorLens.gutterIconsEnabled": true,
 }
