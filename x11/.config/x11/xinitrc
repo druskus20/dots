@@ -9,6 +9,7 @@ setxkbmap -option caps:escape & # remap CAPS to ESC
 setbg "$HOME/img/bg/pink_mountains1.jpg" > /dev/null & # Set background
 xautolock -time 10 -locker "betterlockscreen --lock blur" & # Lock Screen 
 xrdb "$HOME/.config/x11/Xresources" # Load X11 settings and colors
+source /etc/X11/xinit/xinitrc.d/50-systemd-user.sh &
 sleep 1 && eww open-many bar0 bar1 > /dev/null 2> /dev/null & # Launch eww  # TODO: Fix this
 xsetroot -cursor_name left_ptr &  # Set cursor for the background
 #dunst & # Notifications (replaced by tiramisu in eww)

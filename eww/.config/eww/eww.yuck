@@ -35,6 +35,13 @@
   :geometry (geometry :anchor "bottom right" :x 0 :y 0 :width "100%" :height "200px")
   :reserve (struts :distance "200px" :side "bottom")
   (clock))
+
+(defwindow test
+  :monitor 1
+  :hexpand true
+  :vexpand true
+  :geometry (geometry :anchor "top left" :x 200 :y 0 :width "200px" :height "200px")
+  (test))
 ; foldend
 
 
@@ -202,7 +209,22 @@
 
     (label :class "title" :text "Remaining time today") 
     (label :vexpand true :class "remaining_time" :text remaining_listen)))
-
 ; foldend
+
+; Clock test 
+(defwidget test []
+  (box :orientation "h"
+       :space-evenly false
+    (label 
+      :halign "after"
+      :valign "after"
+      :text "Remaining time today") 
+    (label 
+      :halign "after"
+      :valign "after"
+      :text "ASd")))
+; foldend
+
+
 
 ; vim:foldmarker=foldstart,foldend
