@@ -3,13 +3,14 @@
 (module config.core 
   {autoload { nvim aniseed.nvim 
               a aniseed.core str aniseed.string
-              utils config.utils
-              colors config.colors}
+              colors config.colors
+              utils config.utils}
    require-macros [config.macros]})
 
 ; characters for lines and borders
 (vim.opt.fillchars:append "vert:│")
 (vim.opt.fillchars:append "fold:─")
+(vim.opt.fillchars:append "horiz:─")
 ;(vim.opt.fillchars:append "stl:─")
 
 ; Clean empty buffers  >>>
@@ -66,7 +67,7 @@
   :undolevels 10000
   :foldcolumn "0"
   :signcolumn "yes"
-  :laststatus 2
+  :laststatus 3
   :splitbelow true
   :splitright true
   :mouse "a"
