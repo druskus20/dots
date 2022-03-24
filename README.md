@@ -8,7 +8,6 @@
 ## Why? 
 Having a backup of my config files is generally handy.
 
-
 ## How? 
 I use [stow](https://www.gnu.org/software/stow) to manage my dotfiles.
 
