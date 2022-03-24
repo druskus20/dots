@@ -1,4 +1,5 @@
 {
+    "editor.fontLigatures": false,
     "workbench.editor.untitled.hint": "hidden",
     "workbench.colorTheme": "Gruvbox Material Dark",
     "workbench.activityBar.visible": false,
@@ -9,7 +10,6 @@
     "editor.cursorBlinking": "solid",
     "rust-analyzer.lens.enable": false,
     "editor.smoothScrolling": true,
-    "window.menuBarVisibility": "hidden",
     "editor.inlineSuggest.enabled": true,
     "workbench.startupEditor": "none",
     "editor.scrollbar.verticalScrollbarSize": 12,
@@ -203,7 +203,6 @@
         // "errorLens.errorForeground": "#ff0000"
     },
     "editor.lineNumbers": "off",
-    "editor.minimap.enabled": false,
     "errorLens.enabledDiagnosticLevels": [
         "error",
         "info"
@@ -216,6 +215,7 @@
     "screencastMode.keyboardShortcutsFormat": "keys",
     "editor.quickSuggestionsDelay": 2,
     "editor.suggest.snippetsPreventQuickSuggestions": false,
-    "window.zoomLevel": 1,
+    "editor.minimap.enabled": false,
+    "window.menuBarVisibility": "hidden",
     //"errorLens.gutterIconsEnabled": true,
 }

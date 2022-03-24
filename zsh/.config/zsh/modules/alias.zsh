@@ -41,6 +41,8 @@ alias ewwc="cargo run -- --config ~/.config/eww-circular"
 alias ewwg="cargo run -- --config ~/.config/eww-graph"
 alias ewwt="cargo run -- --config ~/.config/eww-trans"
 
+alias vscode="code"
+
 # Swallow some applications
 alias devour="devour"
 alias google-chrome-stable="devour google-chrome-stable"
