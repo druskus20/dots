@@ -11,6 +11,26 @@
 
 ; muted ? "no spek" : '["quiet", "loud", "bruh"]'[round(volume / something, 0)]
 
+(defwidget testy [testo]
+  (button :onclick (update testo "woo") ; <- This doesnt update "somevar", it only updates the argument "testo"
+    (label :text "${testo}")))
+
+(defwidget let-widget []
+  (let [testo "testo"
+        grace "grace"]
+    (label :text "${testo} ${grace}")))
+  
+(defvar somevar "something")
+
+(defwindow testy-window 
+  :geometry (geometry :width "100px" :height "100px")
+  ;(testy :testo (update somevar "somethingelse"))
+  (box
+    (label :text "${somevar}")
+    (testy :testo somevar)));
+;  (let-widget))
+
+
 ; Windows foldstart
 (defwindow bar0
   :monitor 0
@@ -43,7 +63,6 @@
   :geometry (geometry :anchor "top left" :x 200 :y 0 :width "200px" :height "200px")
   (test))
 ; foldend
-
 
 ; Bar foldstart
 (defwidget bar0 []
@@ -187,14 +206,14 @@
 (defwidget speaker []
   (icon-module :class "speaker" 
                :icon {speaker_poll.icon}
-    (eventbox :onscroll `eww update speaker_poll="$(./modules/speaker.sh {})"`
+    (eventbox :onscroll (shell `eww update speaker_poll="$(./modules/speaker.sh ${event.direction})"`)
       (button :onclick `eww update speaker_poll="$(./modules/speaker.sh toogle)"`
         (label :text {speaker_poll.content})))))
 
 (defwidget microphone []
   (icon-module :class "microphone" 
                :icon {microphone_poll.icon}
-    (eventbox :onscroll `eww update microphone_poll="$(./modules/microphone.sh {})"`
+    (eventbox :onscroll (shell `eww update microphone_poll="$(./modules/microphone.sh ${event.direction})"`)
       (button :onclick `eww update microphone_poll="$(./modules/microphone.sh toogle)"`
         (label :text {microphone_poll.content})))))
 ; foldend

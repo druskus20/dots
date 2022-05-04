@@ -1,7 +1,9 @@
 # sudo not required for some system commands
-for command in mount umount sv pacman updatedb su shutdown poweroff reboot ; do
+for command in docker mount umount sv pacman updatedb su shutdown poweroff reboot ; do
 	alias $command="sudo $command"
 done; unset command
+
+alias ssh="TERM=xterm-256color ssh"
 
 alias la="ls -A"
 alias lh="ls -d -A .?*" # Shows only hidden files (only on current directory)
@@ -37,6 +39,7 @@ alias picom="picom --config $PICOM_CONFIG_PATH"
 alias startx="startx \"$XDG_CONFIG_HOME/X11/xinitrc\""
 
 alias ewwt="eww -c ~/.config/eww-testing"
+alias ewwn="eww -c ~/code/eugh/drag-drop-clipboard"
 alias ewwc="cargo run -- --config ~/.config/eww-circular"
 alias ewwg="cargo run -- --config ~/.config/eww-graph"
 alias ewwt="cargo run -- --config ~/.config/eww-trans"

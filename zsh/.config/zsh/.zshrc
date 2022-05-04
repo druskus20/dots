@@ -89,4 +89,9 @@ setopt INTERACTIVE_COMMENTS    # allow comments in command line
 setopt NOBEEP
 # foldend
 
+PATH="$HOME/.local/bin/elkaudio:$PATH"
+source <(kubectl completion zsh)
+autoload bashcompinit && bashcompinit
+complete -C '/usr/local/bin/aws_completer' aws
+
 # vim:foldmarker=foldstart,foldend

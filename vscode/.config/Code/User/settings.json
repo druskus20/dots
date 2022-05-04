@@ -3,7 +3,7 @@
     "workbench.editor.untitled.hint": "hidden",
     "workbench.colorTheme": "Gruvbox Material Dark",
     "workbench.activityBar.visible": false,
-    "rust-analyzer.inlayHints.enable": false,
+    "rust-analyzer.inlayHints.enable": true,
     "editor.fontFamily": "'Jetbrains Mono', 'monospace', monospace",
     "terminal.integrated.fontSize": 12,
     "editor.formatOnSave": true,
@@ -216,6 +216,15 @@
     "editor.quickSuggestionsDelay": 2,
     "editor.suggest.snippetsPreventQuickSuggestions": false,
     "editor.minimap.enabled": false,
+    "parinfer.activationEvents": [
+        "onLanguage:lisp",
+        "onLanguage:clojure",
+        "onLanguage:yuck"
+    ],
     "window.menuBarVisibility": "hidden",
+    "editor.inlayHints.enabled": false,
+    "[typescript]": {
+        "editor.defaultFormatter": "denoland.vscode-deno"
+    }
     //"errorLens.gutterIconsEnabled": true,
 }

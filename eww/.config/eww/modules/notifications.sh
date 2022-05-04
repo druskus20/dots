@@ -9,7 +9,7 @@ print_notification() {
 print_notification "" "no"
 tiramisu -o '#summary' | while read -r line; do 
   print_notification "$line" "yes"
-  kill "$pid"
+  kill "$pid" > /dev/null 2>&1
   (sleep 10; print_notification "" "no") &
   pid="$!"
 done
