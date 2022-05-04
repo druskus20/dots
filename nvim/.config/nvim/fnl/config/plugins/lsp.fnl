@@ -59,7 +59,7 @@
                  :signs false}))
 
 ;(init-lsp :jsonls {:commands {:Format [ #(vim.lsp.buf.range_formatting [] [0 0] [(vim.fn.line "$") 0])]}})
-;(init-lsp :denols {:root_dir (better_root_pattern [".git"] ["package.json"])})
+(init-lsp :denols {:root_dir (better_root_pattern [".git"] ["package.json"])})
 ;(init-lsp :hls {:settings {:languageServerHaskell {:formattingProvider "stylish-haskell"}}})
 ;(init-lsp :ocamllsp)
 ;(init-lsp :vimls)

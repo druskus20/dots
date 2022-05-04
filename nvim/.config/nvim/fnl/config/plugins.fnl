@@ -84,7 +84,7 @@
   :folke/which-key.nvim {} ; Config is in config/keybinds.fnl
   :norcalli/nvim-colorizer.lua {:config (mod :colorizer)} ; I do want one of those
   :Famiu/feline.nvim {:opt false :config (mod :feline)}
-  :akinsho/nvim-bufferline.lua {:opt false :config (mod :bufferline)}
+  :akinsho/nvim-bufferline.lua {:tag "v1.1.1" :opt false :config (mod :bufferline)}
   :psliwka/vim-smoothie {}
   :wfxr/minimap.vim {}
   :luukvbaal/stabilize.nvim { :config (setup :stabilize)}
@@ -146,7 +146,12 @@
   :eraserhd/parinfer-rust {:run "cargo build --release"}
   :godlygeek/tabular {:cmd ["Tabularize"]}
   :preservim/nerdcommenter {}
-  :tpope/vim-repeat {})
+  :tpope/vim-repeat {}
+
+  ; Terraform 
+  :hashivim/vim-terraform {}
+  :hashivim/vim-terraform {})
+
 ; foldend                                                                                   
 
 ; https://github.com/lewis6991/impatient.nvim#installation

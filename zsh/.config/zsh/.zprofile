@@ -26,7 +26,9 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 # Stop intellij IDEs from being dumb / configure the IDE
 export _JAVA_AWT_WM_NONREPARTENTING=1
-export JAVA_HOME="$HOME/.local/share/JetBrains/Toolbox/apps/IDEA-C/ch-0/212.5457.46/jbr/"
+# export JAVA_HOME="$HOME/.local/share/JetBrains/Toolbox/apps/IDEA-C/ch-0/212.5457.46/jbr/"
+export PATH="$HOME/.local/share/graalvm-ce-java11-22.0.0.2/bin":$PATH
+export JAVA_HOME="$HOME/.local/share/graalvm-ce-java11-22.0.0.2"
 
 # Give permision to do stuff to noisetorch
 #sudo setcap 'CAP_SYS_RESOURCE=+ep' /bin/noisetorch

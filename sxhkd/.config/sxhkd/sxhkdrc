@@ -50,9 +50,9 @@ alt + f
 alt + {t,s,f}
 	bspc node -t {tiled,floating,monocle}
 
-# set the node flags
-alt + ctrl + {m,y}
-	bspc node -g {marked,sticky}
+## set the node flags
+#alt + ctrl + {m,y}
+#	bspc node -g {marked,sticky}
 
 #
 # focus/swap

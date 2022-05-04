@@ -18,12 +18,12 @@
 
 
 ; TODO Change
-(vim.cmd
-  (..
-    "
-    augroup gitsignsHighlight
-    autocmd ColorScheme * :hi! GitSignsAdd    gui='NONE' guibg='NONE' guifg='" colors.bright_purple "'
-    autocmd ColorScheme * :hi! GitSignsDelete gui='NONE' guibg='NONE' guifg='" colors.bright_red "'
-    autocmd ColorScheme * :hi! GitSignsChange gui='NONE' guibg='NONE' guifg='" colors.bright_aqua "'
-    augroup END
-    "))
+;(vim.cmd
+;  (..
+;    "
+;    augroup gitsignsHighlight
+;    autocmd ColorScheme * :hi! GitSignsAdd    gui='NONE' guibg='NONE' guifg='" colors.bright_purple "'
+;    autocmd ColorScheme * :hi! GitSignsDelete gui='NONE' guibg='NONE' guifg='" colors.bright_red "'
+;    autocmd ColorScheme * :hi! GitSignsChange gui='NONE' guibg='NONE' guifg='" colors.bright_aqua "'
+;    augroup END
+;    "))

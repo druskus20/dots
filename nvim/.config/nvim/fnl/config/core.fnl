@@ -20,7 +20,7 @@
                              (vim.api.nvim_buf_is_loaded $1)
                              (= "" (str.join (utils.buffer-content $1)))
                              (vim.api.nvim_buf_get_option $1 "buflisted"))
-                       (vim.fn.range 1 (vim.api.nvim_buf_get_number "$")))]
+                       (vim.fn.range 1 "$"))]
     (when (not (a.empty? bufs))
       (vim.cmd (.. "bdelete " (str.join " " bufs))))))
 
@@ -90,47 +90,47 @@
   :backspace "indent,eol,start")
 ; <<< 
 
-; Some temporal settings ( TODO: actually redo this ) >>>
+; Some temporary settings ( TODO: actually redo this ) >>>
 ; Disable command history and Ex mode
 ; (vim.api.nvim_set_keymap :n "q:" :<nop> {:noremap true :silent true}) ; FIX: No work
 (utils.highlight :Search {:bg colors.dark4})  
 (utils.highlight :IncSearch {:fg colors.neutral_aqua :bg colors.dark4})  
 (vim.api.nvim_set_keymap :n "Q" :<nop> {:noremap true :silent true})
 ; Highlights
-(utils.highlight-add :EndOfBuffer {:fg colors.dark1}) ; ~ 
-(utils.highlight-add :CursorLineNr {:fg colors.light2 :bg colors.dark4}) ; This line number
-(utils.highlight-add :LineNr {:fg colors.light5}) ; Other line numbers
+(utils.hightlight :EndOfBuffer {:fg colors.dark1}) ; ~ 
+(utils.hightlight :CursorLineNr {:fg colors.light2 :bg colors.dark4}) ; This line number
+(utils.hightlight :LineNr {:fg colors.light5}) ; Other line numbers
 ; Fixes twilight issue
-;(utils.highlight-add :Normal {:bg colors.dark1})  TODO: 
+;(utils.hightlight :Normal {:bg colors.dark1})  TODO: 
 ; Completion popups
-(utils.highlight-add :Pmenu {:bg colors.dark0}) 
-(utils.highlight-add :PmenuSbar {:fg colors.dark0 :bg colors.dark0}) 
-(utils.highlight-add :PmenuThumb {:fg colors.dark0 :bg colors.dark0}) 
-(utils.highlight-add :PmenuSel {:bg colors.neutral_purple :fg colors.dark0}) 
-(utils.highlight-add :NormalFloat {:bg colors.dark0}) 
-(utils.highlight-add :VertSplit {:bg colors.dark0}) 
+(utils.hightlight :Pmenu {:bg colors.dark0}) 
+(utils.hightlight :PmenuSbar {:fg colors.dark0 :bg colors.dark0}) 
+(utils.hightlight :PmenuThumb {:fg colors.dark0 :bg colors.dark0}) 
+(utils.hightlight :PmenuSel {:bg colors.neutral_purple :fg colors.dark0}) 
+(utils.hightlight :NormalFloat {:bg colors.dark0}) 
+(utils.hightlight :VertSplit {:bg colors.dark0}) 
 
-(utils.highlight-add :Sneak {:fg colors.light1 :bg colors.dark5}) ; labels
-(utils.highlight-add :SneakScope {:fg colors.dark1 :bg colors.neutral_aqua}) ; cursor
-(utils.highlight-add :RustInlayHint {:fg :#5b5f66}) ; labels
+(utils.hightlight :Sneak {:fg colors.light1 :bg colors.dark5}) ; labels
+(utils.hightlight :SneakScope {:fg colors.dark1 :bg colors.neutral_aqua}) ; cursor
+(utils.hightlight :RustInlayHint {:fg :#5b5f66}) ; labels
 
 ; SymbolsOutline
-(utils.highlight-add :FocusedSymbol {:bg colors.dark6})
+(utils.hightlight :FocusedSymbol {:bg colors.dark6})
 
-;(utils.highlight-add :Cursor {:fg :#ffff00 :bg :#ff0000}) 
-;(utils.highlight-add :lCursor {:fg :#ffff00 :bg :#ff0000})
-;(utils.highlight-add :CursorIM {:fg :#ffff00 :bg #ff0000}) 
-;(utils.highlight-add :TermCursor {:cterm :NONE :bg #ff0000}) 
-;(utils.highlight-add :TermCursorNC {:cterm :NONE :bg #ff0000}) 
+;(utils.hightlight :Cursor {:fg :#ffff00 :bg :#ff0000}) 
+;(utils.hightlight :lCursor {:fg :#ffff00 :bg :#ff0000})
+;(utils.hightlight :CursorIM {:fg :#ffff00 :bg #ff0000}) 
+;(utils.hightlight :TermCursor {:cterm :NONE :bg #ff0000}) 
+;(utils.hightlight :TermCursorNC {:cterm :NONE :bg #ff0000}) 
 
-(utils.highlight-add :LspSignatureActiveParameter {:bg colors.dark3})  
+(utils.hightlight :LspSignatureActiveParameter {:bg colors.dark3})  
 
 
-(utils.highlight-add :DapBreakpoint {:fg colors.neutral_red}) 
-(utils.highlight-add :DapBreakpointCondition {:fg colors.bright_red}) 
-(utils.highlight-add :DapLogPoint {:fg colors.neutral_blue}) 
-(utils.highlight-add :DapStopped {:fg colors.neutral_yellow}) 
-(utils.highlight-add :DapBrakpointRejected {:fg colors.faded_orange}) 
+(utils.hightlight :DapBreakpoint {:fg colors.neutral_red}) 
+(utils.hightlight :DapBreakpointCondition {:fg colors.bright_red}) 
+(utils.hightlight :DapLogPoint {:fg colors.neutral_blue}) 
+(utils.hightlight :DapStopped {:fg colors.neutral_yellow}) 
+(utils.hightlight :DapBrakpointRejected {:fg colors.faded_orange}) 
 
 ; Visual yank
 (vim.cmd "autocmd! TextYankPost * silent! lua vim.highlight.on_yank {higroup=\"IncSearch\", timeout=300}")
@@ -145,27 +145,27 @@
 (set vim.g.rustfmt_autosave 1)
 
 ; Minimap
-(utils.highlight-add :MinimapHighlight {:bg :#3e4452 :fg :5b5f66}) ; labels
-(utils.highlight-add :MinimapBaseHighlight {:fg colors.dark5}) ; labels
+(utils.hightlight :MinimapHighlight {:bg :#3e4452 :fg :5b5f66}) ; labels
+(utils.hightlight :MinimapBaseHighlight {:fg colors.dark5}) ; labels
 (set vim.g.minimap_highlight "MinimapHighlight")
 (set vim.g.minimap_base_highlight "MinimapBaseHighlight")
 
-(utils.highlight-add :IndentBlanklineIndent1 {:fg colors.dark4 :gui :nocombine}) 
+(utils.hightlight :IndentBlanklineIndent1 {:fg colors.dark4 :gui :nocombine}) 
 ; Horizontal separator (feline)
-(utils.highlight-add :StatusLineNC {:bg "NONE" :fg colors.light1})
+(utils.hightlight :StatusLineNC {:bg "NONE" :fg colors.light1})
 
 (set vim.g.copilot_filetypes {:TelescopePrompt false}) 
 
-(utils.highlight-add :TelescopeBorder {:fg colors.dark1 :bg colors.dark1})
-(utils.highlight-add :TelescopePromptBorder {:fg colors.dark1 :bg colors.dark1})
-(utils.highlight-add :TelescopePromptNormal {:fg colors.light2 :bg colors.dark1})
-(utils.highlight-add :TelescopePromptPrefix {:fg colors.neutral_purple :bg colors.dark1})
-(utils.highlight-add :TelescopeNormal {:bg colors.dark2})
-(utils.highlight-add :TelescopePreviewTitle {:fg colors.dark1 :bg colors.neutral_green})
-(utils.highlight-add :TelescopePromptTitle {:fg colors.dark1 :bg colors.neutral_red})
-(utils.highlight-add :TelescopeResultsTitle {:fg colors.dark1 :bg colors.neutral_aqua})
+(utils.hightlight :TelescopeBorder {:fg colors.dark1 :bg colors.dark1})
+(utils.hightlight :TelescopePromptBorder {:fg colors.dark1 :bg colors.dark1})
+(utils.hightlight :TelescopePromptNormal {:fg colors.light2 :bg colors.dark1})
+(utils.hightlight :TelescopePromptPrefix {:fg colors.neutral_purple :bg colors.dark1})
+(utils.hightlight :TelescopeNormal {:bg colors.dark2})
+(utils.hightlight :TelescopePreviewTitle {:fg colors.dark1 :bg colors.neutral_green})
+(utils.hightlight :TelescopePromptTitle {:fg colors.dark1 :bg colors.neutral_red})
+(utils.hightlight :TelescopeResultsTitle {:fg colors.dark1 :bg colors.neutral_aqua})
 
-;(utils.highlight-add "TelescopeSelection" {:fg colors.dark1 :bg colors.neutral_purple})
+;(utils.hightlight "TelescopeSelection" {:fg colors.dark1 :bg colors.neutral_purple})
 
 ;(set vim.opt.updatetime 500) ;  NOTE:  might slow down vim 
 ; <<< 
