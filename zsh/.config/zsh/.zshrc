@@ -4,7 +4,6 @@
 #  _ / /\__ \ | | | | | (__ 
 # (_)___|___/_| |_|_|  \___|
 #                           
-#  By Druskus               
 #
 
 # General Setting foldstart
@@ -30,16 +29,10 @@ compinit
 # foldend
 
 # Plugins foldstart
-
-# installed through pacman, no need to source, might need to run compinit
-#  (in usr/share/zsh/site-functions)
-# load-plugin "zsh-completions"
-
-load-plugin    "zsh-autosuggestions"
-#load-plugin    "zsh-syntax-highlighting"
-load-plugin    "fast-syntax-highlighting"
-load-plugin    "zsh-history-substring-search"   
-load-plugin    "zsh-you-should-use" # This is annoying, the actual name is: zsh-you-should-use/you-should-use.plugin.zsh 
+source "$ZDOTDIR/plugins/fast-syntax-highlighting/F-Sy-H.plugin.zsh"
+source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$ZDOTDIR/plugins/zsh-you-should-use/you-should-use.plugin.zsh"
+source "$ZDOTDIR/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
 
 # Too slow
 # ZVM_INIT_MODE=sourcing # Fixes overriding keybinds problem (* git version)
@@ -89,4 +82,22 @@ setopt INTERACTIVE_COMMENTS    # allow comments in command line
 setopt NOBEEP
 # foldend
 
+export PATH="$PATH:$HOME/.local/bin/elk"
+
 # vim:foldmarker=foldstart,foldend
+
+## >>> conda initialize >>>
+## !! Contents within this block are managed by 'conda init' !!
+#__conda_setup="$('/home/drusk/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+#if [ $? -eq 0 ]; then
+#    eval "$__conda_setup"
+#else
+#    if [ -f "/home/drusk/miniconda3/etc/profile.d/conda.sh" ]; then
+#        . "/home/drusk/miniconda3/etc/profile.d/conda.sh"
+#    else
+#        export PATH="/home/drusk/miniconda3/bin:$PATH"
+#    fi
+#fi
+#unset __conda_setup
+## <<< conda initialize <<<
+

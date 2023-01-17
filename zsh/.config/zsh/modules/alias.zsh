@@ -41,13 +41,20 @@ alias ewwc="cargo run -- --config ~/.config/eww-circular"
 alias ewwg="cargo run -- --config ~/.config/eww-graph"
 alias ewwt="cargo run -- --config ~/.config/eww-trans"
 
-alias vscode="code"
+alias code="code --enable-features=UseOzonePlatform --ozone-platform=wayland"
+alias vscode="code --enable-features=UseOzonePlatform --ozone-platform=wayland"
+
+
 
 # Swallow some applications
 alias devour="devour"
-alias google-chrome-stable="devour google-chrome-stable"
-alias chrome="devour google-chrome-stable"
-alias sxiv="devour sxiv"
-alias zathura="devour zathura"
-alias thunar="devour thunar"
-alias pavucontrol="devour pavucontrol"
+#alias google-chrome-stable="devour google-chrome-stable"
+#alias chrome="devour google-chrome-stable"
+#alias sxiv="devour sxiv"
+#alias zathura="devour zathura"
+#alias thunar="devour thunar"
+#alias pavucontrol="devour pavucontrol"
+#
+
+alias tf=terraform
+alias tfa="terraform apply"

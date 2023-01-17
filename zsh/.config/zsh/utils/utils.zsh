@@ -17,16 +17,3 @@ function clear-keybinds() {
   done
 }
 zle -N clear-keybinds clear-keybinds
-
-function load-plugin() {
-    if [ -f "/usr/share/zsh/plugins/$1/$1.plugin.zsh" ]; then
-      source "/usr/share/zsh/plugins/$1/$1.plugin.zsh"
-    elif [ -f "/usr/share/zsh/plugins/$1/$1.zsh" ]; then
-      source "/usr/share/zsh/plugins/$1/$1.zsh"
-    else 
-      echo "zshrc: Error couldn't load \"$1\"."
-    fi
-    [ -f "$ZDOTDIR/plugins/$1.zsh" ] \
-      && source "$ZDOTDIR/plugins/$1.zsh"
-}
-zle -N load-plugin load-plugin

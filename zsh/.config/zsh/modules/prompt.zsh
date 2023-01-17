@@ -1,4 +1,4 @@
-source /usr/share/gitstatus/gitstatus.plugin.zsh
+#source /usr/share/gitstatus/gitstatus.plugin.zsh
 
 # To be able to use: "%{$fg[red]$bg[red]%}"
 autoload -U colors && colors
@@ -56,11 +56,11 @@ function gitstatus_prompt_update() {
 # Start gitstatusd instance with name "MY". The same name is passed to
 # gitstatus_query in gitstatus_prompt_update. The flags with -1 as values
 # enable staged, unstaged, conflicted and untracked counters.
-gitstatus_stop 'MY' && gitstatus_start -s -1 -u -1 -c -1 -d -1 'MY'
+#gitstatus_stop 'MY' && gitstatus_start -s -1 -u -1 -c -1 -d -1 'MY'
 
 # On every prompt, fetch git status and set GITSTATUS_PROMPT.
-autoload -Uz add-zsh-hook
-add-zsh-hook precmd gitstatus_prompt_update
+#autoload -Uz add-zsh-hook
+#add-zsh-hook precmd gitstatus_prompt_update
 # foldend
 
 # Virtualenv foldstart
@@ -101,7 +101,7 @@ PROMPT+='%(?:%{$fg[green]%}✓:%{$fg[red]%}✕)$CMD_DICE '
 PROMPT+='%{$fg[yellow]%}%n '
 PROMPT+='%{$fg[blue]%}%m '
 PROMPT+='%{$fg[magenta]%}%2. '
-PROMPT+='%{$fg[green]%}$GITSTATUS_PROMPT'
+#PROMPT+='%{$fg[green]%}$GITSTATUS_PROMPT'
 PROMPT+='%{$fg[red]%}$VIRTUAL_ENV_INDICATOR'
 PROMPT+=$'\n' # Second line
 PROMPT+='$VI_INDICATOR '
