@@ -1,7 +1,6 @@
 {
     "editor.fontLigatures": false,
     "workbench.editor.untitled.hint": "hidden",
-    "workbench.colorTheme": "Gruvbox Material Dark",
     "workbench.activityBar.visible": false,
     "rust-analyzer.inlayHints.enable": false,
     "editor.fontFamily": "'Jetbrains Mono', 'monospace', monospace",
@@ -179,9 +178,9 @@
     "editor.accessibilitySupport": "off",
     "editor.guides.highlightActiveIndentation": false,
     "workbench.colorCustomizations": {
-        // OverviewRuler
-        // https://github.com/microsoft/vscode/issues/85418
-        //"editorOverviewRuler.border": "#0000",
+        "scrollbar.shadow": "#00000000", // breadcrumbs
+        "widget.shadow": "#00000025", // F1
+        "editorGroup.border": "#aaa0",
         "editorOverviewRuler.findMatchForeground": "#fff4",
         "editorOverviewRuler.rangeHighlightForeground": "#0000",
         "editorOverviewRuler.selectionHighlightForeground": "#0000",
@@ -190,9 +189,6 @@
         "editorOverviewRuler.modifiedForeground": "#0000",
         "editorOverviewRuler.addedForeground": "#0000",
         "editorOverviewRuler.deletedForeground": "#0000",
-        //"editorOverviewRuler.errorForeground": "#0000ff",
-        //"editorOverviewRuler.warningForeground": "#ff00ff",
-        //"editorOverviewRuler.infoForeground": "#00ff00",
         "editorOverviewRuler.bracketMatchForeground": "#0000",
         "statusBar.background": "#fff0", // The color is totally up to you
         "statusBar.border": "#aaa0",
@@ -200,7 +196,6 @@
         "errorLens.warningBackground": "#0000",
         "errorLens.infoBackground": "#0000",
         "errorLens.hintBackground": "#0000",
-        // "errorLens.errorForeground": "#ff0000"
     },
     "editor.lineNumbers": "off",
     "errorLens.enabledDiagnosticLevels": [
@@ -210,12 +205,30 @@
     "vscode-neovim.neovimExecutablePaths.linux": "/bin/nvim",
     "vim.neovimPath": "/bin/nvim",
     "breadcrumbs.symbolPath": "last",
+    "breadcrumbs.enabled": true,
     "screencastMode.fontSize": 25,
     "screencastMode.verticalOffset": 5,
     "screencastMode.keyboardShortcutsFormat": "keys",
     "editor.quickSuggestionsDelay": 2,
     "editor.suggest.snippetsPreventQuickSuggestions": false,
-    "editor.minimap.enabled": false,
+    "aws.telemetry": false,
+    "terminal.external.linuxExec": "alacritty",
+    "github.copilot.enable": {
+        "*": true,
+        "yaml": false,
+        "plaintext": true,
+        "markdown": true,
+        "rust": true
+    },
+    "editor.inlayHints.enabled": "offUnlessPressed",
     "window.menuBarVisibility": "hidden",
+    "window.enableMenuBarMnemonics": false,
+    "vim.highlightedyank.enable": true,
+    "workbench.colorTheme": "Gruvbox Material Dark",
+    "svelte.plugin.svelte.note-new-transformation": false,
+    "editor.minimap.enabled": false,
+    "svelte.enable-ts-plugin": true,
+    "editor.wordWrap": "on",
+    "window.zoomLevel": 1,
     //"errorLens.gutterIconsEnabled": true,
 }

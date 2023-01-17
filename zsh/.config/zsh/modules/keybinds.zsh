@@ -40,7 +40,9 @@ bindkey "^[[1;5C" forward-word            # C-ArrowRight
 bindkey "^[[1;5D" backward-word           # C-ArrowLeft
 bindkey "^H"      backward-kill-word      # C-Backspace
 bindkey "\e[3~"   delete-char             # Del
-bindkey "^R"      fzf-history             # C-R
+#bindkey "^R"      fzf-history             # C-R
+bindkey '^R' history-incremental-search-backward
+
 bindkey "^E"      end-of-line             # C-E
 bindkey "^A"      beginning-of-line       # C-A
 

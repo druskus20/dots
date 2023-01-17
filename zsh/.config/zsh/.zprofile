@@ -3,12 +3,17 @@
 
 # Set utilities
 export EDITOR=/usr/bin/nvim
-export BROWSER=/bin/google-chrome-stable
+export BROWSER=/usr/bin/google-chrome
 export MONITOR="HDMI-0"
 export TERMINAL="/bin/alacritty"
+export TERM=xterm-color
+
+# Screen sharing
+export XDG_CURRENT_DESKTOP=sway
+export MOZ_ENABLE_WAYLAND
 
 # Set custom PATH
-export PATH="$HOME"/.local/bin:"$HOME"/.local/bin/scripts:"$HOME"/.local/share/npm/bin:"$HOME"/.local/share/cargo/bin:"$PATH"
+export PATH="$HOME"/.local/bin/elk:"$HOME"/.local/bin:"$HOME"/.local/bin/scripts:"$HOME"/.local/share/npm/bin:"$HOME"/.local/share/cargo/bin:"$PATH"
 
 # Force XDG base directories
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -84,9 +89,12 @@ fi
 #export VIMINIT=":source $XDG_CONFIG_HOME/nvim/init.vim"
 # foldend
 
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+
+
 ## Launches X11 on session start
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-  startx "$XINITRC"
+  sway
 fi
 
 # vim:foldmarker=foldstart,foldend

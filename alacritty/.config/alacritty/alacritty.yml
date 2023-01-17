@@ -111,7 +111,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-     family: "JetBrains Mono" # ~  ads_asd 
+     family: "JetBrainsMono Nerd Font Mono"
     # family: "DejaVuSansMono Nerd Font Mono" 
     # family: "Codelia Nerd Font"
     # family: "Iosevka Custom"
