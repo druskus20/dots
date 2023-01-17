@@ -1,0 +1,4 @@
+hosts.yml
+*
+!.gitignore
+!config.yml
