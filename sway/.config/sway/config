@@ -18,7 +18,7 @@ set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+#set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
 include /etc/sway/config-vars.d/*
 
@@ -29,9 +29,10 @@ output * bg /home/drusk/img/bg/leaves2.jpg fill
 #
 # Example configuration:
 #
-output eDP-1 resolution 1920x1080 position 3840,0
-output HDMI-A-1 resolution 1920x1080 position 1920,0
-output DP-2 resolution 1920x1080 position 0,0
+#output eDP-1 resolution 1920x1080 position 3840,0
+#output HDMI-A-1 resolution 1920x1080 position 1920,0
+#output DP-2 resolution 1920x1080 position 0,0
+output eDP-1 resolution 1920x1080 position 0,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
@@ -73,7 +74,8 @@ output DP-2 resolution 1920x1080 position 0,0
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+Space exec rofi -show drun
+    #bindsym $mod+Space exec dmenu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -148,9 +150,9 @@ output DP-2 resolution 1920x1080 position 0,0
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+    #bindsym $mod+s layout stacking
+    #bindsym $mod+w layout tabbed
+    #bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
@@ -159,7 +161,7 @@ output DP-2 resolution 1920x1080 position 0,0
     bindsym $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    #bindsym $mod+space focus mode_toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
@@ -218,6 +220,10 @@ input type:touchpad {
 	natural_scroll "true"
 	pointer_accel "0.7"
 }
+
+# Fixes shortcuts not working when on chrome shortcuts (webapps) 
+for_window [app_id="^chrome-.*"] shortcuts_inhibitor disable
+
 
 #
 # Status Bar:
