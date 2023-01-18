@@ -6,6 +6,13 @@ configuration {
   show-icons: true;
   icon-theme: "Papirus";
 
+  kb-row-up:                      "Up,Control+k";
+  kb-row-down:                    "Down,Control+j";
+  kb-accept-entry:                "Return,Control+Return";  
+  /* Unset conflicting kb */
+  kb-accept-custom: "";
+  kb-remove-to-eol: "";
+
   font: "NotoSans Nerd Font 10";
 }
 

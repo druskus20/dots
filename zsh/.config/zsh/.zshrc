@@ -34,16 +34,12 @@ source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$ZDOTDIR/plugins/zsh-you-should-use/you-should-use.plugin.zsh"
 source "$ZDOTDIR/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
 
-# Too slow
-# ZVM_INIT_MODE=sourcing # Fixes overriding keybinds problem (* git version)
-# load-plugin    "zsh-vi-mode"
-
-
 # Modules foldstart
 source "$ZDOTDIR/modules/functions.zsh"
 source "$ZDOTDIR/modules/keybinds.zsh"
 source "$ZDOTDIR/modules/prompt.zsh"
 source "$ZDOTDIR/modules/alias.zsh"
+source "$ZDOTDIR/modules/work.zsh"
 # foldend
 
 # Some quick plugin settings
@@ -82,10 +78,6 @@ setopt INTERACTIVE_COMMENTS    # allow comments in command line
 setopt NOBEEP
 # foldend
 
-export PATH="$PATH:$HOME/.local/bin/elk"
-
-# vim:foldmarker=foldstart,foldend
-
 ## >>> conda initialize >>>
 ## !! Contents within this block are managed by 'conda init' !!
 #__conda_setup="$('/home/drusk/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -101,3 +93,5 @@ export PATH="$PATH:$HOME/.local/bin/elk"
 #unset __conda_setup
 ## <<< conda initialize <<<
 
+
+# vim:foldmarker=foldstart,foldend
