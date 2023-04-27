@@ -241,4 +241,8 @@
     "cmake.configureOnOpen": true,
     "window.zoomLevel": -2,
     //"errorLens.gutterIconsEnabled": true,
+    "extensions.experimental.affinity": {
+        "vscodevim.vim": 1,
+        "rust-lang.rust-analyzer": 1,
+    },
 }
