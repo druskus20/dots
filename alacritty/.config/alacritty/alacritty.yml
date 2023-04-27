@@ -179,45 +179,45 @@ font:
 #draw_bold_text_with_bright_colors: false
 
 # Colors 
-colors:
-  cursor:
-    text: '#2C2E43'
-    cursor: '#bfbfcb'
-
-  # Default colors
-  primary:
-    background: '#2C2E43'
-      #foreground: '#7E7F9A'
-    foreground: '#bfbfcb'
-
-  # Normal colors
-  normal:
-    black:   '#29283c'
-    red:     '#eca8a8'
-    green:   '#ccd389'
-    yellow:  '#efd5a0'
-    blue:    '#a5c6e1'
-    magenta: '#e1bee9'
-    cyan:    '#c7ebe6'
-    white:   '#bbbbcb'
-
-  # Bright colors
-  bright:
-    black:   '#2e2e3f'
-    red:     '#ffc4c4'
-    green:   '#eff6ab'
-    yellow:  '#ffe6b5'
-    blue:    '#c9e6fd'
-    magenta: '#f7d7ff'
-    cyan:    '#ddfcf8'
-    white:   '#e1e1ef'
-
-
 #colors:
-  # Default colors
-  #primary:
-  #  background: '#1d1f21'
-  #  foreground: '#c5c8c6'
+#  cursor:
+#    text: '#2C2E43'
+#    cursor: '#bfbfcb'
+#
+#  # Default colors
+#  primary:
+#    background: '#2C2E43'
+#      #foreground: '#7E7F9A'
+#    foreground: '#bfbfcb'
+#
+#  # Normal colors
+#  normal:
+#    black:   '#29283c'
+#    red:     '#eca8a8'
+#    green:   '#ccd389'
+#    yellow:  '#efd5a0'
+#    blue:    '#a5c6e1'
+#    magenta: '#e1bee9'
+#    cyan:    '#c7ebe6'
+#    white:   '#bbbbcb'
+#
+#  # Bright colors
+#  bright:
+#    black:   '#2e2e3f'
+#    red:     '#ffc4c4'
+#    green:   '#eff6ab'
+#    yellow:  '#ffe6b5'
+#    blue:    '#c9e6fd'
+#    magenta: '#f7d7ff'
+#    cyan:    '#ddfcf8'
+#    white:   '#e1e1ef'
+#
+#
+##colors:
+#  # Default colors
+#  #primary:
+#  #  background: '#1d1f21'
+#  #  foreground: '#c5c8c6'
 
     # Bright and dim foreground colors
     #

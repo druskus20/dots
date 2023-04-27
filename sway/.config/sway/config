@@ -29,10 +29,11 @@ output * bg /home/drusk/img/bg/leaves2.jpg fill
 #
 # Example configuration:
 #
-#output eDP-1 resolution 1920x1080 position 3840,0
-#output HDMI-A-1 resolution 1920x1080 position 1920,0
-#output DP-2 resolution 1920x1080 position 0,0
-output eDP-1 resolution 1920x1080 position 0,0
+output eDP-1 resolution 1920x1080 position 3840,0
+output HDMI-A-1 resolution 1920x1080 position 1920,0
+output DP-2 resolution 1920x1080 position 0,0
+
+#output eDP-1 resolution 1920x1080 position 0,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
@@ -74,8 +75,9 @@ output eDP-1 resolution 1920x1080 position 0,0
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+Space exec rofi -show drun
-    #bindsym $mod+Space exec dmenu
+    bindsym $mod+Space exec wofi --show drun -I
+    bindsym $mod+P exec grimshot copy area
+    bindsym $mod+Shift+Return exec $term --working-directory "$(sway-cwd)"
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -209,8 +211,8 @@ default_border pixel 1
 default_floating_border pixel 1
 
 input type:keyboard {
-	xkb_layout "es"
-	repeat_delay "250"
+		xkb_layout "es"
+		repeat_delay "250"
 	repeat_rate "35"
 	xkb_options "caps:escape,compose:prsc"
 }
@@ -223,6 +225,11 @@ input type:touchpad {
 
 # Fixes shortcuts not working when on chrome shortcuts (webapps) 
 for_window [app_id="^chrome-.*"] shortcuts_inhibitor disable
+for_window [title="meet.google.com is sharing a window."] move scratchpad
+for_window [title="meet.google.com is sharing your screen."] move scratchpad
+for_window [title="discord.com is sharing a window."] move scratchpad
+for_window [title="discord.com is sharing your screen."] move scratchpad
+#for_window [class="jetbrains-studio"] floating enable
 
 
 #
@@ -243,7 +250,7 @@ bar {
 	}
 }
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-
+exec mako
 
 include /etc/sway/config.d/*
 

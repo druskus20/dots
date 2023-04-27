@@ -1,6 +1,7 @@
 # .profile
 # Loads on session start
 
+
 # Set utilities
 export EDITOR=/usr/bin/nvim
 export BROWSER=/usr/bin/google-chrome
@@ -30,6 +31,7 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 # Stop intellij IDEs from being dumb / configure the IDE
+export _JAVA_AWT_WM_NONREPARENTING=1
 export _JAVA_AWT_WM_NONREPARTENTING=1
 export JAVA_HOME="$HOME/.local/share/JetBrains/Toolbox/apps/IDEA-C/ch-0/212.5457.46/jbr/"
 
