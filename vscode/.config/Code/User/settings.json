@@ -215,7 +215,7 @@
     "terminal.external.linuxExec": "alacritty",
     "github.copilot.enable": {
         "*": true,
-        "yaml": false,
+        "yaml": true,
         "plaintext": true,
         "markdown": true,
         "rust": true
@@ -229,6 +229,16 @@
     "editor.minimap.enabled": false,
     "svelte.enable-ts-plugin": true,
     "editor.wordWrap": "on",
-    "window.zoomLevel": 1,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "[cpp]": {
+        "editor.wordBasedSuggestions": false,
+        "editor.suggest.insertMode": "replace",
+        "editor.semanticHighlighting.enabled": true
+    },
+    "cmake.configureOnOpen": true,
+    "window.zoomLevel": -2,
     //"errorLens.gutterIconsEnabled": true,
 }

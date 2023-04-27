@@ -55,6 +55,11 @@ zle -N edit-command-line
 bindkey -M viins "^Q" edit-command-line
 bindkey -M vicmd "^Q" edit-command-line
 
+# Make word boundaries (CTRL+Backspace) like bash
+#autoload -U select-word-style
+#select-word-style bash
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+
 setopt NO_FLOW_CONTROL  # Disable Ctrl+S and Ctrl+Q 
 
 # vim:foldmarker=foldstart,foldend

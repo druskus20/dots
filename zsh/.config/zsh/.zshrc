@@ -14,6 +14,8 @@ HISTSIZE=50000
 SAVEHIST=50000
 HISTFILE="$XDG_CACHE_HOME"/zsh/history
 
+export TERM=xterm-256color
+
 # Clear default keybinds
 clear-keybinds
 
@@ -34,12 +36,15 @@ source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$ZDOTDIR/plugins/zsh-you-should-use/you-should-use.plugin.zsh"
 source "$ZDOTDIR/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
 
+# Reset prompt
+PROMPT=''
+
 # Modules foldstart
 source "$ZDOTDIR/modules/functions.zsh"
 source "$ZDOTDIR/modules/keybinds.zsh"
-source "$ZDOTDIR/modules/prompt.zsh"
 source "$ZDOTDIR/modules/alias.zsh"
 source "$ZDOTDIR/modules/work.zsh"
+source "$ZDOTDIR/modules/prompt.zsh"
 # foldend
 
 # Some quick plugin settings

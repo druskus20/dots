@@ -1,5 +1,5 @@
 # sudo not required for some system commands
-for command in mount umount sv pacman updatedb su shutdown poweroff reboot ; do
+for command in mount umount sv apt pacman updatedb su shutdown poweroff reboot docker ; do
 	alias $command="sudo $command"
 done; unset command
 
