@@ -1,7 +1,6 @@
 {
     "editor.fontLigatures": false,
     "workbench.editor.untitled.hint": "hidden",
-    "workbench.activityBar.visible": false,
     "rust-analyzer.inlayHints.enable": false,
     "editor.fontFamily": "'Jetbrains Mono', 'monospace', monospace",
     "terminal.integrated.fontSize": 12,
@@ -99,8 +98,9 @@
                 "v",
             ],
             "commands": [
-                "keyboard-quickfix.openQuickFix"
-            ]
+                "editor.action.quickFix",
+            ],
+            "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
         },
         {
             "before": [
@@ -221,7 +221,6 @@
         "rust": true
     },
     "editor.inlayHints.enabled": "offUnlessPressed",
-    "window.menuBarVisibility": "hidden",
     "window.enableMenuBarMnemonics": false,
     "vim.highlightedyank.enable": true,
     "workbench.colorTheme": "Gruvbox Material Dark",
@@ -239,10 +238,24 @@
         "editor.semanticHighlighting.enabled": true
     },
     "cmake.configureOnOpen": true,
-    "window.zoomLevel": -2,
     //"errorLens.gutterIconsEnabled": true,
     "extensions.experimental.affinity": {
         "vscodevim.vim": 1,
         "rust-lang.rust-analyzer": 1,
     },
+    "arduino.useArduinoCli": true,
+    "git.openRepositoryInParentFolders": "never",
+    "vs-kubernetes": {
+        "vs-kubernetes.minikube-show-information-expiration": "2024-01-10T16:58:35.212Z"
+    },
+    "wgsl-analyzer.server.path": "~/.local/share/cargo/bin/wgsl_analyzer",
+    "wgsl-analyzer.diagnostics.nagaParsingErrors": false,
+    "wgsl-analyzer.inlayHints.structLayoutHints": false,
+    "wgsl-analyzer.customImports": {
+        "bevy_pbr::mesh_bindings": "https://raw.githubusercontent.com/bevyengine/bevy/v0.11.2/crates/bevy_pbr/src/render/mesh_bindings.wgsl",
+        "bevy_pbr::mesh_functions": "https://raw.githubusercontent.com/bevyengine/bevy/v0.11.2/crates/bevy_pbr/src/render/mesh_functions.wgsl"
+    },
+    "workbench.activityBar.visible": false,
+    "window.menuBarVisibility": "toggle",
+    "window.zoomLevel": 1,
 }

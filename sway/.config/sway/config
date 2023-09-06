@@ -15,6 +15,8 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term alacritty
+set $color-scheme dark
+
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -25,12 +27,13 @@ include /etc/sway/config-vars.d/*
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/drusk/img/bg/leaves2.jpg fill
+# output * bg /home/drusk/img/bg/leaves2.jpg fill
+output * bg /home/drusk/img/bg/wallhaven-yjvgx7e.jpg fill
 #
 # Example configuration:
 #
-output eDP-1 resolution 1920x1080 position 3840,0
 output HDMI-A-1 resolution 1920x1080 position 1920,0
+output eDP-1 resolution 1920x1080 position 3840,0
 output DP-2 resolution 1920x1080 position 0,0
 
 #output eDP-1 resolution 1920x1080 position 0,0
@@ -77,6 +80,7 @@ output DP-2 resolution 1920x1080 position 0,0
     # Start your launcher
     bindsym $mod+Space exec wofi --show drun -I
     bindsym $mod+P exec grimshot copy area
+    bindsym $mod+Shift+P exec grimshot copy window
     bindsym $mod+Shift+Return exec $term --working-directory "$(sway-cwd)"
 
     # Drag floating windows by holding down $mod and left mouse button.
@@ -229,6 +233,7 @@ for_window [title="meet.google.com is sharing a window."] move scratchpad
 for_window [title="meet.google.com is sharing your screen."] move scratchpad
 for_window [title="discord.com is sharing a window."] move scratchpad
 for_window [title="discord.com is sharing your screen."] move scratchpad
+for_window [title="Potion"] floating enable
 #for_window [class="jetbrains-studio"] floating enable
 
 

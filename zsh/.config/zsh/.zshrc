@@ -27,7 +27,9 @@ zstyle ':completion:*' menu select
 _comp_options+=(globdots)		
 # Autocomplete from the middle of the word
 zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'
+
 compinit
+
 # foldend
 
 # Plugins foldstart
