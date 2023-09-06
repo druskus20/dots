@@ -1,7 +1,6 @@
 # .profile
 # Loads on session start
 
-
 # Set utilities
 export EDITOR=/usr/bin/nvim
 export BROWSER=/usr/bin/google-chrome
@@ -94,8 +93,9 @@ fi
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 
 
-## Launches X11 on session start
+## Launches on session start
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+ # /home/pedro/cosmic-comp/target/release/cosmic-comp
   sway
 fi
 

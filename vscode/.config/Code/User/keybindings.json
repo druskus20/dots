@@ -30,14 +30,6 @@
         "when": "textInputFocus"
     },
     {
-        "key": "ctrl+b",
-        "command": "-workbench.action.toggleSidebarVisibility"
-    },
-    {
-        "key": "ctrl+b",
-        "command": "workbench.action.closeSidebar"
-    },
-    {
         "key": "alt+f4",
         "command": "-workbench.action.closeWindow"
     },
@@ -1483,5 +1475,25 @@
     {
         "key": "ctrl+c",
         "command": "editor.action.clipboardCopyAction"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "selectPrevCodeAction",
+        "when": "codeActionMenuVisible"
+    },
+    {
+        "key": "ctrl+up",
+        "command": "-selectPrevCodeAction",
+        "when": "codeActionMenuVisible"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "selectNextCodeAction",
+        "when": "codeActionMenuVisible"
+    },
+    {
+        "key": "ctrl+down",
+        "command": "-selectNextCodeAction",
+        "when": "codeActionMenuVisible"
     }
 ]
