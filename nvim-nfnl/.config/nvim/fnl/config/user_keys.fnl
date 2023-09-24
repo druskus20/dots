@@ -3,5 +3,4 @@
 ; pick them up (with a "desc" property).
 
 ; disable command history
-(vim.keymap.set :n :q: :<nop>)
-(vim.keymap.set :n :Q :<nop>)
+(vim.keymap.set :n "q:" ":q")

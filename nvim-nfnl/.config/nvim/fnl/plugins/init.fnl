@@ -11,10 +11,12 @@
     (vim.api.nvim_create_autocmd :User
                                  {:callback 
                                     (fn [] (require :config.autocmds)
-                                           (require :config.user_keys))
+                                           (require :config.user_keys)
                                   :group (vim.api.nvim_create_augroup :LazyVim {:clear true})
                                   :pattern :VeryLazy})
     ; otherwise load them now. so they affect the opened buffers
     (do (require :config.autocmds) (require :config.user_keys)))	
 
 [{1 :folke/lazy.nvim :version "*"}]
+
+
