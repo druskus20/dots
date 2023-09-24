@@ -1,0 +1,10 @@
+{
+    "Lua.diagnostics.globals": [
+        "vim",
+        "load_lazy",
+        "bootstrap_lua",
+        "bootstrap",
+        "initial_compilation",
+        "recompile"
+    ]
+}
