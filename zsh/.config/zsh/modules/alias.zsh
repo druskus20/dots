@@ -54,7 +54,12 @@ alias devour="devour"
 #alias zathura="devour zathura"
 #alias thunar="devour thunar"
 #alias pavucontrol="devour pavucontrol"
-#
+
+alias vblist="vboxmanage list runningvms"
+alias vbstop="vboxmanage controlvm kali poweroff"
+alias vbstart="vboxmanage startvm kali --type headless"
+alias vbssh="ssh -p 2222 kali@localhost"
+
 
 alias tf=terraform
 alias tfa="terraform apply"

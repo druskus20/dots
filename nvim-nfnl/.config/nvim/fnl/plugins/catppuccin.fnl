@@ -1,5 +1,6 @@
 [{1 :catppuccin/nvim
     :lazy false
+    :enabled false 
     :name :catppuccin
     :config (fn [] (vim.cmd "colorscheme catppuccin"))
     :opts {:integrations {:alpha true
