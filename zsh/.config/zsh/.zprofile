@@ -2,7 +2,7 @@
 # Loads on session start
 
 # Set utilities
-export EDITOR=/usr/bin/nvim
+export EDITOR="$HOME/.local/bin/nvim"
 export BROWSER=/usr/bin/google-chrome
 export MONITOR="HDMI-0"
 export TERMINAL="/bin/alacritty"
