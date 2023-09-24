@@ -1,8 +1,8 @@
 [{1 :catppuccin/nvim
     :lazy false
-    :enabled false 
+    :enabled true 
     :name :catppuccin
-    :config (fn [] (vim.cmd "colorscheme catppuccin"))
+    :config #(vim.cmd "colorscheme catppuccin")
     :opts {:integrations {:alpha true
                           :cmp true
                           :flash true
