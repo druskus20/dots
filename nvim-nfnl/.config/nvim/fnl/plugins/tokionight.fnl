@@ -1,5 +1,9 @@
+(local opts {:style :day})
+
+
 [{1 :folke/tokyonight.nvim 
     :enabled false
-    :config #(vim.cmd "colorscheme tokyonight")
-    :lazy false 
-    :opts {:style :day}}]	
+    :config (fn []
+                 ((. (require :tokyonight) :setup) opts)
+                 (vim.cmd "colorscheme tokyonight"))
+    :lazy false }]	
