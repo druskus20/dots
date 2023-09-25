@@ -289,4 +289,5 @@
     "Lua.diagnostics.globals": [
         "vim"
     ],
+    "window.zoomLevel": 1,
 }

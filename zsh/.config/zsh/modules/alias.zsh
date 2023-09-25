@@ -63,3 +63,5 @@ alias vbssh="ssh -p 2222 kali@localhost"
 
 alias tf=terraform
 alias tfa="terraform apply"
+
+alias docker=podman
