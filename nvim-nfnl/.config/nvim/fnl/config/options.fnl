@@ -19,7 +19,7 @@
 (set opt.ignorecase true)
 (set opt.inccommand :nosplit)
 (set opt.laststatus 0)
-(set opt.list true)
+;(set opt.list true) ; display indentation
 (set opt.mouse :a)
 (set opt.number true)
 (set opt.pumblend 10)
@@ -76,6 +76,5 @@
 (when (= (vim.fn.has :nvim-0.9.0) 1) (set opt.splitkeep :screen)
   (opt.shortmess:append {:C true}))
 (set vim.g.markdown_recommended_style 0)
-
 
 
