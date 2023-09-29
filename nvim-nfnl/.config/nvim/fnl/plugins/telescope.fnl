@@ -1,5 +1,6 @@
 [{1 :nvim-telescope/telescope.nvim
-  :enabled false
+  :dependencies [ :nvim-lua/plenary.nvim]
+  :enabled true
   :cmd :Telescope
   :commit (or (and (= (vim.fn.has :nvim-0.9.0) 0) :057ee0f8783) nil)
   :keys [{1 "<leader>,"
@@ -54,7 +55,7 @@
          {1 :<leader>sM 2 "<cmd>Telescope man_pages<cr>" :desc "Man Pages"}
          {1 :<leader>sm 2 "<cmd>Telescope marks<cr>" :desc "Jump to Mark"}
          {1 :<leader>so 2 "<cmd>Telescope vim_options<cr>" :desc :Options}
-         {1 :<leader>sR 2 "<cmd>Telescope resume<cr>" :desc :Resume}
+         {1 :<leader>sR 2 "<cmd>Telescope resume<cr>" :desc :Resume}]
          ;{1 :<leader>sw
          ; 2 (Util.telescope :grep_string {:word_match :-w})
          ; :desc "Word (root dir)"}
@@ -98,7 +99,7 @@
          ;                              :Field
          ;                              :Property]})
          ; :desc "Goto Symbol (Workspace)"}
-         ]
+         
   :opts {:defaults {:mappings {:i {:<C-Down> (fn [...]
                                                ((. (require :telescope.actions)
                                                    :cycle_history_next) ...))
@@ -115,20 +116,20 @@
                                             (local action-state
                                                    (require :telescope.actions.state))
                                             (local line
-                                                   (action-state.get_current_line))
+                                                   (action-state.get_current_line)))
                                             ;((Util.telescope :find_files
                                             ;                 {:default_text line
                                             ;                  :hidden true}))
-                                            )
+                                            
                                    :<a-i> (fn []
                                             (local action-state
                                                    (require :telescope.actions.state))
                                             (local line
-                                                   (action-state.get_current_line))
+                                                   (action-state.get_current_line)))
                                             ;((Util.telescope :find_files
                                             ;                 {:default_text line
                                             ;                  :no_ignore true}))
-                                            )
+                                            
                                    :<a-t> (fn [...]
                                             ((. (require :trouble.providers.telescope)
                                                 :open_selected_with_trouble) ...))
@@ -139,4 +140,4 @@
                                         ((. (require :telescope.actions) :close) ...))}}
                     :prompt_prefix " "
                     :selection_caret " "}}
-  :version false}]	
+  :version false}]

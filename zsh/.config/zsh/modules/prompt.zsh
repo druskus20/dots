@@ -22,6 +22,7 @@ zle -N zle-keymap-select
 # Gitstatus foldstart
 # https://github.com/romkatv/gitstatus/blob/master/gitstatus.prompt.zsh
 function gitstatus_prompt_update() {
+  source "$ZDOTDIR"/plugins/gitstatus/gitstatus.plugin.zsh
   emulate -L zsh
   typeset -g  GITSTATUS_PROMPT=''
 
@@ -96,7 +97,6 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 PROMPT+='%B'  # Bold
 PROMPT+='├ '
 PROMPT+='%(?:%{$fg[green]%}✓:%{$fg[red]%}✕) '
-# PROMPT+='%(?:%{$fg[green]%}:%{$fg[red]%}) '
 PROMPT+='%{$fg[yellow]%}%n '
 PROMPT+='%{$fg[blue]%}%m '
 PROMPT+='%{$fg[magenta]%}%2. '

@@ -11,12 +11,24 @@
     (vim.api.nvim_create_autocmd :User
                                  {:callback 
                                     (fn [] (require :config.autocmds)
-                                           (require :config.user_keys)
+                                           (require :config.user_keys))
                                   :group (vim.api.nvim_create_augroup :LazyVim {:clear true})
                                   :pattern :VeryLazy})
     ; otherwise load them now. so they affect the opened buffers
-    (do (require :config.autocmds) (require :config.user_keys)))	
+    (do (require :config.autocmds) (require :config.user_keys)))                                                                                                                                    	
 
-[{1 :folke/lazy.nvim :version "*"}]
+[
+ {1 :folke/lazy.nvim :version "*"}
+ {1 :github/copilot.vim}
+ ;{1 :rust-lang/rust.vim}
+ ;{1 :simrat39/rust-tools.nvim}
+  
+ {1 :eraserhd/parinfer-rust :build "cargo build --release" :lazy true :ft [:fennel :lisp]}
+ {1 :elkowar/yuck.vim :lazy true :ft [:yuck]}]
+ ;{1 :elkowar/antifennel-nvim :lazy true :cmd ["Antifennel"]} -- aniseed
+
+
+ ;{1 :karb94/neoscroll.nvim :version "*"} 
+
 
 

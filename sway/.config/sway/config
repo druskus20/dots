@@ -28,7 +28,7 @@ include /etc/sway/config-vars.d/*
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /home/drusk/img/bg/leaves2.jpg fill
-output * bg /home/drusk/img/bg/wallhaven-yjvgx7e.jpg fill
+output * bg /home/drusk/img/bg/purple_coast.jpg fill
 #
 # Example configuration:
 #
@@ -78,7 +78,7 @@ output DP-2 resolution 1920x1080 position 0,0
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+Space exec wofi --show drun -I
+    bindsym $mod+Space exec rofi -show drun -sort
     bindsym $mod+P exec grimshot copy area
     bindsym $mod+Shift+P exec grimshot copy window
     bindsym $mod+Shift+Return exec $term --working-directory "$(sway-cwd)"
@@ -208,7 +208,7 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-gaps inner 5px
+gaps inner 10px
 gaps outer 0px
 
 default_border pixel 1
@@ -250,8 +250,9 @@ bar {
 
 	colors {
 		statusline #ffffff
-		background #323232
-		inactive_workspace #32323200 #32323200 #5c5c5c
+		background #1e1e2e
+
+		inactive_workspace #323232 #323232 #ffffff
 	}
 }
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
