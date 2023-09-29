@@ -7,7 +7,7 @@
 
 (local opt vim.opt)
 (set opt.autowrite true)
-(set opt.clipboard :unnamedplus)
+;(set opt.clipboard :unnamedplus)
 (set opt.completeopt "menu,menuone,noselect")
 (set opt.conceallevel 3)
 (set opt.confirm true)

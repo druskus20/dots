@@ -1,12 +1,16 @@
 {
   "catppuccin": { "branch": "main", "commit": "3d9a5ed556e289bce6c1fb0af89ec838360641b2" },
+  "copilot.vim": { "branch": "release", "commit": "998cf5ab1b85e844c7e8edb864a997e590df7182" },
   "fennel.vim": { "branch": "master", "commit": "30b9beabad2c4f09b9b284caf5cd5666b6b4dc89" },
   "lazy.nvim": { "branch": "main", "commit": "3ad55ae678876516156cca2f361c51f7952a924b" },
   "lualine.nvim": { "branch": "master", "commit": "45e27ca739c7be6c49e5496d14fcf45a303c3a63" },
   "nfnl": { "branch": "main", "commit": "979dbfc48bcb601a9107764a99f9459cb5bd4051" },
   "nvim-lspconfig": { "branch": "master", "commit": "ede4114e1fd41acb121c70a27e1b026ac68c42d6" },
   "nvim.lua": { "branch": "master", "commit": "5d57be0b6eea6c06977b1c5fe0752da909cf4154" },
+  "parinfer-rust": { "branch": "master", "commit": "0e4d52e712641ad351a1bfe6cee3d34d63ed087b" },
+  "plenary.nvim": { "branch": "master", "commit": "9ce85b0f7dcfe5358c0be937ad23e456907d410b" },
   "rust.vim": { "branch": "master", "commit": "889b9a7515db477f4cb6808bef1769e53493c578" },
-  "tokyonight.nvim": { "branch": "main", "commit": "9a01eada39558dc3243278e6805d90e8dff45dc0" },
-  "which-key.nvim": { "branch": "main", "commit": "7ccf476ebe0445a741b64e36c78a682c1c6118b7" }
+  "telescope.nvim": { "branch": "master", "commit": "ffe90fac32122f401429b14d383137bd92a685d0" },
+  "which-key.nvim": { "branch": "main", "commit": "7ccf476ebe0445a741b64e36c78a682c1c6118b7" },
+  "yuck.vim": { "branch": "master", "commit": "9b5e0370f70cc30383e1dabd6c215475915fe5c3" }
 }

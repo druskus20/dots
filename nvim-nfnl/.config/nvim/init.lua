@@ -31,6 +31,10 @@ end
 -- vim recompile command
 vim.cmd("command! Recompile lua recompile()")
 
+-- set leader
+-- vim.g.mapleader = " "
+-- vim.g.maplocalleader = ","
+
 -- on first run, install lazy.nvim and compile plugins, otherwise just load plugins
 if (vim.fn.isdirectory(vim.fn.stdpath("config") .. "/lua/plugins") == 0) then
     require("lazy").setup({ { "Olical/nfnl" } })

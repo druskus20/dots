@@ -12,8 +12,6 @@ if [ -f '/home/drusk/work/infrastructure-utils/google-cloud-sdk/path.zsh.inc' ];
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/drusk/work/infrastructure-utils/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/drusk/work/infrastructure-utils/google-cloud-sdk/completion.zsh.inc'; fi
 
-
-
 export PATH="$PATH:$HOME/.local/bin/elk"
 
 # Prompt

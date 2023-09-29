@@ -37,7 +37,7 @@
   (clock))
 
 (defwindow test
-  :monitor 1
+  :monitor 0
   :hexpand true
   :vexpand true
   :geometry (geometry :anchor "top left" :x 200 :y 0 :width "200px" :height "200px")

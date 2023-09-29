@@ -1,8 +1,8 @@
 * {
   accent:           #a5c6e1;
-  background:       #282e38;
-  background-light: #2e3440;
-  background-focus: #373e4d;
+  background:       #171724;
+  background-light: #1e1e2e;
+  background-focus: #28293d;
   foreground:       #bfbfcb;
   on:               #ccd389;
   off:              #eca8a8;
@@ -26,7 +26,7 @@ element-icon {
 
 #window {
   width: 50%;
-  height: 47%;
+  height: 45%;
   padding: 30px 30px;
 }
 
