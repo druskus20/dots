@@ -30,7 +30,7 @@
     :enabled true 
     :name :catppuccin
     :config (fn []
-                 ((. (require :catppuccin) :setup) opts)
-                 (vim.cmd "colorscheme catppuccin"))}]
+                ((. (require :catppuccin) :setup) opts)
+                (vim.cmd "colorscheme catppuccin"))}]
 
 

@@ -8,6 +8,7 @@
 
 [{1 :nvim-lualine/lualine.nvim
   :event :VeryLazy
+  :enabled true
   :opts (fn []
           ;(local icons (. (require :lazyvim.config) :icons))
           ;(local Util (require :lazyvim.util))
@@ -17,12 +18,12 @@
                      :theme :auto}
            :sections {:lualine_a [:mode]
                       :lualine_b [:branch]
-                      :lualine_c [{1 :diagnostics
+                      :lualine_c [{1 :diagnostics}
                                    ;:symbols {:error icons.diagnostics.Error
                                    ;          :hint icons.diagnostics.Hint
                                    ;          :info icons.diagnostics.Info
                                    ;          :warn icons.diagnostics.Warn}
-                                   }
+                                   
                                   {1 :filetype
                                    :icon_only true
                                    :padding {:left 1 :right 0}
@@ -75,11 +76,11 @@
                                   {1 (. (require :lazy.status) :updates)
                                    ;:color (Util.fg :Special)
                                    :cond (. (require :lazy.status) :has_updates)}
-                                  {1 :diff
+                                  {1 :diff}]
                                    ;:symbols {:added icons.git.added
                                    ;          :modified icons.git.modified
                                    ;          :removed icons.git.removed}
-                                   }]
+                                   
                       :lualine_y [{1 :progress
                                    :padding {:left 1 :right 0}
                                    :separator " "}
