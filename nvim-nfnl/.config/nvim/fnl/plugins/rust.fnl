@@ -16,8 +16,9 @@
 
 (define-signs "Diagnostic")
 
-[{1 :rust-lang/rust.vim}
- {1 :neovim/nvim-lspconfig
+[{1 :rust-lang/rust.vim :enabled true }
+ {1 :neovim/nvim-lspconfig 
+  :enabled true
   :config (fn []
             (let [lsp (require :lspconfig)
                   ]

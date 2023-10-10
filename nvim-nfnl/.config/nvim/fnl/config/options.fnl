@@ -77,4 +77,3 @@
   (opt.shortmess:append {:C true}))
 (set vim.g.markdown_recommended_style 0)
 
-
