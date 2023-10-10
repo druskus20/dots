@@ -1,6 +1,4 @@
 [{1 :folke/which-key.nvim
-    :enabled true
-    :lazy false
     :event :VeryLazy
     :init #(do (set vim.o.timeout true)
                (set vim.o.timeoutlen 300))

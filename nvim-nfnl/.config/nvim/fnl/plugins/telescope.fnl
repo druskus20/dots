@@ -1,6 +1,5 @@
 [{1 :nvim-telescope/telescope.nvim
   :dependencies [ :nvim-lua/plenary.nvim]
-  :enabled true
   :cmd :Telescope
   :commit (or (and (= (vim.fn.has :nvim-0.9.0) 0) :057ee0f8783) nil)
   :keys [{1 "<leader>,"

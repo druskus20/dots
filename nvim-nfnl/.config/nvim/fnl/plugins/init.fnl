@@ -16,22 +16,26 @@
                                   :group (vim.api.nvim_create_augroup :LazyVim {:clear true})
                                   :pattern :VeryLazy})
     ; otherwise load them now. so they affect the opened buffers
-    (do (require :config.autocmds) (require :config.user_keys)))                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              	
+    (do (require :config.autocmds) (require :config.user_keys)))                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      	
 
 [
- {1 :folke/lazy.nvim :version "*"}
- {1 :github/copilot.vim :enabled true}
- ;{1 :rust-lang/rust.vim}
- ;{1 :simrat39/rust-tools.nvim}
-  
- {1 :eraserhd/parinfer-rust :enabled true :build "cargo build --release" :lazy true :ft [:fennel :lisp]}
- {1 :elkowar/yuck.vim :enabled true :lazy true :ft [:yuck]}
- ;{1 :elkowar/antifennel-nvim :lazy true :cmd ["Antifennel"]} -- aniseed
+  {1 :folke/lazy.nvim :version "*"}
+  ; https://github.com/LazyVim/LazyVim/blob/e8c26c70e27d468cec11926890105d61f99f9218/lua/lazyvim/plugins/extras/coding/copilot.lua#L56
+  {1 :github/copilot.vim :event :VeryLazy}
+  ;{1 :rust-lang/rust.vim}
+  ;{1 :simrat39/rust-tools.nvim}
+   
+  {1 :eraserhd/parinfer-rust :build "cargo build --release" :ft [:fennel :lisp]}
+  {1 :elkowar/yuck.vim :ft [:yuck]}
+  {1 :elkowar/antifennel-nvim :lazy true :cmd ["Antifennel"]} ; -- aniseed
+
+  {1 :nvim-tree/nvim-web-devicons :lazy true}
 
 
- {1 :karb94/neoscroll.nvim 
-    :event :VeryLazy
-    :config true
-    :opts {:easing_function :cubic}
-    :version "*"}]
-    ;:config #((. (require :neoscroll) :setup))}] 
+  {1 :karb94/neoscroll.nvim 
+     :event :VeryLazy
+     :config true 
+     :opts {:easing_function :cubic}
+     :version "*"}]
+   
+

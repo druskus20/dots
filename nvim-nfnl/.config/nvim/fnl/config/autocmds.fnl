@@ -1,7 +1,7 @@
 ; Loaded on "VeryLazy" event. 
 
 (fn augroup [name]
-  (vim.api.nvim_create_augroup (.. :drusk_ name) {:clear true}))                                                                                                                                                                                                                                                                                                                                                  	
+  (vim.api.nvim_create_augroup (.. :drusk_ name) {:clear true}))                                                                                                                                                                                                                                                                                                                                                    	
 
 ; Highlight on yank 
 (vim.api.nvim_create_autocmd :TextYankPost
