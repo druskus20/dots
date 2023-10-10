@@ -29,4 +29,22 @@
     (set root (. (vim.fs.find M.root_patterns {: path :upward true}) 1))
     (set root (or (and root (vim.fs.dirname root)) (vim.loop.cwd))))
   root)
+
+
+; https://github.com/LazyVim/LazyVim/blob/e8c26c70e27d468cec11926890105d61f99f9218/lua/lazyvim/util/init.lua#L333
+; Wrapper around vim.keymap.set that will
+; not create a keymap if a lazy key handler exists.
+; It will also set `silent` to true by default.
+(fn M.safe_keymap_set [mode lhs rhs opts]
+  (let [keys (. (. (require :lazy.core.handler) :handlers) :keys)]
+    (var modes (or (and (= (type mode) :string) [mode]) mode))
+    (set modes (vim.tbl_filter (fn [m]
+                                 (not (and keys.have (keys:have lhs m))))
+                               modes))
+    (when (> (length modes) 0)
+      (set-forcibly! opts (or opts {}))
+      (set opts.silent (not= opts.silent false))
+      (when (and opts.remap (not vim.g.vscode)) (set opts.remap nil))
+      (vim.keymap.set modes lhs rhs opts))))
+
 M                                                                                                                                                                                                                      	
