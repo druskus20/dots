@@ -98,8 +98,19 @@
          ;                              :Field
          ;                              :Property]})
          ; :desc "Goto Symbol (Workspace)"}
-         
-  :opts {:defaults {:mappings {:i {:<C-Down> (fn [...]
+         ;
+;
+;
+;     defaults = {
+;        mappings = {
+;            i = {
+;                ["<esc>"] = actions.close,
+;            },
+;        },
+
+
+  :opts {:defaults {:mappings {:i {:<esc> (fn [...] ((. (require :telescope.actions) :close) ...))
+                                   :<C-Down> (fn [...]
                                                ((. (require :telescope.actions)
                                                    :cycle_history_next) ...))
                                    :<C-Up> (fn [...]

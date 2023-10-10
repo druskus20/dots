@@ -1,3 +1,7 @@
+; For which key keybinds
+; (fn cmd [s desc] [(.. "<cmd>" s "<cr>") desc])
+; (fn sel-cmd [s desc] [(.. "<cmd>'<,'>" s "<cr>") desc])
+
 [{1 :folke/which-key.nvim
     :event :VeryLazy
     :init #(do (set vim.o.timeout true)
