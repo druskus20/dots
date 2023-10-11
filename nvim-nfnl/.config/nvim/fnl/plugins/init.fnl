@@ -16,8 +16,7 @@
                                       (if lazy_autocmds 
                                         (require :config.autocmds))
                                       (require :config.user_keys))
-                                  :group (vim.api.nvim_create_augroup :LazyVim {:clear true})
-                                  :pattern :VeryLazy})
+                                  :group (vim.api.nvim_create_augroup :LazyVim {:clear true}) :pattern :VeryLazy})
 
 [
   {1 :folke/lazy.nvim :version "*"}
