@@ -47,4 +47,17 @@
       (when (and opts.remap (not vim.g.vscode)) (set opts.remap nil))
       (vim.keymap.set modes lhs rhs opts))))
 
-M                                                                                                                                                                                                                      	
+(fn M.on_load [name ___fn___]
+  (let [Config (require :lazy.core.config)]
+    (if (and (. Config.plugins name)
+             (. (. (. Config.plugins name) "_") :loaded))
+
+        (___fn___ name)
+        (vim.api.nvim_create_autocmd :User
+                                     {:callback (fn [event]
+                                                  (when (= event.data name)
+                                                    (___fn___ name)
+                                                    true))
+                                      :pattern :LazyLoad}))))
+
+M                                                                                                                                                                                                                                        	
