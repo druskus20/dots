@@ -12,21 +12,19 @@
 
 (vim.keymap.set :n "q" "<Nop>")
 (vim.keymap.set :n "Q" "q")
-
-; TODO: improve
+ 
+; TODO: improve, make more like LazyKeys https://github.com/folke/lazy.nvim/blob/main/lua/lazy/core/handler/keys.lua
 (local util (autoload :util))
 (local map util.safe_keymap_set)
 
 ; For which key keybinds
 ; (fn cmd [s desc] [(.. "<cmd>" s "<cr>") desc])
 ; (fn sel-cmd [s desc] [(.. "<cmd>'<,'>" s "<cr>") desc])
-
 (fn cmd_string [s] (.. "<cmd>" s "<cr>")) ; TODO: Change
 
 ; TODO: Funny macro / function  that accepts a table with maps, similar to wk.register
 ; (alternatively I could just require wk, now that keybinds are ALWAYS lazy loaded)
-(map "n" "<leader>l" (cmd_string "bprevious") { :desc "Previous buffer"})
-(map "n" "<leader>h" (cmd_string "bnext") { :desc "Next buffer"})
-(map "n" "<leader>h" (cmd_string "bnext") { :desc "Next buffer"})
+(map "n" "<leader>h" (cmd_string "bprevious") { :desc "Previous buffer"})
+(map "n" "<leader>l" (cmd_string "bnext") { :desc "Next buffer"})
 (map "n" "<leader>bc" (cmd_string "bdelete!") { :desc "Close buffer"})
 (map "n" "<leader>bw" (cmd_string "bwipeout!") { :desc "Wipeout buffer"})
