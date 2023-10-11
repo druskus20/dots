@@ -8,6 +8,10 @@ export MONITOR="HDMI-0"
 export TERMINAL="/bin/alacritty"
 export TERM=xterm-color
 
+# idk if it works
+export XCURSOR_SIZE=16
+# also:  gsettings set org.gnome.desktop.interface cursor-size 16 
+
 # Screen sharing
 export XDG_CURRENT_DESKTOP=sway
 export MOZ_ENABLE_WAYLAND
