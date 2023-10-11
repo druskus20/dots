@@ -32,9 +32,10 @@ output * bg /home/drusk/img/bg/purple_coast.jpg fill
 #
 # Example configuration:
 #
-output HDMI-A-1 resolution 1920x1080 position 1920,0
-output eDP-1 resolution 1920x1080 position 3840,0
-output DP-2 resolution 1920x1080 position 0,0
+output DP-2 resolution 1920x1080 position -1920,0
+# primary should always be 0 0 for chrome extensions to wrok
+output HDMI-A-1 resolution 1920x1080 position 0,0
+output eDP-1 resolution 1920x1080 position 1920,0
 
 #output eDP-1 resolution 1920x1080 position 0,0
 #
@@ -234,6 +235,16 @@ for_window [title="meet.google.com is sharing your screen."] move scratchpad
 for_window [title="discord.com is sharing a window."] move scratchpad
 for_window [title="discord.com is sharing your screen."] move scratchpad
 for_window [title="Potion"] floating enable
+# Generated windows.
+for_window [title="(?:Open|Save) (?:File|Folder|As)"] floating enable;
+for_window [title="(?:Open|Save) (?:File|Folder|As)"] resize set 800 600
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="popup"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
 #for_window [class="jetbrains-studio"] floating enable
 
 
