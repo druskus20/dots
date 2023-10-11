@@ -47,6 +47,7 @@
       (when (and opts.remap (not vim.g.vscode)) (set opts.remap nil))
       (vim.keymap.set modes lhs rhs opts))))
 
+; Useful mostly for telescope stuff
 (fn M.on_load [name ___fn___]
   (let [Config (require :lazy.core.config)]
     (if (and (. Config.plugins name)
@@ -60,4 +61,4 @@
                                                     true))
                                       :pattern :LazyLoad}))))
 
-M                                                                                                                                                                                                                                        	
+M                                                                                                                                                                                                                                                                                                                      	

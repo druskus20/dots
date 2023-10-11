@@ -27,10 +27,11 @@
    
   {1 :eraserhd/parinfer-rust :build "cargo build --release" :ft [:fennel :lisp]}
   {1 :elkowar/yuck.vim :ft [:yuck]}
-  {1 :elkowar/antifennel-nvim :lazy true :cmd ["Antifennel"]} ; -- aniseed
+  ;{1 :elkowar/antifennel-nvim :lazy true :cmd ["Antifennel"]} ; -- aniseed
 
   {1 :nvim-tree/nvim-web-devicons :lazy true}
 
+  {1 :antifennel :dir "~/antifennel.nvim" :config true}
 
   {1 :karb94/neoscroll.nvim 
      :event :VeryLazy
