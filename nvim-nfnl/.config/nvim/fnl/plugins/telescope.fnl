@@ -1,4 +1,34 @@
+;  
+; TelescopePromptPrefix = {
+;                          fg = colors.red,
+;                          bg = colors.black2,}
+;  ,
+;
+;  TelescopeNormal = { bg = colors.darker_black },
+;
+;  TelescopePreviewTitle = {
+;                           fg = colors.black,
+;                           bg = colors.green,}
+;  ,
+;
+;  TelescopePromptTitle = {
+;                          fg = colors.black,
+;                          bg = colors.red,}
+;  ,
+;
+;  TelescopeSelection = { bg = colors.black2, fg = colors.white },
+;  TelescopeResultsDiffAdd = { fg = colors.green },
+;  TelescopeResultsDiffChange = { fg = colors.yellow },
+;  TelescopeResultsDiffDelete = { fg = colors.red },
+
+;vim.api.nvim_set_hl(0, "ColorColumn", { ctermbg=0, bg=LightGrey })
+
+ 
+
 (local Util (require :util))
+(local {: autoload} (require :nfnl.module))
+
+
 
 [{1 :nvim-telescope/telescope.nvim
     :dependencies [ :nvim-lua/plenary.nvim
@@ -8,6 +38,32 @@
                        :dependencies [{1 :nvim-telescope/telescope-fzf-native.nvim
                                          :build :make
                                          :config (fn [] (Util.on_load :telescope.nvim (fn [] ((. (require :telescope) :load_extension) :fzf))))}]}]
+    :config (fn [] 
+              ; TODO: local bad
+              (local colors (autoload :catppuccin.palettes.mocha))
+
+              (vim.api.nvim_set_hl 0 "TelescopePromptPrefix" {:bg colors.mantle :fg colors.red})
+              (vim.api.nvim_set_hl 0 "TelescopePromptTitle" {:bg colors.red :fg colors.crust})
+              (vim.api.nvim_set_hl 0 "TelescopeSelection" {:bg colors.base :fg colors.text})
+              (vim.api.nvim_set_hl 0 "TelescopeResultsDiffAdd" {:fg colors.green})
+              (vim.api.nvim_set_hl 0 "TelescopeResultsDiffChange" {:fg colors.yellow})
+              (vim.api.nvim_set_hl 0 "TelescopeResultsDiffDelete" {:fg colors.red})
+
+              ;vim.api.nvim_set_hl 0 “FloatBorder” {bg=“#3B4252” fg=“#5E81AC”}
+              ;vim.api.nvim_set_hl(0, “NormalFloat” {bg=“#3B4252”})
+              ;vivim.api.nvim_set_hl(0, “TelescopeNormal”, {bg=“#3B4252”})
+              ;vivim.api.nvim_set_hl(0, “TelescopeBorder”, {bg=“#3B4252”})
+
+              (vim.api.nvim_set_hl 0 "TelescopeNormal" {:bg colors.mantle})
+              (vim.api.nvim_set_hl 0 "TelescopeBorder" {:bg colors.mantle :fg colors.mantle})
+
+              ; borderless
+              (vim.api.nvim_set_hl 0 "TelescopeBorder" {:bg colors.mantle :fg colors.mantle})
+              (vim.api.nvim_set_hl 0 "TelescopePromptBorder" {:bg colors.mantle :fg colors.mantle})
+              (vim.api.nvim_set_hl 0 "TelescopePromptNormal" {:bg colors.mantle :fg colors.text})
+              (vim.api.nvim_set_hl 0 "TelescopeResultsTitle" {:bg colors.red :fg colors.crust})
+              (vim.api.nvim_set_hl 0 "TelescopePromptPrefix" {:bg colors.mantle :fg colors.red})
+              nvim_set_hl)
     :cmd :Telescope
     :keys [{1 "<leader>,"
             2 "<cmd>Telescope buffers show_all_buffers=true<cr>"
@@ -157,3 +213,6 @@
                       :prompt_prefix " "
                       :selection_caret " "
                       :version false}}}]
+
+
+ 
