@@ -53,9 +53,8 @@
   (vim.api.nvim_feedkeys (vim.api.nvim_replace_termcodes :<C-c> true false true) :x false))
 
 ; Use q and <esc> to close floating windows and clear search (in visual mode)
-(map "v" "<esc>" (fn [] (close-floating) (vim.cmd "nohlsearch") (exit-visual-mode))
-          (map "v" "q" (fn [] (close-floating) (vim.cmd "nohlsearch") (exit-visual-mode))))
-
+(map "v" "<esc>" (fn [] (close-floating) (vim.cmd "nohlsearch") (exit-visual-mode)))
+(map "v" "q" (fn [] (close-floating) (vim.cmd "nohlsearch") (exit-visual-mode)))
 
 ; C+j and C+k to move up and down in menus
 (map ["i" "n"] "<C-j>" "<C-n>" { :desc "Move down"})
@@ -63,13 +62,12 @@
 
 ; TODO: Code this in lua, so that the screen doesn't flicker
 ; - keybinds to reduce / increase indent
-(map "v" "<" "<gv" { :desc "Reduce indent"})j
+(map "v" "<" "<gv" { :desc "Reduce indent"})
 (map "v" ">" ">gv" { :desc "Increase indent"})
 
 ; Tab is the same as C-i so we cant use it
 ;(map "n" "<tab>" ">>_" { :desc "Increase indent"})
 ;(map "n" "<s-tab>" "<<_" { :desc "Reduce indent"})
-;
 (map "i" "<S-tab>" "<C-D>" { :desc "Decrease indent"})
 (map "v" "<tab>" ">gv" { :desc "Increase indent"})
 (map "v" "<s-tab>" "<gv" { :desc "Reduce indent"})

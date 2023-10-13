@@ -6,9 +6,7 @@
 
 [{1 :willothy/nvim-cokeline 
     :event :VeryLazy
-    :opts {:components [{:fg (fn [buffer]
-                               buffer.devicon.color)
-                         :text (fn [buffer]
+    :opts {:components [{:text (fn [buffer]
                                  (.. " "
                                      buffer.devicon.icon))}
                         {:fg colors.base
