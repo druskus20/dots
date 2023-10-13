@@ -1,4 +1,4 @@
-source "$ZDOTDIR"/plugins/gitstatus/gitstatus.plugin.zsh
+#source "$ZDOTDIR"/plugins/gitstatus/gitstatus.plugin.zsh
 
 # To be able to use: "%{$fg[red]$bg[red]%}"
 autoload -U colors && colors
@@ -22,7 +22,12 @@ zle -N zle-keymap-select
 # Gitstatus foldstart
 # https://github.com/romkatv/gitstatus/blob/master/gitstatus.prompt.zsh
 function gitstatus_prompt_update() {
-  source "$ZDOTDIR"/plugins/gitstatus/gitstatus.plugin.zsh
+  # Hack
+  if ! command -v gitstatus_check >/dev/null; then
+        source "$ZDOTDIR"/plugins/gitstatus/gitstatus.plugin.zsh
+  fi
+  gitstatus_stop 'MY' && gitstatus_start -s -1 -u -1 -c -1 -d -1 'MY'
+  #source "$ZDOTDIR"/plugins/gitstatus/gitstatus.plugin.zsh
   emulate -L zsh
   typeset -g  GITSTATUS_PROMPT=''
 
@@ -38,7 +43,7 @@ function gitstatus_prompt_update() {
   elif [[ -n $VCS_STATUS_TAG ]]; then
     p+='%f#'
     where=$VCS_STATUS_TAG
-  else
+  elste
     p+='%f@'
     where=${VCS_STATUS_COMMIT[1,8]}
   fi
@@ -57,7 +62,7 @@ function gitstatus_prompt_update() {
 # Start gitstatusd instance with name "MY". The same name is passed to
 # gitstatus_query in gitstatus_prompt_update. The flags with -1 as values
 # enable staged, unstaged, conflicted and untracked counters.
-gitstatus_stop 'MY' && gitstatus_start -s -1 -u -1 -c -1 -d -1 'MY'
+#gitstatus_stop 'MY' && gitstatus_start -s -1 -u -1 -c -1 -d -1 'MY'
 
 # On every prompt, fetch git status and set GITSTATUS_PROMPT.
 autoload -Uz add-zsh-hook
