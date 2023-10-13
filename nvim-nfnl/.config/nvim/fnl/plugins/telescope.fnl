@@ -1,30 +1,3 @@
-;  
-; TelescopePromptPrefix = {
-;                          fg = colors.red,
-;                          bg = colors.black2,}
-;  ,
-;
-;  TelescopeNormal = { bg = colors.darker_black },
-;
-;  TelescopePreviewTitle = {
-;                           fg = colors.black,
-;                           bg = colors.green,}
-;  ,
-;
-;  TelescopePromptTitle = {
-;                          fg = colors.black,
-;                          bg = colors.red,}
-;  ,
-;
-;  TelescopeSelection = { bg = colors.black2, fg = colors.white },
-;  TelescopeResultsDiffAdd = { fg = colors.green },
-;  TelescopeResultsDiffChange = { fg = colors.yellow },
-;  TelescopeResultsDiffDelete = { fg = colors.red },
-
-;vim.api.nvim_set_hl(0, "ColorColumn", { ctermbg=0, bg=LightGrey })
-
- 
-
 (local Util (require :util))
 (local {: autoload} (require :nfnl.module))
 
