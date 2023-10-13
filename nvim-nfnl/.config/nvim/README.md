@@ -1,3 +1,6 @@
+
+Note: currently cargo and make are required as dependencies but are not included with this command
+
 ```
 docker run -w /root -it --rm alpine:edge sh -uelic '
   apk add git neovim ripgrep alpine-sdk --update
