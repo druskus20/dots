@@ -9,10 +9,10 @@
 ; (vim.keymap.set :n "q:" ":q") ; creates a "wait time" if we plan to use q as quit
 ; remap q (record macro) to Q
 
-(local {: autoload} (require :nfnl.module))
-
 (vim.keymap.set :n "q" "<Nop>")
 (vim.keymap.set :n "Q" "q")
+
+(local {: autoload} (require :nfnl.module))
 
 ; TODO: improve
 (local util (autoload :util))
@@ -47,10 +47,23 @@
   (vim.api.nvim_feedkeys (vim.api.nvim_replace_termcodes :<C-c> true false true) :x false))
 
 ; Use q and <esc> to close floating windows and clear search (in visual mode)
-(map "v" "<esc>" (fn [] (close-floating) (vim.cmd "nohlsearch") (exit-visual-mode)))
-(map "v" "q" (fn [] (close-floating) (vim.cmd "nohlsearch") (exit-visual-mode)))
+(map "v" "<esc>" (fn [] (close-floating) (vim.cmd "nohlsearch") (exit-visual-mode))
+          (map "v" "q" (fn [] (close-floating) (vim.cmd "nohlsearch") (exit-visual-mode))))
 
-; TODO: 
+
+; C+j and C+k to move up and down in menus
+(map ["i" "n"] "<C-j>" "<C-n>" { :desc "Move down"})
+(map ["i" "n"] "<C-k>" "<C-p>" { :desc "Move up"})
+
+; TODO: Code this in lua, so that the screen doesn't flicker
 ; - keybinds to reduce / increase indent
-; - keybinds to move lines up and down
+(map "v" "<" "<gv" { :desc "Reduce indent"})j
+(map "v" ">" ">gv" { :desc "Increase indent"})
+(map "n" "<tab>" ">>_" { :desc "Increase indent"})
+(map "n" "<s-tab>" "<<_" { :desc "Reduce indent"})
+(map "i" "<S-tab>" "<C-D>" { :desc "Decrease indent"})
+(map "v" "<tab>" ">gv" { :desc "Increase indent"})
+(map "v" "<s-tab>" "<gv" { :desc "Reduce indent"})
+
+
 

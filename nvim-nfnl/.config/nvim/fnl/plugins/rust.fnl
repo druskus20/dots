@@ -26,15 +26,27 @@
 ; TODO: Should I even be using vim.keymap.set
 ; { "<leader>ca", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" },
 ;
-; I think I should be using "LazyKeys" 
+; I think I should be using "LazyKeys"  (loading "after" everything else, on LSP attach)
 (vim.keymap.set [ "n" "v" ] "<leader>mv" vim.lsp.buf.code_action {:desc "Code Action"})
 (vim.keymap.set "n" "<leader>ma" vim.diagnostic.open_float {:desc "Line Diagnostics"})
 (vim.keymap.set "n" "<leader>mg" vim.lsp.buf.definition {:desc "Goto Definition"})
 (vim.keymap.set "n" "<leader>mr" vim.lsp.buf.rename {:desc "Rename"})
 (vim.keymap.set "n" "<leader>mh" vim.lsp.buf.hover {:desc "Hover"})
+(vim.keymap.set "n" "<leader>ms" vim.lsp.buf.references {:desc "Search References"})
 
+; TODO: Custom handlers for things. With titles and borders
+; vim.lsp.buf.references
+; vim.lsp.buf.handlers
+; https://github.com/pbogut/dotfiles/blob/7ba96f5871868c1ce02f4b3832c1659637fb0c2c/config/nvim/lua/plugins/nvim_lsp.lua#L84
 
-[{1 :rust-lang/rust.vim :ft [:rust]}
+[{1 :stevearc/dressing.nvim :opts {
+    :select {
+      :backend [ "builtin"]
+      :builtin {
+        :border :single
+        :relative :cursor
+ }}}}
+ {1 :rust-lang/rust.vim :ft [:rust]}
  {1 :j-hui/fidget.nvim :event :LspAttach :config true :tag :legacy}
  {1 :neovim/nvim-lspconfig 
   :config (fn []
@@ -47,5 +59,5 @@
 
 ; TODO: Hightlight types
 ; vim.cmd("syntax region rustParamType start=\"\<[A-Z][A-Za-z0-9]*\<\" end=\">\" contains=rustType")
-; vim.cmd("syntax match rustType "\<[A-Z][A-Za-z0-9]*\>"])
+; vim.cmd("syntax match rustType "\<[A-Z][A-Za-z0-9]*\>"}]
 
