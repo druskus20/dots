@@ -1,6 +1,6 @@
 [{1 :willothy/nvim-cokeline 
     :event :VeryLazy
-    :config (fn [] 
+    :config (fn [_ opts] 
               (local get-hex (. (require :cokeline.hlgroups) :get_hl_attr))
               ((. (require :cokeline) :setup) {:components [{:fg (fn [buffer]
                                                                    buffer.devicon.color)
@@ -31,7 +31,7 @@
                                                                            (get-hex :ColorColumn
                                                                                     :bg))
                                                                       (get-hex :Normal :fg)))}}))}]
-                                                                               	
+                                                                                                              
               
               
     

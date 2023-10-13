@@ -38,8 +38,8 @@
                        :dependencies [{1 :nvim-telescope/telescope-fzf-native.nvim
                                          :build :make
                                          :config (fn [] (Util.on_load :telescope.nvim (fn [] ((. (require :telescope) :load_extension) :fzf))))}]}]
-    :config (fn [] 
-              ; TODO: local bad
+    :config (fn [_ opts] 
+              ; TODO: Loading colors like this maybe its not the best?
               (local colors (autoload :catppuccin.palettes.mocha))
 
               (vim.api.nvim_set_hl 0 "TelescopePromptPrefix" {:bg colors.mantle :fg colors.red})
@@ -63,12 +63,20 @@
               (vim.api.nvim_set_hl 0 "TelescopePromptNormal" {:bg colors.mantle :fg colors.text})
               (vim.api.nvim_set_hl 0 "TelescopeResultsTitle" {:bg colors.red :fg colors.crust})
               (vim.api.nvim_set_hl 0 "TelescopePromptPrefix" {:bg colors.mantle :fg colors.red})
-              nvim_set_hl)
+              ((. (require :telescope) :setup) opts))
     :cmd :Telescope
     :keys [{1 "<leader>,"
             2 "<cmd>Telescope buffers show_all_buffers=true<cr>"
             :desc "Switch Buffer"}
-           ;{1 :<leader>/ 2 (Util.telescope :live_grep) :desc "Grep (root dir)"}
+           {1 :<leader>p  ; TODO: Look at LavyVim's Util.telescope function for this
+            2 "<cmd>Telescope find_files<cr>"
+            :desc "Find Files"}
+           {1 :<C-p>
+            2 "<cmd>Telescope find_files<cr>"
+            :desc "Find Files"}
+           {1 :<leader>o 
+            2 "<cmd>Telescope live_grep<cr>"
+            :desc "Grep"}
            {1 "<leader>:"
             2 "<cmd>Telescope command_history<cr>"
             :desc "Command History"}
@@ -108,7 +116,7 @@
            ;{1 :<leader>sg 2 (Util.telescope :live_grep) :desc "Grep (root dir)"}
            ;{1 :<leader>sG
            ; 2 (Util.telescope :live_grep {:cwd false})
-           ; :desc "Grep (cwd)"}
+            ; :desc "Grep (cwd)"}
            {1 :<leader>sh 2 "<cmd>Telescope help_tags<cr>" :desc "Help Pages"}
            {1 :<leader>sH
             2 "<cmd>Telescope highlights<cr>"
@@ -172,47 +180,23 @@
 ;        },
 
     :opts {:defaults {:mappings {:i {:<esc> (fn [...] ((. (require :telescope.actions) :close) ...))
-                                     :<C-Down> (fn [...]
-                                                 ((. (require :telescope.actions)
-                                                     :cycle_history_next) ...))
-                                     :<C-Up> (fn [...]
-                                               ((. (require :telescope.actions)
-                                                   :cycle_history_prev) ...))
-                                     :<C-b> (fn [...]
+                                     :<C-u> (fn [...]
                                               ((. (require :telescope.actions)
                                                   :preview_scrolling_up) ...))
-                                     :<C-f> (fn [...]
+                                     :<C-d> (fn [...]
                                               ((. (require :telescope.actions)
                                                   :preview_scrolling_down) ...))
-                                     :<a-h> (fn []
-                                              (local action-state
-                                                     (require :telescope.actions.state))
-                                              (local line
-                                                     (action-state.get_current_line)))
-                                              ;((Util.telescope :find_files
-                                              ;                 {:default_text line
-                                              ;                  :hidden true}))
-                                            
-                                     :<a-i> (fn []
-                                              (local action-state
-                                                     (require :telescope.actions.state))
-                                              (local line
-                                                     (action-state.get_current_line)))
-                                              ;((Util.telescope :find_files
-                                              ;                 {:default_text line
-                                              ;                  :no_ignore true}))
-                                            
-                                     :<a-t> (fn [...]
-                                              ((. (require :trouble.providers.telescope)
-                                                  :open_selected_with_trouble) ...))
-                                     :<c-t> (fn [...]
-                                              ((. (require :trouble.providers.telescope)
-                                                  :open_with_trouble) ...))}
+                                     :<C-j> (fn [...]
+                                              ((. (require :telescope.actions)
+                                                  :move_selection_next) ...))
+                                     :<C-k> (fn [...]
+                                              ((. (require :telescope.actions)
+                                                  :move_selection_previous) ...))}
                                  :n {:q (fn [...]
                                           ((. (require :telescope.actions) :close) ...))}}
                       :prompt_prefix " "
                       :selection_caret " "
-                      :version false}}}]
+                        :version false}}}]
 
 
  
