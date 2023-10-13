@@ -43,8 +43,16 @@
     :select {
       :backend [ "builtin"]
       :builtin {
+        :width nil
+        :max_width [ 140 0.8 ]
+        :min_width [ 20 0 ]
+        :height nil
+        :max_height 0.9
+        :min_height [ 0 0 ]
+
+        :title_pos :left
         :border :single
-        :relative :cursor
+        :relative :cursor ; TODO: PR to make the window cursor right bellow the cursor
  }}}}
  {1 :rust-lang/rust.vim :ft [:rust]}
  {1 :j-hui/fidget.nvim :event :LspAttach :config true :tag :legacy}
