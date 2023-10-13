@@ -1,36 +1,38 @@
+
+(local {: autoload} (require :nfnl.module))
+; not good
+(local colors (autoload :catppuccin.palettes.mocha))
+
+
 [{1 :willothy/nvim-cokeline 
     :event :VeryLazy
+    :opts {:components [{:fg (fn [buffer]
+                               buffer.devicon.color)
+                         :text (fn [buffer]
+                                 (.. " "
+                                     buffer.devicon.icon))}
+                        {:fg colors.base
+                         :italic true
+                         :text (fn [buffer]
+                                 buffer.unique_prefix)}
+                        {:text (fn [buffer]
+                                 (.. buffer.filename " "))
+                         :underline (fn [buffer]
+                                      (and buffer.is_hovered
+                                           (not buffer.is_focused)))}
+                        {:on_click (fn [_ _ _ _ buffer]
+                                     (buffer:delete))
+                         :text ""}
+                        {:text " "}]
+           :default_hl {:bg (fn [buffer] (or (and buffer.is_focused
+                                                  colors.blue)
+                                             colors.base))
+                        :fg (fn [buffer] (or (and buffer.is_focused
+                                                  colors.base)
+                                             colors.text))}}
+           
     :config (fn [_ opts] 
-              (local get-hex (. (require :cokeline.hlgroups) :get_hl_attr))
-              ((. (require :cokeline) :setup) {:components [{:fg (fn [buffer]
-                                                                   buffer.devicon.color)
-                                                             :text (fn [buffer]
-                                                                     (.. " "
-                                                                         buffer.devicon.icon))}
-                                                            {:fg (get-hex :Comment :fg)
-                                                             :italic true
-                                                             :text (fn [buffer]
-                                                                     buffer.unique_prefix)}
-                                                            {:text (fn [buffer]
-                                                                     (.. buffer.filename " "))
-                                                             :underline (fn [buffer]
-                                                                          (and buffer.is_hovered
-                                                                               (not buffer.is_focused)))}
-                                                            {:on_click (fn [_ _ _ _ buffer]
-                                                                         (buffer:delete))
-                                                             :text ""}
-                                                            {:text " "}]
-                                               :default_hl {:bg (fn [buffer]
-                                                                  (or (and buffer.is_focused
-                                                                           (get-hex :Normal
-                                                                                    :fg))
-                                                                      (get-hex :ColorColumn
-                                                                               :bg)))
-                                                            :fg (fn [buffer]
-                                                                  (or (and buffer.is_focused
-                                                                           (get-hex :ColorColumn
-                                                                                    :bg))
-                                                                      (get-hex :Normal :fg)))}}))}]
+              ((. (require :cokeline) :setup) opts))}]
                                                                                                               
               
               
