@@ -26,9 +26,15 @@
 
 ; TODO: Funny macro / function  that accepts a table with maps, similar to wk.register
 ; (alternatively I could just require wk, now that keybinds are ALWAYS lazy loaded)
-(map "n" "<leader>l" (cmd_string "bprevious") { :desc "Previous buffer"})
-(map "n" "<leader>h" (cmd_string "bnext") { :desc "Next buffer"})
-(map "n" "<leader>h" (cmd_string "bnext") { :desc "Next buffer"})
+(map "n" "<leader>h" (cmd_string "bprevious") { :desc "Previous buffer"})
+(map "n" "<leader>l" (cmd_string "bnext") { :desc "Next buffer"})
+(map "n" "<C-h>" (cmd_string "bprevious") { :desc "Previous buffer"})
+(map "n" "<C-l>" (cmd_string "bnext") { :desc "Next buffer"})
+(map "i" "<C-h>" (cmd_string "bprevious") { :desc "Previous buffer"})
+(map "i" "<C-l>" (cmd_string "bnext") { :desc "Next buffer"})
+(map "v" "<C-h>" (cmd_string "bprevious") { :desc "Previous buffer"})
+(map "v" "<C-l>" (cmd_string "bnext") { :desc "Next buffer"})
+
 (map "n" "<leader>bc" (cmd_string "bdelete!") { :desc "Close buffer"})
 (map "n" "<leader>bw" (cmd_string "bwipeout!") { :desc "Wipeout buffer"})
 
@@ -59,8 +65,11 @@
 ; - keybinds to reduce / increase indent
 (map "v" "<" "<gv" { :desc "Reduce indent"})j
 (map "v" ">" ">gv" { :desc "Increase indent"})
-(map "n" "<tab>" ">>_" { :desc "Increase indent"})
-(map "n" "<s-tab>" "<<_" { :desc "Reduce indent"})
+
+; Tab is the same as C-i so we cant use it
+;(map "n" "<tab>" ">>_" { :desc "Increase indent"})
+;(map "n" "<s-tab>" "<<_" { :desc "Reduce indent"})
+;
 (map "i" "<S-tab>" "<C-D>" { :desc "Decrease indent"})
 (map "v" "<tab>" ">gv" { :desc "Increase indent"})
 (map "v" "<s-tab>" "<gv" { :desc "Reduce indent"})
