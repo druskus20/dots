@@ -32,10 +32,14 @@ output * bg /home/drusk/img/bg/purple_coast.jpg fill
 #
 # Example configuration:
 #
-output DP-2 resolution 1920x1080 position -1920,0
-# primary should always be 0 0 for chrome extensions to wrok
-output HDMI-A-1 resolution 1920x1080 position 0,0
-output eDP-1 resolution 1920x1080 position 1920,0
+output DP-2 resolution 1920x1080 position 0,0
+output HDMI-A-1 resolution 1920x1080 position 1920,0
+output eDP-1 resolution 1920x1080 position 3840,0
+
+
+# output DP-2 resolution 1920x1080 position -1920,0
+# output HDMI-A-1 resolution 1920x1080 position 0,0
+# output eDP-1 resolution 1920x1080 position 1920,0
 
 #output eDP-1 resolution 1920x1080 position 0,0
 #
