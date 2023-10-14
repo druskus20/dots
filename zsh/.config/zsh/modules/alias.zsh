@@ -67,4 +67,5 @@ alias tfa="terraform apply"
 alias docker=podman
 
 # create or attach to main and restore session
-alias tm="[ -z "$TMUX" ] && (tmux attach-session -t main || (tmux new-session -s main \; run-shell /home/drusk/.config/tmux/plugins/tmux-resurrect/scripts/restore.sh))"
+#alias tm="[ -z "$TMUX" ] && (tmux attach-session -t main || (tmux new-session -s main \; run-shell /home/drusk/.config/tmux/plugins/tmux-resurrect/scripts/restore.sh))"
+#alias tm="tmux switch-client -t main || (tmux new-session -s main \; run-shell /home/drusk/.config/tmux/plugins/tmux-resurrect/scripts/restore.sh)"
