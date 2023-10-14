@@ -41,11 +41,11 @@
     :keys [{1 "<leader>,"
             2 "<cmd>Telescope buffers show_all_buffers=true<cr>"
             :desc "Switch Buffer"}
-           {1 :<leader>p  ; TODO: Look at LavyVim's Util.telescope function for this
+           {1 :<leader>f  ; TODO: Look at LavyVim's Util.telescope function for this
             2 "<cmd>Telescope find_files<cr>"
-            :desc "Find Files"}
-           {1 :<C-p>
-            2 "<cmd>Telescope find_files<cr>"
+            :desc "Find Files"
+           ;{1 :<C-p>
+           ; 2 "<cmd>Telescope find_files<cr>"
             :desc "Find Files"}
            {1 :<leader>o 
             2 "<cmd>Telescope live_grep<cr>"
