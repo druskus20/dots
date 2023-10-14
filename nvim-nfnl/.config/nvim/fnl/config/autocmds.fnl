@@ -1,7 +1,7 @@
 ; Loaded on "VeryLazy" event. 
 
 (fn augroup [name]
-  (vim.api.nvim_create_augroup (.. :drusk_ name) {:clear true}))                                                                                                                                                                                                                                                                                                                                                    	
+  (vim.api.nvim_create_augroup (.. :drusk_ name) {:clear true}))                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  	
 
 ; Highlight on yank 
 (vim.api.nvim_create_autocmd :TextYankPost
@@ -59,3 +59,11 @@
                                                                             ":p:h")
                                                         :p))
                               :group (augroup :auto_create_dir)})
+
+; Terminal stuff
+; disable number and relativenumber in terminal, enter insert mode 
+(vim.api.nvim_create_autocmd :TermOpen
+                             {:callback (fn [] (set vim.opt_local.number false)
+                                          (set vim.opt_local.relativenumber false)
+                                          (vim.cmd "startinsert"))
+                              :group (augroup :term_open)})

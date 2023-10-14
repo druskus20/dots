@@ -101,6 +101,6 @@ setopt NOBEEP
 #unset __conda_setup
 ## <<< conda initialize <<<
 
-[ -z "$TMUX" ] && tmux
+[ -z "$TMUX" ] && tmux 
 
 # vim:foldmarker=foldstart,foldend
