@@ -67,4 +67,4 @@ alias tfa="terraform apply"
 alias docker=podman
 
 # create or attach to main
-alias tmux="tmux attach-session -t main || tmux new-session -s main"
+alias tm="[ -z "$TMUX" ] && (tmux attach-session -t main || tmux new-session -s main)"

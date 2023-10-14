@@ -56,6 +56,9 @@
  }}}}
  {1 :rust-lang/rust.vim :ft [:rust]}
  {1 :j-hui/fidget.nvim :event :LspAttach :config true :tag :legacy}
+
+ ; TODO Should this be configured as a "dependency of rust.vim?"
+ ; Probably not, since :config probably wont merge with other nvim-lspconfig configs for other langs
  {1 :neovim/nvim-lspconfig 
   :config (fn []
             (let [lsp (require :lspconfig) ]
