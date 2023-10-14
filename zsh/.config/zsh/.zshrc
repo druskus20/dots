@@ -83,6 +83,7 @@ setopt HIST_FIND_NO_DUPS
 # OTHER
 setopt INTERACTIVE_COMMENTS    # allow comments in command line
 setopt NOBEEP
+
 # foldend
 
 ## >>> conda initialize >>>

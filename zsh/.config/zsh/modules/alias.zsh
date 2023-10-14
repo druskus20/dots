@@ -65,3 +65,6 @@ alias tf=terraform
 alias tfa="terraform apply"
 
 alias docker=podman
+
+# create or attach to main
+alias tmux="tmux attach-session -t main || tmux new-session -s main"
