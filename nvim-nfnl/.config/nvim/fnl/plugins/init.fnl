@@ -36,6 +36,8 @@
 
   {1 :antifennel :dir "~/antifennel.nvim" :config true}
 
+  ; embed lualine in tmux
+  ;{1 :vimpostor/vim-tpipeline}
   {1 :karb94/neoscroll.nvim 
      :event :VeryLazy
      :config (fn [_ opts] 

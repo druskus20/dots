@@ -12,8 +12,11 @@
   :opts (fn []
           ;(local icons (. (require :lazyvim.config) :icons))
           ;(local Util (require :lazyvim.util))
-          {:extensions [:neo-tree :lazy]
-           :options {:disabled_filetypes {:statusline [:dashboard :alpha]}
+          {
+           :extensions [:neo-tree :lazy]
+           :options {:component_separators { :left :│ :right :│}
+                     :section_separators { :left " " :right " "}  ; █
+                     :disabled_filetypes {:statusline [:dashboard :alpha]}
                      :globalstatus true
                      :theme :auto}
            :sections {:lualine_a [:mode]

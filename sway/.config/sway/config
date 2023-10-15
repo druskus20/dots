@@ -271,7 +271,10 @@ bar {
 	}
 }
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec_always --no-startup-id flashfocus
 exec mako
+
+
 
 include /etc/sway/config.d/*
 

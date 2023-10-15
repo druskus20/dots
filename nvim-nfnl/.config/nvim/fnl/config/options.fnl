@@ -60,7 +60,6 @@
 (set opt.copyindent true)
 (set opt.previewheight 38)
 (set opt.softtabstop -1)
-(set opt.cmdheight 1)
 (set opt.backspace "indent,eol,start")
 (set opt.swapfile false)
 (set opt.foldcolumn "0")
@@ -72,6 +71,12 @@
 ;:number false
 ;:relativenumber false
 ;:sidescrolloff 1
+
+(set opt.cmdheight 1)
+(set opt.showcmd false)
+(set opt.cmdheight 0)
+
+
 
 (when (= (vim.fn.has :nvim-0.9.0) 1) (set opt.splitkeep :screen)
   (opt.shortmess:append {:C true}))
