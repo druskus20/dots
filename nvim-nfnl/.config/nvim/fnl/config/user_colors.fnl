@@ -5,3 +5,7 @@
 (vim.api.nvim_set_hl 0 "NormalBorder" {:bg colors.mantle :fg colors.mantle})
 (vim.api.nvim_set_hl 0 "FloatBorder" {:bg colors.mantle :fg colors.mantle})
 (vim.api.nvim_set_hl 0 "FloatTitle" {:bg colors.red :fg colors.crust})
+
+; cmd area 
+(vim.api.nvim_set_hl 0 "MsgArea" {:bg colors.mantle :fg colors.text})
+
