@@ -56,17 +56,6 @@
            ;{1 :<leader><space>
            ; 2 (Util.telescope :files)
            ; :desc "Find Files (root dir)"}
-           {1 :<leader>fb 2 "<cmd>Telescope buffers<cr>" :desc :Buffers}
-           ;{1 :<leader>ff
-           ; 2 (Util.telescope :files)
-           ; :desc "Find Files (root dir)"}
-           ;{1 :<leader>fF
-           ; 2 (Util.telescope :files {:cwd false})
-           ; :desc "Find Files (cwd)"}
-           {1 :<leader>fr 2 "<cmd>Telescope oldfiles<cr>" :desc :Recent}
-           ;{1 :<leader>fR
-           ; 2 (Util.telescope :oldfiles {:cwd (vim.loop.cwd)})
-           ; :desc "Recent (cwd)"}
            {1 :<leader>gc 2 "<cmd>Telescope git_commits<CR>" :desc :commits}
            {1 :<leader>gs 2 "<cmd>Telescope git_status<CR>" :desc :status}
            {1 "<leader>s\"" 2 "<cmd>Telescope registers<cr>" :desc :Registers}
