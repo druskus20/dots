@@ -37,7 +37,7 @@
   {1 :antifennel :dir "~/antifennel.nvim" :config true}
 
   ; navic
-  {1 :SmiteshP/nvim-navic :dependencies [:neovim/nvim-lspconfig] :config true}
+  ;{1 :SmiteshP/nvim-navic :dependencies [:neovim/nvim-lspconfig] :config true}
 
   ; embed lualine in tmux
   ;{1 :vimpostor/vim-tpipeline}
