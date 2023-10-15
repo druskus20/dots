@@ -1,4 +1,4 @@
-Various ; utilities
+; Various  utilities
 
 ; there's definitely a more lispy way to do this
 (local M {})
@@ -61,4 +61,4 @@ Various ; utilities
                                                     true))
                                       :pattern :LazyLoad}))))
 
-M                                                                                                                                                                                                                                                                                                                                      	
+M                                                                                                                                                                                                                                                                                                                                                	

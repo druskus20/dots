@@ -35,13 +35,14 @@
                                    :path 1
                                    :symbols {:modified "  "
                                              :readonly ""
-                                             :unnamed ""}}
-                                  {1 (fn []
-                                       ((. (require :nvim-navic) :get_location)))
-                                   :cond (fn []
-                                           (and (. package.loaded :nvim-navic)
-                                                ((. (require :nvim-navic)
-                                                    :is_available))))}]
+                                             :unnamed ""}}]
+                                  ; Configured in navic.fnl
+                                  ;{1 (fn []
+                                  ;     ((. (require :nvim-navic) :get_location))
+                                  ; :cond (fn []
+                                  ;         (and (. package.loaded :nvim-navic)
+                                  ;              ((. (require :nvim-navic)
+                                  ;                  :is_available))))}]
                       :lualine_x [{1 (fn []
                                        ((. (. (. (. (require :noice) :api)
                                                  :status)

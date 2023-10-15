@@ -59,6 +59,8 @@
 
  ; TODO Should this be configured as a "dependency of rust.vim?"
  ; Probably not, since :config probably wont merge with other nvim-lspconfig configs for other langs
+ 
+
  {1 :neovim/nvim-lspconfig 
   :config (fn []
             (let [lsp (require :lspconfig) ]
