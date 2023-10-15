@@ -5,6 +5,7 @@
 
 
 [{1 :willothy/nvim-cokeline 
+    :enabled false
     :dependencies [{1 :nvim-lua/plenary.nvim}]
     :event :VeryLazy
     :opts {:components [{:text (fn [buffer]
