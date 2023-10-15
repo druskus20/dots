@@ -12,6 +12,7 @@
   "nfnl": { "branch": "main", "commit": "979dbfc48bcb601a9107764a99f9459cb5bd4051" },
   "nvim-cokeline": { "branch": "main", "commit": "62b2b69d97ab17cddf6381b4a2d37a441a7b9fd0" },
   "nvim-lspconfig": { "branch": "master", "commit": "2b361e043810d5587d9af0787f8ce40da92ec5e9" },
+  "nvim-navic": { "branch": "master", "commit": "0ffa7ffe6588f3417e680439872f5049e38a24db" },
   "nvim-web-devicons": { "branch": "master", "commit": "a1e6268779411048a87f767a27380089362a0ce2" },
   "nvim.lua": { "branch": "master", "commit": "5d57be0b6eea6c06977b1c5fe0752da909cf4154" },
   "parinfer-rust": { "branch": "master", "commit": "0e4d52e712641ad351a1bfe6cee3d34d63ed087b" },
@@ -19,7 +20,6 @@
   "rust.vim": { "branch": "master", "commit": "889b9a7515db477f4cb6808bef1769e53493c578" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "6c921ca12321edaa773e324ef64ea301a1d0da62" },
   "telescope.nvim": { "branch": "master", "commit": "5a747a9587e4bfc4ae086a38cc679fe54f983b69" },
-  "vim-tpipeline": { "branch": "master", "commit": "bff212497e0873ef7c97bd1e3d59cf57d6627581" },
   "which-key.nvim": { "branch": "main", "commit": "7ccf476ebe0445a741b64e36c78a682c1c6118b7" },
   "yuck.vim": { "branch": "master", "commit": "9b5e0370f70cc30383e1dabd6c215475915fe5c3" }
 }

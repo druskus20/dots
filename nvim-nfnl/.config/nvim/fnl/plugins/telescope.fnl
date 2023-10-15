@@ -3,14 +3,14 @@
 
 
 
-[{1 :nvim-telescope/telescope.nvim
-    :dependencies [ :nvim-lua/plenary.nvim
-                    {1 :nvim-telescope/telescope.nvim
-                       :cmd :Telescope
-                       :version false
-                       :dependencies [{1 :nvim-telescope/telescope-fzf-native.nvim
-                                         :build :make
-                                         :config (fn [] (Util.on_load :telescope.nvim (fn [] ((. (require :telescope) :load_extension) :fzf))))}]}]
+[{1 :nvim-telescope/telescope.nvim}
+ {1 :nvim-telescope/telescope.nvim
+    :cmd :Telescope
+    :version false
+    :dependencies [{1 :nvim-lua/plenary.nvim}
+                   {1 :nvim-telescope/telescope-fzf-native.nvim
+                      :build :make
+                      :config (fn [] (Util.on_load :telescope.nvim (fn [] ((. (require :telescope) :load_extension) :fzf))))}]
     :config (fn [_ opts] 
               ; TODO: Loading colors like this maybe its not the best?
               (local colors (autoload :catppuccin.palettes.mocha))
