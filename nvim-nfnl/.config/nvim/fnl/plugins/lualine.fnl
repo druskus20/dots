@@ -44,32 +44,6 @@
                                   ;              ((. (require :nvim-navic)
                                   ;                  :is_available))))}]
                       :lualine_x [{1 (fn []
-                                       ((. (. (. (. (require :noice) :api)
-                                                 :status)
-                                              :command)
-                                           :get)))
-                                   ;:color (Util.fg :Statement)
-                                   :cond (fn []
-                                           (and (. package.loaded :noice)
-                                                ((. (. (. (. (require :noice)
-                                                             :api)
-                                                          :status)
-                                                       :command)
-                                                    :has))))}
-                                  {1 (fn []
-                                       ((. (. (. (. (require :noice) :api)
-                                                 :status)
-                                              :mode)
-                                           :get)))
-                                   ;:color (Util.fg :Constant)
-                                   :cond (fn []
-                                           (and (. package.loaded :noice)
-                                                ((. (. (. (. (require :noice)
-                                                             :api)
-                                                          :status)
-                                                       :mode)
-                                                    :has))))}
-                                  {1 (fn []
                                        (.. "  " ((. (require :dap) :status))))
                                    ;:color (Util.fg :Debug)
                                    :cond (fn []
@@ -85,8 +59,16 @@
                                    ;          :modified icons.git.modified
                                    ;          :removed icons.git.removed}
                                    
-                      :lualine_y [{1 :progress
-                                   :padding {:left 1 :right 0}
-                                   :separator " "}
-                                  {1 :location :padding {:left 0 :right 1}}]
-                      :lualine_z [(fn [] (.. " " (os.date "%R")))]}})}]
+                      :lualine_y [{1 :location :padding {:left 0 :right 0}}]
+                      :lualine_z []}
+           :tabline { :lualine_b [{1 :buffers
+                                     :max_length 99999999 ; TODO: change?
+                                     :padding {:left 1 :right 1}
+                                     :symbols {:alternate_file ""}}]}})}] ; TODO: Custom function
+
+; TODO: Color for the tabline bg
+; TODO: remove icon "padding" on iconless buffer
+
+
+
+                     

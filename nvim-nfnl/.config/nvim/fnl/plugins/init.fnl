@@ -38,6 +38,25 @@
 
   ; navic
   ;{1 :SmiteshP/nvim-navic :dependencies [:neovim/nvim-lspconfig] :config true}
+  ;
+
+  ;{1 :petertriho/nvim-scrollbar
+  ;   :event [:BufReadPost :BufNewFile]
+  ;   :opts {:excluded_filetypes [:prompt
+  ;                               :TelescopePrompt
+  ;                               :noice
+  ;                               :neo-tree
+  ;                               :dashboard
+  ;                               :alpha
+  ;                               :lazy
+  ;                               :mason
+  ;                               :DressingInput
+  ;                               ""]
+  ;          :handlers {:gitsigns false}
+  ;          :set_highlights true}}
+   
+  
+
 
   ; embed lualine in tmux
   ;{1 :vimpostor/vim-tpipeline}
