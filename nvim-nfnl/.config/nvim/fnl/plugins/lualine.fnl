@@ -1,11 +1,3 @@
-;[{1 :nvim-lualine/lualine.nvim 
-;    ;:event :VeryLazy 
-;    :lazy false
-;    ;:dependencies { 1: "hrsh7th/cmp-nvim-lsp" } º 
-;    :options { :theme  :custom_gruvbox }
-;    }]
-
-
 [{1 :nvim-lualine/lualine.nvim
   :event :VeryLazy
   :enabled true
