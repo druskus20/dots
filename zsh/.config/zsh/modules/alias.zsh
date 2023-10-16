@@ -66,6 +66,16 @@ alias tfa="terraform apply"
 
 alias docker=podman
 
+alias ".."="cd .."
+alias "..."="cd ../.."
+alias "...."="cd ../../.."
+alias "....."="cd ../../../.."
+alias "......"="cd ../../../../.."
+alias "......."="cd ../../../../../.."
+alias "........"="cd ../../../../../../.."
+
+alias "~"="cd ~"
+
 alias 'exit'="[ -z "$TMUX" ] && exit || tmux detach -P"
 
 # create or attach to main and restore session
