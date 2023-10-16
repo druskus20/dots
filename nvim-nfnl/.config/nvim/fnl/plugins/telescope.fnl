@@ -1,32 +1,13 @@
 (local Util (require :util))
 (local {: autoload} (require :nfnl.module))
 
-
-; TODO 
-;
-; mappings = {
-; i = {
-;      -- IMPORTANT: Note that telescope-undo must be available when telescope is configured if
-;      -- you want to replicate these defaults and use the following actions. This means
-;      -- installing as a dependency of telescope in it's `requirements` and loading this
-;      -- extension from there instead of having the separate plugin definition as outlined
-;      -- above.
-;      ["<cr>"] = require("telescope-undo.actions").yank_additions,
-;      ["<S-cr>"] = require("telescope-undo.actions").yank_deletions,
-;      ["<C-cr>"] = require("telescope-undo.actions").restore,
-;     ,)
-
-
 [{1 :nvim-telescope/telescope.nvim
     :cmd :Telescope
     :version false
     :dependencies [{1 :nvim-lua/plenary.nvim}
                    {1 :debugloop/telescope-undo.nvim
                       :config (fn [_ opts] Util.on_load :telescope.nvim (fn [] ((. (require :telescope) :load_extension) :undo)))
-                      :keys [{1 "<leader>u" 2 "<cmd>Telescope undo<cr>" :desc "Undo History"}]
-                      :opts {:defaults {:mappings {:i {:<cr> (fn [...] ((. (require :telescope-undo.actions) :yank_additions) ...))   ; TODO: Fix these mappings!
-                                                       :<S-cr> (fn [...] ((. (require :telescope-undo.actions) :yank_deletions) ...))
-                                                       :<C-R> (fn [...] ((. (require :telescope-undo.actions) :restore) ...))}}}}}
+                      :keys [{1 "<leader>u" 2 "<cmd>Telescope undo<cr>" :desc "Undo History"}]}
                    {1 :nvim-telescope/telescope-fzf-native.nvim
                       :build :make
                       :config (fn [] (Util.on_load :telescope.nvim (fn [] ((. (require :telescope) :load_extension) :fzf))))}]
@@ -160,21 +141,17 @@
 ;            },
 ;        },
 
-    :opts {:defaults {:mappings {:i {:<esc> (fn [...] ((. (require :telescope.actions) :close) ...))
-                                     :<C-u> (fn [...]
-                                              ((. (require :telescope.actions)
-                                                  :preview_scrolling_up) ...))
-                                     :<C-d> (fn [...]
-                                              ((. (require :telescope.actions)
-                                                  :preview_scrolling_down) ...))
-                                     :<C-j> (fn [...]
-                                              ((. (require :telescope.actions)
-                                                  :move_selection_next) ...))
-                                     :<C-k> (fn [...]
-                                              ((. (require :telescope.actions)
-                                                  :move_selection_previous) ...))}
-                                 :n {:q (fn [...]
-                                          ((. (require :telescope.actions) :close) ...))}}
+    :opts {:defaults {:mappings {:i {:<cr> (fn [...] ((. (require :telescope-undo.actions) :yank_additions) ...))   ; TODO: Fix these mappings!
+                                     :<S-cr> (fn [...] ((. (require :telescope-undo.actions) :yank_deletions) ...))
+                                     :<C-R> (fn [...] (print "Does not work!\n!") ((. (require :telescope-undo.actions) :restore) ...))
+
+                                     :<esc> (fn [...] ((. (require :telescope.actions) :close) ...))
+                                     :<C-u> (fn [...] ((. (require :telescope.actions) :preview_scrolling_up) ...))
+                                     :<C-d> (fn [...] ((. (require :telescope.actions) :preview_scrolling_down) ...))
+                                     :<C-j> (fn [...] ((. (require :telescope.actions) :move_selection_next) ...))
+                                     :<C-k> (fn [...] ((. (require :telescope.actions) :move_selection_previous) ...))}
+                                 :n {:q (fn [...] ((. (require :telescope.actions) :close) ...))}}
+
                       :prompt_prefix " "
                       :selection_caret " "
                         :version false}}}]
