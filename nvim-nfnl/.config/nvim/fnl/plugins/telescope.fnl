@@ -141,11 +141,7 @@
 ;            },
 ;        },
 
-    :opts {:defaults {:mappings {:i {:<cr> (fn [...] ((. (require :telescope-undo.actions) :yank_additions) ...))   ; TODO: Fix these mappings!
-                                     :<S-cr> (fn [...] ((. (require :telescope-undo.actions) :yank_deletions) ...))
-                                     :<C-R> (fn [...] (print "Does not work!\n!") ((. (require :telescope-undo.actions) :restore) ...))
-
-                                     :<esc> (fn [...] ((. (require :telescope.actions) :close) ...))
+    :opts {:defaults {:mappings {:i {:<esc> (fn [...] ((. (require :telescope.actions) :close) ...))
                                      :<C-u> (fn [...] ((. (require :telescope.actions) :preview_scrolling_up) ...))
                                      :<C-d> (fn [...] ((. (require :telescope.actions) :preview_scrolling_down) ...))
                                      :<C-j> (fn [...] ((. (require :telescope.actions) :move_selection_next) ...))
@@ -154,7 +150,11 @@
 
                       :prompt_prefix " "
                       :selection_caret " "
-                        :version false}}}]
+                      :version false}
+           :extensions {:undo { :mappings {:i {:<cr> (fn [...] ((. (require :telescope-undo.actions) :yank_additions) ...))   
+                                               :<S-cr> (fn [...] ((. (require :telescope-undo.actions) :yank_deletions) ...))
+                                               :<C-R> (fn [...] (print "Does not work!\n!") ((. (require :telescope-undo.actions) :restore) ...))}}}}}}]
+
 
 
  
