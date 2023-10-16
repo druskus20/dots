@@ -67,8 +67,11 @@
               ;; To add support to more language servers check:
               ;; https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 
-              (lsp.rust_analyzer.setup {})))}]
+              (lsp.rust_analyzer.setup {})))}
 
+ 
+; TODO: CMP STUFF
+  {1 :hrsh7th/nvim-cmp}]
 
 ; TODO: Hightlight types
 ; vim.cmd("syntax region rustParamType start=\"\<[A-Z][A-Za-z0-9]*\<\" end=\">\" contains=rustType")
