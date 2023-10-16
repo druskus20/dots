@@ -2,12 +2,31 @@
 (local {: autoload} (require :nfnl.module))
 
 
+; TODO 
+;
+; mappings = {
+; i = {
+;      -- IMPORTANT: Note that telescope-undo must be available when telescope is configured if
+;      -- you want to replicate these defaults and use the following actions. This means
+;      -- installing as a dependency of telescope in it's `requirements` and loading this
+;      -- extension from there instead of having the separate plugin definition as outlined
+;      -- above.
+;      ["<cr>"] = require("telescope-undo.actions").yank_additions,
+;      ["<S-cr>"] = require("telescope-undo.actions").yank_deletions,
+;      ["<C-cr>"] = require("telescope-undo.actions").restore,
+;     ,)
 
-[{1 :nvim-telescope/telescope.nvim}
- {1 :nvim-telescope/telescope.nvim
+
+[{1 :nvim-telescope/telescope.nvim
     :cmd :Telescope
     :version false
     :dependencies [{1 :nvim-lua/plenary.nvim}
+                   {1 :debugloop/telescope-undo.nvim
+                      :config (fn [_ opts] Util.on_load :telescope.nvim (fn [] ((. (require :telescope) :load_extension) :undo)))
+                      :keys [{1 "<leader>u" 2 "<cmd>Telescope undo<cr>" :desc "Undo History"}]
+                      :opts {:defaults {:mappings {:i {:<cr> (fn [...] ((. (require :telescope-undo.actions) :yank_additions) ...))   ; TODO: Fix these mappings!
+                                                       :<S-cr> (fn [...] ((. (require :telescope-undo.actions) :yank_deletions) ...))
+                                                       :<C-R> (fn [...] ((. (require :telescope-undo.actions) :restore) ...))}}}}}
                    {1 :nvim-telescope/telescope-fzf-native.nvim
                       :build :make
                       :config (fn [] (Util.on_load :telescope.nvim (fn [] ((. (require :telescope) :load_extension) :fzf))))}]

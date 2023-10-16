@@ -59,7 +59,7 @@
                                    ;          :modified icons.git.modified
                                    ;          :removed icons.git.removed}
                                    
-                      :lualine_y [{1 :location :padding {:left 0 :right 0}}]
+                      :lualine_y [{1 :location :padding {:left 0 :right 1}}]
                       :lualine_z []}
            :tabline { :lualine_b [{1 :buffers
                                      :max_length 99999999 ; TODO: change?
@@ -69,6 +69,3 @@
 ; TODO: Color for the tabline bg
 ; TODO: remove icon "padding" on iconless buffer
 
-
-
-                     
