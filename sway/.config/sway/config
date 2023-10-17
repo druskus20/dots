@@ -257,21 +257,22 @@ for_window [window_type="menu"] floating enable
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-	position top
-
-# When the status_command prints a new line to stdout, swaybar updates.
-# The default just shows the current date and time.
-	status_command /home/drusk/.config/sway/battery.sh
-
-	colors {
-		statusline #ffffff
-		background #1e1e2e
-
-		inactive_workspace #323232 #323232 #ffffff
-	}
-}
+#bar {
+#	position top
+#
+## When the status_command prints a new line to stdout, swaybar updates.
+## The default just shows the current date and time.
+#	status_command /home/drusk/.config/sway/battery.sh
+#
+#	colors {
+#		statusline #ffffff
+#		background #1e1e2e
+#
+#		inactive_workspace #323232 #323232 #ffffff
+#	}
+#}
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec eww open-many bar0 bar1 bar2
 exec_always --no-startup-id flashfocus
 exec mako
 
