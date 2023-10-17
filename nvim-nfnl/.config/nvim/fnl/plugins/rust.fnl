@@ -20,6 +20,8 @@
 (local util (autoload :util))
 (local map util.safe_keymap_set)
 
+
+
 ; TODO: Right way to do keymaps https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/lsp/keymaps.lua 
 ; Cant use "map" since it requires lazy.nvim to have fully loaded
 
@@ -45,22 +47,36 @@
 ; https://github.com/pbogut/dotfiles/blob/7ba96f5871868c1ce02f4b3832c1659637fb0c2c/config/nvim/lua/plugins/nvim_lsp.lua#L84
 
 [{1 :stevearc/dressing.nvim :opts {
-    :select {
-      :backend [ "builtin"]
-      :builtin {
-        :width nil
-        :max_width [ 140 0.8 ]
-        :min_width [ 20 0 ]
-        :height nil
-        :max_height 0.9
-        :min_height [ 0 0 ]
+                                   :select {
+                                            :backend [ "builtin"]
+                                            :builtin {
+                                                      :width nil
+                                                      :max_width [ 140 0.8]
+                                                      :min_width [ 20 0]
+                                                      :height nil
+                                                      :max_height 0.9
+                                                      :min_height [ 0 0]
 
-        :title_pos :left
-        :border :single
-        :relative :cursor ; TODO: PR to make the window cursor right bellow the cursor
- }}}}
+                                                      :title_pos :left
+                                                      :border :single
+                                                      :relative :cursor}}}} ; TODO: PR to make the window cursor right bellow the cursor
+ {1 :hrsh7th/nvim-cmp
+    :dependencies [{1 :Saecki/crates.nvim
+                      :event ["BufRead Cargo.toml"]
+                      :opts {:src {:cmp {:enabled true}}}}]}
  {1 :rust-lang/rust.vim :ft [:rust]}
  {1 :j-hui/fidget.nvim :event :LspAttach :config true :tag :legacy}
+
+
+ ; Lazyvim does it with NOICE
+ ; TODO: NOT WORKING
+ ;{1 :ray-x/lsp_signature.nvim
+ ;   :init (fn []
+ ;           (set vim.g.navic_silence true)
+ ;           ((. (require :util.lsp) :on_attach) (fn [client buffer]
+ ;                                                   ((. (require :lsp_signature) :on_attach) client buffer))))
+ ;   :event :VeryLazy
+ ;   :config (fn [_ opts] ((. (require :lsp_signature) :setup) opts))}
 
  ; TODO Should this be configured as a "dependency of rust.vim?"
  ; Probably not, since :config probably wont merge with other nvim-lspconfig configs for other langs
@@ -80,5 +96,5 @@
 
 ; TODO: Hightlight types
 ; vim.cmd("syntax region rustParamType start=\"\<[A-Z][A-Za-z0-9]*\<\" end=\">\" contains=rustType")
-; vim.cmd("syntax match rustType "\<[A-Z][A-Za-z0-9]*\>"}]
+; vim.cmd("syntax match rustType "\<[A-Z][A-Za-z0-9]*\>"))}]
 

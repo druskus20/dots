@@ -1,9 +1,7 @@
 
 ; Loaded on "VeryLazy" event. Only user keys. Plugin-specific keys
-; should be configured on it's respective plugin spec so that which-key can
-; pick them up (with a "desc" property).
+; should be configured on it's respective plugin config. 
 ; Which-key keys or groups should be configured in which_key.fnl. 
-
 
 ; disable command history
 ; (vim.keymap.set :n "q:" ":q") ; creates a "wait time" if we plan to use q as quit
