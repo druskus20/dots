@@ -11,6 +11,8 @@ alias "git reset --hard"='echo "Fuck you"'
 
 alias open="xdg-open"
 alias vim="nvim"
+alias vi="nvim"
+alias v="nvim"
 
 # Fix commands
 alias fehs="feh --scale-down --auto-zoom"

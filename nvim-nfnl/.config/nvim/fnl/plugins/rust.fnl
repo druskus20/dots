@@ -34,6 +34,11 @@
 (vim.keymap.set "n" "<leader>mh" vim.lsp.buf.hover {:desc "Hover"})
 (vim.keymap.set "n" "<leader>ms" vim.lsp.buf.references {:desc "Search References"})
 
+; Set LSP diagnostic order 
+(tset vim.lsp.handlers :textDocument/publishDiagnostics
+      (vim.lsp.with vim.lsp.diagnostic.on_publish_diagnostics
+                    {:severity_sort true}))
+
 ; TODO: Custom handlers for things. With titles and borders
 ; vim.lsp.buf.references
 ; vim.lsp.buf.handlers
