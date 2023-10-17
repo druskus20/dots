@@ -31,6 +31,7 @@ $crust: #11111b;
 }
 
 window {
+  background-color: $crust;
   background-color: $base;
 }
 
@@ -38,15 +39,23 @@ window {
   margin: 3px;
   margin-right: 7px;
   margin-left: 7px;
-  padding: 3px;
+  padding: 0px;
   background-color: $surface0;
 
   min-width: 20px;
   min-height: 20px;
 }
 
-.active {
+.workspace {
   background-color: $blue;
   color: $base;
-  font-weight: bold;
+}
+
+.active {
+  background-color: $peach;
+  color: $base;
+}
+
+.battery, .time, .date {
+  font-size: 10px;
 }
