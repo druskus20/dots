@@ -1,0 +1,127 @@
+(defwindow bar0 :monitor 0
+               :geometry (geometry :x "0%"
+                                   :y "0%"
+                                   :width "20px"
+                                   :height "100%"
+                                   :anchor "left center")
+               :stacking "bottom" 
+               :exclusive true
+               :focusable false
+  (box :class "root"
+       :orientation "vertical"
+    (workspaces_eDP-1)))
+
+(defwindow bar1 :monitor 1
+               :geometry (geometry :x "0%"
+                                   :y "0%"
+                                   :width "20px"
+                                   :height "100%"
+                                   :anchor "left center")
+               :stacking "bottom" 
+               :exclusive true
+               :focusable false
+  (box :class "root"
+       :orientation "vertical"
+    (workspaces_HDMI-A-1)
+    (box :halign "center"
+         :valign "end"
+         :orientation "vertical"
+         :space-evenly false
+         :spacing 10
+      (battery)
+      (time)
+      (date))))
+
+(defwindow bar2 :monitor 2
+               :geometry (geometry :x "0%"
+                                   :y "0%"
+                                   :width "20px"
+                                   :height "100%"
+                                   :anchor "left center")
+               :stacking "bottom" 
+               :exclusive true
+               :focusable false
+  (box :class "root"
+       :orientation "vertical"
+    (workspaces_DP-2)))
+
+; ╺╸state╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
+
+(defpoll time_poll :interval "1s" "date +%H:%M")
+(defpoll date_poll :interval "1m" "date +%d/%m")
+
+(deflisten workspaces_HDMI-A-1
+;  :initial '{"active": "", "workspaces": []}'
+  "./modules/sway-workspaces.sh HDMI-A-1")
+
+(deflisten workspaces_eDP-1
+;  :initial '{"active": "1", "workspaces": []}'
+  "./modules/sway-workspaces.sh eDP-1")
+
+(deflisten workspaces_DP-2
+;  :initial '{"active": "1", "workspaces": []}'
+  "./modules/sway-workspaces.sh DP-2")
+
+; ╺╸workspaces╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
+
+(defwidget workspaces_HDMI-A-1 []
+  (box :class "workspaces"
+       :orientation "vertical"
+       :space-evenly true
+       :halign "center"
+       :valign "start"
+       :width 20
+    (for name in {workspaces_HDMI-A-1.list}
+      (button :class "workspace ${name == workspaces_HDMI-A-1.active ? "active" : "hidden"}"
+        (label :text "${name}" :halign "center" :xalign 0.5 :justify "right")))))
+
+(defwidget workspaces_eDP-1 []
+  (box :class "workspaces"
+       :orientation "vertical"
+       :space-evenly true
+       :halign "center"
+       :valign "start"
+       :width 20
+    (for name in {workspaces_eDP-1.list}
+      (button :class "workspace ${name == workspaces_eDP-1.active ? "active" : "hidden"}"
+        (label :text "${name}" :halign "center" :xalign 0.5 :justify "right")))))
+
+(defwidget workspaces_DP-2 []
+  (box :class "workspaces"
+       :orientation "vertical"
+       :space-evenly true
+       :halign "center"
+       :valign "start"
+       :width 20
+    (for name in {workspaces_DP-2.list}
+      (button :class "workspace ${name == workspaces_DP-2.active ? "active" : "hidden"}"
+        (label :text "${name}" :halign "center" :xalign 0.5 :justify "right")))))
+
+
+(defwidget battery []
+  (box :class "battery"
+       :orientation "vertical"
+       :space-evenly true
+       :halign "center"
+       :valign "end"
+       :width 20
+    (label :text "󰁹 ${EWW_BATTERY["BAT0"].capacity}" :halign "center" :xalign 0.5 :justify "right")))
+
+(defwidget date []
+  (box :class "date"
+       :orientation "vertical"
+       :space-evenly true
+       :halign "center"
+       :valign "end"
+       :width 20
+    (label :text date_poll)))
+
+(defwidget time []
+  (box :class "time"
+       :orientation "vertical"
+       :space-evenly true
+       :halign "center"
+       :valign "end"
+       :width 20
+    (label :text time_poll))) 
+
