@@ -3,7 +3,6 @@
 
 (require :config.options)
 
-
 ; load autocmds and keymaps lazily
 ; https://github.com/LazyVim/LazyVim/blob/e8c26c70e27d468cec11926890105d61f99f9218/lua/lazyvim/config/init.lua#L20
 ; used to use "M.load()" https://github.com/LazyVim/LazyVim/blob/a72a84972d85e5bbc6b9d60a0983b37efef21b8a/lua/lazyvim/config/init.lua#L139
@@ -14,14 +13,14 @@
                                       (fn [] 
                                         (if lazy_autocmds 
                                           (require :config.autocmds))
-                                        (require :config.user_keys)
-                                        (require :config.user_colors))
+                                        (require :config.keymaps)
+                                        (require :config.colors))
                                     :group (vim.api.nvim_create_augroup :LazyVim {:clear true}) :pattern :VeryLazy})
 
 [
   {1 :folke/lazy.nvim :version "*"}
   ; https://github.com/LazyVim/LazyVim/blob/e8c26c70e27d468cec11926890105d61f99f9218/lua/lazyvim/plugins/extras/coding/copilot.lua#L56
-  {1 :github/copilot.vim :event :VeryLazy}
+
   ;{1 :rust-lang/rust.vim}
   ;{1 :simrat39/rust-tools.nvim}
   
@@ -57,6 +56,10 @@
    
   
 
+  ;{1 :folke/noice.nvim :config true 
+  ;  :dependencies [:MunifTanjim/nui.nvim
+  ;                 :rcarriga/nvim-notify]}
+    
 
   ; embed lualine in tmux
   ;{1 :vimpostor/vim-tpipeline}
