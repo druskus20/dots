@@ -4,11 +4,10 @@
 (set vim.g.mapleader " ")
 (set vim.g.maplocalleader ",")
 
-
 (local opt vim.opt)
 (set opt.autowrite true)
 ;(set opt.clipboard :unnamedplus)
-(set opt.completeopt "menu,menuone,noselect")
+(set opt.completeopt "") ; Important, so it does not conflict with cmp
 (set opt.conceallevel 3)
 (set opt.confirm true)
 (set opt.cursorline true)
@@ -76,6 +75,7 @@
 (set opt.showcmd false)
 (set opt.cmdheight 0)
 
+(set vim.g.netrw_banner 0)
 
 
 (when (= (vim.fn.has :nvim-0.9.0) 1) (set opt.splitkeep :screen)

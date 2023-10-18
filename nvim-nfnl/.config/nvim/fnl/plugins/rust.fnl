@@ -41,25 +41,29 @@
       (vim.lsp.with vim.lsp.diagnostic.on_publish_diagnostics
                     {:severity_sort true}))
 
+; TODO: FIX
+;(vim.cmd "autocmd FileType DressingInput imap <buffer> <C-j> <Down>")
+;(vim.cmd "autocmd FileType DressingInput imap <buffer> <C-k> <Up>")
+;(vim.cmd "autocmd FileType DressingSelect imap <buffer> <C-j> <Down>")
+;(vim.cmd "autocmd FileType DressingSelect imap <buffer> <C-k> <Up>")
 ; TODO: Custom handlers for things. With titles and borders
 ; vim.lsp.buf.references
 ; vim.lsp.buf.handlers
 ; https://github.com/pbogut/dotfiles/blob/7ba96f5871868c1ce02f4b3832c1659637fb0c2c/config/nvim/lua/plugins/nvim_lsp.lua#L84
+[
+ {1 :stevearc/dressing.nvim 
+  :enabled true
+  :opts {:select { :backend [ "builtin"]
+                    :builtin { :width nil
+                               :max_width [ 140 0.8]
+                               :min_width [ 20 0]
+                               :height nil
+                               :max_height 0.9
+                               :min_height [ 0 0]
 
-[{1 :stevearc/dressing.nvim :opts {
-                                   :select {
-                                            :backend [ "builtin"]
-                                            :builtin {
-                                                      :width nil
-                                                      :max_width [ 140 0.8]
-                                                      :min_width [ 20 0]
-                                                      :height nil
-                                                      :max_height 0.9
-                                                      :min_height [ 0 0]
-
-                                                      :title_pos :left
-                                                      :border :single
-                                                      :relative :cursor}}}} ; TODO: PR to make the window cursor right bellow the cursor
+                               :title_pos :left
+                               :border :single
+                               :relative :cursor}}}} ; TODO: PR to make the window cursor right bellow the cursor
  {1 :hrsh7th/nvim-cmp
     :dependencies [{1 :Saecki/crates.nvim
                       :event ["BufRead Cargo.toml"]

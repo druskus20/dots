@@ -55,8 +55,10 @@
 (map "v" "q" (fn [] (close-floating) (vim.cmd "nohlsearch") (exit-visual-mode)))
 
 ; C+j and C+k to move up and down in menus
-(map ["i" "n"] "<C-j>" "<C-n>" { :desc "Move down"})
-(map ["i" "n"] "<C-k>" "<C-p>" { :desc "Move up"})
+; BUG: This will open a completion menu even if cmp is already there
+; SOLUTION: disable PUM set completeopt-=menuone,-menu,-preview (cmp still works)
+(map ["i" "n" "c"] "<C-j>" "<C-n>" { :desc "Move down"})
+(map ["i" "n" "c"] "<C-k>" "<C-p>" { :desc "Move up"})
 
 ; TODO: Code this in lua, so that the screen doesn't flicker
 ; - keybinds to reduce / increase indent
