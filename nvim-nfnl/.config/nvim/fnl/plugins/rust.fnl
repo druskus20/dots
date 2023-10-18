@@ -1,6 +1,8 @@
 
 (local {: autoload} (require :nfnl.module))
 (local nvim (autoload :nvim))
+(local colors (autoload :catppuccin.palettes.mocha))
+
 
 ;symbols to show for lsp diagnostics
 (fn define-signs
@@ -85,6 +87,23 @@
  ; TODO Should this be configured as a "dependency of rust.vim?"
  ; Probably not, since :config probably wont merge with other nvim-lspconfig configs for other langs
  
+ {1 :simrat39/rust-tools.nvim 
+    :ft [:rust]
+    ; set hightlight group
+    :config (fn [_ opts] 
+              (vim.api.nvim_set_hl 0 "RustInlayHint" {:fg colors.overlay0})
+              ((. (require :rust-tools) :setup) opts))
+    :opts {:tools {:autoSetHints true
+                               :inlay_hints {:show_parameter_hints true
+                                             :other_hints_prefix "» "
+                                             :only_current_line_autocmd :CursorHold
+                                             :only_current_line false
+                                             :right_align_padding 7
+                                             :parameter_hints_prefix "< "
+                                             :right_align false
+                                             :highlight "RustInlayHint"
+                                             :max_len_align false
+                                             :max_len_align_padding 1}}}}
 
  {1 :neovim/nvim-lspconfig 
   :config (fn []
@@ -100,5 +119,5 @@
 
 ; TODO: Hightlight types
 ; vim.cmd("syntax region rustParamType start=\"\<[A-Z][A-Za-z0-9]*\<\" end=\">\" contains=rustType")
-; vim.cmd("syntax match rustType "\<[A-Z][A-Za-z0-9]*\>"))}]
+; vim.cmd("syntax match rustType "\<[A-Z][A-Za-z0-9]*\>"}))}]
 
