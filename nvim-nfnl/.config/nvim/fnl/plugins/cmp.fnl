@@ -8,6 +8,8 @@
            ((. (require :cmp) :setup) opts))
  :dependencies [:hrsh7th/cmp-nvim-lsp
                 :hrsh7th/cmp-buffer
+                :hrsh7th/cmp-nvim-lsp-signature-help
+                :davidsierradz/cmp-conventionalcommits
                 :hrsh7th/cmp-path]
  :event :InsertEnter
  :opts (fn []
@@ -32,24 +34,30 @@
                                                          (fallback))
                                                :<C-Space> (cmp.mapping.complete)
                                                ; abort and normal mode
-                                               :<esc> (cmp.mapping.abort)
+                                               :<esc> (fn [] (cmp.mapping.abort) (vim.cmd "stopinsert"))
                                                :<C-u> (cmp.mapping.scroll_docs (- 4))
                                                :<C-q> (cmp.mapping.abort)
                                                :<C-d> (cmp.mapping.scroll_docs 4)
                                                ; Discarding the fallback prevents 
                                                :<C-j> (fn [_] (if (cmp.visible) (cmp.select_next_item {:behavior cmp.SelectBehavior.Insert}) (cmp.complete)))
                                                :<C-k> (fn [_] (if (cmp.visible) (cmp.select_prev_item {:behavior cmp.SelectBehavior.Insert}) (cmp.complete)))
-                                               :<CR> (cmp.mapping.confirm {:select false})})
+                                               ; USING <C-n> is better
+                                               ;:<C-j> (cmp.mapping.select_next_item {:behavior cmp.SelectBehavior.Insert})
+                                               :<CR> (cmp.mapping.confirm {:select true})})
                                                ;:<C-k> (cmp.mapping.select_prev_item {:behavior cmp.SelectBehavior.Insert})
                                                ;:<tab> (cmp.mapping.confirm {:select true})
                                                ;:<S-CR> (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Replace}
                                                ;                             :select true})})
           :snippet {:expand (fn [args]
                               ((. (require :luasnip) :lsp_expand) args.body))}
+
+          ; TODO: https://github.com/elkowar/dots-of-war/blob/f4d1821217edca3244479a69955226d0d263fe63/nvim/.config/nvim/fnl/dots/plugins/cmp.fnl#L41
           :sorting defaults.sorting
           :sources (cmp.config.sources [{:name :nvim_lsp}
                                         {:name :luasnip}
-                                        {:name :path}]
+                                        {:name :path}
+                                        {:name :conventionalcommits}
+                                        {:name :nvim_lsp_signature_help}]
                                        [{:name :buffer}])})
  :version false}
 
