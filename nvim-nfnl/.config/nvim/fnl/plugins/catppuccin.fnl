@@ -9,10 +9,10 @@
                 (vim.cmd "colorscheme catppuccin")
                 (local U (require :catppuccin.utils.colors))
                 (local colors (require :catppuccin.palettes.mocha))
-                (vim.api.nvim_set_hl 0 "DiagnosticVirtualTextError" {:bg (U.darken colors.red 0.02 colors.base)}) :fg (U.darken colors.red 0.5 colors.base)
-                (vim.api.nvim_set_hl 0 "DiagnosticVirtualTextWarn" {:bg (U.darken colors.yellow 0.02 colors.base) :fg (U.darken colors.yellow 0.5 colors.base)})
-                (vim.api.nvim_set_hl 0 "DiagnosticVirtualTextInfo" {:bg (U.darken colors.sky 0.02 colors.base) :fg (U.darken colors.sky 0.5 colors.base)})
-                (vim.api.nvim_set_hl 0 "DiagnosticVirtualTextHint" {:bg (U.darken colors.teal 0.02 colors.base) :fg (U.darken colors.teal 0.5 colors.base)}))
+                (vim.api.nvim_set_hl 0 "DiagnosticVirtualTextError" {:bg (U.darken colors.red 0.04 colors.base) :fg (U.darken colors.red 0.6 colors.base)})
+                (vim.api.nvim_set_hl 0 "DiagnosticVirtualTextWarn" {:bg (U.darken colors.yellow 0.04 colors.base) :fg (U.darken colors.yellow 0.6 colors.base)})
+                (vim.api.nvim_set_hl 0 "DiagnosticVirtualTextInfo" {:bg (U.darken colors.sky 0.04 colors.base) :fg (U.darken colors.sky 0.6 colors.base)})
+                (vim.api.nvim_set_hl 0 "DiagnosticVirtualTextHint" {:bg (U.darken colors.teal 0.04 colors.base) :fg (U.darken colors.teal 0.6 colors.base)}))
     :opts {:no_italic true
                     :no_bold true
                     :integrations {:alpha true}
