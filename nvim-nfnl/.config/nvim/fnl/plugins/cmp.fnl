@@ -10,6 +10,7 @@
                 :hrsh7th/cmp-buffer
                 :hrsh7th/cmp-nvim-lsp-signature-help
                 :davidsierradz/cmp-conventionalcommits
+                :L3MON4D3/LuaSnip
                 :hrsh7th/cmp-path]
  :event :InsertEnter
  :opts (fn []
@@ -43,11 +44,11 @@
                                                :<C-k> (fn [_] (if (cmp.visible) (cmp.select_prev_item {:behavior cmp.SelectBehavior.Insert}) (cmp.complete)))
                                                ; USING <C-n> is better
                                                ;:<C-j> (cmp.mapping.select_next_item {:behavior cmp.SelectBehavior.Insert})
-                                               :<CR> (cmp.mapping.confirm {:select true})})
+                                               ;:<CR> (cmp.mapping.confirm {:select true})
                                                ;:<C-k> (cmp.mapping.select_prev_item {:behavior cmp.SelectBehavior.Insert})
-                                               ;:<tab> (cmp.mapping.confirm {:select true})
-                                               ;:<S-CR> (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Replace}
-                                               ;                             :select true})})
+                                               :<tab> (cmp.mapping.confirm {:select true})
+                                               :<CR (cmp.mapping.confirm {:select true})
+                                               :<S-CR> (cmp.mapping.abort)}) 
           :snippet {:expand (fn [args]
                               ((. (require :luasnip) :lsp_expand) args.body))}
 
