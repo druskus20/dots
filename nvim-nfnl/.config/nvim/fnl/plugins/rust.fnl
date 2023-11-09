@@ -73,7 +73,6 @@
  {1 :rust-lang/rust.vim :ft [:rust]}
  {1 :j-hui/fidget.nvim :event :LspAttach :config true :tag :legacy}
 
-
  ; Lazyvim does it with NOICE
  ; TODO: NOT WORKING
  ;{1 :ray-x/lsp_signature.nvim
@@ -87,11 +86,13 @@
  ; TODO Should this be configured as a "dependency of rust.vim?"
  ; Probably not, since :config probably wont merge with other nvim-lspconfig configs for other langs
  
- {1 :simrat39/rust-tools.nvim 
+ {1 :MunifTanjim/rust-tools.nvim 
+    :branch "patched"
+ ;{1 :simrat39/rust-tools.nvim 
     :ft [:rust]
     ; set hightlight group
     :config (fn [_ opts] 
-              (vim.api.nvim_set_hl 0 "RustInlayHint" {:fg colors.overlay0})
+              (vim.api.nvim_set_hl 0 "RustInlayHint" {:fg "#505361"})
               ((. (require :rust-tools) :setup) opts))
     :opts {:tools {:autoSetHints true
                                :inlay_hints {:show_parameter_hints true
@@ -104,12 +105,23 @@
                                              :highlight "RustInlayHint"
                                              :max_len_align false
                                              :max_len_align_padding 1}}}}
-
- {1 :neovim/nvim-lspconfig 
-  :config (fn []
+ {1 :hashivim/vim-terraform}
+ {1 :neovim/nvim-lspconfig  ; TODO: Modularized way to enable servers. Check LazyVim's
+  :config (fn [_ opts]
             (let [lsp (require :lspconfig) ]
               ;; To add support to more language servers check:
               ;; https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+              ;(lsp.terraformls.setup {})
+              (lsp.terraform_lsp.setup {})
+              (lsp.tsserver.setup {})
+              ; html 
+              (lsp.html.setup {})
+              (lsp.helm_ls.setup {})
+              (lsp.yamlls.setup {})
+              
+              (local capabilities (vim.lsp.protocol.make_client_capabilities))
+              (set capabilities.textDocument.completion.completionItem.snippetSupport true)
+              ((. (require :lspconfig) :cssls :setup) {: capabilities})
 
               (lsp.rust_analyzer.setup {})))}
 
@@ -119,5 +131,5 @@
 
 ; TODO: Hightlight types
 ; vim.cmd("syntax region rustParamType start=\"\<[A-Z][A-Za-z0-9]*\<\" end=\">\" contains=rustType")
-; vim.cmd("syntax match rustType "\<[A-Z][A-Za-z0-9]*\>"}))}]
+; vim.cmd("syntax match rustType "\<[A-Z][A-Za-z0-9]*\>"}]
 
