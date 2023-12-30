@@ -39,8 +39,8 @@ output * bg /home/drusk/img/bg/purple_coast.jpg fill
 #output eDP-1 resolution 1920x1080 position 3840,0
 
 # Work
-output HDMI-A-1 resolution 1920x1080 position 0,0
-output eDP-1 resolution 1920x1080 position 1920,0
+# output HDMI-A-1 resolution 1920x1080 position 0,0
+# output eDP-1 resolution 1920x1080 position 1920,0
 
 #output eDP-1 resolution 1920x1080 position 0,0
 #
@@ -251,8 +251,9 @@ for_window [window_role="Preferences"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 #for_window [class="jetbrains-studio"] floating enable
-
-
+for_window [app_id="pavucontrol"] floating enable
+for_window [title="Bitwarden - Google Chrome"] floating enable
+for_window [title="float"] floating enable
 #
 # Status Bar:
 #

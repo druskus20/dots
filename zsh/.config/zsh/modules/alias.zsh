@@ -79,6 +79,8 @@ alias "........"="cd ../../../../../../.."
 alias "~"="cd ~"
 
 alias 'exit'="[ -z "$TMUX" ] && exit || tmux detach -P"
+alias ':q'="[ -z "$TMUX" ] && exit || tmux detach -P"
+alias suspend="sudo systemctl suspend"
 
 # create or attach to main and restore session
 #alias tm="[ -z "$TMUX" ] && (tmux attach-session -t main || (tmux new-session -s main \; run-shell /home/drusk/.config/tmux/plugins/tmux-resurrect/scripts/restore.sh))"

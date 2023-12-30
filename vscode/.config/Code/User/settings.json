@@ -289,4 +289,5 @@
     "Lua.diagnostics.globals": [
         "vim"
     ],
+    "workbench.editor.empty.hint": "hidden",
 }
