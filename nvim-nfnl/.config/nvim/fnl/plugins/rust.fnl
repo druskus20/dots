@@ -108,7 +108,7 @@
  {1 :hashivim/vim-terraform}
  {1 :neovim/nvim-lspconfig  ; TODO: Modularized way to enable servers. Check LazyVim's
   :config (fn [_ opts]
-            (let [lsp (require :lspconfig) ]
+            (let [lsp (require :lspconfig)]
               ;; To add support to more language servers check:
               ;; https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
               ;(lsp.terraformls.setup {})
@@ -116,6 +116,7 @@
               (lsp.tsserver.setup {})
               ; html 
               (lsp.html.setup {})
+              (lsp.zls.setup {})
               (lsp.helm_ls.setup {})
               (lsp.yamlls.setup {})
               
@@ -123,7 +124,7 @@
               (set capabilities.textDocument.completion.completionItem.snippetSupport true)
               ((. (require :lspconfig) :cssls :setup) {: capabilities})
 
-              (lsp.rust_analyzer.setup {})))}
+              (lsp.rust_analyzer.setup { :settings { :procMacro { :ignored { :leptos_macro { 1 :server }}}}})))}
 
  
 ; TODO: CMP STUFF
@@ -131,5 +132,5 @@
 
 ; TODO: Hightlight types
 ; vim.cmd("syntax region rustParamType start=\"\<[A-Z][A-Za-z0-9]*\<\" end=\">\" contains=rustType")
-; vim.cmd("syntax match rustType "\<[A-Z][A-Za-z0-9]*\>"}]
+; vim.cmd("syntax match rustType "\<[A-Z][A-Za-z0-9]*\>"}}}}})))}]
 

@@ -9,7 +9,15 @@
                :focusable false
   (box :class "root"
        :orientation "vertical"
-    (workspaces_eDP-1)))
+    (workspaces_eDP-1)
+    (box :halign "center"
+         :valign "end"
+         :orientation "vertical"
+         :space-evenly false
+         :spacing 10
+      (battery)
+      (time)
+      (date))))
 
 (defwindow bar1 :monitor 1
                :geometry (geometry :x "0%"
