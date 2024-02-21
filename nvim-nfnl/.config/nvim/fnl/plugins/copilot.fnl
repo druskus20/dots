@@ -5,6 +5,7 @@
       :opts {:suggestion { :enabled false}
              :panel { :enabled false}
              :filetypes { :markdown true
+                          :yaml true
                           :help true}}
       
      :build ":Copilot auth"}

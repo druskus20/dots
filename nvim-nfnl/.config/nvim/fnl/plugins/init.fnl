@@ -60,7 +60,11 @@
   ;  :dependencies [:MunifTanjim/nui.nvim
   ;                 :rcarriga/nvim-notify]}
     
+  {1 :DingDean/wgsl.vim
+    :ft [:wgsl]}
 
+  ;{1 :sevagh/github-actions-yaml.vim
+  ;  :ft [:yaml :yml :yaml.gha :yaml-gha]}
   ; embed lualine in tmux
   ;{1 :vimpostor/vim-tpipeline}
   {1 :karb94/neoscroll.nvim 
@@ -70,13 +74,6 @@
                (let [m { :<C-u> [:scroll [:-vim.wo.scroll :1 :true]]
                          :<C-d> [:scroll [:vim.wo.scroll :true :1]]}]
                  (. (require :neoscroll.config) :set_mappings) m))
-               
-               
-
-                
-
-              
-               
      :opts {:easing_function :sine}
      :version "*"}]
    

@@ -70,7 +70,9 @@
     :dependencies [{1 :Saecki/crates.nvim
                       :event ["BufRead Cargo.toml"]
                       :opts {:src {:cmp {:enabled true}}}}]}
- {1 :rust-lang/rust.vim :ft [:rust]}
+
+ {1 :rust-lang/rust.vim :ft [:rust] :config #(do (set vim.g.rustfmt_autosave 1))}
+
  {1 :j-hui/fidget.nvim :event :LspAttach :config true :tag :legacy}
 
  ; Lazyvim does it with NOICE
@@ -107,7 +109,7 @@
                                              :max_len_align_padding 1}}}}
  {1 :hashivim/vim-terraform}
  {1 :neovim/nvim-lspconfig  ; TODO: Modularized way to enable servers. Check LazyVim's
-  :config (fn [_ opts]
+    :config (fn [_ opts]
             (let [lsp (require :lspconfig)]
               ;; To add support to more language servers check:
               ;; https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
@@ -119,6 +121,8 @@
               (lsp.zls.setup {})
               (lsp.helm_ls.setup {})
               (lsp.yamlls.setup {})
+              (lsp.ruff_lsp.setup {})
+              (lsp.wgsl_analyzer.setup {})
               
               (local capabilities (vim.lsp.protocol.make_client_capabilities))
               (set capabilities.textDocument.completion.completionItem.snippetSupport true)

@@ -10,6 +10,9 @@
 (vim.keymap.set :n "q" "<Nop>")
 (vim.keymap.set :n "Q" "q")
 
+(vim.keymap.set :n :<S-K> "<Nop>")
+
+
 (local {: autoload} (require :nfnl.module))
 
 ; TODO: improve
