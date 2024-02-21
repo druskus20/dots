@@ -55,6 +55,7 @@ zle -N edit-command-line
 bindkey -M viins "^Q" edit-command-line
 bindkey -M vicmd "^Q" edit-command-line
 
+
 # Make word boundaries (CTRL+Backspace) like bash
 #autoload -U select-word-style
 #select-word-style bash

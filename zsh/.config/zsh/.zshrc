@@ -28,6 +28,9 @@ _comp_options+=(globdots)
 # Autocomplete from the middle of the word
 zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'
 
+eval "$(github-copilot-cli alias -- "$0")"
+
+
 compinit
 
 # foldend

@@ -1,6 +1,5 @@
 {
     "editor.fontLigatures": false,
-    "workbench.editor.untitled.hint": "hidden",
     "rust-analyzer.inlayHints.enable": false,
     "editor.fontFamily": "'Jetbrains Mono', 'monospace', monospace",
     "terminal.integrated.fontSize": 12,
@@ -232,7 +231,7 @@
         "editor.formatOnType": true
     },
     "[cpp]": {
-        "editor.wordBasedSuggestions": false,
+        "editor.wordBasedSuggestions": "off",
         "editor.suggest.insertMode": "replace",
         "editor.semanticHighlighting.enabled": true
     },
@@ -254,7 +253,6 @@
         "bevy_pbr::mesh_bindings": "https://raw.githubusercontent.com/bevyengine/bevy/v0.11.2/crates/bevy_pbr/src/render/mesh_bindings.wgsl",
         "bevy_pbr::mesh_functions": "https://raw.githubusercontent.com/bevyengine/bevy/v0.11.2/crates/bevy_pbr/src/render/mesh_functions.wgsl"
     },
-    "workbench.activityBar.visible": false,
     "window.menuBarVisibility": "toggle",
     "yaml.customTags": [
         "!And",
@@ -290,4 +288,5 @@
         "vim"
     ],
     "workbench.editor.empty.hint": "hidden",
+    "workbench.activityBar.location": "hidden",
 }
