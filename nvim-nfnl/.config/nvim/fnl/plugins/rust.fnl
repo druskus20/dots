@@ -108,27 +108,6 @@
                                              :max_len_align false
                                              :max_len_align_padding 1}}}}
  {1 :hashivim/vim-terraform}
- {1 :neovim/nvim-lspconfig  ; TODO: Modularized way to enable servers. Check LazyVim's
-    :config (fn [_ opts]
-            (let [lsp (require :lspconfig)]
-              ;; To add support to more language servers check:
-              ;; https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-              ;(lsp.terraformls.setup {})
-              (lsp.terraform_lsp.setup {})
-              (lsp.tsserver.setup {})
-              ; html 
-              (lsp.html.setup {})
-              (lsp.zls.setup {})
-              (lsp.helm_ls.setup {})
-              (lsp.yamlls.setup {})
-              (lsp.ruff_lsp.setup {})
-              (lsp.wgsl_analyzer.setup {})
-              
-              (local capabilities (vim.lsp.protocol.make_client_capabilities))
-              (set capabilities.textDocument.completion.completionItem.snippetSupport true)
-              ((. (require :lspconfig) :cssls :setup) {: capabilities})
-
-              (lsp.rust_analyzer.setup { :settings { :procMacro { :ignored { :leptos_macro { 1 :server }}}}})))}
 
  
 ; TODO: CMP STUFF

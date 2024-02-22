@@ -38,25 +38,10 @@ set $disp2 "HDMI-A-1"
 set $disp3 "DP-2"
 
 # Home
-#output $disp3 resolution 1920x1080 position 0,0
-#output $disp2 resolution 1920x1080 position 1920,0
-#output $disp1 resolution 1920x1080 position 3840,0
-#
-#
-#workspace 1 output $disp2
-#workspace 2 output $disp2 
-#workspace 3 output $disp2 
-#workspace 4 output $disp2 
-#workspace 5 output $disp2 
-#workspace 6 output $disp2 
-#workspace 7 output $disp3
-#workspace 8 output $disp3 
-#workspace 9 output $disp3
-#workspace 10 output $disp1
+output $disp3 resolution 1920x1080 position 0,0
+output $disp2 resolution 1920x1080 position 1920,0
+output $disp1 resolution 1920x1080 position 3840,0
 
-# Work
-output HDMI-A-1 resolution 1920x1080 position 0,0
-output eDP-1 resolution 1920x1080 position 1920,0
 
 workspace 1 output $disp2
 workspace 2 output $disp2 
@@ -64,10 +49,25 @@ workspace 3 output $disp2
 workspace 4 output $disp2 
 workspace 5 output $disp2 
 workspace 6 output $disp2 
-workspace 7 output $disp2
-workspace 8 output $disp2 
-workspace 9 output $disp2
+workspace 7 output $disp3
+workspace 8 output $disp3 
+workspace 9 output $disp3
 workspace 10 output $disp1
+
+# Work
+#output HDMI-A-1 resolution 1920x1080 position 0,0
+#output eDP-1 resolution 1920x1080 position 1920,0
+#
+#workspace 1 output $disp2
+#workspace 2 output $disp2 
+#workspace 3 output $disp2 
+#workspace 4 output $disp2 
+#workspace 5 output $disp2 
+#workspace 6 output $disp2 
+#workspace 7 output $disp2
+#workspace 8 output $disp2 
+#workspace 9 output $disp2
+#workspace 10 output $disp1
 
 #output eDP-1 resolution 1920x1080 position 0,0
 #

@@ -3,10 +3,7 @@
 
   {1 :zbirenbaum/copilot.lua
       :opts {:suggestion { :enabled false}
-             :panel { :enabled false}
-             :filetypes { :markdown true
-                          :yaml true
-                          :help true}}
+             :panel { :enabled false}}
       
      :build ":Copilot auth"}
   {1 :nvim-cmp

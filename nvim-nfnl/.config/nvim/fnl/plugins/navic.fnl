@@ -1,12 +1,10 @@
 
-(local lsp (require :util.lsp)) 
-
 [{1 :SmiteshP/nvim-navic
   :init (fn []
-          (set vim.g.navic_silence true)
-          ((. (require :util.lsp) :on_attach) (fn [client buffer]
-                                                (when (client.supports_method :textDocument/documentSymbol)
-                                                  ((. (require :nvim-navic) :attach) client buffer)))))
+            (set vim.g.navic_silence true)
+            ((. (require :util.lsp) :on_attach) (fn [client buffer]
+                                                  (when (client.supports_method :textDocument/documentSymbol)
+                                                    ((. (require :nvim-navic) :attach) client buffer)))))
   :lazy true
   :opts (fn []
           {:depth_limit 5
