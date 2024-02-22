@@ -24,7 +24,7 @@ function recompile()
     vim.cmd("cd " .. vim.fn.stdpath("config"))
     -- delete
     vim.fn.delete(vim.fn.stdpath("config") .. "/lua", "rf")
-    require('nfnl')['compile-all-files']()
+    require('nfnl.api')['compile-all-files']()
     vim.cmd("cd " .. cwd)
 end
 
