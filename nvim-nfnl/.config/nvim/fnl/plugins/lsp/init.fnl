@@ -1,13 +1,14 @@
 (local util (require :util))
 (local lsp (require :util.lsp))
+
 [{1 :neovim/nvim-lspconfig
     :config (fn [_ opts]
               ;(util.format.register (lsp.formatter))
               ;(when (not= opts.autoformat nil)
               ;  (set vim.g.autoformat opts.autoformat)
               ;  (util.deprecate :nvim-lspconfig.opts.autoformat :vim.g.autoformat)
-              (lsp.on_attach (fn [client buffer 
-                                    ((. (require :plugins.lsp.keymaps) :on_attach) client buffer)]))
+              (lsp.on_attach (fn [client buffer]
+                              ((. (require :plugins.lsp.keymaps) :on_attach) client buffer)))
               (local register-capability
                      (. vim.lsp.handlers :client/registerCapability))
               (tset vim.lsp.handlers :client/registerCapability
@@ -84,7 +85,8 @@
                 (lsp.disable :denols (fn [root-dir] (not (is-deno root-dir))))))
   :dependencies [:mason.nvim 
                  :williamboman/mason-lspconfig.nvim]
-  :event :LazyFile
+  ; :event :LazyFile ; Custom event by lazyvim
+  ;:event :VeryLazy 
   :opts {:capabilities {}
          :diagnostics {:severity_sort true
                        ;:signs {:text {vim.diagnostic.severity.ERROR (. (. (. (require :config) :icons) :diagnostics) :Error)
@@ -111,15 +113,9 @@
             (local mr (require :mason-registry))
             (mr:on "package:install:success"
                    (fn [] (vim.defer_fn (fn [] ((. (require :lazy.core.handler.event) :trigger) 
-                                                {:buf (vim.api.nvim_get_current_buf :event :FileType)}))
-                            100)))
+                                                {:buf (vim.api.nvim_get_current_buf) :event :FileType}))
+                            100))))
 
-            (fn ensure-installed []
-              (each [_ tool (ipairs opts.ensure_installed)]
-                (local p (mr.get_package tool))
-                (when (not (p:is_installed)) (p:install))))
-
-            (if mr.refresh (mr.refresh ensure-installed) (ensure-installed)))
   :keys [{1 :<leader>cm 2 :<cmd>Mason<cr> :desc :Mason}]
   :opts {:ensure_installed [:stylua :shfmt]}}] 
 
