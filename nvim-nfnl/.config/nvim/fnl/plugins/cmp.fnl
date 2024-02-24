@@ -47,7 +47,7 @@
                                                ;:<CR> (cmp.mapping.confirm {:select true})
                                                ;:<C-k> (cmp.mapping.select_prev_item {:behavior cmp.SelectBehavior.Insert})
                                                :<tab> (cmp.mapping.confirm {:select true})
-                                               :<CR> (cmp.mapping.confirm {:select true})
+                                               :<CRG (cmp.mapping.confirm {:select true})
                                                :<S-CR> (cmp.mapping.abort)}) 
           :snippet {:expand (fn [args]
                               ((. (require :luasnip) :lsp_expand) args.body))}
