@@ -46,7 +46,9 @@ alias ewwt="cargo run -- --config ~/.config/eww-trans"
 alias code="code --enable-features=UseOzonePlatform --ozone-platform=wayland"
 alias vscode="code --enable-features=UseOzonePlatform --ozone-platform=wayland"
 
+# Shorthands
 alias k="kubectl"
+alias g="git"
 
 
 # Swallow some applications
