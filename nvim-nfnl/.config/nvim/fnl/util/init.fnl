@@ -5,6 +5,13 @@
 
 (set M.root_patterns [:.git :lua])
 
+(fn M.opts [name]
+  (let [plugin (. (. (require :lazy.core.config) :plugins) name)]
+    (when (not plugin)
+      (let [___antifnl_rtn_1___ {}] (lua "return ___antifnl_rtn_1___")))  ; This is `return {}` in lua. TODO
+    (local Plugin (require :lazy.core.plugin))
+    (Plugin.values plugin :opts false)))                                                                                                                                  	
+
 ; https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/util/init.lua
 (fn M.get_root []
   (var path (vim.api.nvim_buf_get_name 0))
@@ -61,4 +68,4 @@
                                                     true))
                                       :pattern :LazyLoad}))))
 
-M                                                                                                                                                                                                                                                                                                                                                      	
+M                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  	
