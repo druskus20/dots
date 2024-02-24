@@ -1,4 +1,8 @@
 
+Inspired on Folke's LazyVim
+* https://github.com/LazyVim/LazyVim
+* https://github.com/LazyVim/LazyVim/blob/main/LICENSE
+
 Note: currently cargo and make are required as dependencies but are not included with this command
 
 ```
