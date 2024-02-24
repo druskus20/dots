@@ -1,14 +1,45 @@
 (local util (require :util))
 (local lsp (require :util.lsp))
 
+; TODO: FIX
+;(vim.cmd "autocmd FileType DressingInput imap <buffer> <C-j> <Down>")
+;(vim.cmd "autocmd FileType DressingInput imap <buffer> <C-k> <Up>")
+;(vim.cmd "autocmd FileType DressingSelect imap <buffer> <C-j> <Down>")
+;(vim.cmd "autocmd FileType DressingSelect imap <buffer> <C-k> <Up>")
+; TODO: Custom handlers for things. With titles and borders
+; vim.lsp.buf.references
+; vim.lsp.buf.handlers
+; https://github.com/pbogut/dotfiles/blob/7ba96f5871868c1ce02f4b3832c1659637fb0c2c/config/nvim/lua/plugins/nvim_lsp.lua#L84
+
+;symbols to show for lsp diagnostics
+(fn define-signs
+  [prefix]
+  (let [error (.. prefix "SignError")
+        warn  (.. prefix "SignWarn")
+        info  (.. prefix "SignInfo")
+        hint  (.. prefix "SignHint")]
+    (vim.fn.sign_define error {:text "" :texthl error})
+    (vim.fn.sign_define warn  {:text "" :texthl warn})
+    (vim.fn.sign_define info  {:text "" :texthl info})
+    (vim.fn.sign_define hint  {:text "" :texthl hint})))
+
+(define-signs "Diagnostic")
+
 [{1 :neovim/nvim-lspconfig
     :config (fn [_ opts]
               ;(util.format.register (lsp.formatter))
               ;(when (not= opts.autoformat nil)
               ;  (set vim.g.autoformat opts.autoformat)
               ;  (util.deprecate :nvim-lspconfig.opts.autoformat :vim.g.autoformat)
+              ;
+
               (lsp.on_attach (fn [client buffer]
                               ((. (require :plugins.lsp.keymaps) :on_attach) client buffer)))
+                
+              ; Set LSP diagnostic order 
+              (tset vim.lsp.handlers :textDocument/publishDiagnostics
+                    (vim.lsp.with vim.lsp.diagnostic.on_publish_diagnostics {:severity_sort true}))
+
               (local register-capability
                      (. vim.lsp.handlers :client/registerCapability))
               (tset vim.lsp.handlers :client/registerCapability
@@ -99,8 +130,18 @@
                                       :source :if_many
                                       :spacing 4}}
          :format {:formatting_options nil :timeout_ms nil}
-         :inlay_hints {:enabled false}
-         :servers {:lua_ls {:settings {:Lua {:completion {:callSnippet :Replace}}}}}
+         :inlay_hints {:enabled true}
+
+         :servers {
+                    :terraformls {}
+                    :terraform_lsp {}
+                    :tsserver {}
+                    :html {}
+                    :zls {}
+                    :ruff_lsp {}
+                    :wgsl_analyzer {}
+                    :yamlls {}
+                    :helm_ls {}}
                 :workspace {:checkThirdParty false}
          :setup {}}}
 
