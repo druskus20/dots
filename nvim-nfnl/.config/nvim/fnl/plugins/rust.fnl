@@ -129,9 +129,11 @@
   {1 :neovim/nvim-lspconfig
          :opts 
          {:servers {:rust_analyzer 
-                    {:keys [{1 :K 2 :<cmd>RustHoverActions<cr> :desc "Hover Actions (Rust)"}
-                            {1 :<leader>cR 2 :<cmd>RustCodeAction<cr> :desc "Code Action (Rust)"}
-                            {1 :<leader>dr 2 :<cmd>RustDebuggables<cr> :desc "Run Debuggables (Rust)"}]
+                    {
+                     ; Works but not needed atm atm
+                     ;:keys [{1 :K 2 :<cmd>RustHoverActions<cr> :desc "Hover Actions (Rust)"}
+                     ;       {1 :<leader>mR 2 :<cmd>RustCodeAction<cr> :desc "Code Action (Rust)"}
+                     ;       {1 :<leader>mr 2 :<cmd>RustDebuggables<cr> :desc "Run Debuggables (Rust)"}]
                      :settings {:rust-analyzer {:cargo {:allFeatures true
                                                         :loadOutDirsFromCheck true
                                                         :runBuildScripts true}

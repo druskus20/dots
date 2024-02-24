@@ -15,18 +15,20 @@
 (fn M.get []
   (when M._keys
     (let [___antifnl_rtn_1___ M._keys] (lua "return ___antifnl_rtn_1___"))) ; TODO: this is `return {}` in lua
-  (set M._keys [{1 :<leader>cl 2 :<cmd>LspInfo<cr> :desc "Lsp Info"}
-                {1 :gd 2 (fn [] ((. (require :telescope.builtin) :lsp_definitions) {:reuse_win true})) :desc "Goto Definition" :has :definition}
-                {1 :gr 2 "<cmd>Telescope lsp_references<cr>" :desc :References}
-                {1 :gD 2 vim.lsp.buf.declaration :desc "Goto Declaration"}
-                {1 :gI 2 (fn [] ((. (require :telescope.builtin) :lsp_implementations) {:reuse_win true})) :desc "Goto Implementation"}
-                {1 :gy 2 (fn [] ((. (require :telescope.builtin) :lsp_type_definitions) {:reuse_win true})) :desc "Goto T[y]pe Definition"}
-                {1 :K 2 vim.lsp.buf.hover :desc :Hover}
-                {1 :gK 2 vim.lsp.buf.signature_help :desc "Signature Help" :has :signatureHelp}
-                {1 :<c-k> 2 vim.lsp.buf.signature_help :desc "Signature Help" :has :signatureHelp :mode :i}
-                {1 :<leader>ca 2 vim.lsp.buf.code_action :desc "Code Action" :has :codeAction :mode [:n :v]}
-                {1 :<leader>cA 2 (fn [] (vim.lsp.buf.code_action {:context {:diagnostics {} :only [:source]}})) :desc "Source Action" :has :codeAction}
-                {1 :<leader>cr 2 vim.lsp.buf.rename :desc :Rename :has :rename}])
+  (set M._keys [
+                ;{1 :<leader>cl 2 :<cmd>LspInfo<cr> :desc "Lsp Info"}
+                ;{1 :<leader>md 2 (fn [] ((. (require :telescope.builtin) :lsp_definitions) {:reuse_win true})) :desc "Goto Definition" :has :definition}
+                {1 :<leader>ms 2 "<cmd>Telescope lsp_references<cr>" :desc "References"}
+                {1 :<leader>mg 2 vim.lsp.buf.declaration :desc "Goto Declaration"}
+                {1 :<leader>ma 2 vim.diagnostic.open_float :desc "Line Diagnostics"}
+                ;{1 :<leader>mI 2 (fn [] ((. (require :telescope.builtin) :lsp_implementations) {:reuse_win true})) :desc "Goto Implementation"}
+                ;{1 :<leader>my 2 (fn [] ((. (require :telescope.builtin) :lsp_type_definitions) {:reuse_win true})) :desc "Goto T[y]pe Definition"}
+                {1 :<leader>mh 2 vim.lsp.buf.hover :desc :Hover}
+                ;{1 :mK 2 vim.lsp.buf.signature_help :desc "Signature Help" :has :signatureHelp}
+                ;{1 :<c-k> 2 vim.lsp.buf.signature_help :desc "Signature Help" :has :signatureHelp :mode :i}
+                {1 :<leader>mv 2 vim.lsp.buf.code_action :desc "Code Action" :has :codeAction :mode [:n :v]}
+                {1 :<leader>mV 2 (fn [] (vim.lsp.buf.code_action {:context {:diagnostics {} :only [:source]}})) :desc "Source Action" :has :codeAction}
+                {1 :<leader>mr 2 vim.lsp.buf.rename :desc :Rename :has :rename}])
   M._keys)
 (fn M.has [buffer method]
   (set-forcibly! method (or (and (method:find "/") method)
