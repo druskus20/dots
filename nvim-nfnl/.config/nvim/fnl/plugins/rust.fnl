@@ -50,7 +50,9 @@
   {1 :MunifTanjim/rust-tools.nvim 
          :branch "patched"
          :ft [:rust]
-
+         ;:config (fn [_ opts] 
+         ;         (vim.api.nvim_set_hl 0 "RustInlayHint" {:fg :#3f424f})
+         ;         ((. (require :rust-tools) :setup) opts))
          :opts (fn []
                  (local (ok mason-registry) (pcall require :mason-registry))
                  (var adapter nil)
@@ -63,15 +65,16 @@
                    (set adapter ((. (require :rust-tools.dap) :get_codelldb_adapter) codelldb-path
                                                                                      liblldb-path)))
                  {:dap {: adapter}
-                  :tools {:autoSetHints true
-                          :inlay_hints {:show_parameter_hints true
+                  :tools {
+                          :inlay_hints {:auto true
+                                        :show_parameter_hints true
                                         :other_hints_prefix "» "
                                         :only_current_line_autocmd :CursorHold
                                         :only_current_line false
                                         :right_align_padding 7
-                                        :parameter_hints_prefix "< "
+                                        :parameter_hints_prefix "« "
                                         :right_align false
-                                        :highlight "RustInlayHint"
+                                        :highlight "LspInlayHint"
                                         :max_len_align false
                                         :max_len_align_padding 1}
                           :on_initialized (fn [] (vim.cmd "                  

@@ -11,4 +11,8 @@
 (vim.keymap.set :v :<A-h> ":MoveHBlock(-1)<CR>" opts)
 (vim.keymap.set :v :<A-l> ":MoveHBlock(1)<CR>" opts)
 
-[{1 :fedepujol/move.nvim}]
+[{1 :fedepujol/move.nvim
+    :config (fn [_ opts] ((. (require :move) :setup) opts))}]
+    
+    
+     
