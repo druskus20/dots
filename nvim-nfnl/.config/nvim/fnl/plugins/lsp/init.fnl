@@ -32,7 +32,8 @@
               ;  (set vim.g.autoformat opts.autoformat)
               ;  (util.deprecate :nvim-lspconfig.opts.autoformat :vim.g.autoformat)
               ;
-
+              (vim.api.nvim_set_hl 0 "LspInlayHint" {:fg :#3f424f})
+              (vim.api.nvim_set_hl 0 "LspCodeLens" {:fg :#3f424f})
               (lsp.on_attach (fn [client buffer]
                               ((. (require :plugins.lsp.keymaps) :on_attach) client buffer)))
                 
@@ -130,7 +131,7 @@
                                       :source :if_many
                                       :spacing 4}}
          :format {:formatting_options nil :timeout_ms nil}
-         :inlay_hints {:enabled true}
+         :inlay_hints {:enabled true} ; does not work?
 
          :servers {
                     :terraformls {}
