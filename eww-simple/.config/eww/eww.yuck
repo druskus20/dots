@@ -36,6 +36,7 @@
          :orientation "vertical"
          :space-evenly false
          :spacing 10
+      (route53)
       (battery)
       (time)
       (date))))
@@ -57,6 +58,7 @@
 
 (defpoll time_poll :interval "1s" "date +%H:%M")
 (defpoll date_poll :interval "1m" "date +%d/%m")
+(defpoll route53_poll :interval "1m" "./route53.sh")
 
 (deflisten workspaces_HDMI-A-1
 ;  :initial '{"active": "", "workspaces": []}'
@@ -133,3 +135,14 @@
        :width 20
     (label :text time_poll))) 
 
+(defwidget route53 []
+  (box 
+    :class "route53"
+    :class "route53 ${route53_poll.change == "true" ? "changed" : "unchanged"}"
+    :orientation "vertical"
+    :space-evenly true
+    :halign "center"
+    :valign "end"
+    :width 20
+          (label :text "${route53_poll.status}")))
+      

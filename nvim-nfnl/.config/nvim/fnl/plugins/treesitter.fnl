@@ -1,18 +1,21 @@
 [{1 :nvim-treesitter/nvim-treesitter
    :build ":TSUpdate"
    :cmd [:TSUpdateSync :TSUpdate :TSInstall]
+   :init (fn [plugin]
+          ((. (require :lazy.core.loader) :add_to_rtp) plugin))
+   ; TODO NOT WORKING
+   ; The table does not get extended, simply overriden
    :config (fn [_ opts]
-             (when (= (type opts.ensure_installed) :table)
                (local added {})
                (set opts.ensure_installed
                    (vim.tbl_filter (fn [lang]
-                                     (when (. added lang) (lua "return false"))
-                                     (tset added lang true)
-                                     true)
-                                   opts.ensure_installed)))
-             ((. (require :nvim-treesitter.configs) :setup) opts))
-   :event [:VeryLazy]
+                                      (when (not (. added lang)) (tset added lang true))
+                                      true)
+                    opts.ensure_installed))
+               ((. (require :nvim-treesitter.configs) :setup) opts))
+   ;:event [:VeryLazy]
    :opts {:ensure_installed [:bash
+                             :rust
                              :c
                              :diff
                              :html
@@ -50,4 +53,4 @@
           ;                                         "[F" "@function.outer"}
           ;                     :goto_previous_start {"[c" "@class.outer"
           ;                                           "[f" "@function.outer"}]}
-   :version false}]                                                    	
+   :version false}]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  	

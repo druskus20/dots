@@ -145,9 +145,8 @@
                     :helm_ls {}}
                 :workspace {:checkThirdParty false}
          :setup {}}}
-; // TODO: does not work
-; {1 :Bekaboo/dropbar.nvim
-;    :dependencies ["nvim-telescope/telescope-fzf-native.nvim"]}
+ {1 :Bekaboo/dropbar.nvim
+    :dependencies ["nvim-telescope/telescope-fzf-native.nvim"]}
 
  {1 :williamboman/mason.nvim
   :build ":MasonUpdate"
