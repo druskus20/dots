@@ -27,6 +27,9 @@
                       :opts {:src {:cmp {:enabled true}}}}]}
 
  {1 :rust-lang/rust.vim :ft [:rust] :config #(do (set vim.g.rustfmt_autosave 1))}
+
+ ; TODO NOT WORKING
+ ;{1 :nvim-treesitter/nvim-treesitter}
  {1 :nvim-treesitter/nvim-treesitter
      :opts (fn [_ opts]
          (set opts.ensure_installed (or opts.ensure_installed {}))
@@ -138,5 +141,5 @@
 
 ; TODO: Hightlight types
 ; vim.cmd("syntax region rustParamType start=\"\<[A-Z][A-Za-z0-9]*\<\" end=\">\" contains=rustType")
-; vim.cmd("syntax match rustType "\<[A-Z][A-Za-z0-9]*\>"}}}}})))}]
+; vim.cmd("syntax match rustType "\<[A-Z][A-Za-z0-9]*\>")}]
 
