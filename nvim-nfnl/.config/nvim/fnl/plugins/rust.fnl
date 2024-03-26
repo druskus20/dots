@@ -27,6 +27,10 @@
                       :opts {:src {:cmp {:enabled true}}}}]}
 
  {1 :rust-lang/rust.vim :ft [:rust] :config #(do (set vim.g.rustfmt_autosave 1))}
+ {1 :nvim-treesitter/nvim-treesitter
+     :opts (fn [_ opts]
+         (set opts.ensure_installed (or opts.ensure_installed {}))
+         (vim.list_extend opts.ensure_installed [:ron :rust :toml]))}
 
  {1 :j-hui/fidget.nvim :event :LspAttach :config true :tag :legacy}
 
@@ -47,6 +51,7 @@
  
  ; TODO: "Keys" not working
   ;{1 :simrat39/rust-tools.nvim
+  ; TODO: rustaceanvim
   {1 :MunifTanjim/rust-tools.nvim 
          :branch "patched"
          :ft [:rust]
