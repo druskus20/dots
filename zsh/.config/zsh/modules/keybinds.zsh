@@ -16,6 +16,10 @@ bindkey -M vicmd -r "^[[B"    # down-line-or-history
 bindkey -M vicmd -r "^[[C"    # vi-forward-char
 bindkey -M vicmd -r "^[[D"    # vi-backward-char
 
+bindkey -M vicmd -r "^[[2~" # vi-insert
+bindkey -M vicmd -r "^[[3~" # vi-delete-char
+
+
 # Remove execute because Im dumb
 bindkey -M vicmd -r ":"       # execute
 

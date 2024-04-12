@@ -1,6 +1,26 @@
+; TODO: Put this inside config, we might need to merge tables
+(fn show-macro-recording []
+  (let [recording-register (vim.fn.reg_recording)]
+    (if (= recording-register "") "" (.. "Recording @" recording-register))))                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        	
+
 [{1 :nvim-lualine/lualine.nvim
   :event :VeryLazy
   :enabled true
+  :config (fn [_ opts] 
+            (local lualine (require :lualine))
+            (lualine.setup opts)
+            
+            ; https://www.reddit.com/r/neovim/comments/xy0tu1/comment/irfegvd/?utm_source=reddit&utm_medium=web2x&context=3
+            (vim.api.nvim_create_autocmd :RecordingEnter
+                                        {:callback (fn []
+                                                      (lualine.refresh {:place [:statusline]}))}))
+            ; It seems not needed
+            ;(vim.api.nvim_create_autocmd :RecordingLeave
+            ;                            {:callback (fn []
+            ;                                          (local timer (vim.loop.new_timer))
+            ;                                          (timer:start 50 0 (vim.schedule_wrap 
+            ;                                                              (fn [] (lualine.refresh {:place [:statusline]})))))}))
+  
   :opts (fn []
           ;(local icons (. (require :lazyvim.config) :icons))
           ;(local Util (require :lazyvim.util))
@@ -51,7 +71,8 @@
                                    ;          :modified icons.git.modified
                                    ;          :removed icons.git.removed}
                                    
-                      :lualine_y [{1 :location :padding {:left 0 :right 1}}]
+                      :lualine_y [{1 :macro-recording :fmt show_macro_recording}
+                                  {1 :location :padding {:left 0 :right 1}}]
                       :lualine_z []}
            :tabline { :lualine_b [{1 :buffers
                                      :max_length 99999999 ; TODO: change?

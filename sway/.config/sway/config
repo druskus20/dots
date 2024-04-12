@@ -43,31 +43,31 @@ output $disp2 resolution 1920x1080 position 1920,0
 output $disp1 resolution 1920x1080 position 3840,0
 
 
-#workspace 1 output $disp2
-#workspace 2 output $disp2 
-#workspace 3 output $disp2 
-#workspace 4 output $disp2 
-#workspace 5 output $disp2 
-#workspace 6 output $disp2 
-#workspace 7 output $disp3
-#workspace 8 output $disp3 
-#workspace 9 output $disp3
-#workspace 10 output $disp1
-
-# Work
-output HDMI-A-1 resolution 1920x1080 position 0,0
-output eDP-1 resolution 1920x1080 position 1920,0
-
 workspace 1 output $disp2
 workspace 2 output $disp2 
 workspace 3 output $disp2 
 workspace 4 output $disp2 
 workspace 5 output $disp2 
 workspace 6 output $disp2 
-workspace 7 output $disp2
-workspace 8 output $disp2 
-workspace 9 output $disp2
+workspace 7 output $disp3
+workspace 8 output $disp3 
+workspace 9 output $disp3
 workspace 10 output $disp1
+
+# Work
+#output HDMI-A-1 resolution 1920x1080 position 0,0
+#output eDP-1 resolution 1920x1080 position 1920,0
+#
+#workspace 1 output $disp2
+#workspace 2 output $disp2 
+#workspace 3 output $disp2 
+#workspace 4 output $disp2 
+#workspace 5 output $disp2 
+#workspace 6 output $disp2 
+#workspace 7 output $disp2
+#workspace 8 output $disp2 
+#workspace 9 output $disp2
+#workspace 10 output $disp1
 
 #output eDP-1 resolution 1920x1080 position 0,0
 #
@@ -248,8 +248,9 @@ default_border pixel 1
 default_floating_border pixel 1
 
 input type:keyboard {
-		xkb_layout "es"
-		repeat_delay "250"
+	xkb_layout "es"
+	xkb_variant nodeadkeys
+	repeat_delay "250"
 	repeat_rate "35"
 	xkb_options "caps:escape,compose:prsc"
 }
@@ -304,6 +305,19 @@ exec_always eww open-many bar0 bar1 bar2
 exec_always --no-startup-id flashfocus
 exec mako
 
+set $gnome-schema org.gnome.desktop.interface
+set $my_cursor phinger-cursors-light
+set $my_cursor_size 16
+
+seat seat0 xcursor_theme $my_cursor $my_cursor_size
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'phocus'
+    gsettings set $gnome-schema icon-theme 'Papirus'
+    gsettings set $gnome-schema cursor-theme $my_cursor
+    gsettings set $gnome-schema cursor-size $my_cursor_size
+    #gsettings set $gnome-schema font-name 'DejaVuSans 9'
+    gsettings set $gnome-schema decoration-layout ':minimize,nclose'
+}
 
 
 # shift, alt and ctrl
@@ -313,5 +327,8 @@ bindsym --whole-window button2+Ctrl nop
 bindsym --whole-window button2+Mod1 nop
 bindsym --whole-window button2+Mod4 nop
 
+
+
 include /etc/sway/config.d/*
+
 

@@ -109,17 +109,9 @@
                                                 :procMacro {:enable true 
                                                             :ignored {:async-recursion [:async_recursion] 
                                                                       :async-trait [:async_trait] 
+                                                                      :leptos_macro [:server] 
                                                                       :napi-derive [:napi]}}}}} 
 
-                    :terraformls {}
-                    :terraform_lsp {}
-                    :tsserver {}
-                    :html {}
-                    :zls {}
-                    :ruff_lsp {}
-                    :wgsl_analyzer {}
-                    :yamlls {}
-                    :helm_ls {}
                     :taplo {:keys [{1 :K
                                     2 (fn [] (if (and (= (vim.fn.expand "%:t")
                                                           :Cargo.toml)

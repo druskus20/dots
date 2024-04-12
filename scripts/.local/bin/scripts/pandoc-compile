@@ -1,0 +1,24 @@
+#!/bin/bash
+
+listings=""
+rest_args=( "$@" )
+if [ "$1" == "-h" ]; then
+    echo "Usage: compile.sh [-l listings-file] ..."
+    echo "Compiles all .md files to .pdf files using pandoc"
+    echo "Any additional arguments are passed to pandoc"
+    echo "!!! Overrides existing .pdf files !!!"
+    exit 0
+elif [ "$1" == "-l" ] && [ -n "$2" ]; then
+    echo "Using listings from $2"
+    listings="--listings -H $2"
+    rest_args=( "${@:3}" )
+fi 
+
+panc="pandoc $listings"
+
+for i in *.md; do
+    echo "Compiling $i to $(basename -s .md "$i").pdf"
+    rm "$(basename -s .md "$i").pdf"
+    $panc -o "$(basename -s .md "$i").pdf"  "${rest_args[@]}" "$i" 
+done
+

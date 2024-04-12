@@ -43,7 +43,7 @@ function gitstatus_prompt_update() {
   elif [[ -n $VCS_STATUS_TAG ]]; then
     p+='%f#'
     where=$VCS_STATUS_TAG
-  elste
+  else
     p+='%f@'
     where=${VCS_STATUS_COMMIT[1,8]}
   fi

@@ -15,6 +15,7 @@
          :orientation "vertical"
          :space-evenly false
          :spacing 10
+      (route53)
       (battery)
       (time)
       (date))))
@@ -36,7 +37,6 @@
          :orientation "vertical"
          :space-evenly false
          :spacing 10
-      (route53)
       (battery)
       (time)
       (date))))

@@ -4,8 +4,10 @@
 (set vim.g.mapleader " ")
 (set vim.g.maplocalleader ",")
 
+
 (local opt vim.opt)
 (set opt.autowrite true)
+(set opt.exrc true) ; per project config https://github.com/Olical/nfnl?tab=readme-ov-file#directory-local-neovim-configuration-in-fennel
 ;(set opt.clipboard :unnamedplus)
 (set opt.completeopt "") ; Important, so it does not conflict with cmp
 (set opt.conceallevel 3)
