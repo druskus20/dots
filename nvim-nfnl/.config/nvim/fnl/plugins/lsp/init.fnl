@@ -26,6 +26,9 @@
 (define-signs "Diagnostic")
 
 [{1 :neovim/nvim-lspconfig
+    :dependencies [:mason.nvim 
+                   ;:folke/neoconf.nvim
+                   :williamboman/mason-lspconfig.nvim]
     :config (fn [_ opts]
               ;(util.format.register (lsp.formatter))
               ;(when (not= opts.autoformat nil)
@@ -115,10 +118,8 @@
                                                                     :deno.jsonc))
                 (lsp.disable :tsserver is-deno)
                 (lsp.disable :denols (fn [root-dir] (not (is-deno root-dir))))))
-  :dependencies [:mason.nvim 
-                 :williamboman/mason-lspconfig.nvim]
   ; :event :LazyFile ; Custom event by lazyvim
-  ;:event :VeryLazy 
+  ;:event :VeryLazy  ???????
   :opts {:capabilities {}
          :diagnostics {:severity_sort true
                        ;:signs {:text {vim.diagnostic.severity.ERROR (. (. (. (require :config) :icons) :diagnostics) :Error)
@@ -134,14 +135,22 @@
          :inlay_hints {:enabled true} ; does not work?
 
          :servers {
-                    :terraformls {}
+                    :terraformls {} 
+                    :helm_ls {}
                     :terraform_lsp {}
                     :tsserver {}
                     :html {}
                     :zls {}
                     :ruff_lsp {}
                     :wgsl_analyzer {}
-                    :yamlls {}
+                    :yamlls 
+                      {
+                       :filetypes ["yaml" "yaml.docker-compose"]}
+                       ; Works but not needed atm atm
+                       ;:keys [{1 :K 2 :<cmd>RustHoverActions<cr> :desc "Hover Actions (Rust)"}
+                       ;       {1 :<leader>mR 2 :<cmd>RustCodeAction<cr> :desc "Code Action (Rust)"}
+                       ;       {1 :<leader>mr 2 :<cmd>RustDebuggables<cr> :desc "Run Debuggables (Rust)"}]
+                             
                     :helm_ls {}}
                 :workspace {:checkThirdParty false}
          :setup {}}}
@@ -160,5 +169,6 @@
                             100))))
 
   :keys [{1 :<leader>cm 2 :<cmd>Mason<cr> :desc :Mason}]
-  :opts {:ensure_installed [:stylua :shfmt]}}] 
-
+  :opts {:ensure_installed [:stylua :shfmt]}}]
+  ; TODO: Not working
+ ;{1 :folke/neoconf.nvim :commit:config (fn [_ opts] ((. require :neoconf) :setup) :opts)}]

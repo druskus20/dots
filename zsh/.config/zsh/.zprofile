@@ -20,8 +20,7 @@ export MOZ_ENABLE_WAYLAND
 export PATH="$HOME"/.local/bin/elk:"$HOME"/.local/bin:"$HOME"/.local/bin/scripts:"$HOME"/.local/share/npm/bin:"$HOME"/.local/share/cargo/bin:"$PATH"
 
 # Force XDG base directories
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config" export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 
 # Man pages color support
@@ -73,6 +72,10 @@ export XINITRC="$XDG_CONFIG_HOME"/x11/xinitrc
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
 export ELM_HOME="$XDG_CONFIG_HOME"/elm
 
+export GOPATH="$XDG_DATA_HOME"/go 
+export GOMODCACHE="$XDG_CACHE_HOME"/go/mod
+export PATH="$GOPATH"/bin:"$PATH"
+
 # Fails with LightDM
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 
@@ -95,6 +98,11 @@ fi
 # foldend
 
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+
+
+# Nodejs
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 
 ## Launches on session start

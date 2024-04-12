@@ -20,15 +20,16 @@ export TERM=xterm-256color
 clear-keybinds
 
 # Basic auto/tab complete:
+#export FPATH="$ZDOTDIR/completions/eza:$FPATH"
 autoload -U compinit
 zmodload zsh/complist
 zstyle ':completion:*' menu select
 # Include hidden files.
 _comp_options+=(globdots)		
 # Autocomplete from the middle of the word
-zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'
-
-eval "$(github-copilot-cli alias -- "$0")"
+#zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'
+#
+#eval "$(github-copilot-cli alias -- "$0")"
 
 
 compinit

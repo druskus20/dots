@@ -1,7 +1,7 @@
 ; Loaded on "VeryLazy" event. 
 
 (fn augroup [name]
-  (vim.api.nvim_create_augroup (.. :drusk_ name) {:clear true}))                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  	
+  (vim.api.nvim_create_augroup (.. :drusk_ name) {:clear true}))                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      	
 
 ; Highlight on yank 
 (vim.api.nvim_create_autocmd :TextYankPost
@@ -67,3 +67,10 @@
                                           (set vim.opt_local.relativenumber false)
                                           (vim.cmd "startinsert"))
                               :group (augroup :term_open)})
+
+
+; https://github.com/neovim/nvim-lspconfig/issues/2252#issuecomment-1324506034
+(vim.api.nvim_create_autocmd [:BufNewFile :BufRead]
+                            {:callback (fn [] (set vim.opt_local.filetype :helm))
+                             :pattern ["*/templates/*.yaml" "*/templates/*.tpl" "*.gotmpl" "helmfile*.yaml"]})
+

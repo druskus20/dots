@@ -60,6 +60,7 @@
   ;  :dependencies [:MunifTanjim/nui.nvim
   ;                 :rcarriga/nvim-notify]}
     
+  {1 :towolf/vim-helm}
   {1 :DingDean/wgsl.vim
     :ft [:wgsl]}
 
