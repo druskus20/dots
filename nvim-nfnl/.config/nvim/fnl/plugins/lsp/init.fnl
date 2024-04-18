@@ -139,7 +139,9 @@
                     :helm_ls {}
                     :terraform_lsp {}
                     :tsserver {}
-                    :html {}
+                    :cssls {}
+                    :html {:filetypes ["html" "htmldjango" "xml" "xhtml" "jsx" "tsx"]}
+                           
                     :zls {}
                     :ruff_lsp {}
                     :wgsl_analyzer {}

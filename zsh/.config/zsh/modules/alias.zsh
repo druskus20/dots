@@ -50,7 +50,14 @@ alias vscode="code --enable-features=UseOzonePlatform --ozone-platform=wayland"
 # Shorthands
 alias k="kubectl"
 alias g="git"
-
+alias ga="git add"
+alias gA="git add -A"
+alias gc="git commit"
+alias gcm="git commit -m"
+alias gca="git commit -a"
+alias gp="git push"
+alias gw="git switch"
+alias GG="git add -A && git commit && git push"
 
 # Swallow some applications
 alias devour="devour"
