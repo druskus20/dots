@@ -49,7 +49,7 @@ PROMPT=''
 source "$ZDOTDIR/modules/functions.zsh"
 source "$ZDOTDIR/modules/keybinds.zsh"
 source "$ZDOTDIR/modules/alias.zsh"
-source "$ZDOTDIR/modules/work.zsh"
+#source "$ZDOTDIR/modules/work.zsh"
 source "$ZDOTDIR/modules/prompt.zsh"
 # foldend
 

@@ -100,7 +100,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 # This needs to be in simple quotes
 # https://unix.stackexchange.com/questions/32124/set-variables-in-zsh-precmd-and-reference-them-in-the-prompt
 PROMPT+='%B'  # Bold
-PROMPT+='├ '
+PROMPT+='╭ '
 PROMPT+='%(?:%{$fg[green]%}✓:%{$fg[red]%}✕) '
 PROMPT+='%{$fg[yellow]%}%n '
 PROMPT+='%{$fg[blue]%}%m '

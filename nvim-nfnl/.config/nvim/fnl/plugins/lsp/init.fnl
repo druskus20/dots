@@ -135,6 +135,7 @@
          :inlay_hints {:enabled true} ; does not work?
 
          :servers {
+                    :clangd {}
                     :terraformls {} 
                     :helm_ls {}
                     :terraform_lsp {}
