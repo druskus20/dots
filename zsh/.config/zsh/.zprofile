@@ -12,7 +12,10 @@ export TERM=xterm-color
 export XCURSOR_SIZE=16
 # also:  gsettings set org.gnome.desktop.interface cursor-size 16 
 
-# Screen sharing
+# Screen sharing and flameshot 
+export QT_QPA_PLATFORM=wayland
+export XDG_CURRENT_DESKTOP=sway
+export XDG_SESSION_DESKTOP=sway
 export XDG_CURRENT_DESKTOP=sway
 export MOZ_ENABLE_WAYLAND
 

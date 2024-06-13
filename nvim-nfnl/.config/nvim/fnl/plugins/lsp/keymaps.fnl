@@ -9,6 +9,17 @@
 ;  (vim.keymap.set "n" "<leader>ms" vim.lsp.buf.references {:desc "Search References"}))
 ;M
 
+; Rename with ESC mode - DOESNT WORK TODO
+;(fn fancy_rename []
+;  (vim.api.nvim_create_autocmd 
+;    [:CmdlineEnter] {:callback 
+;                      (fn [] 
+;                        (local key (vim.api.nvim_replace_termcodes :<C-f> true false true)) 
+;                        (vim.api.nvim_feedkeys key :c false)
+;                        (vim.api.nvim_feedkeys :0 :n false)
+;                        true)})
+;  (vim.lsp.buf.rename)
+
 ; TODO: Nice macro for keymaps
 (local M {})
 (set M._keys nil)
@@ -29,6 +40,7 @@
                 {1 :<leader>mv 2 vim.lsp.buf.code_action :desc "Code Action" :has :codeAction :mode [:n :v]}
                 {1 :<leader>mV 2 (fn [] (vim.lsp.buf.code_action {:context {:diagnostics {} :only [:source]}})) :desc "Source Action" :has :codeAction}
                 {1 :<leader>mr 2 vim.lsp.buf.rename :desc :Rename :has :rename}])
+                ;{1 :<leader>mr 2 fancy_rename :desc :Rename :has :rename}])
   M._keys)
 (fn M.has [buffer method]
   (set-forcibly! method (or (and (method:find "/") method)
