@@ -24,7 +24,9 @@
  {1 :hrsh7th/nvim-cmp
     :dependencies [{1 :Saecki/crates.nvim
                       :event ["BufRead Cargo.toml"]
-                      :opts {:src {:cmp {:enabled true}}}}]}
+                      :config true
+                      }]}
+
 
  {1 :rust-lang/rust.vim :ft [:rust] :config #(do (set vim.g.rustfmt_autosave 1))}
 
@@ -130,7 +132,8 @@
                 ;                         true)}}}
 ; TODO: CMP STUFF
   {1 :hrsh7th/nvim-cmp}]
-
+; https://github.com/Saecki/crates.nvim/wiki/Documentation-v0.4.0#nvim-cmp-source
+;
 ; TODO: Hightlight types
 ; vim.cmd("syntax region rustParamType start=\"\<[A-Z][A-Za-z0-9]*\<\" end=\">\" contains=rustType")
 ; vim.cmd("syntax match rustType "\<[A-Z][A-Za-z0-9]*\>")}]

@@ -46,10 +46,10 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    #x: 13
-    #y: 11
-    x: 8
-    y: 7
+    #x: 8
+    #y: 7
+    x: 3
+    y: 3
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: false

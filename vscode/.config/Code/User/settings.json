@@ -289,4 +289,5 @@
     ],
     "workbench.editor.empty.hint": "hidden",
     "workbench.activityBar.location": "hidden",
+    "workbench.statusBar.visible": true,
 }
