@@ -1,18 +1,20 @@
 (defwindow bar0 :monitor 0
                :geometry (geometry :x "0%"
                                    :y "0%"
-                                   :width "20px"
-                                   :height "100%"
-                                   :anchor "left center")
-               :stacking "bottom" 
+                                   :height "20px"
+                                   :width "100%"
+                                   :anchor "center top")
+               :stacking "fg" 
                :exclusive true
                :focusable false
   (box :class "root"
-       :orientation "vertical"
+      :valign "center"
+      :halign "center"
+      :orientation "horizontal"
     (workspaces_eDP-1)
-    (box :halign "center"
-         :valign "end"
-         :orientation "vertical"
+    (box :halign "end"
+         :valign "center"
+         :orientation "horizontal"
          :space-evenly false
          :spacing 10
       ;(route53)
@@ -21,20 +23,22 @@
       (date))))
 
 (defwindow bar1 :monitor 1
-               :geometry (geometry :x "0%"
-                                   :y "0%"
-                                   :width "20px"
-                                   :height "100%"
-                                   :anchor "left center")
-               :stacking "bottom" 
+               :geometry (geometry :x "0"
+                                   :y "0"
+                                   :height "30px"
+                                   :width "100%"
+                                   :anchor "top center")
+               :stacking "fg" 
                :exclusive true
                :focusable false
   (box :class "root"
-       :orientation "vertical"
+      :valign "center"
+      :width 100
+      :orientation "horizontal"
     (workspaces_HDMI-A-1)
-    (box :halign "center"
-         :valign "end"
-         :orientation "vertical"
+    (box :halign "end"
+         :valign "center"
+         :orientation "horizontal"
          :space-evenly false
          :spacing 10
       (battery)
@@ -51,7 +55,7 @@
                :exclusive true
                :focusable false
   (box :class "root"
-       :orientation "vertical"
+       :orientation "horizontal"
     (workspaces_DP-2)))
 
 ; ╺╸state╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
@@ -76,10 +80,10 @@
 
 (defwidget workspaces_HDMI-A-1 []
   (box :class "workspaces"
-       :orientation "vertical"
+       :orientation "horizontal"
        :space-evenly true
-       :halign "center"
-       :valign "start"
+       :halign "start"
+       :valign "center"
        :width 20
     (for name in {workspaces_HDMI-A-1.list}
       (button :class "workspace ${name == workspaces_HDMI-A-1.active ? "active" : "hidden"}"
@@ -87,10 +91,10 @@
 
 (defwidget workspaces_eDP-1 []
   (box :class "workspaces"
-       :orientation "vertical"
+       :orientation "horizontal"
        :space-evenly true
-       :halign "center"
-       :valign "start"
+       :halign "start"
+       :valign "center"
        :width 20
     (for name in {workspaces_eDP-1.list}
       (button :class "workspace ${name == workspaces_eDP-1.active ? "active" : "hidden"}"
@@ -98,10 +102,10 @@
 
 (defwidget workspaces_DP-2 []
   (box :class "workspaces"
-       :orientation "vertical"
+       :orientation "horizontal"
        :space-evenly true
-       :halign "center"
-       :valign "start"
+       :halign "start"
+       :valign "center"
        :width 20
     (for name in {workspaces_DP-2.list}
       (button :class "workspace ${name == workspaces_DP-2.active ? "active" : "hidden"}"
@@ -110,7 +114,7 @@
 
 (defwidget battery []
   (box :class "battery"
-       :orientation "vertical"
+       :orientation "horizontal"
        :space-evenly true
        :halign "center"
        :valign "end"
@@ -119,19 +123,19 @@
 
 (defwidget date []
   (box :class "date"
-       :orientation "vertical"
+       :orientation "horizontal"
        :space-evenly true
-       :halign "center"
-       :valign "end"
+       :valign "center"
+       :halign "end"
        :width 20
     (label :text date_poll)))
 
 (defwidget time []
   (box :class "time"
-       :orientation "vertical"
+       :orientation "horizontal"
        :space-evenly true
-       :halign "center"
        :valign "end"
+       :halign "center"
        :width 20
     (label :text time_poll))) 
 
@@ -139,10 +143,10 @@
   (box 
     :class "route53"
     :class "route53 ${route53_poll.change == "true" ? "changed" : "unchanged"}"
-    :orientation "vertical"
+    :orientation "horizontal"
     :space-evenly true
-    :halign "center"
-    :valign "end"
+    :valign "center"
+    :halign "end"
     :width 20
           (label :text "${route53_poll.status}")))
       
