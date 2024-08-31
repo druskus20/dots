@@ -73,6 +73,7 @@ alias vbstop="vboxmanage controlvm kali poweroff"
 alias vbstart="vboxmanage startvm kali --type headless"
 alias vbssh="ssh -p 2222 kali@localhost"
 
+alias todo="$EDITOR $HOME/doc/TODO.md"
 
 alias tf=terraform
 alias tfa="terraform apply"

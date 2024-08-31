@@ -79,6 +79,10 @@ export GOPATH="$XDG_DATA_HOME"/go
 export GOMODCACHE="$XDG_CACHE_HOME"/go/mod
 export PATH="$GOPATH"/bin:"$PATH"
 
+export FLYCTL_INSTALL="/home/drusk/.local/share/fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
+
 # Fails with LightDM
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 
