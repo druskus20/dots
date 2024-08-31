@@ -1,0 +1,50 @@
+#!/bin/bash
+
+list_device_aliases() {
+    bluetoothctl devices | while IFS= read -r line; do
+        MAC=$(echo "$line" | awk '{print $2}')
+        ALIAS=$(bluetoothctl info "$MAC" | grep "Alias" | awk -F': ' '{print $2}')
+        echo -e "$ALIAS\t$MAC"
+    done
+}
+
+is_device_connected() {
+    local MAC="$1"
+    bluetoothctl info "$MAC" | grep "Connected: yes" > /dev/null
+}
+
+SELECTED=$(list_device_aliases | column -t -s $'\t' | fzf --height=~100%)
+
+if [ -z "$SELECTED" ]; then
+    echo "No device selected."
+    exit 1
+fi
+
+TARGET_MAC=$(echo "$SELECTED" | awk '{print $NF}')
+
+if is_device_connected "$TARGET_MAC"; then
+    read -p "Device is already connected. Do you want to disconnect it? (y/n): " DISCONNECT
+    if [[ "$DISCONNECT" =~ ^[Yy]$ ]]; then
+        echo "Disconnecting from device with MAC address: $TARGET_MAC"
+        bluetoothctl disconnect "$TARGET_MAC"
+        if [ $? -eq 0 ]; then
+            echo "Disconnected successfully."
+        else
+            echo "Failed to disconnect."
+            exit 1
+        fi
+    else
+        echo "Keeping the device connected."
+        exit 0
+    fi
+else
+  echo "Connecting to device with MAC address: $TARGET_MAC"
+  bluetoothctl connect "$TARGET_MAC"
+
+  if [ $? -eq 0 ]; then
+      echo "Connected to device with MAC address: $TARGET_MAC"
+  else
+      echo "Failed to connect."
+      exit 1
+  fi
+fi
