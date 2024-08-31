@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Main script execution
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <volume>"
+    echo "Example: $0 50%"
+    exit 1
+fi
+
+pactl set-sink-volume @DEFAULT_SINK@ $1
+
+

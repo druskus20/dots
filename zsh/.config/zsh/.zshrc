@@ -109,3 +109,6 @@ setopt NOBEEP
 [ -z "$TMUX" ] && tmux 
 
 # vim:foldmarker=foldstart,foldend
+
+# add Pulumi to the PATH
+export PATH=$PATH:/home/drusk/.pulumi/bin

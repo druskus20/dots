@@ -35,6 +35,8 @@
          :halign "end"
          :spacing 20
          :space-evenly false
+      (tray)
+      (volume)
       (battery)
       (time)
       (date))))
@@ -53,10 +55,27 @@
           (label :class "name" :text "${wsp.name}"))))))
         ;{wsp.name}))))
 
+; ━━━━ tray ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
+
+(defwidget tray []
+  (box :class "tray"
+    (systray)))
+
+; ━━━━ volume ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
+
+(deflisten volume :initial 0  "./modules/listen-volume.sh")
+
+(defwidget volume []
+  (box :class "volume"
+    :space-evenly false
+    (label :class "icon" :text "󰕾")
+    (scale :min 0 :max 100 :value volume :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}%")))
+
 ; ━━━━ battery ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
 
 (defwidget battery []
   (box :class "battery"
+    :space-evenly false
     (label :class "icon" 
            :text "${  EWW_BATTERY["BAT0"].capacity > 95 ? '󰁹' 
                     : EWW_BATTERY["BAT0"].capacity > 90 ? '󰂂' 
@@ -77,6 +96,7 @@
 
 (defwidget date []
   (box :class "date"
+    :space-evenly false
     (label :class "icon" :text "")
     (label :text date_poll)))
 
@@ -86,6 +106,7 @@
 
 (defwidget time []
   (box :class "time"
+    :space-evenly false
     (label :class "icon" :text "󰥔")
     (label :text time_poll))) 
 
