@@ -35,6 +35,11 @@ window {
   background-color: $base;
 }
 
+.bar {
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
 .workspace {
   margin: 3px;
   padding: 0px;
@@ -45,10 +50,20 @@ window {
   color: $text;
 }
 
+.icon.single-icon {
+  margin: 0;
+}
+
+.mic {
+  .icon.running {
+    color: $green;
+  }
+}
+
 .workspace {
   .icon {
   margin: 0 3px;
-  font-size: 10px;
+  font-size: 8px;
     }
   .name {
     background-color: $base;
@@ -61,22 +76,132 @@ window {
   }
 }
 
-.battery, .time, .date .tray .volume {
+.bluetooth,
+.battery, 
+.time,
+.date, 
+.tray,
+.speakers,
+.mic,
+.player
+.wifi {
   color: $text;
+  font-size: 12px;
+}
+
+.battery, 
+.time,
+.date {
   font-size: 10px;
 }
 
+.player {
+  .icon.play {
+    color: $green;
+  }
+  .icon.pause {
+    color: $red;
+  }
+}
+
+
+.battery {
+  label.icon1 {
+    margin-right: 0;
+  }
+  label.icon2 {
+    margin-left: 0;
+  }
+
+  .icon1.charging {
+    color: $green;
+  }
+  .icon1.discharging {
+    color: $peach;
+  }
+
+  .icon.level_0, .icon.level_1 {
+    color: $red;
+  }
+
+  .icon.level_2 {
+    color: $peach;
+  }
+
+  .icon.level_3 {
+    color: $yellow;
+  }
+
+  .icon.level_4, 
+  .icon.level_5,
+  .icon.level_6,
+  .icon.level_7,
+  .icon.level_8 {
+    color: $green;
+  }
+
+  .icon.level_9, .icon.level_10 {
+    color: $mauve;
+  }
+}
+
+.text {
+  font-size: 10px;
+}
+
+.tooltip {
+  background-color: $surface0;
+  color: $text;
+  font-size: 12px;
+}
+
+.bluetooth {
+  .icon.connected {
+    color: $green;
+  }
+}
+
+.camera {
+  .icon.connected {
+    color: $green;
+  }
+}
+
+.icon.muted {
+  color: $red;
+}
+
+.wifi {
+  .icon.connected {
+    color: $green;
+  }
+}
+
+.tray image {
+   -gtk-icon-transform: scale(0.5); 
+}
+
+.date, .time {
+  .text {
+    color: $overlay2;
+  }
+}
 
 scale trough {
-  background-color: $crust;
+  background-color: $surface1;
   border-radius: 2px;
   min-height: 5px;
   min-width: 50px;
 }
+
 scale trough highlight {
-  background-color: $text;
+  background-color: $green;
   border-radius: 2px;
 }
 
+scale.over trough highlight {
+  background-color: $peach;
+  border-radius: 2px;
+}
 
 
