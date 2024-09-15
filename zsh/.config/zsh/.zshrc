@@ -6,6 +6,7 @@
 #                           
 #
 
+
 # General Setting foldstart
 source "$ZDOTDIR/utils/utils.zsh"
 
@@ -106,9 +107,10 @@ setopt NOBEEP
 #unset __conda_setup
 ## <<< conda initialize <<<
 
+# add Pulumi to the PATH
+export PATH=$PATH:/home/drusk/.local/bin/pulumi
+
 [ -z "$TMUX" ] && tmux 
 
 # vim:foldmarker=foldstart,foldend
 
-# add Pulumi to the PATH
-export PATH=$PATH:/home/drusk/.pulumi/bin

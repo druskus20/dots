@@ -38,39 +38,39 @@ set $disp2 "HDMI-A-1"
 set $disp3 "DP-2"
 
 # Home
-output $disp3 resolution 1920x1080 position 0,0
-output $disp2 scale 1.5 resolution 2560x1440 position 1920,0
-#output $disp3 resolution 1920x1080 position 1920,0
-output $disp1 resolution 1920x1080 position 3630,0
-
-
-workspace 1 output $disp2
-workspace 2 output $disp2 
-workspace 3 output $disp2 
-workspace 4 output $disp2 
-workspace 5 output $disp2 
-workspace 6 output $disp2 
-workspace 7 output $disp3
-workspace 8 output $disp3 
-workspace 9 output $disp3
-workspace 10 output $disp1
+ output $disp3 resolution 1920x1080 position 0,0
+ output $disp2 scale 1.5 resolution 2560x1440 position 1920,0
+ #output $disp3 resolution 1920x1080 position 1920,0
+ output $disp1 resolution 1920x1080 position 3630,0
+ 
+ 
+ workspace 1 output $disp2
+ workspace 2 output $disp2 
+ workspace 3 output $disp2 
+ workspace 4 output $disp2 
+ workspace 5 output $disp2 
+ workspace 6 output $disp2 
+ workspace 7 output $disp3
+ workspace 8 output $disp3 
+ workspace 9 output $disp3
+ workspace 10 output $disp1
 
 ## Work
-#output $disp2 scale 1.5 resolution 2560x1440 position 0,0
-#output $disp1 resolution 1920x1080 position 0,1080
-###
-#workspace 1 output $disp2
-#workspace 2 output $disp2 
-#workspace 3 output $disp2 
-#workspace 4 output $disp2 
-#workspace 5 output $disp2 
-#workspace 6 output $disp2 
-#workspace 7 output $disp2
-#workspace 8 output $disp2 
-#workspace 9 output $disp2
-#workspace 10 output $disp1
+# output $disp1 resolution 1920x1080 position 0,960
+# output $disp3 scale 1.5 resolution 2560x1440 position 98,0
+ 
 
-#output eDP-1 resolution 1920x1080 position 0,0
+# workspace 1 output $disp3
+# workspace 2 output $disp3 
+# workspace 3 output $disp3 
+# workspace 4 output $disp3 
+# workspace 5 output $disp3 
+# workspace 6 output $disp3 
+# workspace 7 output $disp1
+# workspace 8 output $disp1 
+# workspace 9 output $disp1
+# workspace 10 output $disp1
+
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
@@ -302,7 +302,7 @@ for_window [title="float"] floating enable
 #	}
 #}
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-exec_always eww open-many bar0 bar1 bar2
+exec_always eww open-many win0 win1 win2
 exec_always --no-startup-id flashfocus
 exec mako
 
@@ -327,6 +327,25 @@ bindsym --whole-window button2+Shift nop
 bindsym --whole-window button2+Ctrl nop
 bindsym --whole-window button2+Mod1 nop
 bindsym --whole-window button2+Mod4 nop
+
+# ThinkPad Keys
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+bindsym XF86MonBrightnessUp exec brightnessctl set 10%+
+bindsym XF86Launch1 nop # FN key on ThinkPad - generally not bound to anything
+
+# LogiKeys (Media Keys)
+#bindsym XF86AudioPrev exec playerctl previous
+#bindsym XF86AudioPlay exec playerctl play-pause
+#bindsym XF86AudioNext exec playerctl next
+#bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+#bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+#bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+
+
 
 
 

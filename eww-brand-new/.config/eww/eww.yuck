@@ -23,6 +23,13 @@
                :focusable false
   (bar0 :monitor "DP-2"))
 
+(defwindow win3 :monitor 1
+               :geometry (geometry :x 0 :y 0 :height "15px" :width "100.01%" :anchor "center top")
+               :stacking "fg" 
+               :exclusive true
+               :focusable false
+  (bar0 :monitor "DP-2"))
+
 ; ━━━━ bars ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
 
 (defwidget bar0 [monitor] 
@@ -31,12 +38,14 @@
        :class "bar"
     (box :class "left"
          :halign "start"
+         :space-evenly false
          :spacing 15
-      (workspaces :monitor monitor))
-    (box :class "centerr"
-         :halign "center"
-         :spacing 15
+      (workspaces :monitor monitor)
       (player))
+    ;(box :class "center"
+    ;     :halign "center"
+    ;     :spacing 15
+    ;  (player))
     (box :class "right"
          :halign "end"
          :spacing 15
@@ -82,6 +91,7 @@
 
 (defwidget workspaces [monitor]
   (box :orientation "h" :class "workspaces"
+                :space-evenly false
     (for wsp in {workspaces[monitor]}
       (eventbox :cursor "pointer"
       (button :class "workspace ${wsp.class}"

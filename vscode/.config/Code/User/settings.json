@@ -222,7 +222,6 @@
     "editor.inlayHints.enabled": "offUnlessPressed",
     "window.enableMenuBarMnemonics": false,
     "vim.highlightedyank.enable": true,
-    "workbench.colorTheme": "Alt Catppuccin Mocha",
     "svelte.plugin.svelte.note-new-transformation": false,
     "svelte.enable-ts-plugin": true,
     "editor.wordWrap": "on",
