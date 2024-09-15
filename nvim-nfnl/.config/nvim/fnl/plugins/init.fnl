@@ -33,6 +33,10 @@
      :config true
      :opts { :color_icons true :default false :override { :fnl { :icon  "󰬍" :color  "#428850" :cterm_color  "230" :name "Fennel"}}}}
 
+  {1 :kylechui/nvim-surround
+     :version "*"
+     :event "VeryLazy"
+    :config true}
   {1 :druskus20/antifennel-nvim :lazy true :cmd ["Antifennel"] :config true} ; -- aniseed
 
   ; navic

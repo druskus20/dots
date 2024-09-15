@@ -88,6 +88,8 @@ alias "......"="cd ../../../../.."
 alias "......."="cd ../../../../../.."
 alias "........"="cd ../../../../../../.."
 
+alias npm="pnpm"
+
 alias "~"="cd ~"
 
 alias 'exit'="[ -z "$TMUX" ] && exit || tmux detach -P"

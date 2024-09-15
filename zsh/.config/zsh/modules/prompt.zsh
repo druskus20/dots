@@ -66,7 +66,7 @@ function gitstatus_prompt_update() {
 
 # On every prompt, fetch git status and set GITSTATUS_PROMPT.
 autoload -Uz add-zsh-hook
-add-zsh-hook precmd gitstatus_prompt_update
+# add-zsh-hook precmd gitstatus_prompt_update
 # foldend
 
 # Virtualenv foldstart

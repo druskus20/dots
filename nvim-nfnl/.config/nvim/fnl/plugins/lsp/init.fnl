@@ -112,11 +112,11 @@
                 (mlsp.setup {:ensure_installed ensure-installed
                              :handlers [setup]}))
               (when (and (lsp.get_config :denols)
-                         (lsp.get_config :tsserver))
+                         (lsp.get_config :ts_ls))
                 (local is-deno
                        ((. (require :lspconfig.util) :root_pattern) :deno.json
                                                                     :deno.jsonc))
-                (lsp.disable :tsserver is-deno)
+                (lsp.disable :ts_ls is-deno)
                 (lsp.disable :denols (fn [root-dir] (not (is-deno root-dir))))))
   ; :event :LazyFile ; Custom event by lazyvim
   ;:event :VeryLazy  ???????
@@ -139,7 +139,7 @@
                     :terraformls {} 
                     :helm_ls {}
                     :terraform_lsp {}
-                    :tsserver {}
+                    :ts_ls {}
                     :cssls {}
                     :html {:filetypes ["html" "htmldjango" "xml" "xhtml" "jsx" "tsx"]}
                            

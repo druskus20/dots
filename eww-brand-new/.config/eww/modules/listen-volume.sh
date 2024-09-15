@@ -25,7 +25,7 @@ pactl subscribe | while read -r line; do
     if echo "$line" | grep -q "Event 'change' on sink #$DEFAULT_SINK_ID"; then
         NEW_STATUS="$(get_sink_volume_and_mute_status $DEFAULT_SINK_ID)"
         # Avoids double events
-        if [[ "$CURR_STATUS" != "$NEW_STATUS" ]]; then
+        if [[ "$CURR_STATUS" != "$NEW_STATUS" && "$NEW_STATUS" != "" ]]; then
             CURR_STATUS=$NEW_STATUS
             echo "$CURR_STATUS"
         fi
