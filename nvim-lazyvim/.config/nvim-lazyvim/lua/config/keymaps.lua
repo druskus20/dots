@@ -1,0 +1,100 @@
+-- Keymaps are automatically loaded on the VeryLazy event
+-- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- Add any additional keymaps here
+
+
+-- TODO: these come from my old fennel config. I should definitely give them a second look
+-- Disable command history
+-- vim.keymap.set('n', 'q:', ':q')  -- creates a "wait time" if we plan to use q as quit
+-- Remap q (record macro) to Q
+
+
+local map = vim.keymap.set
+
+map('n', 'q', '<Nop>')
+map('n', 'Q', 'q')
+map('n', '<S-K>', '<Nop>')
+
+-- Helper function for which-key commands
+local function cmd_string(s)
+  return "<cmd>" .. s .. "<cr>"
+end
+
+-- Buffer navigation
+map('n', '<leader>h', cmd_string('bprevious'), { desc = 'Previous buffer' })
+map('n', '<leader>l', cmd_string('bnext'), { desc = 'Next buffer' })
+map('n', '<C-h>', cmd_string('bprevious'), { desc = 'Previous buffer' })
+map('n', '<C-l>', cmd_string('bnext'), { desc = 'Next buffer' })
+map('i', '<C-h>', cmd_string('bprevious'), { desc = 'Previous buffer' })
+map('i', '<C-l>', cmd_string('bnext'), { desc = 'Next buffer' })
+map('v', '<C-h>', cmd_string('bprevious'), { desc = 'Previous buffer' })
+map('v', '<C-l>', cmd_string('bnext'), { desc = 'Next buffer' })
+
+-- Buffer management
+map('n', '<leader>bc', cmd_string('bdelete!'), { desc = 'Close buffer' })
+map('n', '<leader>bw', cmd_string('bwipeout!'), { desc = 'Wipeout buffer' })
+
+-- Close floating windows
+local function close_floating()
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    local config = vim.api.nvim_win_get_config(win)
+    if config.relative ~= '' then
+      vim.api.nvim_win_close(win, false)
+    end
+  end
+end
+
+-- Use q and <esc> to close floating windows and clear search
+map('n', '<esc>', function()
+  close_floating()
+  vim.cmd('nohlsearch')
+end)
+
+map('n', 'q', function()
+  close_floating()
+  vim.cmd('nohlsearch')
+end)
+
+-- Exit visual mode without relying on <esc>
+local function exit_visual_mode()
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-c>', true, false, true), 'x', false)
+end
+
+-- Use q and <esc> to close floating windows and clear search in visual mode
+map('v', '<esc>', function()
+  close_floating()
+  vim.cmd('nohlsearch')
+  exit_visual_mode()
+end)
+
+map('v', 'q', function()
+  close_floating()
+  vim.cmd('nohlsearch')
+  exit_visual_mode()
+end)
+
+-- Move up/down in menus with C-j and C-k
+map({ 'i', 'n', 'c' }, '<C-j>', '<C-n>', { desc = 'Move down' })
+map({ 'i', 'n', 'c' }, '<C-k>', '<C-p>', { desc = 'Move up' })
+
+-- Better indenting
+map('v', '<', '<gv', { desc = 'Reduce indent' })
+map('v', '>', '>gv', { desc = 'Increase indent' })
+
+-- Indenting in insert mode
+map('i', '<S-tab>', '<C-D>', { desc = 'Decrease indent' })
+map('v', '<tab>', '>gv', { desc = 'Increase indent' })
+map('v', '<S-tab>', '<gv', { desc = 'Reduce indent' })
+
+-- Clipboard operations
+map('n', '<leader>y', '"+y', { desc = 'Copy (system)' })
+map('v', '<leader>y', '"+y', { desc = 'Copy (system)' })
+map('n', '<leader>p', '"+p', { desc = 'Paste (system)' })
+map('v', '<leader>p', '"+p', { desc = 'Paste (system)' })
+
+-- Copy-paste with Ctrl-C and Ctrl-V
+-- map('v', '<C-c>', '"+y', { desc = 'Copy to system clipboard' }) -- BUG: C-c and esc are the same key
+-- map('n', '<C-v>', '"+p', { desc = 'Paste from system clipboard' }) -- TODO: Can't use due to visual block issues
+
+map('i', '<C-v>', '<C-o>"+p', { desc = 'Paste from system clipboard' })
+map('v', '<C-v>', '"+p', { desc = 'Paste from system clipboard' })
