@@ -1,6 +1,7 @@
 #!/bin/zsh
 
 plugins=( 
+	 "https://github.com/romkatv/zsh-defer"
 	 'https://github.com/zsh-users/zsh-autosuggestions'
 	 'https://github.com/zdharma/fast-syntax-highlighting'
 	 'https://github.com/zsh-users/zsh-history-substring-search'

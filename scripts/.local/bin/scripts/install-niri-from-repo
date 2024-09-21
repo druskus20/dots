@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+  echo "Usage: $0 <path-to-local-niri-repo>"
+fi
+
+cp ./target/release/niri            "$HOME"/.local/bin/
+# create a symlink to the niri binary so that the systemd service finds it
+sudo ln -s "$HOME"/.local/bin/niri       /usr/bin/niri 
+sudo ln -s "$HOME"/.local/bin/niri       /usr/local/bin/niri 
+cp ./resources/niri-session         "$HOME"/.local/bin/
+sudo ln -s "$HOME"/.local/bin/niri-session       /usr/bin/niri-session 
+sudo ln -s "$HOME"/.local/bin/niri-session       /usr/local/bin/niri-session 
+mkdir -p "$HOME"/.local/share/wayland-sessions/
+cp ./resources/niri.desktop         "$HOME"/.local/share/wayland-sessions/
+mkdir -p "$HOME"/.local/share/xdg-desktop-portal/
+cp ./resources/niri-portals.conf    "$HOME"/.local/share/xdg-desktop-portal/
+cp ./resources/niri.service         "$HOME"/.config/systemd/user/
+cp ./resources/niri-shutdown.target	"$HOME"/.config/systemd/user/

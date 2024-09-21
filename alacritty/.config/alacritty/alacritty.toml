@@ -1,0 +1,31 @@
+import = [
+  # "~/.config/alacritty/catppuccin-mocha.toml"
+   #"~/.config/alacritty/catppuccin-frappe.toml"
+  # "~/.config/alacritty/catppuccin-macchiato.toml"
+  # "~/.config/alacritty/catppuccin-mocha.toml"
+]
+
+live_config_reload = true
+
+[colors.primary]
+background = "#1e1e2e"
+[colors.cursor]
+text = "#1e1e2e"
+cursor = "#eeeeee"
+
+
+[font]
+size = 10
+
+[font.normal]
+family = "JetBrainsMono Nerd Font Mono"
+
+[mouse]
+hide_when_typing = true
+
+[window]
+dynamic_padding = false
+
+[window.padding]
+x = 3
+y = 3

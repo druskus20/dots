@@ -1,0 +1,27 @@
+#!/bin/bash
+
+if [ "$#" -ne 1 ]; then
+  echo "Usage $0 <reference_tree>"
+  exit 1
+fi
+
+# Your reference tree
+reference_tree="$1"
+
+# Get all tags
+tags=$(git tag)
+
+min_diff_size=9999999
+best_tag=""
+
+for tag in $tags; do
+    diff_size=$(git diff --shortstat $reference_tree $tag | awk '{print $1}')
+    if [ "$diff_size" -lt "$min_diff_size" ]; then
+        min_diff_size=$diff_size
+        best_tag=$tag
+    fi
+done
+
+
+echo "$best_tag"
+

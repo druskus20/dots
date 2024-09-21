@@ -83,6 +83,8 @@ map('v', '>', '>gv', { desc = 'Increase indent' })
 
 -- Indenting in insert mode
 map('i', '<S-tab>', '<C-D>', { desc = 'Decrease indent' })
+
+-- handled by mini.move
 map('v', '<tab>', '>gv', { desc = 'Increase indent' })
 map('v', '<S-tab>', '<gv', { desc = 'Reduce indent' })
 
