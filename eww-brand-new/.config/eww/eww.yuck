@@ -40,7 +40,7 @@
          :halign "start"
          :space-evenly false
          :spacing 15
-      (workspaces :monitor monitor)
+      ;(workspaces :monitor monitor)
       (player))
     ;(box :class "center"
     ;     :halign "center"

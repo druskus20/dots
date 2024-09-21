@@ -1,0 +1,11 @@
+profile home-desk {
+  output "BOE 0x09DE Unknown" mode 1920x1080 position 3630,0 
+  output "Lenovo Group Limited LEN P27q-10 0x01010101" mode 2560x1440 position 1920,0 scale 1.5 
+  output "Samsung Electric Company S27E390 0x30343939" mode 1920x1080 position 0,0 
+  exec "pkill eww && eww open-many win0 win1 win2"
+}
+
+profile standalone {
+  output "BOE 0x09DE Unknown" mode 1920x1080 position 0,0 
+  exec "pkill eww && eww open-many win0
+}

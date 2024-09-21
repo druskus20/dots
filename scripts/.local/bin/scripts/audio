@@ -17,9 +17,8 @@ list_sinks_with_details() {
         gsub(/Name: /, "", $0);
         sink_name = $0
     }
-    /device.description =/ {
-        gsub(/.*device.description = "/, "", $0); 
-        gsub(/"$/, "", $0);
+    /Description: / {
+        gsub(/Description: /, "", $0);
         desc = $0
     }
     END { 

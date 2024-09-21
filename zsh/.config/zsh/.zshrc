@@ -6,16 +6,23 @@
 #                           
 #
 
+# needs to go before tmux
+export TERM=xterm-256color
+
+case $- in *i*)
+  if [ -z "$TMUX" ]; then 
+    exec tmux   # Completely replace the process - so when it closes, it kills the terminal too
+  fi
+esac
 
 # General Setting foldstart
 source "$ZDOTDIR/utils/utils.zsh"
+source "$ZDOTDIR/plugins/zsh-defer/zsh-defer.plugin.zsh"
 
 # History in cache directory:
 HISTSIZE=50000
 SAVEHIST=50000
 HISTFILE="$XDG_CACHE_HOME"/zsh/history
-
-export TERM=xterm-256color
 
 # Clear default keybinds
 clear-keybinds
@@ -33,15 +40,15 @@ _comp_options+=(globdots)
 #eval "$(github-copilot-cli alias -- "$0")"
 
 
-compinit
+zsh-defer compinit
 
 # foldend
 
 # Plugins foldstart
-source "$ZDOTDIR/plugins/fast-syntax-highlighting/F-Sy-H.plugin.zsh"
-source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-source "$ZDOTDIR/plugins/zsh-you-should-use/you-should-use.plugin.zsh"
-source "$ZDOTDIR/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
+zsh-defer source "$ZDOTDIR/plugins/fast-syntax-highlighting/F-Sy-H.plugin.zsh"
+zsh-defer source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+zsh-defer source "$ZDOTDIR/plugins/zsh-you-should-use/you-should-use.plugin.zsh"
+zsh-defer source "$ZDOTDIR/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
 
 # Reset prompt
 PROMPT=''
@@ -110,7 +117,10 @@ setopt NOBEEP
 # add Pulumi to the PATH
 export PATH=$PATH:/home/drusk/.local/bin/pulumi
 
-[ -z "$TMUX" ] && tmux 
+#case $- in *i*)
+#  if [ -z "$TMUX" ]; then exec tmux; fi;;
+#esac
+ 
 
 # vim:foldmarker=foldstart,foldend
 

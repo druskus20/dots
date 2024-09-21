@@ -111,11 +111,10 @@ export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-
 ## Launches on session start
-if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
- # /home/pedro/cosmic-comp/target/release/cosmic-comp
-  sway
-fi
+#if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+#  echo "Starting wayland session"
+#  niri --session
+#fi
 
 # vim:foldmarker=foldstart,foldend
