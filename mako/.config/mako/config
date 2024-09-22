@@ -1,0 +1,12 @@
+# Take a look at the mako manpage with the command:
+#   man 5 mako
+# To view all configuration options.
+
+sort=-time
+layer=overlay
+icons=0
+default-timeout=5000
+background-color=#353545
+text-color=#cdd6f4
+border-size=0
+
