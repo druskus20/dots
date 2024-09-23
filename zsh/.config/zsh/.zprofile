@@ -22,6 +22,12 @@ export MOZ_ENABLE_WAYLAND
 # Set custom PATH
 export PATH="$HOME"/.local/bin/elk:"$HOME"/.local/bin:"$HOME"/.local/bin/scripts:"$HOME"/.local/share/npm/bin:"$HOME"/.local/share/cargo/bin:"$PATH"
 
+# Existing PATH entries
+export PATH="$HOME"/.local/bin:"$HOME"/.local/share/npm/bin:"$HOME"/.local/share/cargo/bin:"$PATH"
+
+# Include all subdirectories inside ~/.local/bin
+export PATH=$(find "$HOME/.local/bin" -type d -exec echo {}/bin \; | tr '\n' ':' | sed 's/:$//'):$PATH
+
 # Force XDG base directories
 export XDG_CONFIG_HOME="$HOME/.config" export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -67,6 +73,7 @@ export PICOM_CONFIG_PATH="$XDG_CONFIG_HOME"/picom/picom.conf
 export STACK_ROOT="$XDG_DATA_HOME"/stack
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 export SUDO_ASKPASS="$HOME/.local/bin/scripts/dpass"
+export SSH_ASKPASS="/usr/bin/ssh-askpass"
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export TEXMFHOME=$XDG_DATA_HOME/texmf
 export TEXMFVAR=$XDG_CACHE_HOME/texlive/texmf-var 
