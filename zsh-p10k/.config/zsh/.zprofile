@@ -26,7 +26,7 @@ export PATH="$HOME"/.local/bin/elk:"$HOME"/.local/bin:"$HOME"/.local/bin/scripts
 export PATH="$HOME"/.local/bin:"$HOME"/.local/share/npm/bin:"$HOME"/.local/share/cargo/bin:"$PATH"
 
 # Include all subdirectories inside ~/.local/bin
-export PATH=$(find "$HOME/.local/bin" -type d -exec echo {}/bin \; | tr '\n' ':' | sed 's/:$//'):$PATH
+#export PATH=$(find "$HOME/.local/bin" -type d -exec echo {}/bin \; | tr '\n' ':' | sed 's/:$//'):$PATH
 
 # Force XDG base directories
 export XDG_CONFIG_HOME="$HOME/.config" export XDG_CACHE_HOME="$HOME/.cache"
