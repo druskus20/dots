@@ -82,6 +82,15 @@ export XINITRC="$XDG_CONFIG_HOME"/x11/xinitrc
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
 export ELM_HOME="$XDG_CONFIG_HOME"/elm
 
+
+
+# Not super tested
+export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME"/aws/credentials
+export AWS_CONFIG_FILE="$XDG_CONFIG_HOME"/aws/config
+export DEVPOD_CONFIG="$XDG_CONFIG_HOME"/devpod/config
+export MINIKUBE_HOME="$XDG_DATA_HOME"/minikube
+
+
 export GOPATH="$XDG_DATA_HOME"/go 
 export GOMODCACHE="$XDG_CACHE_HOME"/go/mod
 export PATH="$GOPATH"/bin:"$PATH"

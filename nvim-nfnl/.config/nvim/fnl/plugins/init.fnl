@@ -74,23 +74,30 @@
   
 
 
+  {1 :petertriho/nvim-scrollbar
+   :opts {:handle { :color "#414141"}}
+           
+   :config true}
+   
+
    
   {1 :towolf/vim-helm}
   {1 :DingDean/wgsl.vim
-    :ft [:wgsl]}
+    :ft [:wgsl]}]
 
   ;{1 :sevagh/github-actions-yaml.vim
   ;  :ft [:yaml :yml :yaml.gha :yaml-gha]}
   ; embed lualine in tmux
   ;{1 :vimpostor/vim-tpipeline}
-  {1 :karb94/neoscroll.nvim 
-     :event :VeryLazy
-     :config (fn [_ opts] 
-               ((. (require :neoscroll) :setup) opts) ; TODO: NOT WORKING
-               (let [m { :<C-u> [:scroll [:-vim.wo.scroll :1 :true]]
-                         :<C-d> [:scroll [:vim.wo.scroll :true :1]]}]
-                 (. (require :neoscroll.config) :set_mappings) m))
-     :opts {:easing_function :sine}
-     :version "*"}]
+  ;{1 :karb94/neoscroll.nvim 
+  ;   :event :VeryLazy
+  ;   :config (fn [_ opts] 
+  ;             ((. (require :neoscroll) :setup) opts) ; TODO: NOT WORKING
+  ;             (let [m { :<C-u> [:scroll [:-vim.wo.scroll :1 :true]]
+  ;                       :<C-d> [:scroll [:vim.wo.scroll :true :1]]}]
+  ;               (. (require :neoscroll.config) :set_mappings) m))
+  ;   :opts {:easing_function :sine}
+  ;   :version "*"}
+     
    
 

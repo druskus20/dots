@@ -7,8 +7,7 @@ function clear-keybinds() {
     "^[C"  "^[D"  "^[F"  "^[G"  "^[L"  "^[M"  "^[N"  "^[P"  "^[Q"  "^[S"  "^[T"  "^[U"  "^[W"
     "^[_"  "^[a"  "^[b"  "^[c"  "^[d"  "^[f"  "^[g"  "^[l"  "^[n"  "^[p"  "^[q"  "^[s"  "^[t"
     "^[u"  "^[w"  "^[y"  "^[z"  "^[|"  "^[~"  "^[^I" "^[^J" "^[^_" "^[\"" "^[\$" "^X^B"
-    "^X^F" "^X^J" "^X^K" "^X^N" "^X^O" "^X^R" "^X^U" "^X^X" "^[^D" "^[^G"
-  )
+    "^X^F" "^X^J" "^X^K" "^X^N" "^X^O" "^X^R" "^X^U" "^X^X" "^[^D" "^[^G")
   
   # Use bindkey -r with multiple arguments
   bindkey -r "${keys[@]}"
@@ -63,7 +62,7 @@ bindkey "^[[1;5C" forward-word            # C-ArrowRight
 bindkey "^[[1;5D" backward-word           # C-ArrowLeft
 bindkey "^H"      backward-kill-word      # C-Backspace
 bindkey "\e[3~"   delete-char             # Del
-#bindkey "^R"      fzf-history             # C-R
+bindkey "^E"      fzf-history             # C-E
 bindkey '^R' history-incremental-search-backward
 
 bindkey "^E"      end-of-line             # C-E bindkey "^A"      beginning-of-line       # C-A
