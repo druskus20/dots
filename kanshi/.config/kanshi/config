@@ -7,7 +7,7 @@ profile home-desk {
 }
 
 profile work {
-  output "Samsung Electric Company LS27A600N HNMX400145" mode 2560x1440 position 108,0  scale 1.5
+  output "Samsung Electric Company LS27A600N HNMX400145" mode 2560x1440 position 108,0 scale 1.5
   output "BOE 0x09DE Unknown" mode 1920x1080 position 0,960 
   exec "pkill eww; eww open-many win0 win3"
   exec "niri msg output 'eDP-1' off"
@@ -15,6 +15,6 @@ profile work {
 
 profile standalone {
   output "BOE 0x09DE Unknown" mode 1920x1080 position 0,0 
-  exec "pkill eww; eww open-many win0"
   exec "niri msg output 'eDP-1' on"
+  exec "pkill eww; eww open-many win0"
 }

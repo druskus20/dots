@@ -6,8 +6,9 @@ function safe-start-tmux() {
   # Needs to go before tmux
   export TERM=xterm-256color
   case $- in *i*)
-    if [ -z "$TMUX" ]; then 
-      exec tmux   
+    if [ -z "$TMUX" ]; then  
+      # Custom tmux stuff - buffer one tmux session ahead to make startup instant
+      tmux attach -t buffer || (tmux new -d -s buffer && tmux new -t buffer -A )
     fi
   esac
 }
@@ -75,6 +76,9 @@ function plugins() {
   source "$ZDOTDIR/plugins/zsh-you-should-use/you-should-use.plugin.zsh"
   source "$ZDOTDIR/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh" 
 
+  zsh_highlight_maxlength=100  
+  zsh_autosuggest_highlight_style="fg=#85858f,bold,underline"
+
   # vicmd '^[[A' shouldnt be bound because its the same keycode as ESC (causes problems with vi-mode)
   bindkey -M viins '^[[A' history-substring-search-up    # Arrow up
   bindkey -M viins '^[[B' history-substring-search-down  # Arrow down
@@ -111,4 +115,9 @@ plugins
 modules
 load-prompt
 
+# More? https://github.com/romkatv/zsh4humans/tree/v5/fn
+# TODO: teleportation
+# TODO: compile completions
 
+# To customize prompt, run `p10k configure` or edit ~/.dots/zsh-p10k/.config/zsh/.p10k.zsh.
+[[ ! -f ~/.dots/zsh-p10k/.config/zsh/.p10k.zsh ]] || source ~/.dots/zsh-p10k/.config/zsh/.p10k.zsh
