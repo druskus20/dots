@@ -100,3 +100,31 @@ map('v', '<leader>p', '"+p', { desc = 'Paste (system)' })
 
 map('i', '<C-v>', '<C-o>"+p', { desc = 'Paste from system clipboard' })
 map('v', '<C-v>', '"+p', { desc = 'Paste from system clipboard' })
+
+-- Unmap default keybinds related to code (lsp)
+vim.keymap.del('n', '<leader>cd')
+vim.keymap.del('n', '<leader>cf')
+vim.keymap.del('n', '<leader>cm')
+vim.keymap.del('n', '<leader>cs')
+vim.keymap.del('n', '<leader>cS')
+
+-- Unmap saving
+vim.keymap.del('n', '<C-s>')
+vim.keymap.del('i', '<C-s>')
+vim.keymap.del('v', '<C-s>')
+
+-- diagnostic
+local diagnostic_goto = function(next, severity)
+  local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+  severity = severity and vim.diagnostic.severity[severity] or nil
+  return function()
+    go({ severity = severity })
+  end
+end
+map("n", "<leader>gd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+map("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
+map("n", "[d", diagnostic_goto(false), { desc = "Prev Diagnostic" })
+map("n", "]e", diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
+map("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
+map("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
+map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
