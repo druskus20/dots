@@ -4,7 +4,8 @@ return {
     opts = function(_, opts)
       local cmp = require("cmp")
       local auto_select = true
-      opts.mapping = vim.tbl_extend("force", opts.mapping, {
+      -- completely override lazyvim defined keymaps
+      opts.mapping = {
         ["<C-u>"] = cmp.mapping.scroll_docs(-4),
         ["<C-d>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.abort(),
@@ -16,17 +17,16 @@ return {
           end
           vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, true, true), "n", true)
         end),
-        ["<C-y>"] = LazyVim.cmp.confirm({ select = true }),
-
         ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
         ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-
-        -- disable lazyvim defined keymaps
-        ["<C-n>"] = nil,
-        ["<C-p>"] = nil,
-        ["<CR>"] = nil,
-        ["<C-CR>"] = nil,
-      })
+        ["<CR>"] = LazyVim.cmp.confirm({ select = auto_select }),
+        ["<S-CR>"] = LazyVim.cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace }),
+        ["<C-CR>"] = function(fallback)
+          cmp.abort()
+          fallback()
+        end,
+      }
+      return opts
     end,
   },
   {
