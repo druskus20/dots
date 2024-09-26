@@ -89,7 +89,3 @@
 (map "i" "<C-v>" "<C-o>\"+p" { :desc "Paste from system clipboard"})
 (map "v" "<C-v>" "\"+p" { :desc "Paste from system clipboard"})
 
-
-
-
-
