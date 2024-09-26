@@ -11,6 +11,7 @@ return {
   { "folke/persistence.nvim",              enabled = false },
   { "rafamadriz/friendly-snippets",        enabled = false },
   { "garymjr/nvim-snippets",               enabled = false },
+  { "akinsho/bufferline.nvim",             enabled = false },
 
   -- look into which ones I had
   { "echasnovski/mini.ai",                 enabled = false },
