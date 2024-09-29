@@ -21,11 +21,11 @@ input {
     touchpad {
         // off
         tap
-        // dwt
+        dwt
         // dwtp
         natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
+         accel-speed 0.4
+         accel-profile "adaptive"
         // scroll-method "two-finger"
         // disabled-on-external-mouse
     }
@@ -182,12 +182,11 @@ layout {
 // Add lines like this to spawn processes at startup.
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
-// See the binds section below for more spawn examples.
-// spawn-at-startup "alacritty" "-e" "fish"
 spawn-at-startup "swaybg" "-i" "/home/drusk/img/bg/koi.jpg" "-m" "fill"
 spawn-at-startup "swaybg" "-i" "/home/drusk/img/bg/koi.jpg" "-m" "fill"
 spawn-at-startup "mako"
 spawn-at-startup "eww" "open-many" "win0"  "win1" "win2"
+spawn-at-startup "xwayland-satellite" ":0"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.

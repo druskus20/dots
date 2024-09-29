@@ -13,6 +13,15 @@ profile work {
   exec "pkill eww; eww open-many win0 win3"
 }
 
+profile work-bjorn {
+  exec "niri msg output 'eDP-1' off"
+  output "Samsung Electric Company LS27A600N HNMX200287" mode 2560x1440 position 108,0 scale 1.5
+  output "BOE 0x09DE Unknown" mode 1920x1080 position 0,960 scale 1
+  exec "pkill eww; eww open-many win0 win3"
+}
+
+
+
 profile standalone {
   exec "niri msg output 'eDP-1' on"
   output "BOE 0x09DE Unknown" mode 1920x1080 position 0,0 scale 1

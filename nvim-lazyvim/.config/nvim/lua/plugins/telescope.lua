@@ -4,7 +4,7 @@ return {
     opts = {
       no_italic = true,
       no_bold = true,
-      _no_custom_highlights = function(colors)
+      no_custom_highlights = function(colors)
         return {
           TelescopePromptPrefix = { bg = colors.mantle, fg = colors.red, },
           TelescopePromptTitle = { bg = colors.red, fg = colors.crust, },

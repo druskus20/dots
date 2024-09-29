@@ -39,6 +39,7 @@ return {
           },
 
           -- TODO: Move to telescope.lua
+          -- currently, that breaks this highlighting
           TelescopePromptPrefix = { bg = colors.mantle, fg = colors.red, },
           TelescopePromptTitle = { bg = colors.red, fg = colors.crust, },
           TelescopeSelection = { bg = colors.base, fg = colors.text, },
@@ -50,6 +51,10 @@ return {
           TelescopePromptBorder = { bg = colors.mantle, fg = colors.mantle, },
           TelescopePromptNormal = { bg = colors.mantle, fg = colors.text, },
           TelescopeResultsTitle = { bg = colors.red, fg = colors.crust, },
+
+          -- TODO: move to notify
+          -- Does not work
+          -- NotifyBackground = { bg = colors.red, fg = colors.text },
         }
       end,
     },

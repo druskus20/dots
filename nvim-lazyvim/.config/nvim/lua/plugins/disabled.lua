@@ -1,7 +1,9 @@
 return {
   -- { "folke/trouble.nvim", enabled = false },
-  { "folke/noice.nvim",                    enabled = false },
-  { "MunifTanjim/nui.nvim",                enabled = false },
+  -- { "folke/noice.nvim",                    enabled = false },
+  -- { "MunifTanjim/nui.nvim",                enabled = false },
+  -- { "rcarriga/nvim-notify",                enabled = false },
+  
   { "folke/tokyonight.nvim",               enabled = false },
   { "nvimdev/dashboard-nvim",              enabled = false },
   { "lucas-reineke/indent-blankline.nvim", enabled = false },
@@ -20,7 +22,6 @@ return {
   { "stevearc/dressing.nvim",              enabled = false },
   { "stevearc/conform.nvim",               enabled = false },
   { "MagicDuck/grug-far.nvim",             enabled = false }, -- find and replace
-  { "rcarriga/nvim-notify",                enabled = false },
   -- Limit to one notification https://github.com/rcarriga/nvim-notify/issues/120#issuecomment-1214168883
   -- Change styles
   -- Make buffer not selectable with C-W

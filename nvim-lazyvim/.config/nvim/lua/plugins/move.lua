@@ -21,7 +21,9 @@ return {
     -- }
   },
   keys = {
-    { "<Tab>",   lua_cmd_string("MiniMove.move_line('right')"), noremap = true, },
+    -- We cannot map <Tab>, it's the same as <C-i> which is used by vim for jumping around 
+    -- TODO: unsure if alacritty supports custom keycodes / modifyOtherKeys xterm stuff. Look into it, it might be a workaround :)
+    -- { "<Tab>",   lua_cmd_string("MiniMove.move_line('right')"), noremap = true, },
     { "<S-Tab>", lua_cmd_string("MiniMove.move_line('left')"),  noremap = true, },
     -- Handled by keymaps.lua
     -- { "<Tab>",   lua_cmd_string("MiniMove.move_line('right')"), mode = "v",     noremap = true, },
