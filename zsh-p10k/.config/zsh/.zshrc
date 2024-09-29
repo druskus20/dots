@@ -3,6 +3,7 @@
 
 # Start tmux (only if not already in a tmux session)
 function safe-start-tmux() {
+  emulate -L zsh
   # Needs to go before tmux
   export TERM=xterm-256color
   case $- in *i*)
@@ -17,6 +18,7 @@ function safe-start-tmux() {
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 function instant-prompt() {
+  emulate -L zsh
   if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
   fi
@@ -25,6 +27,7 @@ function instant-prompt() {
 # -------------------------------------------------
 
 function completions() {
+  emulate -L zsh
   # 1. Load
   autoload -U compinit
   compinit -u  # Avoid unnecessary recompilation of completion cache
@@ -39,17 +42,32 @@ function completions() {
   _comp_options+=(globdots)
   # Autocomplete from the middle of a word 
   # zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'
-  # Load GitHub Copilot CLI completions 
-  # eval "$(github-copilot-cli alias -- "$0")"
+
+  # Competions
+  autoload bashcompinit && bashcompinit
+  complete -C '/usr/local/bin/aws_completer' aws
+  source <(helm completion zsh)
+  source <(kubectl completion zsh)
+  compdef kubecolor=kubectl
+  source <(gh completion -s zsh)
+  source <(rustup completions zsh rustup)
+  # TODO: find a way to source the "non compdef" completions without breaking fast start
+  # (adding them to fpath - breaks fast start)
+  # I am not sure why - maybe I am not caching the compdump properly?
+  #source <(rustup completions zsh cargo) # breaks fast start
+  source $ZDOTDIR/completions/_eza # avoid breaking fast start
 }
 
 function history-settings() {
+  emulate -L zsh
   HISTFILE="$XDG_CACHE_HOME/zsh/history"
   HISTSIZE=50000
   SAVEHIST=50000
 }
 
 function zsh-options() {
+  
+  # no emulate -L zsh - we actually want to affect the shell
   # Completion
   setopt AUTO_LIST               # automatically list choices on ambiguous completion
   setopt AUTO_MENU               # show completion menu on a successive tab press
@@ -71,6 +89,7 @@ function zsh-options() {
 }
 
 function plugins() {
+  emulate -L zsh
   source "$ZDOTDIR/plugins/fast-syntax-highlighting/F-Sy-H.plugin.zsh"
   source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
   source "$ZDOTDIR/plugins/zsh-you-should-use/you-should-use.plugin.zsh"
@@ -91,13 +110,14 @@ function plugins() {
 }
 
 function modules() {
+  emulate -L zsh
   source "$ZDOTDIR/modules/keybinds.zsh"
   source "$ZDOTDIR/modules/alias.zsh"
 }
 
 # -------------------------------------------------
 # Should go last 
-
+# no "emulate -L zsh" - p10k does not like it
 function load-prompt() {
   source "$ZDOTDIR"/plugins/powerlevel10k/powerlevel10k.zsh-theme
   # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
@@ -118,6 +138,4 @@ load-prompt
 # More? https://github.com/romkatv/zsh4humans/tree/v5/fn
 # TODO: teleportation
 # TODO: compile completions
-
-# To customize prompt, run `p10k configure` or edit ~/.dots/zsh-p10k/.config/zsh/.p10k.zsh.
-[[ ! -f ~/.dots/zsh-p10k/.config/zsh/.p10k.zsh ]] || source ~/.dots/zsh-p10k/.config/zsh/.p10k.zsh
+# C-I / C-O like in vim but for directories

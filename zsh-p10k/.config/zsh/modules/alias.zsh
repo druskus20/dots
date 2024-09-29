@@ -48,7 +48,8 @@ alias code="code --enable-features=UseOzonePlatform --ozone-platform=wayland"
 alias vscode="code --enable-features=UseOzonePlatform --ozone-platform=wayland"
 
 # Shorthands
-alias k="kubectl"
+alias kubectl="kubecolor"
+alias k="kubecolor"
 alias g="git"
 alias ga="git add"
 alias gA="git add -A"
@@ -59,15 +60,7 @@ alias gp="git push"
 alias gw="git switch"
 alias GG="git add -A && git commit && git push"
 
-# Swallow some applications
-alias devour="devour"
-#alias google-chrome-stable="devour google-chrome-stable"
-#alias chrome="devour google-chrome-stable"
-#alias sxiv="devour sxiv"
-#alias zathura="devour zathura"
-#alias thunar="devour thunar"
-#alias pavucontrol="devour pavucontrol"
-
+# Virtualbox
 alias vblist="vboxmanage list runningvms"
 alias vbstop="vboxmanage controlvm kali poweroff"
 alias vbstart="vboxmanage startvm kali --type headless"
@@ -91,7 +84,6 @@ alias "........"="cd ../../../../../../.."
 alias "~"="cd ~"
 
 alias npm="pnpm"
-
 
 #alias 'exit'="[ -z "$TMUX" ] && exit || tmux detach -P"
 #alias ':q'="[ -z "$TMUX" ] && exit || tmux detach -P"
