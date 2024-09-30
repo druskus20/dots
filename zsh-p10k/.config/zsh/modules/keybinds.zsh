@@ -76,6 +76,15 @@ zle -N edit-command-line
 bindkey -M viins "^Q" edit-command-line
 bindkey -M vicmd "^Q" edit-command-line
 
+# C-Z to fg - this allows me to use C-Z to send a process to 
+# background (i.e. vim) and the same binding bring it back
+fg-func() {
+    fg 2>/dev/null || echo "No stopped jobs"
+}
+zle -N fg-func
+bindkey '^Z' fg-func 
+
+
 
 # Make word boundaries (CTRL+Backspace) like bash
 #autoload -U select-word-style
