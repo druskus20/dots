@@ -3,7 +3,7 @@ return {
   -- { "folke/noice.nvim",                    enabled = false },
   -- { "MunifTanjim/nui.nvim",                enabled = false },
   -- { "rcarriga/nvim-notify",                enabled = false },
-  
+
   { "folke/tokyonight.nvim",               enabled = false },
   { "nvimdev/dashboard-nvim",              enabled = false },
   { "lucas-reineke/indent-blankline.nvim", enabled = false },
@@ -17,9 +17,9 @@ return {
 
   -- look into which ones I had
   { "echasnovski/mini.ai",                 enabled = false },
-  { "echasnovski/mini.icons",              enabled = false },
+  --{ "echasnovski/mini.icons",              enabled = false },
   { "echasnovski/mini.pairs",              enabled = false },
-  { "stevearc/dressing.nvim",              enabled = false },
+  -- { "stevearc/dressing.nvim",              enabled = false }, -- used tor lsp popups and pickers
   { "stevearc/conform.nvim",               enabled = false },
   { "MagicDuck/grug-far.nvim",             enabled = false }, -- find and replace
   -- Limit to one notification https://github.com/rcarriga/nvim-notify/issues/120#issuecomment-1214168883
