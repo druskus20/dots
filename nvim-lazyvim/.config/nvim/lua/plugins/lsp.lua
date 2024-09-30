@@ -1,5 +1,22 @@
 return {
   {
+    "Bekaboo/dropbar.nvim",
+    event = "LspAttach",
+    opts = {}
+  },
+  {
+    "chrisgrieser/nvim-lsp-endhints",
+    event = "LspAttach",
+    opts = {
+      icons = {
+        type = "» ",
+        parameter = "« ",
+        offspec = " ", -- hint kind not defined in official LSP spec
+        unknown = " ", -- hint kind is nil
+      },
+    },
+  },
+  {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
       local keymaps = require("lazyvim.plugins.lsp.keymaps").get()
@@ -50,5 +67,4 @@ return {
       opts.keymaps = keymaps
     end,
   },
-  { "Bekaboo/dropbar.nvim", opts = {} }
 }

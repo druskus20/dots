@@ -55,6 +55,17 @@ return {
           -- TODO: move to notify
           -- Does not work
           -- NotifyBackground = { bg = colors.red, fg = colors.text },
+          NoiceCmdline = { bg = U.darken(colors.mantle, 0.45, colors.base) },
+
+
+          -- TODO: Move to LSP
+          LspInlayHint = { fg = U.darken(colors.text, 0.20, colors.mantle), bg = "" },
+
+          -- TODO: Move to noice / notify
+          -- Bug: does not work
+          NotifyBackground = { bg = colors.red },
+
+
         }
       end,
     },

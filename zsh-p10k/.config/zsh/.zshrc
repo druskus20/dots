@@ -138,4 +138,4 @@ load-prompt
 # More? https://github.com/romkatv/zsh4humans/tree/v5/fn
 # TODO: teleportation
 # TODO: compile completions
-# C-I / C-O like in vim but for directories
+# TODO: C-I / C-O like in vim but for directories
