@@ -32,6 +32,10 @@ pactl subscribe | while read -r line; do
         # Update default sink in case it has changed
         DEFAULT_SINK_NAME="$(pactl get-default-sink)"
         DEFAULT_SINK_ID=$(pactl list sinks short | grep "$DEFAULT_SINK_NAME" | awk '{print $1}')
+    elif echo "$line" | grep -q "Event 'change' on server #"; then
+        # Update default sink in case it has changed
+        DEFAULT_SINK_NAME="$(pactl get-default-sink)"
+        DEFAULT_SINK_ID=$(pactl list sinks short | grep "$DEFAULT_SINK_NAME" | awk '{print $1}')
     fi
 done
 

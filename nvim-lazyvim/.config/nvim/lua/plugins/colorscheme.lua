@@ -1,5 +1,15 @@
 return {
   {
+    "zenbones-theme/zenbones.nvim",
+    -- I dont want lush
+    --dependencies = "rktjmp/lush.nvim",
+    priority = 1000,
+    lazy = true,
+    config = function()
+      vim.g.zenbones_compat = 1 -- needed if lush is disabled
+    end
+  },
+  {
     "catppuccin/nvim",
     opts_extend = { "custom_highlights" },
     opts = {
@@ -74,6 +84,7 @@ return {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = "catppuccin",
+      --colorscheme = "zenbones",
     },
   },
 }

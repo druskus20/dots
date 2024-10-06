@@ -45,15 +45,16 @@ local function close_floating()
 end
 
 -- Use q and <esc> to close floating windows and clear search
-map('n', '<esc>', function()
-  close_floating()
-  vim.cmd('nohlsearch')
-end)
-
-map('n', 'q', function()
-  close_floating()
-  vim.cmd('nohlsearch')
-end)
+-- Already handled by LazyVim
+--map('n', '<esc>', function()
+--  close_floating()
+--  vim.cmd('nohlsearch')
+--end)
+--
+--map('n', 'q', function()
+--  close_floating()
+--  vim.cmd('nohlsearch')
+--end)
 
 -- Exit visual mode without relying on <esc>
 local function exit_visual_mode()
