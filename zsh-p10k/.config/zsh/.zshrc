@@ -89,14 +89,14 @@ function zsh-options() {
 }
 
 function plugins() {
-  emulate -L zsh
   source "$ZDOTDIR/plugins/fast-syntax-highlighting/F-Sy-H.plugin.zsh"
   source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
   source "$ZDOTDIR/plugins/zsh-you-should-use/you-should-use.plugin.zsh"
   source "$ZDOTDIR/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh" 
 
-  zsh_highlight_maxlength=100  
-  zsh_autosuggest_highlight_style="fg=#85858f,bold,underline"
+  # Some quick plugin settings
+  ZSH_HIGHLIGHT_MAXLENGTH=100  
+  ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#85858f,bold,underline"
 
   # vicmd '^[[A' shouldnt be bound because its the same keycode as ESC (causes problems with vi-mode)
   bindkey -M viins '^[[A' history-substring-search-up    # Arrow up

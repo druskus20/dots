@@ -1,6 +1,6 @@
 import = [
   # "~/.config/alacritty/catppuccin-mocha.toml"
-   #"~/.config/alacritty/catppuccin-frappe.toml"
+  #"~/.config/alacritty/catppuccin-frappe.toml"
   # "~/.config/alacritty/catppuccin-macchiato.toml"
   # "~/.config/alacritty/catppuccin-mocha.toml"
 ]
@@ -15,10 +15,12 @@ cursor = "#eeeeee"
 
 
 [font]
-size = 10
+#size = 10
+size = 9
 
 [font.normal]
 family = "JetBrainsMono Nerd Font Mono"
+#family = "Terminess Nerd Font Mono"
 
 [mouse]
 hide_when_typing = true

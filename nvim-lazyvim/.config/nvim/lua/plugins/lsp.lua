@@ -15,6 +15,12 @@
 --
 return {
   {
+    "smjonas/inc-rename.nvim",
+    opts = {
+      --input_buffer_type = "dressing"
+    }
+  },
+  {
     "stevearc/dressing.nvim",
     opts = {
       select = {
@@ -28,6 +34,7 @@ return {
           min_height = { 0, 0 },
           title_pos = "left",
           border = "single",
+
           relative = "cursor",
         },
       }
@@ -79,8 +86,18 @@ return {
         { "<leader>mA", LazyVim.lsp.action.source,   desc = "Source Action",         has = "codeAction" },
         { "<leader>ml", vim.lsp.codelens.run,        desc = "Run Codelens",          mode = { "n", "v" },     has = "codeLens" },
         { "<leader>mr", vim.lsp.buf.rename,          desc = "Rename",                has = "rename" },
-        { "<leader>mR", LazyVim.lsp.rename_file,     desc = "Rename File",           mode = { "n" },          has = { "workspace/didRenameFiles", "workspace/willRenameFiles" } },
-        { "mR",         vim.lsp.buf.references,      desc = "References",            nowait = true },
+        -- BUG: Does not work
+        --{
+        --  "<leader>mr",
+        --  function()
+        --    local inc_rename = require("inc_rename")
+        --    return ":IncRename"
+        --  end,
+        --  desc = "Rename (inc)",
+        --  has = "rename"
+        --},
+        { "<leader>mf", LazyVim.lsp.rename_file,     desc = "Rename File",           mode = { "n" },          has = { "workspace/didRenameFiles", "workspace/willRenameFiles" } },
+        { "<leader>mR", vim.lsp.buf.references,      desc = "References",            nowait = true },
         {
           "]]",
           function() LazyVim.lsp.words.jump(vim.v.count1) end,
