@@ -4,6 +4,11 @@ return {
     opts = {
       no_italic = true,
       no_bold = true,
+      keys = function()
+        return {
+          {}
+        }
+      end,
       no_custom_highlights = function(colors)
         return {
           TelescopePromptPrefix = { bg = colors.mantle, fg = colors.red, },
