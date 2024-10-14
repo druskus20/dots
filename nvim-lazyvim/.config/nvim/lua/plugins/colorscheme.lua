@@ -12,11 +12,13 @@ return {
   {
     "catppuccin/nvim",
     opts_extend = { "custom_highlights" },
+    priority = 1000,
     opts = {
       no_italic = true,
       no_bold = true,
       custom_highlights = function(colors)
         local U = require("catppuccin.utils.colors")
+        local scrollbarHandle = U.darken(colors.text, 0.10, colors.base)
 
         return {
           -- Spelling
@@ -75,6 +77,38 @@ return {
           -- Bug: does not work
           NotifyBackground = { bg = colors.red },
 
+          -- Scrollbar highlights
+
+          ScrollbarHandle = { bg = scrollbarHandle },
+          ScrollbarCursorHandle = { fg = colors.text, bg = scrollbarHandle },
+          ScrollbarCursor = { bg = colors.text },
+
+          ScrollbarSearchHandle = { fg = colors.yellow, bg = scrollbarHandle },
+          ScrollbarSearch = { fg = colors.yellow },
+
+          ScrollbarErrorHandle = { fg = colors.red, bg = scrollbarHandle },
+          ScrollbarError = { fg = colors.red },
+
+          ScrollbarWarnHandle = { fg = colors.yellow, bg = scrollbarHandle },
+          ScrollbarWarn = { fg = colors.yellow },
+
+          ScrollbarInfoHandle = { fg = colors.sky, bg = scrollbarHandle },
+          ScrollbarInfo = { fg = colors.sky },
+
+          ScrollbarHintHandle = { fg = colors.teal, bg = scrollbarHandle },
+          ScrollbarHint = { fg = colors.teal },
+
+          ScrollbarMiscHandle = { fg = colors.pink, bg = scrollbarHandle },
+          ScrollbarMisc = { fg = colors.pink },
+
+          ScrollbarGitAddHandle = { fg = colors.green, bg = scrollbarHandle },
+          ScrollbarGitAdd = { fg = colors.green },
+
+          ScrollbarGitChangeHandle = { fg = colors.yellow, bg = scrollbarHandle },
+          ScrollbarGitChange = { fg = colors.yellow },
+
+          ScrollbarGitDeleteHandle = { fg = colors.red, bg = scrollbarHandle },
+          ScrollbarGitDelete = { fg = colors.red },
 
         }
       end,
