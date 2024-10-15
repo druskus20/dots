@@ -114,6 +114,7 @@ vim.keymap.del('n', '<C-s>')
 vim.keymap.del('i', '<C-s>')
 vim.keymap.del('v', '<C-s>')
 
+
 -- diagnostic
 local diagnostic_goto = function(next, severity)
   local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev

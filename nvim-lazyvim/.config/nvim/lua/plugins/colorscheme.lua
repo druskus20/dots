@@ -80,8 +80,9 @@ return {
           -- Scrollbar highlights
 
           ScrollbarHandle = { bg = scrollbarHandle },
-          ScrollbarCursorHandle = { fg = colors.text, bg = scrollbarHandle },
-          ScrollbarCursor = { bg = colors.text },
+          ScrollbarCursorHandle = { bg = U.darken(colors.text, 0.25, colors.base) },
+          -- link to CursorLine
+          ScrollbarCursor = { bg = "#2a2b3c" },
 
           ScrollbarSearchHandle = { fg = colors.yellow, bg = scrollbarHandle },
           ScrollbarSearch = { fg = colors.yellow },
