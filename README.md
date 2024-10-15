@@ -21,7 +21,7 @@ stow -D <directory>
 ## Some of the programs I currently use:
 
 - Wayland: `niri`
-- Terminal: `alacritty`
+- Terminal: `foot`
 - Shell: `tmux` and `zsh` with `powerlevel10k`
 - Editor: `neovim` - based on `LazyVim`
 - Bar: `eww`
