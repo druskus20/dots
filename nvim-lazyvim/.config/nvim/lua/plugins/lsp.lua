@@ -43,7 +43,69 @@ return {
   {
     "Bekaboo/dropbar.nvim",
     event = "LspAttach",
-    opts = {}
+    -- https://github.com/Bekaboo/dropbar.nvim/issues/160
+    opts = function()
+      local utils = require('dropbar.utils')
+      local bar_utils = require('dropbar.utils.bar')
+      local api = require('dropbar.api')
+
+      local open_item_and_close_menu = function()
+        local menu = utils.menu.get_current()
+        local cursor = vim.api.nvim_win_get_cursor(menu.win)
+        local entry = menu.entries[cursor[1]]
+        -- stolen from https://github.com/Bekaboo/dropbar.nvim/issues/66
+        local component = entry:first_clickable(entry.padding.left + entry.components[1]:bytewidth())
+        if component then
+          menu:click_on(component, nil, 1, 'l')
+        end
+      end
+
+      return {
+        menu = {
+          keymaps = {
+            ['<C-h>'] = function()
+              -- Move to previous breadcrumb
+              print("TODO Move to previous breadcrumb")
+            end,
+            ['<C-l>'] = function()
+              -- Move to next breadcrumb
+              print("TODO Move to next breadcrumb")
+            end,
+            ['h'] = function()
+              -- Contract breadcrumbs
+              local menu = utils.menu.get_current()
+              if menu.prev_menu then
+                menu:close()
+              else
+                local bar = bar_utils.get({ win = menu.prev_win })
+                if not bar then
+                  return
+                end
+                local barComponents = bar.components[1]._.bar.components
+                for _, component in ipairs(barComponents) do
+                  if component.menu then
+                    local idx = component._.bar_idx
+                    menu:close()
+                    api.pick(idx - 1)
+                  end
+                end
+              end
+            end,
+            ['l'] = function()
+              -- Expand breadcrumbs
+              local menu = utils.menu.get_current()
+              local cursor = vim.api.nvim_win_get_cursor(menu.win)
+              local component = menu.entries[cursor[1]]:first_clickable(cursor[2])
+              if component then
+                menu:click_on(component, nil, 1, 'l')
+              end
+            end,
+            ['<CR>'] = open_item_and_close_menu,
+            ['o'] = open_item_and_close_menu,
+          }
+        },
+      }
+    end
   },
   {
     "chrisgrieser/nvim-lsp-endhints",
@@ -119,3 +181,5 @@ return {
     end,
   },
 }
+
+-- try: https://github.com/Saghen/blink.cmp?tab=readme-ov-file#compared-to-nvim-cmp

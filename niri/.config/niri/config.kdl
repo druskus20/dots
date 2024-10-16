@@ -1,11 +1,3 @@
-// This config is in the KDL format: https://kdl.dev
-// "/-" comments out the following node.
-// Check the wiki for a full description of the configuration:
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Overview
-
-// Input device configuration.
-// Find the full list of options on the wiki:
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Input
 input {
     keyboard { repeat-delay 250
         repeat-rate 35
@@ -16,8 +8,6 @@ input {
         }
     }
 
-    // Next sections include libinput settings.
-    // Omitting settings disables them, or leaves them at their default values.
     touchpad {
         // off
         tap
@@ -64,41 +54,10 @@ output "eDP-1" {
     position x=3630 y=0
 }
 
-// Work
-// output "HDMI-A-1" {
-//     mode "2560x1440@59.951"
-//     scale 1.5
-//     position x=108 y=0
-// }
-// 
-// output "DP-2" {
-//     mode "2560x1440@59.951"
-//     scale 1.5
-//     position x=108 y=0
-// }
-// 
-// output "eDP-1" {
-//     mode "1920x1080@59.951"
-//     scale 1
-//     position x=0 y=960
-// }
-
-// Settings that influence how windows are positioned and sized.
-// Find more information on the wiki:
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
-    // Set gaps around windows in logical pixels.
     gaps 8
 
-    // When to center a column when changing focus, options are:
-    // - "never", default behavior, focusing an off-screen column will keep at the left
-    //   or right edge of the screen.
-    // - "always", the focused column will always be centered.
-    // - "on-overflow", focusing a column will center it if it doesn't fit
-    //   together with the previously focused column.
     center-focused-column "always"
-
-    // You can customize the widths that "switch-preset-column-width" (Win+R) toggles between.
     preset-column-widths {
         // Proportion sets the width as a fraction of the output width, taking gaps into account.
         // For example, you can perfectly fit four windows sized "proportion 0.25" on an output.
@@ -106,9 +65,6 @@ layout {
         proportion 0.33333
         proportion 0.9
         proportion 1.0
-
-        // Fixed sets the width in logical pixels exactly.
-        // fixed 1920
     }
 
     preset-window-heights { 
@@ -119,51 +75,14 @@ layout {
     default-column-width { proportion 0.9; }
 
     focus-ring {
-        // Uncomment this line to disable the focus ring.
         // off
-
-        // How many logical pixels the ring extends out from the windows.
         width 1
-
-        // Colors can be set in a variety of ways:
-        // - CSS named colors: "red"
-        // - RGB hex: "#rgb", "#rgba", "#rrggbb", "#rrggbbaa"
-        // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
-
-        // Color of the ring on the active monitor.
         active-color "#7fc8ff40"
-
-        // Color of the ring on inactive monitors.
         inactive-color "#505050"
-
-        // You can also use gradients. They take precedence over solid colors.
-        // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
-        // The angle is the same as in linear-gradient, and is optional,
-        // defaulting to 180 (top-to-bottom gradient).
-        // You can use any CSS linear-gradient tool on the web to set these up.
-        // Changing the color space is also supported, check the wiki for more info.
-        //
-        // active-gradient from="#80c8ff" to="#bbddff" angle=45
-
-        // You can also color the gradient relative to the entire view
-        // of the workspace, rather than relative to just the window itself.
-        // To do that, set relative-to="workspace-view".
-        //
-        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
 
-    // You can also add a border. It's similar to the focus ring, but always visible.
     border {
-        // The settings are the same as for the focus ring.
-        // If you enable the border, you probably want to disable the focus ring.
         off
-
-        width 4
-        active-color "#ffc87f"
-        inactive-color "#505050"
-
-        // active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
-        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
 
     // Struts shrink the area occupied by windows, similarly to layer-shell panels.
@@ -179,38 +98,15 @@ layout {
     }
 }
 
-// Add lines like this to spawn processes at startup.
-// Note that running niri as a session supports xdg-desktop-autostart,
-// which may be more convenient to use.
 spawn-at-startup "swaybg" "-i" "/home/drusk/img/bg/koi.jpg" "-m" "fill"
 spawn-at-startup "swaybg" "-i" "/home/drusk/img/bg/koi.jpg" "-m" "fill"
 spawn-at-startup "mako"
 spawn-at-startup "eww" "open-many" "win0"  "win1" "win2"
 spawn-at-startup "xwayland-satellite" ":0"
 
-// Uncomment this line to ask the clients to omit their client-side decorations if possible.
-// If the client will specifically ask for CSD, the request will be honored.
-// Additionally, clients will be informed that they are tiled, removing some rounded corners.
 prefer-no-csd
 
-// You can change the path where screenshots are saved.
-// A ~ at the front will be expanded to the home directory.
-// The path is formatted with strftime(3) to give you the screenshot date and time.
 screenshot-path "~/img/screenshots/screenshot_from_%Y_%m_%d_%H_%M_%S.png"
-
-// You can also set this to null to disable saving screenshots to disk.
-// screenshot-path null
-
-// Animation settings.
-// The wiki explains how to configure individual animations:
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Animations
-//animations {
-//    // Uncomment to turn off all animations.
-//    // off
-//
-//    // Slow down all animations by this factor. Values below 1 speed them up instead.
-//    slowdown 0.5
-//}
 
 animations {
     slowdown 1.0
@@ -251,43 +147,55 @@ animations {
 }
 
 
-// Window rules let you adjust behavior for individual windows.
-// Find more information on the wiki:
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
+// Coloring based on tmux session 
+window-rule {
+    match title=r#"tmux - [wW]ork"#
 
-
-// Example: block out two password managers from screen capture.
-// (This example rule is commented out with a "/-" in front.)
-/-window-rule {
-    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-    match app-id=r#"^org\.gnome\.World\.Secrets$"#
-
-    block-out-from "screen-capture"
-
-    // Use this instead if you want them visible on third-party screenshot tools.
-    // block-out-from "screencast"
+    border {
+        on
+        width 1
+        active-color "#7A6055"
+        inactive-color "#7A6055"
+    }
 }
 
+window-rule {
+    match title=r#"tmux - [tT]hesis"#
+
+    border {
+        on
+        width 1
+        active-color "#58735F"
+        inactive-color "#58735F"
+    }
+}
+
+window-rule {
+    match title=r#"tmux - [cC]ode"#
+
+    border {
+        on
+        width 1
+        active-color "#675B81"
+        inactive-color "#675B81"
+    }
+}
+
+window-rule {
+    match app-id=r#"1Password"#
+    match title=r#"[gG]mail"#
+    match app-id=r#".*[mM]ako.*"#
+    match title=r#".*[Ww]hats[aA]pp.*$"#
+    // opacity 0.5
+
+    block-out-from "screen-capture"
+}
+
+
+
 binds {
-    // Keys consist of modifiers separated by + signs, followed by an XKB key name
-    // in the end. To find an XKB name for a particular key, you may use a program
-    // like wev.
-    //
-    // "Win" is a special modifier equal to Super when running on a TTY, and to Alt
-    // when running as a winit window.
-    //
-    // Most actions that you can bind here can also be invoked programmatically with
-    // `niri msg action do-something`.
-
-    // Win-Shift-/, which is usually the same as Mod-?,
-    // shows a list of important hotkeys.
-    Win+Shift+Slash { show-hotkey-overlay; }
-
-    // Suggested binds for running programs: terminal, app launcher, screen locker.
     Win+Return { spawn "foot"; }
-    // Win+Space { spawn "fuzzel"; }
     Win+Space { spawn "rofi" "-show" "drun"; }
-
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
