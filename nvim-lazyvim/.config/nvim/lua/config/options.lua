@@ -5,13 +5,19 @@ vim.g.netrw_banner = 0               -- Disable netrw banner
 vim.g.markdown_recommended_style = 0 -- Fix vim ignores shoftabstop in markdown
 
 local opt = vim.opt
-opt.autowrite = true           -- Auto-save before certain actions
-opt.exrc = true                -- Allow local .vimrc files in directories
-opt.completeopt = ""           -- Disable built-in completion behavior
-opt.conceallevel = 3           -- Hide markup characters in files like markdown
-opt.confirm = true             -- Confirm to save changes before closing
-opt.cursorline = true          -- Highlight the current line
-opt.expandtab = true           -- Convert tabs to spaces
+opt.autowrite = true  -- Auto-save before certain actions
+opt.exrc = true       -- Allow local .vimrc files in directories
+opt.completeopt = ""  -- Disable built-in completion behavior
+opt.conceallevel = 3  -- Hide markup characters in files like markdown
+opt.confirm = true    -- Confirm to save changes before closing
+opt.cursorline = true -- Highlight the current line
+opt.expandtab = true  -- Convert tabs to spaces
+
+-- As of nvim 0.9, gqq is broken. Use gww instead, or override:
+-- vim.opt.formatexpr = "v:lua.require'lazyvim.util'.format.formatexpr()"
+-- (set by lazyvim)
+--opt.formatexpr = ""
+
 opt.formatoptions = "jcroqlnt" -- Set format options for comments and text wrapping
 opt.grepformat = "%f:%l:%c:%m" -- Format for showing grep results
 opt.grepprg = "rg --vimgrep"   -- Use ripgrep for searching
