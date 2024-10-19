@@ -1,8 +1,6 @@
 return {
   {
-    --'petertriho/nvim-scrollbar',
-    'druskus20/nvim-scrollbar',
-    branch = "dropbar",
+    "petertriho/nvim-scrollbar",
     opts = {
       set_highlights = false,
       hide_if_all_visible = false,

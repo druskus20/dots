@@ -85,6 +85,8 @@ function zsh-options() {
 
   # OTHER
   setopt INTERACTIVE_COMMENTS    # allow comments in command line
+
+  setopt IGNORE_EOF               # ignore EOF, do not exit shell with Ctrl-D 
   setopt NOBEEP
 }
 
