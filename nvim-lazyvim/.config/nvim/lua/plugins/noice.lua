@@ -64,7 +64,10 @@ return {
 
       return {
         render = "compact",
-        stages = static_no_border_and_move_up()
+        stages = static_no_border_and_move_up(),
+        on_open = function(win)
+          vim.api.nvim_win_set_config(win, { focusable = false })
+        end,
       }
     end
   }

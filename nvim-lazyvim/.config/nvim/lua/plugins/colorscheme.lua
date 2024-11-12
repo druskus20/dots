@@ -1,5 +1,15 @@
 return {
   {
+    "echasnovski/mini.icons",
+    opts = {
+      filetype = {
+        -- replace some icons that render too big
+        sh = { glyph = "" },
+        yaml = { glyph = "" },
+      }
+    },
+  },
+  {
     "zenbones-theme/zenbones.nvim",
     -- I dont want lush
     --dependencies = "rktjmp/lush.nvim",
