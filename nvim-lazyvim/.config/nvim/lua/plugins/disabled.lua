@@ -30,7 +30,4 @@ return {
   -- Make buffer not selectable with C-W
 
   -- TODO: use (or take as inspiration) 'diagflow' for aligned and improved diagnostics
-
-
-
 }

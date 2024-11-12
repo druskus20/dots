@@ -73,8 +73,8 @@ bindkey -M vicmd '/' fzf-history
 # C-Q to edit command in $EDITOR
 autoload -U edit-command-line
 zle -N edit-command-line
-bindkey -M viins "^Q" edit-command-line
-bindkey -M vicmd "^Q" edit-command-line
+bindkey -M viins "^E" edit-command-line
+bindkey -M vicmd "^E" edit-command-line
 
 # C-Z to fg - this allows me to use C-Z to send a process to 
 # background (i.e. vim) and the same binding bring it back

@@ -14,7 +14,7 @@ input {
         dwt
         // dwtp
         natural-scroll
-         accel-speed 0.4
+         accel-speed 0.7
          accel-profile "adaptive"
         // scroll-method "two-finger"
         // disabled-on-external-mouse
@@ -379,5 +379,6 @@ binds {
 
     Win+Ctrl+P { screenshot-screen; }
     Win+Alt+P { screenshot-window; }
+    Win+P { screenshot; }
 
 }
