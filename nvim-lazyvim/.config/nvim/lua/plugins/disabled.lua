@@ -4,6 +4,14 @@ return {
   -- { "MunifTanjim/nui.nvim",                enabled = false },
   -- { "rcarriga/nvim-notify",                enabled = false },
 
+  {
+    "sphamba/smear-cursor.nvim",
+    opts = {
+      smear_between_neighbor_lines = false,
+    },
+    enabled = false,
+  },
+
   { "folke/tokyonight.nvim",               enabled = false },
   { "nvimdev/dashboard-nvim",              enabled = false },
   { "lucas-reineke/indent-blankline.nvim", enabled = false },
