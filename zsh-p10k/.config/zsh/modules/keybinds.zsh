@@ -62,19 +62,20 @@ bindkey "^[[1;5C" forward-word            # C-ArrowRight
 bindkey "^[[1;5D" backward-word           # C-ArrowLeft
 bindkey "^H"      backward-kill-word      # C-Backspace
 bindkey "\e[3~"   delete-char             # Del
-bindkey "^E"      fzf-history             # C-E
 bindkey '^R' history-incremental-search-backward
 
-bindkey "^E"      end-of-line             # C-E bindkey "^A"      beginning-of-line       # C-A
+bindkey "^E"      end-of-line             # C-E
+bindkey "^B"      beginning-of-line       # C-B
 
 # / to search through history
-bindkey -M vicmd '/' fzf-history
+bindkey -M vicmd '^O' fzf-history
+bindkey -M viins '^O' fzf-history
 
-# C-Q to edit command in $EDITOR
+# C-A to edit command in $EDITOR
 autoload -U edit-command-line
 zle -N edit-command-line
-bindkey -M viins "^E" edit-command-line
-bindkey -M vicmd "^E" edit-command-line
+bindkey -M viins "^A" edit-command-line
+bindkey -M vicmd "^A" edit-command-line
 
 # C-Z to fg - this allows me to use C-Z to send a process to 
 # background (i.e. vim) and the same binding bring it back
