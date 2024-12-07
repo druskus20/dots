@@ -59,6 +59,7 @@ alias gca="git commit -a"
 alias gp="git push"
 alias gw="git switch"
 alias GG="git add -A && git commit && git push"
+alias cr="cargo run"
 
 # Virtualbox
 alias vblist="vboxmanage list runningvms"
