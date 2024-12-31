@@ -20,26 +20,26 @@ return {
       --input_buffer_type = "dressing"
     }
   },
-  {
-    "stevearc/dressing.nvim",
-    opts = {
-      select = {
-        backend = { "builtin" },
-        builtin = {
-          width = nil,
-          max_width = { 140, 0.8 },
-          min_width = { 20, 0 },
-          height = nil,
-          max_height = 0.9,
-          min_height = { 0, 0 },
-          title_pos = "left",
-          border = "single",
+  --{
+  --  "stevearc/dressing.nvim",
+  --  opts = {
+  --    select = {
+  --      backend = { "builtin" },
+  --      builtin = {
+  --        width = nil,
+  --        max_width = { 140, 0.8 },
+  --        min_width = { 20, 0 },
+  --        height = nil,
+  --        max_height = 0.9,
+  --        min_height = { 0, 0 },
+  --        title_pos = "left",
+  --        border = "single",
 
-          relative = "cursor",
-        },
-      }
-    }
-  },
+  --        relative = "cursor",
+  --      },
+  --    }
+  --  }
+  --},
   {
     "Bekaboo/dropbar.nvim",
     event = "LspAttach",
