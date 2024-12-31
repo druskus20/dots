@@ -25,10 +25,10 @@ opt.ignorecase = true          -- Ignore case in search patterns
 opt.inccommand = "nosplit"     -- Live preview of substitution changes
 opt.laststatus = 0             -- Hide the status line initially
 opt.mouse = "a"                -- Enable mouse support
-opt.number = true              -- Show line numbers
+opt.number = false             -- Show line numbers
 opt.pumblend = 10              -- Set popup menu transparency
 opt.pumheight = 10             -- Limit popup menu height
-opt.relativenumber = true      -- Show relative line numbers
+opt.relativenumber = false     -- Show relative line numbers
 opt.scrolloff = 4              -- Minimal lines to keep above and below cursor
 opt.sessionoptions = {         -- Session persistence settings
   "buffers",
