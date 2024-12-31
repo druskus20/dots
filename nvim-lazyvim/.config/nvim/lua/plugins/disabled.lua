@@ -13,7 +13,7 @@ return {
   },
 
   { "folke/tokyonight.nvim",               enabled = false },
-  { "nvimdev/dashboard-nvim",              enabled = false },
+  --{ "nvimdev/dashboard-nvim",              enabled = false },
   { "lucas-reineke/indent-blankline.nvim", enabled = false },
   { "folke/flash.nvim",                    enabled = false },
   { "folke/todo-comments.nvim",            enabled = false },
