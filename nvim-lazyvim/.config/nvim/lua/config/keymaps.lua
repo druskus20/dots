@@ -29,6 +29,7 @@ map('i', '<C-h>', cmd_string('bprevious'), { desc = 'Previous buffer' })
 map('i', '<C-l>', cmd_string('bnext'), { desc = 'Next buffer' })
 map('v', '<C-h>', cmd_string('bprevious'), { desc = 'Previous buffer' })
 map('v', '<C-l>', cmd_string('bnext'), { desc = 'Next buffer' })
+map('n', '<C-x>', cmd_string('bdelete'), { desc = 'Close buffer' })
 
 -- Buffer management
 map('n', '<leader>bc', cmd_string('bdelete!'), { desc = 'Close buffer' })
@@ -130,3 +131,7 @@ map("n", "]e", diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
 map("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
 map("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
 map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
+
+
+-- Fix for Telescope's race condition with default C-F
+map("n", "<C-F>", LazyVim.pick("files"), { noremap = true, silent = false })
