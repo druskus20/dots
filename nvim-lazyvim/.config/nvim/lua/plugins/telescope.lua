@@ -1,6 +1,7 @@
 return {
   {
     "catppuccin/nvim",
+    name = "catppuccin",
     opts = {
       no_italic = true,
       no_bold = true,
