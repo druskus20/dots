@@ -158,21 +158,21 @@ return {
         --  desc = "Rename (inc)",
         --  has = "rename"
         --},
-        { "<leader>mf", LazyVim.lsp.rename_file,     desc = "Rename File",           mode = { "n" },          has = { "workspace/didRenameFiles", "workspace/willRenameFiles" } },
+        { "<leader>mf", Snacks.rename.rename_file,   desc = "Rename File",           mode = { "n" },          has = { "workspace/didRenameFiles", "workspace/willRenameFiles" } },
         { "<leader>mR", vim.lsp.buf.references,      desc = "References",            nowait = true },
         {
           "]]",
-          function() LazyVim.lsp.words.jump(vim.v.count1) end,
+          function() Snacks.words.jump(vim.v.count1) end,
           has = "documentHighlight",
           desc = "Next Reference",
-          cond = function() return LazyVim.lsp.words.enabled end
+          cond = function() return Snacks.words.enabled end
         },
         {
           "[[",
-          function() LazyVim.lsp.words.jump(-vim.v.count1) end,
+          function() Snacks.words.jump(-vim.v.count1) end,
           has = "documentHighlight",
           desc = "Prev Reference",
-          cond = function() return LazyVim.lsp.words.enabled end
+          cond = function() return Snacks.words.enabled end
         },
       }
 

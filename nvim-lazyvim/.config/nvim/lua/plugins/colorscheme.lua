@@ -21,6 +21,7 @@ return {
   },
   {
     "catppuccin/nvim",
+    name = "catppuccin",
     opts_extend = { "custom_highlights" },
     priority = 1000,
     opts = {
