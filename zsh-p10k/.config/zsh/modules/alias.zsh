@@ -60,6 +60,8 @@ alias gp="git push"
 alias gw="git switch"
 alias GG="git add -A && git commit && git push"
 alias cr="cargo run"
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
 
 # Virtualbox
 alias vblist="vboxmanage list runningvms"

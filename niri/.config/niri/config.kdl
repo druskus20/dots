@@ -344,6 +344,11 @@ binds {
     Win+Ctrl+8 { move-column-to-workspace 8; }
     Win+Ctrl+9 { move-column-to-workspace 9; }
 
+    
+    Win+Ctrl+Space       { toggle-window-floating; }
+    Win+Shift+Space { switch-focus-between-floating-and-tiling; }
+
+
     // Alternatively, there are commands to move just a single window:
     // Win+Ctrl+1 { move-window-to-workspace 1; }
 
