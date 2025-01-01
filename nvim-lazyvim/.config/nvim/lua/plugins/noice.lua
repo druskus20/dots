@@ -14,7 +14,7 @@ return {
           -- the completion menu for the cmdline
           popupmenu = {
             enabled = true,
-            --backend = "cmp" -- do not use the "vscode style" middle of the screen popup (nui?)
+            backend = "cmp" -- do not use the "vscode style" middle of the screen popup (nui?)
             -- Side effect: apparently fixed an issue with "Save changes to ..." popup being slow to respond(?)
           }
         }, opts)

@@ -1,25 +1,10 @@
--- {
---   "stevearc/dressing.nvim"
---   :enabled true
---   :opts {:select { :backend [ "builtin"]
---                     :builtin { :width nil
---                                :max_width [ 140 0.8]
---                                :min_width [ 20 0]
---                                :height nil
---                                :max_height 0.9
---                                :min_height [ 0 0]
---
---                                :title_pos :left
---                                :border :single
---                                :relative :cursor}}}} ; TODO: PR to make the window cursor right bellow the cursor
---
 return {
-  {
-    "smjonas/inc-rename.nvim",
-    opts = {
-      --input_buffer_type = "dressing"
-    }
-  },
+  --{
+  --  "smjonas/inc-rename.nvim",
+  --  opts = {
+  --    --input_buffer_type = "dressing"
+  --  }
+  --},
   --{
   --  "stevearc/dressing.nvim",
   --  opts = {
