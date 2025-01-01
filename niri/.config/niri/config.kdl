@@ -1,6 +1,6 @@
 input {
     keyboard { repeat-delay 250
-        repeat-rate 35
+        repeat-rate 45
         xkb {
           layout "es"
             variant "nodeadkeys"
