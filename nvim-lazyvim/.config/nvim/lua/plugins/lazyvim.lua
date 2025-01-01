@@ -33,8 +33,14 @@ return {
       },
       terminal = {
         enabled = false,
+      },
+      -- Reemplaces dressing.nvim (for rename)
+      input = {
+        enabled = false,
+        win = {
+          relative = "cursor",
+        }
       }
-
     }
   }
 }

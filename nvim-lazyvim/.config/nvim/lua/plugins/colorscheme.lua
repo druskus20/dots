@@ -122,6 +122,9 @@ return {
           ScrollbarGitDeleteHandle = { fg = colors.red, bg = scrollbarHandle },
           ScrollbarGitDelete = { fg = colors.red },
 
+          -- Blink
+          BlinkCmpMenu = { bg = colors.mantle },
+
         }
       end,
     },
