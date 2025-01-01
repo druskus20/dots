@@ -107,8 +107,7 @@ layout {
     }
 }
 
-spawn-at-startup "swaybg" "-i" "/home/drusk/img/bg/koi.jpg" "-m" "fill"
-spawn-at-startup "swaybg" "-i" "/home/drusk/img/bg/koi.jpg" "-m" "fill"
+spawn-at-startup "swaybg" "-i" "/home/drusk/img/bg/wallhaven-yjvgx7e.jpg" "-m" "fill"
 spawn-at-startup "mako"
 spawn-at-startup "eww" "open-many" "win0"  "win1" "win2"
 spawn-at-startup "xwayland-satellite" ":0"

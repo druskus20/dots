@@ -1,29 +1,58 @@
-$rosewater: #f5e0dc;
-$flamingo: #f2cdcd;
-$pink: #f5c2e7;
-$mauve: #cba6f7;
-$red: #f38ba8;
-$maroon: #eba0ac;
-$peach: #fab387;
-$yellow: #f9e2af;
-$green: #a6e3a1;
-$teal: #94e2d5;
-$sky: #89dceb;
-$sapphire: #74c7ec;
-$blue: #89b4fa;
-$lavender: #b4befe;
-$text: #cdd6f4;
-$subtext1: #bac2de;
-$subtext0: #a6adc8;
-$overlay2: #9399b2;
-$overlay1: #7f849c;
-$overlay0: #6c7086;
-$surface2: #585b70;
-$surface1: #45475a;
-$surface0: #313244;
-$base: #1e1e2e;
-$mantle: #181825;
-$crust: #11111b;
+//// Catppuccin mocha
+//$rosewater: #f5e0dc;
+//$flamingo: #f2cdcd;
+//$pink: #f5c2e7;
+//$mauve: #cba6f7;
+//$red: #f38ba8;
+//$maroon: #eba0ac;
+//$peach: #fab387;
+//$yellow: #f9e2af;
+//$green: #a6e3a1;
+//$teal: #94e2d5;
+//$sky: #89dceb;
+//$sapphire: #74c7ec;
+//$blue: #89b4fa;
+//$lavender: #b4befe;
+//$text: #cdd6f4;
+//$subtext1: #bac2de;
+//$subtext0: #a6adc8;
+//$overlay2: #9399b2;
+//$overlay1: #7f849c;
+//$overlay0: #6c7086;
+//$surface2: #585b70;
+//$surface1: #45475a;
+//$surface0: #313244;
+//$base: #1e1e2e;
+//$mantle: #181825;
+//$crust: #11111b;
+
+// Gruvbox
+$rosewater: #d4be98; // Gruvbox light beige
+$flamingo: #ea6962; // Gruvbox light red
+$pink: #d3869b; // Gruvbox purple
+$mauve: #d3869b; // Gruvbox purple (reused as closest match)
+$red: #ea6962; // Gruvbox red
+$maroon: #c14a4a; // Gruvbox dark red
+$peach: #e78a4e; // Gruvbox orange
+$yellow: #d8a657; // Gruvbox yellow
+$green: #a9b665; // Gruvbox green
+$teal: #89b482; // Gruvbox aqua
+$sky: #89b482; // Gruvbox aqua (reused)
+$sapphire: #7daea3; // Gruvbox blue-green
+$blue: #7daea3; // Gruvbox blue
+$lavender: #89b482; // Gruvbox aqua (reused)
+$text: #ebdbb2; // Gruvbox fg
+$subtext1: #d5c4a1; // Gruvbox fg1
+$subtext0: #bdae93; // Gruvbox fg2
+$overlay2: #a89984; // Gruvbox fg3
+$overlay1: #928374; // Gruvbox fg4
+$overlay0: #7c6f64; // Gruvbox gray
+$surface2: #504945; // Gruvbox bg2
+$surface1: #3c3836; // Gruvbox bg1
+$surface0: #32302f; // Gruvbox bg0_s
+$base: #282828; // Gruvbox bg0
+$mantle: #1d2021; // Gruvbox bg0_h
+$crust: #1b1b1b; // Gruvbox bg0_h (slightly darker)
 
 
 * {
@@ -62,9 +91,10 @@ window {
 
 .workspace {
   .icon {
-  margin: 0 3px;
-  font-size: 8px;
-    }
+    margin: 0 3px;
+    font-size: 8px;
+  }
+
   .name {
     background-color: $base;
   }
@@ -77,19 +107,18 @@ window {
 }
 
 .bluetooth,
-.battery, 
+.battery,
 .time,
-.date, 
+.date,
 .tray,
 .speakers,
 .mic,
-.player
-.wifi {
+.player .wifi {
   color: $text;
   font-size: 12px;
 }
 
-.battery, 
+.battery,
 .time,
 .date {
   font-size: 10px;
@@ -99,6 +128,7 @@ window {
   .icon.play {
     color: $green;
   }
+
   .icon.pause {
     color: $red;
   }
@@ -109,6 +139,7 @@ window {
   label.icon1 {
     margin-right: 0;
   }
+
   label.icon2 {
     margin-left: 0;
   }
@@ -116,11 +147,13 @@ window {
   .icon1.charging {
     color: $green;
   }
+
   .icon1.discharging {
     color: $peach;
   }
 
-  .icon.level_0, .icon.level_1 {
+  .icon.level_0,
+  .icon.level_1 {
     color: $red;
   }
 
@@ -132,7 +165,7 @@ window {
     color: $yellow;
   }
 
-  .icon.level_4, 
+  .icon.level_4,
   .icon.level_5,
   .icon.level_6,
   .icon.level_7,
@@ -140,7 +173,8 @@ window {
     color: $green;
   }
 
-  .icon.level_9, .icon.level_10 {
+  .icon.level_9,
+  .icon.level_10 {
     color: $mauve;
   }
 }
@@ -178,10 +212,11 @@ window {
 }
 
 .tray image {
-   -gtk-icon-transform: scale(0.5); 
+  -gtk-icon-transform: scale(0.5);
 }
 
-.date, .time {
+.date,
+.time {
   .text {
     color: $overlay2;
   }
@@ -203,5 +238,3 @@ scale.over trough highlight {
   background-color: $peach;
   border-radius: 2px;
 }
-
-
