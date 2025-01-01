@@ -115,6 +115,10 @@ vim.keymap.del('n', '<C-s>')
 vim.keymap.del('i', '<C-s>')
 vim.keymap.del('v', '<C-s>')
 
+-- Unmap insert mode C-w (deletes a word back)
+vim.api.nvim_set_keymap('i', '<C-w>', '', { noremap = true, silent = true })
+
+
 
 -- diagnostic
 local diagnostic_goto = function(next, severity)
