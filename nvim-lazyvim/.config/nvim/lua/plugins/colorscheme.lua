@@ -25,6 +25,52 @@ return {
     opts_extend = { "custom_highlights" },
     priority = 1000,
     opts = {
+      color_overrides = {
+        mocha = {
+          rosewater = "#d4be98", -- Gruvbox light beige
+          flamingo = "#ea6962",  -- Gruvbox light red
+          pink = "#d3869b",      -- Gruvbox purple
+          mauve = "#d3869b",     -- Gruvbox purple (reused as there's no direct equivalent)
+          red = "#ea6962",       -- Gruvbox red
+          maroon = "#c14a4a",    -- Gruvbox dark red
+          peach = "#e78a4e",     -- Gruvbox orange
+          yellow = "#d8a657",    -- Gruvbox yellow
+          green = "#a9b665",     -- Gruvbox green
+          teal = "#89b482",      -- Gruvbox aqua
+          sky = "#89b482",       -- Gruvbox aqua (reused as there's no direct equivalent)
+          sapphire = "#7daea3",  -- Gruvbox blue-green
+          blue = "#7daea3",      -- Gruvbox blue
+          lavender = "#89b482",  -- Gruvbox aqua (reused as there's no direct equivalent)
+
+          -- Harder background
+          --text = "#fbf1c7",     -- fg
+          --subtext1 = "#ebdbb2", -- primary text
+          --subtext0 = "#d5c4a1", -- punctuation
+          --overlay2 = "#c6b697", -- doc comments
+          --overlay1 = "#a89984", -- comments
+          --overlay0 = "#928474", -- invisibles
+          --surface2 = "#504945", -- darker grey
+          --surface1 = "#3c3836", -- dark grey
+          --surface0 = "#32302f", -- slightly lighter than bg
+          --base = "#1d2021",     -- bg
+          --mantle = "#1d2021",   -- same as bg
+          --crust = "#1b1b1b",    -- slightly darker than bg
+
+          text = "#ebdbb2",     -- Gruvbox fg
+          subtext1 = "#d5c4a1", -- Gruvbox fg1
+          subtext0 = "#bdae93", -- Gruvbox fg2
+          overlay2 = "#a89984", -- Gruvbox fg3
+          overlay1 = "#928374", -- Gruvbox fg4
+          overlay0 = "#7c6f64", -- Gruvbox gray
+          surface2 = "#504945", -- Gruvbox bg2
+          surface1 = "#3c3836", -- Gruvbox bg1
+          surface0 = "#32302f", -- Gruvbox bg0_s
+          base = "#282828",     -- Gruvbox bg0
+          mantle = "#1d2021",   -- Gruvbox bg0_h
+          crust = "#1b1b1b",    -- Gruvbox bg0_h (slightly darker)
+
+        },
+      },
       no_italic = true,
       no_bold = true,
       custom_highlights = function(colors)
