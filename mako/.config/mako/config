@@ -6,7 +6,7 @@ sort=-time
 layer=overlay
 icons=0
 default-timeout=5000
-background-color=#353545
-text-color=#cdd6f4
+background-color=#1d2021
+text-color=#ebdbb2
 border-size=0
 
