@@ -1,27 +1,34 @@
 * {
-  accent:           #a5c6e1;
-  background:       #171724;
-  background-light: #1e1e2e;
-  background-focus: #28293d;
-  foreground:       #bfbfcb;
-  on:               #ccd389;
-  off:              #eca8a8;
+  accent: #ea6962;
+  /* Gruvbox blue - for highlights and focus */
+  background: #1b1b1b;
+  /* Custom darker than bg0_h */
+  background-light: #282828;
+  /* Gruvbox bg0 */
+  background-focus: #3c3836;
+  /* Gruvbox bg1 */
+  foreground: #ebdbb2;
+  /* Gruvbox fg */
+  on: #a9b665;
+  /* Gruvbox green */
+  off: #ea6962;
+  /* Gruvbox red */
 }
 
 * {
-  text-font:                            "NotoSans Nerd Font 11";
-  inputbar-margin:                      3px 3px;
-  prompt-padding:                       10px 10px;
-  entry-padding:                        10px 0px 10px 0px;
-  list-element-padding:                 8px 10px 8px 10px;
-  list-element-margin:                  3px;
-  list-element-border:                  0px 0px 0px 4px;
-  apps-textbox-prompt-colon-padding:    10px -5px 0px 0px;
+  text-font: "NotoSans Nerd Font 11";
+  inputbar-margin: 3px 3px;
+  prompt-padding: 10px 10px;
+  entry-padding: 10px 0px 10px 0px;
+  list-element-padding: 8px 10px 8px 10px;
+  list-element-margin: 3px;
+  list-element-border: 0px 0px 0px 4px;
+  apps-textbox-prompt-colon-padding: 10px -5px 0px 0px;
 }
 
-element-icon { 
+element-icon {
   padding: 5px 5px 5px 0px;
-  size: 2ch; 
+  size: 2ch;
 }
 
 #window {
@@ -43,9 +50,8 @@ entry {
   background-color: @background-light;
 }
 
-
 inputbar {
-  children: [ prompt, textbox-prompt-colon, entry ];
+  children: [ prompt, textbox-prompt-colon, entry];
   margin: @inputbar-margin;
 }
 
@@ -81,11 +87,12 @@ element-text {
   border-color: @background-light;
 }
 
-element.selected, 
+element.selected,
 element-icon.selected,
-element-text.selected  {
+element-text.selected {
   background-color: @background-focus;
-  text-color: @accent;
+  text-color: @foreground;
+  /* Changed from @accent to @foreground */
   border-color: @accent;
 }
 
