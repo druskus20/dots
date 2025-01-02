@@ -137,5 +137,14 @@ map("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
 map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
 
 
+map("n", "<leader>C",
+  function()
+    local result = vim.treesitter.get_captures_at_cursor(0)
+    print(vim.inspect(result))
+  end,
+  { noremap = true, silent = false, desc = "Get highlight group under cursor" }
+)
+
+
 -- Fix for Telescope's race condition with default C-F
 map("n", "<C-F>", LazyVim.pick("files"), { noremap = true, silent = false })

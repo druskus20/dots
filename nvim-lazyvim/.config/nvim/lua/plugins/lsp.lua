@@ -60,30 +60,52 @@ return {
         end
       end
 
-      local prev_breadcrumb = function()
-        -- Close current submenu
+      local function prev_breadcrumb()
         local menu = utils.menu.get_current()
         if menu.prev_menu then
           menu:close()
         end
-
-        -- Focus the previous breadcrumb
         local bar = bar_utils.get({ win = menu.prev_win })
         if not bar then
           return
         end
-        local barComponents = bar.components[1]._.bar.components
+        local barComponents = bar.components
         for _, component in ipairs(barComponents) do
           if component.menu then
             local idx = component._.bar_idx
-            menu:close()
-            api.pick(idx - 1)
+            if idx > 1 then -- Only move if not at the first item
+              menu:close()
+              api.pick(idx - 1)
+            end
+            break
           end
         end
       end
 
 
-      local next_breadcrumb = function()
+      local function next_breadcrumb()
+        local menu = utils.menu.get_current()
+        if menu.prev_menu then
+          menu:close()
+        end
+        local bar = bar_utils.get({ win = menu.prev_win })
+        if not bar then
+          return
+        end
+        local barComponents = bar.components
+        local maxIdx = #barComponents
+        for _, component in ipairs(barComponents) do
+          if component.menu then
+            local idx = component._.bar_idx
+            if idx < maxIdx then
+              menu:close()
+              api.pick(idx + 1)
+            end
+            break
+          end
+        end
+      end
+      local expand_menu = function()
         local menu = utils.menu.get_current()
         if not menu then
           return
@@ -114,7 +136,7 @@ return {
               prev_breadcrumb()
             end,
             ['l'] = function()
-              next_breadcrumb()
+              expand_menu()
             end,
             ['<CR>'] = open_item_and_close_menu,
             ['o'] = open_item_and_close_menu,
@@ -139,6 +161,11 @@ return {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
       local keymaps = require("lazyvim.plugins.lsp.keymaps").get()
+      vim.lsp.handlers["textDocument/publishDiagnostics"] =
+          vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+            -- Disable underline of errors (it's annoying)
+            underline = false,
+          })
 
       -- Disable all the default LazyVim keymaps
       for _, keymap in ipairs(keymaps) do
