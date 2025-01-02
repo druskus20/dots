@@ -29,10 +29,10 @@ return {
         mocha = {
           rosewater = "#d4be98", -- Gruvbox light beige
           flamingo = "#ea6962",  -- Gruvbox light red
-          pink = "#d3869b",      -- Gruvbox purple
+          pink = "#d3869b",      -- Gruvbox purple ( a bit darker than regular)
           mauve = "#d3869b",     -- Gruvbox purple (reused as there's no direct equivalent)
           red = "#ea6962",       -- Gruvbox red
-          maroon = "#c14a4a",    -- Gruvbox dark red
+          maroon = "#d75f5f",    -- Gruvbox dark red
           peach = "#e78a4e",     -- Gruvbox orange
           yellow = "#d8a657",    -- Gruvbox yellow
           green = "#a9b665",     -- Gruvbox green
@@ -173,6 +173,8 @@ return {
 
           -- Blink
           BlinkCmpMenu = { bg = colors.mantle },
+
+
 
         }
       end,
