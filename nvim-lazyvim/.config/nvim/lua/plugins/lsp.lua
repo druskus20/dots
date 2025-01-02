@@ -22,6 +22,27 @@ return {
   {
     "Bekaboo/dropbar.nvim",
     event = "LspAttach",
+    keys = {
+      {
+        "<C-Y>",
+        function()
+          local dropbar_utils = require("dropbar.utils")
+          local dropbar_api = require("dropbar.api")
+          local bar = dropbar_utils.bar.get_current()
+          local components = bar.components
+          dropbar_api.pick(#components)
+          --if not menu then
+          --  return
+          --end
+          --local cursor = vim.api.nvim_win_get_cursor(menu.win)
+          --local component = menu.entries[cursor[1]]:first_clickable(cursor[2])
+          --if component then
+          --  menu:click_on(component, nil, 1, "l")
+          --end
+        end,
+        desc = "Pick symbols in winbar"
+      },
+    },
     -- https://github.com/Bekaboo/dropbar.nvim/issues/160
     opts = function()
       local utils = require('dropbar.utils')
@@ -39,45 +60,58 @@ return {
         end
       end
 
+      local prev_breadcrumb = function()
+        -- Close current submenu
+        local menu = utils.menu.get_current()
+        if menu.prev_menu then
+          menu:close()
+        end
+
+        -- Focus the previous breadcrumb
+        local bar = bar_utils.get({ win = menu.prev_win })
+        if not bar then
+          return
+        end
+        local barComponents = bar.components[1]._.bar.components
+        for _, component in ipairs(barComponents) do
+          if component.menu then
+            local idx = component._.bar_idx
+            menu:close()
+            api.pick(idx - 1)
+          end
+        end
+      end
+
+
+      local next_breadcrumb = function()
+        local menu = utils.menu.get_current()
+        if not menu then
+          return
+        end
+        local cursor = vim.api.nvim_win_get_cursor(menu.win)
+        local component = menu.entries[cursor[1]]:first_clickable(cursor[2])
+        if component then
+          menu:click_on(component, nil, 1, 'l')
+        end
+      end
+
       return {
+
         menu = {
           keymaps = {
             ['<C-h>'] = function()
               -- Move to previous breadcrumb
-              print("TODO Move to previous breadcrumb")
+              prev_breadcrumb()
             end,
             ['<C-l>'] = function()
               -- Move to next breadcrumb
-              print("TODO Move to next breadcrumb")
+              next_breadcrumb()
             end,
             ['h'] = function()
-              -- Contract breadcrumbs
-              local menu = utils.menu.get_current()
-              if menu.prev_menu then
-                menu:close()
-              else
-                local bar = bar_utils.get({ win = menu.prev_win })
-                if not bar then
-                  return
-                end
-                local barComponents = bar.components[1]._.bar.components
-                for _, component in ipairs(barComponents) do
-                  if component.menu then
-                    local idx = component._.bar_idx
-                    menu:close()
-                    api.pick(idx - 1)
-                  end
-                end
-              end
+              prev_breadcrumb()
             end,
             ['l'] = function()
-              -- Expand breadcrumbs
-              local menu = utils.menu.get_current()
-              local cursor = vim.api.nvim_win_get_cursor(menu.win)
-              local component = menu.entries[cursor[1]]:first_clickable(cursor[2])
-              if component then
-                menu:click_on(component, nil, 1, 'l')
-              end
+              next_breadcrumb()
             end,
             ['<CR>'] = open_item_and_close_menu,
             ['o'] = open_item_and_close_menu,

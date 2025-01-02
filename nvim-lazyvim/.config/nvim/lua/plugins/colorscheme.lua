@@ -46,7 +46,7 @@ return {
           --text = "#fbf1c7",     -- fg
           --subtext1 = "#ebdbb2", -- primary text
           --subtext0 = "#d5c4a1", -- punctuation
-          --overlay2 = "#c6b697", -- doc comments
+          --overlay2q;q = "#c6b697", -- doc comments
           --overlay1 = "#a89984", -- comments
           --overlay0 = "#928474", -- invisibles
           --surface2 = "#504945", -- darker grey
