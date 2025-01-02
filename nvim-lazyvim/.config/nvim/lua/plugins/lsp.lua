@@ -98,6 +98,9 @@ return {
       return {
 
         menu = {
+          -- do not switch editor view on selection, use CR otherwise, the
+          -- next_breadcrumb will not work sometimes because the window changes
+          preview = false,
           keymaps = {
             ['<C-h>'] = function()
               -- Move to previous breadcrumb
