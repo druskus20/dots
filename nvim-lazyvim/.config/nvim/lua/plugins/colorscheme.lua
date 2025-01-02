@@ -56,7 +56,8 @@ return {
           --mantle = "#1d2021",   -- same as bg
           --crust = "#1b1b1b",    -- slightly darker than bg
 
-          text = "#ebdbb2",     -- Gruvbox fg
+          --text = "#d9c9a5",     -- Gruvbox fg
+          text = "#bfb191",     -- Gruvbox fg - but darkened
           subtext1 = "#d5c4a1", -- Gruvbox fg1
           subtext0 = "#bdae93", -- Gruvbox fg2
           overlay2 = "#a89984", -- Gruvbox fg3
@@ -78,6 +79,8 @@ return {
         local scrollbarHandle = U.darken(colors.text, 0.10, colors.base)
 
         return {
+          Comment = --{ fg = U.darken(colors.surface3, 0.66, colors.base) },
+          { fg = U.darken(colors.text, 0.35, colors.base) },
           -- Spelling
           Spell = { fg = colors.red },
           SpellBad = { fg = colors.red },
@@ -128,7 +131,7 @@ return {
 
 
           -- TODO: Move to LSP
-          LspInlayHint = { fg = U.darken(colors.text, 0.20, colors.mantle), bg = "" },
+          LspInlayHint = { fg = U.darken(colors.text, 0.15, colors.mantle), bg = "" },
 
           -- TODO: Move to noice / notify
           -- Bug: does not work
