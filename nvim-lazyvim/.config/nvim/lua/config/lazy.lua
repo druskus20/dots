@@ -30,6 +30,34 @@ require("lazy").setup({
     version = false, -- always use the latest git commit
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
+  ui = {
+    icons = {
+      cmd = " ",
+      config = "",
+      debug = "●",
+      event = " ",
+      favorite = " ",
+      ft = " ",
+      init = " ",
+      import = " ",
+      keys = " ",
+      lazy = "󰒲 ",
+      loaded = "●",
+      not_loaded = "○",
+      plugin = " ",
+      runtime = " ",
+      require = "󰢱 ",
+      source = " ",
+      start = " ",
+      task = "✔ ",
+      list = {
+        "●",
+        "➜",
+        "★",
+        "‒",
+      },
+    },
+  },
   install = { colorscheme = { "habamax" } },
   checker = {
     enabled = true, -- check for plugin updates periodically

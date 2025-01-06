@@ -154,6 +154,10 @@ animations {
     }
 }
 
+window-rule {
+    match title=r#"Volym"#
+    open-floating true
+}
 
 // Coloring based on tmux session 
 window-rule {
@@ -205,6 +209,7 @@ binds {
     Win+Escape { spawn "makoctl" "dismiss" "-a"; }
 
     Win+Return { spawn "foot"; }
+    Win+B { spawn "~/.config/niri/start-browser.sh"; }
     Win+Space { spawn "rofi" "-show" "drun"; }
 
     // Example volume keys mappings for PipeWire & WirePlumber.

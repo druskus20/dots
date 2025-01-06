@@ -3,10 +3,12 @@
 
 # Set utilities
 export EDITOR="$HOME/.local/bin/nvim"
-export BROWSER="/usr/bin/google-chrome"
+#export BROWSER="/usr/bin/google-chrome"
+export BROWSER="/home/drusk/.local/share/AppImage/ZenBrowser.AppImage"
 export MONITOR="HDMI-0"
 export TERMINAL="/bin/alacritty"
 export TERM=xterm-color
+export DISPLAY=:0
 
 # idk if it works
 export XCURSOR_SIZE=16

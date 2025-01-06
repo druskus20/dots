@@ -13,3 +13,8 @@ docker run -w /root -it --rm alpine:edge sh -uelic '
   nvim 
 '
 ```
+
+## Tips
+
+`'<space>+C` will print the highlight group under the cursor. For treesitter
+highlights `nvim-treesitter/playground` can be used with TSHighlightCapturesUnderCursor

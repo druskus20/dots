@@ -8,6 +8,12 @@ return {
   {
     "saghen/blink.cmp",
     opts = {
+      -- Disable for some filetypes
+      enabled = function()
+        return not vim.tbl_contains({ "DressingInput" }, vim.bo.filetype)
+            and vim.bo.buftype ~= "prompt"
+            and vim.b.completion ~= false
+      end,
       -- Disable scrollbars in favor of scrollbar.nvim
       completion = {
         menu = {
