@@ -82,5 +82,3 @@ opt.cmdheight = 0                  -- Hide command line when not in use
 opt.splitkeep = "screen"           -- Keep view stable when splitting
 opt.statuscolumn = ""              -- Customize status column
 opt.clipboard = ""                 -- Do not use system clipboard
-
--- LazyVim's default: [[%!v:lua.require'lazyvim.util'.ui.statuscolumn()]]

@@ -5,21 +5,21 @@ end
 
 return {
   "echasnovski/mini.move",
-  opts = {
-    -- TODO: figure out which mappings to use that do not conflict with popup menus, or tmux (no alt)
-    -- mappings = {
-    --   -- visual
-    --   left = "<C-h>",
-    --   right = "<C-l>",
-    --   down = "<C-j>",
-    --   up = "<C-k>",
-    --   -- normal
-    --   line_left = "<C-h>",
-    --   line_right = "<C-l>",
-    --   word_left = "<C-h>",
-    --   word_right = "<C-l>",
-    -- }
-  },
+  --opts = {
+  -- TODO: figure out which mappings to use that do not conflict with popup menus, or tmux (no alt)
+  --   mappings = {
+  --  --   -- visual
+  --  --   left = "<C-h>",
+  --  --   right = "<C-l>",
+  --  --   down = "<C-j>",
+  --  --   up = "<C-k>",
+  --  --   -- normal
+  --  --   line_left = "<C-h>",
+  --  --   line_right = "<C-l>",
+  --  --   word_left = "<C-h>",
+  --  --   word_right = "<C-l>",
+  --  -- }
+  --},
   keys = {
     -- We cannot map <Tab>, it's the same as <C-i> which is used by vim for jumping around
     -- TODO: unsure if alacritty supports custom keycodes / modifyOtherKeys xterm stuff. Look into it, it might be a workaround :)
