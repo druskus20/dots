@@ -174,7 +174,7 @@ return {
           -- Blink
           BlinkCmpMenu = { bg = colors.mantle },
 
-          ["@error"] = { fg = U.brighten(colors.text, 0.75) },
+          ["@error"] = { fg = U.brighten(colors.text, 0.75), style = { "underline" } },
 
         }
       end,
