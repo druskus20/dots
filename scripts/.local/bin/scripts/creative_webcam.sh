@@ -5,7 +5,7 @@
 
 device="/dev/video4"
 
-exposure_auto=false 
+exposure_auto=true 
 # if exposure_auto is true, the camera will automatically adjust the exposure time
 exposure_time_absolute=300 # default: 512 (156 to 500)
 
