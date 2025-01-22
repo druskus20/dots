@@ -172,52 +172,61 @@ return {
         keymap[2] = false
       end
 
+      -- NOTE: some mappings are wrapped in "function() ... end" so that they
+      -- are correctly overwritten by noice
+      -- stylua: ignore
       local custom_keymaps = {
-        { "<c-s>",      vim.lsp.buf.signature_help,  mode = { "n", "i" },            desc = "Signature Help", has = "signatureHelp" },
-        { "K",          vim.lsp.buf.signature_help,  mode = "n",                     desc = "Signature Help", has = "signatureHelp" },
-        { "<leader>mh", vim.lsp.buf.hover,           desc = "Hover" },
-        { "H",          vim.lsp.buf.hover,           desc = "Hover" },
-        { "<leader>ms", vim.lsp.buf.signature_help,  desc = "Signature Help",        has = "signatureHelp" },
-        { "<leader>md", vim.lsp.buf.definition,      desc = "Goto Definition",       has = "definition" },
-        { "<leader>mi", vim.lsp.buf.implementation,  desc = "Goto Implementation" },
-        { "<leader>my", vim.lsp.buf.type_definition, desc = "Goto T[y]pe Definition" },
-        { "<leader>mD", vim.lsp.buf.declaration,     desc = "Goto Declaration" },
-        { "gd",         vim.lsp.buf.definition,      desc = "Goto Definition",       has = "definition" },
-        { "gi",         vim.lsp.buf.implementation,  desc = "Goto Implementation" }, -- overwrites "go to last insert"
-        { "gy",         vim.lsp.buf.type_definition, desc = "Goto T[y]pe Definition" },
-        { "gD",         vim.lsp.buf.declaration,     desc = "Goto Declaration" },
-        { "<leader>md", vim.diagnostic.open_float,   desc = "Line Diagnostics" },
-        { "<leader>ma", vim.lsp.buf.code_action,     desc = "Code Action",           has = "codeAction",      mode = { "n", "v" } },
-        { "<leader>mA", LazyVim.lsp.action.source,   desc = "Source Action",         has = "codeAction" },
-        { "<leader>ml", vim.lsp.codelens.run,        desc = "Run Codelens",          mode = { "n", "v" },     has = "codeLens" },
-        { "<leader>mr", vim.lsp.buf.rename,          desc = "Rename",                has = "rename" },
-        -- BUG: Does not work
-        --{
-        --  "<leader>mr",
-        --  function()
-        --    local inc_rename = require("inc_rename")
-        --    return ":IncRename"
-        --  end,
-        --  desc = "Rename (inc)",
-        --  has = "rename"
-        --},
-        { "<leader>mf", Snacks.rename.rename_file,   desc = "Rename File",           mode = { "n" },          has = { "workspace/didRenameFiles", "workspace/willRenameFiles" } },
-        { "<leader>mR", vim.lsp.buf.references,      desc = "References",            nowait = true },
+        { "<c-s>",      function() vim.lsp.buf.signature_help() end, mode = { "n", "i" },            desc = "Signature Help", has = "signatureHelp" },
+        { "K",          function() vim.lsp.buf.signature_help() end, mode = "n",                     desc = "Signature Help", has = "signatureHelp" },
+        { "<leader>mh", function() vim.lsp.buf.hover() end,          desc = "Hover" },
+        { "H",          function() vim.lsp.buf.hover() end,          desc = "Hover" },
+        { "<leader>ms", function() vim.lsp.buf.signature_help() end, desc = "Signature Help",        has = "signatureHelp" },
+        { "<leader>md", vim.lsp.buf.definition,                      desc = "Goto Definition",       has = "definition" },
+        { "<leader>mi", vim.lsp.buf.implementation,                  desc = "Goto Implementation" },
+        { "<leader>my", vim.lsp.buf.type_definition,                 desc = "Goto T[y]pe Definition" },
+        { "<leader>mD", vim.lsp.buf.declaration,                     desc = "Goto Declaration" },
+        { "gd",         vim.lsp.buf.definition,                      desc = "Goto Definition",       has = "definition" },
+        { "gi",         vim.lsp.buf.implementation,                  desc = "Goto Implementation" }, -- overwrites "go to last insert"
+        { "gy",         vim.lsp.buf.type_definition,                 desc = "Goto T[y]pe Definition" },
+        { "gD",         vim.lsp.buf.declaration,                     desc = "Goto Declaration" },
+        { "<leader>md", vim.diagnostic.open_float,                   desc = "Line Diagnostics" },
+        { "<leader>ma", vim.lsp.buf.code_action,                     desc = "Code Action",           has = "codeAction",      mode = { "n", "v" } },
+        { "<leader>mA", LazyVim.lsp.action.source,                   desc = "Source Action",         has = "codeAction" },
+        { "<leader>ml", vim.lsp.codelens.run,                        desc = "Run Codelens",          mode = { "n", "v" },     has = "codeLens" },
+        { "<leader>mr", vim.lsp.buf.rename,                          desc = "Rename",                has = "rename" },
         {
           "]]",
           function() Snacks.words.jump(vim.v.count1) end,
           has = "documentHighlight",
           desc = "Next Reference",
-          cond = function() return Snacks.words.enabled end
+          cond = function()
+            return
+                Snacks.words.is_enabled()
+          end
         },
         {
           "[[",
           function() Snacks.words.jump(-vim.v.count1) end,
           has = "documentHighlight",
           desc = "Prev Reference",
-          cond = function() return Snacks.words.enabled end
+          cond = function()
+            return
+                Snacks.words.is_enabled()
+          end
         },
+        { "<leader>mf", function() Snacks.rename.rename_file() end, desc = "Rename File", mode = { "n" }, has = { "workspace/didRenameFiles", "workspace/willRenameFiles" } },
+        { "<leader>mR", vim.lsp.buf.references,                     desc = "References",  nowait = true },
       }
+      -- BUG: Does not work
+      --{
+      --  "<leader>mr",
+      --  function()
+      --    local inc_rename = require("inc_rename")
+      --    return ":IncRename"
+      --  end,
+      --  desc = "Rename (inc)",
+      --  has = "rename"
+      --},
 
       vim.list_extend(keymaps, custom_keymaps)
       opts.keymaps = keymaps

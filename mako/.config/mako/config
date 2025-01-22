@@ -4,9 +4,9 @@
 
 sort=-time
 layer=overlay
-icons=0
+icons=1
 default-timeout=5000
-background-color=#1d2021
+background-color=#303030
 text-color=#ebdbb2
 border-size=0
-
+border-radius=5

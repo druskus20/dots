@@ -1,6 +1,7 @@
 return {
   {
     "folke/noice.nvim",
+    lazy = false,
     opts = function(_, opts)
       return vim.tbl_extend("force",
         {
@@ -17,6 +18,7 @@ return {
             backend = "nui" -- do not use the "vscode style" middle of the screen popup (nui?)
             -- Side effect: apparently fixed an issue with "Save changes to ..." popup being slow to respond(?)
           }
+          -- + others: fancier hover and signature help for example
         }, opts)
     end
   },

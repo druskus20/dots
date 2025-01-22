@@ -40,7 +40,10 @@ return {
         win = {
           relative = "cursor",
         }
-      }
+      },
+      picker = {
+        enabled = false,
+      },
     }
   }
 }

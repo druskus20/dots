@@ -80,18 +80,33 @@ layout {
     focus-ring {
         // off
         width 1
-        active-color "f38ba8dd"
-        inactive-color "#505050"
+        //active-color "#ea6962dd"
+        //active-gradient from="#00ffffff" to="#ff00ffff" angle=45
+        //active-gradient from="#ff00ffff" to="#ea6962a0" angle=45 //relative-to="workspace-view"
+        active-gradient from="#ea696255" to="#a9b66555" angle=180 in="oklch longer hue"
     }
 
     insert-hint {
         // off
-        color "#ffc87f80"
-        gradient from="#f38ba833" to="#eba0ac55" angle=45 relative-to="workspace-view"
+        //color "#ffc87f80"
+        color "#ea696280"
+        gradient from="#ea696280" to="#ea6962a0" angle=45 //relative-to="workspace-view"
+
     }
 
     border {
         off
+    }
+
+    shadow {
+        on
+        softness 30
+        spread 6
+        offset x=0 y=5
+        draw-behind-window true
+        //color "#00000070"
+        color "#ffffff20"
+        inactive-color "#00000050"
     }
 
     // Struts shrink the area occupied by windows, similarly to layer-shell panels.
@@ -155,13 +170,27 @@ animations {
 }
 
 window-rule {
+   geometry-corner-radius 4
+    clip-to-geometry true
+}
+
+window-rule {
+  match is-floating=false
+    shadow {
+      off
+  }
+}
+
+window-rule {
     match title=r#"Volym"#
     open-floating true
+    
 }
 
 // Coloring based on tmux session 
 window-rule {
     match title=r#"tmux - [wW]ork"#
+
 
     border {
         on
@@ -174,6 +203,7 @@ window-rule {
 window-rule {
     match title=r#"tmux - [tT]hesis"#
 
+
     border {
         on
         width 1
@@ -184,6 +214,7 @@ window-rule {
 
 window-rule {
     match title=r#"tmux - [cC]ode"#
+    
 
     border {
         on
@@ -201,6 +232,7 @@ window-rule {
     // opacity 0.5
 
     block-out-from "screen-capture"
+    
 }
 
 
@@ -210,7 +242,8 @@ binds {
 
     Win+Return { spawn "foot"; }
     Win+B { spawn "~/.config/niri/start-browser.sh"; }
-    Win+Space { spawn "rofi" "-show" "drun"; }
+    //Win+Space { spawn "rofi" "-show" "drun"; }
+    Win+Space { spawn "~/launch.sh"; }
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
