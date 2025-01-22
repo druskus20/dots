@@ -141,3 +141,5 @@ load-prompt
 # TODO: teleportation
 # TODO: compile completions
 # TODO: C-I / C-O like in vim but for directories
+
+export PATH=$PATH:/home/drusk/.spicetify

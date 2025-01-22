@@ -3,8 +3,7 @@
 
 # Set utilities
 export EDITOR="$HOME/.local/bin/nvim"
-#export BROWSER="/usr/bin/google-chrome"
-export BROWSER="/home/drusk/.local/share/AppImage/ZenBrowser.AppImage"
+export BROWSER="/usr/bin/google-chrome"
 export MONITOR="HDMI-0"
 export TERMINAL="/bin/alacritty"
 export TERM=xterm-color
