@@ -146,5 +146,6 @@ map("n", "<leader>C",
 )
 
 
+
 -- Fix for Telescope's race condition with default C-F
 map("n", "<C-F>", LazyVim.pick("files"), { noremap = true, silent = false })
