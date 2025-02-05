@@ -34,6 +34,9 @@ return {
       terminal = {
         enabled = false,
       },
+      profiler = {
+        enabled = false,
+      },
       -- Reemplaces dressing.nvim (for rename)
       input = {
         enabled = false,

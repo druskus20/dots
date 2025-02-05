@@ -7,8 +7,7 @@ input {
             options "caps:escape,compose:prsc"
         }
     }
-
-    touchpad {
+touchpad {
         // off
         tap
         dwt
@@ -38,9 +37,10 @@ input {
 
 output "HDMI-A-1" {
     mode "2560x1440@59.951"
-    scale 1
+    scale 1.5
     position x=1920 y=0
 }
+
 
 output "DP-2" {
     mode "1920x1080@60.00"
@@ -76,6 +76,17 @@ layout {
     }
 
     default-column-width { proportion 0.66666; }
+    default-column-display "tabbed"
+
+     tab-indicator {
+        // off
+        hide-when-single-tab
+        gap 20
+        width 4
+        length total-proportion=1.0
+        position "right"
+        active-gradient from="#ea6962ff" to="#a9b665ff" angle=180 in="oklch longer hue"
+    }
 
     focus-ring {
         // off
@@ -174,54 +185,21 @@ window-rule {
     clip-to-geometry true
 }
 
+//window-rule {
+//   match app-id=r#"Tracy"#
+//   match app-id=r#"tracy"#
+//   match app-id=r#"tracy-profiler"#
+//   match app-id=r#"Tracy-profiler"#
+//   match app-id=r#"Tracy-Profiler"#
+//
+//    open-floating true
+//}
+
 window-rule {
   match is-floating=false
     shadow {
       off
   }
-}
-
-window-rule {
-    match title=r#"Volym"#
-    open-floating true
-    
-}
-
-// Coloring based on tmux session 
-window-rule {
-    match title=r#"tmux - [wW]ork"#
-
-
-    border {
-        on
-        width 1
-        active-color "#7A6055"
-        inactive-color "#7A6055"
-    }
-}
-
-window-rule {
-    match title=r#"tmux - [tT]hesis"#
-
-
-    border {
-        on
-        width 1
-        active-color "#58735F"
-        inactive-color "#58735F"
-    }
-}
-
-window-rule {
-    match title=r#"tmux - [cC]ode"#
-    
-
-    border {
-        on
-        width 1
-        active-color "#675B81"
-        inactive-color "#675B81"
-    }
 }
 
 window-rule {
@@ -261,9 +239,11 @@ binds {
     Win+Up    { focus-window-or-workspace-up; }
     Win+Right { focus-column-right; }
     Win+H     { focus-column-left; }
-    Win+J     { focus-window-or-workspace-down; }
-    Win+K     { focus-window-or-workspace-up; }
+    Win+J     { focus-workspace-down; }
+    Win+K     { focus-workspace-up; }
     Win+L     { focus-column-right; }
+    Win+U     { focus-window-down-or-top; }
+    Win+I     { focus-window-up-or-bottom; }
     
 
     Win+Ctrl+Left  { move-column-left; }
@@ -308,8 +288,6 @@ binds {
 
     Win+Page_Down      { focus-workspace-down; }
     Win+Page_Up        { focus-workspace-up; }
-    Win+U              { focus-workspace-down; }
-    Win+I              { focus-workspace-up; }
     Win+Ctrl+Page_Down { move-column-to-workspace-down; }
     Win+Ctrl+Page_Up   { move-column-to-workspace-up; }
     Win+Ctrl+U         { move-column-to-workspace-down; }
@@ -323,6 +301,9 @@ binds {
     Win+Shift+Page_Up   { move-workspace-up; }
     Win+Shift+U         { move-workspace-down; }
     Win+Shift+I         { move-workspace-up; }
+
+
+    //Win+W { toggle-column-tabbed-display; }
 
     // You can bind mouse wheel scroll ticks using the following syntax.
     // These binds will change direction based on the natural-scroll setting.

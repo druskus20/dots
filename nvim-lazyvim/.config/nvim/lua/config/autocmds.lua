@@ -46,3 +46,13 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     vim.opt_local.filetype = "helm"
   end,
 })
+
+-- Set shiftwodth for C++ projects
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "cpp", "make", "cmake" }, -- Apply to cpp, make, and cmake files
+  callback = function()
+    vim.bo.tabstop = 4
+    vim.bo.shiftwidth = 4
+    vim.bo.expandtab = true -- Converts tabs to spaces (recommended)
+  end,
+})
