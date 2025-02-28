@@ -75,6 +75,7 @@ alias tf=terraform
 alias tfa="terraform apply"
 
 alias docker=podman
+alias docker-compose=podman-compose
 
 alias ".."="cd .."
 alias "..."="cd ../.."
@@ -85,6 +86,8 @@ alias "......."="cd ../../../../../.."
 alias "........"="cd ../../../../../../.."
 
 alias "~"="cd ~"
+
+alias fd=fdfind
 
 alias npm="pnpm"
 

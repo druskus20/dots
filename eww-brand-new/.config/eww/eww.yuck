@@ -23,7 +23,7 @@
                :focusable false
   (bar0 :monitor "DP-2"))
 
-(defwindow win3 :monitor 1
+(defwindow win3 :monitor 0
                :geometry (geometry :x 0 :y 0 :height "15px" :width "100.01%" :anchor "center top")
                :stacking "fg" 
                :exclusive true
@@ -54,11 +54,23 @@
       (bluetooth)
       ;(wifi)
       (camera)
+      (scaling-toggle :monitor monitor)
       (mic)
       (speakers)
       (battery)
       (time)
       (date))))
+
+; ━━━━ toggle-scaling ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
+
+; niri msg -j outputs | jq -r '."DP-2".logical.scale'
+
+(defwidget scaling-toggle [monitor]
+  (box :class "scaling-toggle"
+    :space-evenly false
+    (eventbox :cursor "pointer"
+      (button :onclick "./modules/scale-toggle.sh ${monitor}"
+        (label :class "icon" :text "󰹑")))))
 
 ; ━━━━ bluetooth ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
 

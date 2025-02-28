@@ -17,7 +17,7 @@ $white: #ffffff;
 
 window {
   background: $background;
-//  background: rgba(0, 0, 0, 0.2);
+  //  background: rgba(0, 0, 0, 0.2);
 }
 
 .bar {
@@ -28,7 +28,8 @@ window {
 
 .icon-module {
   margin: 0 5px;
-  & > &__icon {
+
+  &>&__icon {
     margin-right: 5px;
     font-family: "Font Awesome 5 Free Solid";
   }
@@ -43,6 +44,7 @@ window {
   button {
     margin: 0px 3px;
   }
+
   .occupied {
     color: $grey;
   }
@@ -52,14 +54,14 @@ window {
   }
 
   .urgent {
-    color: $red; 
+    color: $red;
   }
 
   .empty {
     padding-top: 2px;
     color: $foreground-alt;
     font-size: 10px;
-//  font-family: "Font Awesome 5 Free Regular"
+    //  font-family: "Font Awesome 5 Free Regular"
   }
 }
 
@@ -68,14 +70,17 @@ window {
 .test-box {
   background-color: #2a2a2a;
 }
+
 .test-box.red {
-    background-color: red;
+  background-color: red;
 }
+
 .test-box.blue {
-    background-color: blue;
+  background-color: blue;
 }
+
 .test-box.green {
-    background-color: green;
+  background-color: green;
 }
 
 
@@ -83,19 +88,30 @@ window {
 .revealer-on-hover .eventbox {
   color: $grey;
 }
+
 .revealer-on-hover .eventbox:hover {
   color: $foreground;
 }
 
 
+.scaling {
+  color: red;
+
+  .icon {
+    font-size: 12rem;
+  }
+}
+
 .clock {
   padding: 30px;
   font-family: "Roboto Mono";
   font-size: 1rem;
-  > .title {
+
+  >.title {
     font-size: 1.5rem;
   }
-  > .remaining_time {
+
+  >.remaining_time {
     color: $red;
     font-size: 6em;
   }
