@@ -51,6 +51,8 @@ function completions() {
   compdef kubecolor=kubectl
   source <(gh completion -s zsh)
   source <(rustup completions zsh rustup)
+  source <(podman completion zsh)
+
   # TODO: find a way to source the "non compdef" completions without breaking fast start
   # (adding them to fpath - breaks fast start)
   # I am not sure why - maybe I am not caching the compdump properly?
@@ -95,6 +97,31 @@ function plugins() {
   source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
   source "$ZDOTDIR/plugins/zsh-you-should-use/you-should-use.plugin.zsh"
   source "$ZDOTDIR/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh" 
+  
+
+  #source "$ZDOTDIR/plugins/fzf-tab/fzf-tab.plugin.zsh"
+  # 
+  ## fzf-tab settings
+  ## disable sort when completing `git checkout`
+  #zstyle ':completion:*:git-checkout:*' sort false
+  ## set descriptions format to enable group support
+  ## NOTE: don't use escape sequences (like '%F{red}%d%f') here, fzf-tab will ignore them
+  #zstyle ':completion:*:descriptions' format '[%d]'
+  ## set list-colors to enable filename colorizing
+  ##zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+  ## force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+  #zstyle ':completion:*' menu no
+  ## preview directory's content with eza when completing cd
+  ## custom fzf flags
+  ## NOTE: fzf-tab does not follow FZF_DEFAULT_OPTS by default
+  #zstyle ':fzf-tab:*' fzf-flags 
+  ## To make fzf-tab follow FZF_DEFAULT_OPTS.
+  ## NOTE: This may lead to unexpected behavior since some flags break this plugin. See Aloxaf/fzf-tab#455.
+  #zstyle ':fzf-tab:*' use-fzf-default-opts yes
+  ## switch group using `<` and `>`
+  #zstyle ':fzf-tab:*' switch-group '<' '>'
+  ## elko's thing
+  #zstyle ':fzf-tab:complete:*:*' fzf-preview '$ZDOTDIR/plugins/fzf-tab/elkos-preview-thing.sh $realpath'
 
   # Some quick plugin settings
   ZSH_HIGHLIGHT_MAXLENGTH=100  

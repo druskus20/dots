@@ -35,6 +35,16 @@ touchpad {
     focus-follows-mouse max-scroll-amount="0%"
 }
 
+
+gestures {
+    // Increase the trigger area and maximum speed.
+    dnd-edge-view-scroll {
+        trigger-width 200
+        delay-ms 350
+        max-speed 5000
+    }
+}
+
 output "HDMI-A-1" {
     mode "2560x1440@59.951"
     scale 1.5
@@ -81,10 +91,10 @@ layout {
      tab-indicator {
         // off
         hide-when-single-tab
-        gap 20
-        width 4
+        gap -2
+        width 2
         length total-proportion=1.0
-        position "right"
+        position "top"
         active-gradient from="#ea6962ff" to="#a9b665ff" angle=180 in="oklch longer hue"
     }
 
@@ -185,6 +195,24 @@ window-rule {
     clip-to-geometry true
 }
 
+// Indicate screencasted windows with red colors.
+window-rule {
+    match is-window-cast-target=true
+
+    focus-ring {
+        active-color "#ca4b4b"
+    }
+
+    shadow {
+        color "#f38ba850"
+    }
+
+    tab-indicator {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+}
+
 //window-rule {
 //   match app-id=r#"Tracy"#
 //   match app-id=r#"tracy"#
@@ -211,6 +239,12 @@ window-rule {
 
     block-out-from "screen-capture"
     
+}
+
+
+window-rule {
+    match app-id=r"tracy"
+    open-on-output "DP-2"
 }
 
 
