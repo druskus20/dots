@@ -170,3 +170,5 @@ load-prompt
 # TODO: C-I / C-O like in vim but for directories
 
 export PATH=$PATH:/home/drusk/.spicetify
+
+# pnpm end

@@ -26,6 +26,7 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.spell = true
+    vim.cmd("startinsert")
   end,
 })
 
@@ -54,5 +55,14 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.bo.tabstop = 4
     vim.bo.shiftwidth = 4
     vim.bo.expandtab = true -- Converts tabs to spaces (recommended)
+  end,
+})
+
+
+-- Set filetype to "html" for web components
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = { "*.webc" },
+  callback = function()
+    vim.opt_local.filetype = "html"
   end,
 })
