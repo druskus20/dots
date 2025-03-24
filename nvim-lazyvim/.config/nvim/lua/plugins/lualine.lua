@@ -21,7 +21,8 @@ return {
               mode = 2,
               max_length = 999999,
               use_mode_colors = true,
-              padding = { left = 1, right = 1 }
+              padding = { left = 1, right = 1 },
+              show_filename_only = false,
             }
           },
         }
