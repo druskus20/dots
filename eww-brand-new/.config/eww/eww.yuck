@@ -14,7 +14,7 @@
                :stacking "fg" 
                :exclusive true
                :focusable false
-  (bar0 :monitor "HDMI-A-1"))
+  (bar0 :monitor "DP-2"))
 
 (defwindow win2 :monitor 2
                :geometry (geometry :x 0 :y 0 :height "15px" :width "100.01%" :anchor "center top")
@@ -28,7 +28,7 @@
                :stacking "fg" 
                :exclusive true
                :focusable false
-  (bar0 :monitor "DP-2"))
+  (bar0 :monitor "HDMI-A-1"))
 
 ; ━━━━ bars ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
 
@@ -40,7 +40,7 @@
          :halign "start"
          :space-evenly false
          :spacing 15
-      ;(workspaces :monitor monitor)
+      (workspaces :monitor monitor)
       (player))
     ;(box :class "center"
     ;     :halign "center"
@@ -99,19 +99,18 @@
 
 ; ━━━━ workspaces ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
 
-(deflisten workspaces :initial '{"DP-2": [], "HDMI-A-1": [], "eDP-1": []}' "./modules/sway-workspaces.py")
+(deflisten workspaces "eww-niri-workspaces")
 
 (defwidget workspaces [monitor]
   (box :orientation "h" :class "workspaces"
                 :space-evenly false
-    (for wsp in {workspaces[monitor]}
+      (for wsp in {"${workspaces.outputs[monitor].workspaces}"}
       (eventbox :cursor "pointer"
-      (button :class "workspace ${wsp.class}"
-              :onclick "swaymsg workspace ${wsp.name}"
-        (box
-          (label :class "icon" :text "${wsp.icon}")
-          (label :class "text name" :text "${wsp.name}")))))))
-        ;{wsp.name}))))
+        (box :class "workspace ${wsp.is_active ? 'active' : ''} ${arraylength(wsp.columns) == 0 ? 'empty' : ''}"
+          (for col in "${wsp.columns}"
+            (box :halign "center"
+              :class "column ${col.has_focused_window ? 'focused' : ''}"
+              (label :text ""))))))))
 
 ; ━━━━ tray ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
 
