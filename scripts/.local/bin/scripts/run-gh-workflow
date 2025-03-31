@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Ensure GitHub CLI and fzf are installed
+if ! command -v gh &> /dev/null || ! command -v fzf &> /dev/null; then
+    echo "gh and fzf are required but not installed."
+    exit 1
+fi
+
+# Fetch workflows and let user select one
+WORKFLOW_ID=$(gh workflow list --limit 50 --json id,name --jq '.[] | "\(.id) \(.name)"' | fzf | awk '{print $1}')
+
+# Exit if no workflow was selected
+[ -z "$WORKFLOW_ID" ] && exit 1
+
+# Trigger the selected workflow
+gh workflow run "$WORKFLOW_ID"
+
+# Wait for a new run to appear
+echo "Waiting for the run to start..."
+while true; do
+    NEW_RUN_ID=$(gh run list --workflow="$WORKFLOW_ID" --limit 1 --json databaseId,status --jq '.[0] | select(.status == "in_progress" or .status == "queued") | .databaseId')
+    if [ -n "$NEW_RUN_ID" ]; then
+        RUN_ID="$NEW_RUN_ID"
+        break
+    fi
+    sleep 2
+done
+
+# Watch logs of the selected run
+gh run watch "$RUN_ID"
+

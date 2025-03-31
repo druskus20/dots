@@ -89,22 +89,64 @@ window {
   }
 }
 
-.workspace {
-  .icon {
-    margin: 0 3px;
-    font-size: 8px;
+.workspaces {
+  font-size: 10px;
+
+  .workspace {
+    padding: 2px 1px;
+    border-radius: 5px;
+
+    .column {
+      padding: 0px 4px;
+    }
+
   }
 
-  .name {
-    background-color: $base;
+  .workspace.empty {
+    padding: 2px 9px;
   }
+
+  .workspace.active {
+    background-color: $surface2;
+  }
+
+
+  widget:nth-child(1) .workspace {
+    .column {
+      color: $red;
+    }
+  }
+
+  widget:nth-child(2) .workspace {
+    .column {
+      color: $peach;
+    }
+  }
+
+  widget:nth-child(3) .workspace {
+    .column {
+      color: $yellow;
+    }
+  }
+
+  widget:nth-child(4) .workspace {
+    .column {
+      color: $green;
+    }
+  }
+
+  widget:nth-child(5) .workspace {
+    .column {
+      color: $teal;
+    }
+  }
+
+  widget .workspace .column.focused {
+    color: $text;
+  }
+
 }
 
-.workspace.focused {
-  .icon {
-    color: $green;
-  }
-}
 
 .bluetooth,
 .battery,
