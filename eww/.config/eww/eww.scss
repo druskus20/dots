@@ -41,28 +41,11 @@ window {
   font-size: 12px;
   margin-right: 20px;
 
-  button {
-    margin: 0px 3px;
-  }
+}
 
-  .occupied {
-    color: $grey;
-  }
-
-  .focused {
-    color: $white;
-  }
-
-  .urgent {
-    color: $red;
-  }
-
-  .empty {
-    padding-top: 2px;
-    color: $foreground-alt;
-    font-size: 10px;
-    //  font-family: "Font Awesome 5 Free Regular"
-  }
+.workspace {
+  margin-right: 5px;
+  background-color: red;
 }
 
 
