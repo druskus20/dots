@@ -27,6 +27,39 @@ return {
     opts = {
       color_overrides = {
         mocha = {
+          name = "mocha",
+          -- Accent colors (adapted from Gruvbox Light)
+          rosewater = "#af3a03", -- Gruvbox light dark orange/brown
+          flamingo = "#9d0006",  -- Gruvbox light dark red
+          pink = "#8f3f71",      -- Gruvbox light purple
+          mauve = "#8f3f71",     -- Gruvbox light purple (reused)
+          red = "#cc241d",       -- Gruvbox light red
+          maroon = "#9d0006",    -- Gruvbox light dark red
+          peach = "#d65d0e",     -- Gruvbox light orange
+          yellow = "#b57614",    -- Gruvbox light yellow
+          green = "#79740e",     -- Gruvbox light green
+          teal = "#427b58",      -- Gruvbox light aqua
+          sky = "#427b58",       -- Gruvbox light aqua (reused)
+          sapphire = "#076678",  -- Gruvbox light blue-green
+          blue = "#076678",      -- Gruvbox light blue
+          lavender = "#427b58",  -- Gruvbox light aqua (reused)
+
+          -- Background and text colors (Gruvbox Light palette)
+          text = "#3c3836",     -- Gruvbox light fg0
+          subtext1 = "#504945", -- Gruvbox light fg1
+          subtext0 = "#665c54", -- Gruvbox light fg2
+          overlay2 = "#7c6f64", -- Gruvbox light fg3
+          overlay1 = "#928374", -- Gruvbox light fg4/gray
+          overlay0 = "#a89984", -- Gruvbox light gray (faded)
+          surface2 = "#d5c4a1", -- Gruvbox light bg2
+          surface1 = "#ebdbb2", -- Gruvbox light bg1
+          surface0 = "#f2e5bc", -- Gruvbox light bg0_s
+          base = "#fbf1c7",     -- Gruvbox light bg0
+          mantle = "#f9f5d7",   -- Gruvbox light bg0_h
+          crust = "#f2efdf",    -- Slightly lighter than bg0_h
+        },
+        latte = {
+          name = "latte",
           rosewater = "#d4be98", -- Gruvbox light beige
           flamingo = "#ea6962",  -- Gruvbox light red
           pink = "#d3869b",      -- Gruvbox purple ( a bit darker than regular)
@@ -70,120 +103,208 @@ return {
           mantle = "#1d2021",   -- Gruvbox bg0_h
           crust = "#1b1b1b",    -- Gruvbox bg0_h (slightly darker)
 
+
         },
       },
       no_italic = true,
       no_bold = true,
       custom_highlights = function(colors)
         local U = require("catppuccin.utils.colors")
-        local scrollbarHandle = U.darken(colors.text, 0.10, colors.base)
-
-        return {
-          Comment = --{ fg = U.darken(colors.surface3, 0.66, colors.base) },
-          { fg = U.darken(colors.text, 0.35, colors.base) },
-          -- Spelling
-          Spell = { fg = colors.red },
-          SpellBad = { fg = colors.red },
-          SpellCap = { fg = colors.red },
-          SpellLocal = { fg = colors.red },
-
-          NormalBorder = { bg = colors.mantle, fg = colors.mantle },
-          FloatBorder = { bg = colors.mantle, fg = colors.mantle },
-          FloatTitle = { bg = colors.red, fg = colors.crust },
-          MsgArea = { bg = colors.mantle, fg = colors.text },
-
-          -- Custom diagnostic highlights using the 'U.darken' function
-          DiagnosticVirtualTextError = {
-            bg = U.darken(colors.red, 0.07, colors.base),
-            fg = U.darken(colors.red, 0.65, colors.base)
-          },
-          DiagnosticVirtualTextWarn = {
-            bg = U.darken(colors.yellow, 0.04, colors.base),
-            fg = U.darken(colors.yellow, 0.25, colors.base)
-          },
-          DiagnosticVirtualTextInfo = {
-            bg = U.darken(colors.sky, 0.04, colors.base),
-            fg = U.darken(colors.sky, 0.25, colors.base)
-          },
-          DiagnosticVirtualTextHint = {
-            bg = U.darken(colors.teal, 0.02, colors.base),
-            fg = U.darken(colors.teal, 0.5, colors.base)
-          },
-
-          -- TODO: Move to telescope.lua
-          -- currently, that breaks this highlighting
-          TelescopePromptPrefix = { bg = colors.mantle, fg = colors.red, },
-          TelescopePromptTitle = { bg = colors.red, fg = colors.crust, },
-          TelescopeSelection = { bg = colors.base, fg = colors.text, },
-          TelescopeResultsDiffAdd = { fg = colors.green, },
-          TelescopeResultsDiffChange = { fg = colors.yellow, },
-          TelescopeResultsDiffDelete = { fg = colors.red, },
-          TelescopeNormal = { bg = colors.mantle, },
-          TelescopeBorder = { bg = colors.mantle, fg = colors.mantle, },
-          TelescopePromptBorder = { bg = colors.mantle, fg = colors.mantle, },
-          TelescopePromptNormal = { bg = colors.mantle, fg = colors.text, },
-          TelescopeResultsTitle = { bg = colors.red, fg = colors.crust, },
-
-          -- TODO: move to notify
-          -- Does not work
-          -- NotifyBackground = { bg = colors.red, fg = colors.text },
-          NoiceCmdline = { bg = U.darken(colors.mantle, 0.45, colors.base) },
 
 
-          -- TODO: Move to LSP
-          LspInlayHint = { fg = U.darken(colors.text, 0.15, colors.mantle), bg = "" },
+        if colors.name == "mocha" then
+          local scrollbarHandle = U.darken(colors.text, 0.10, colors.base)
+          return {
+            Comment = { fg = U.darken(colors.text, 0.40, colors.base) },
 
-          -- TODO: Move to noice / notify
-          -- Bug: does not work
-          NotifyBackground = { bg = colors.red },
+            Spell = { fg = colors.red },
+            SpellBad = { fg = colors.red },
+            SpellCap = { fg = colors.red },
+            SpellLocal = { fg = colors.red },
 
-          -- Scrollbar highlights
+            NormalBorder = { bg = colors.mantle, fg = colors.mantle },
+            FloatBorder = { bg = colors.mantle, fg = colors.mantle },
+            FloatTitle = { bg = colors.red, fg = colors.crust },
+            MsgArea = { bg = colors.mantle, fg = colors.text },
 
-          ScrollbarHandle = { bg = scrollbarHandle },
-          ScrollbarCursorHandle = { bg = U.darken(colors.text, 0.25, colors.base) },
-          -- link to CursorLine
-          ScrollbarCursor = { bg = "#2a2b3c" },
+            -- not working - only on latte somehow
+            DiagnosticVirtualTextError = {
+              bg = U.lighten(colors.red, 0.85, colors.base),
+              fg = U.darken(colors.red, 0.25, colors.base)
+            },
+            DiagnosticVirtualTextWarn = {
+              bg = U.lighten(colors.yellow, 0.85, colors.base),
+              fg = U.darken(colors.yellow, 0.15, colors.base)
+            },
+            DiagnosticVirtualTextInfo = {
+              bg = U.lighten(colors.sky, 0.85, colors.base),
+              fg = U.darken(colors.sky, 0.15, colors.base)
+            },
+            DiagnosticVirtualTextHint = {
+              bg = U.lighten(colors.teal, 0.85, colors.base),
+              fg = U.darken(colors.teal, 0.15, colors.base)
+            },
 
-          ScrollbarSearchHandle = { fg = colors.yellow, bg = scrollbarHandle },
-          ScrollbarSearch = { fg = colors.yellow },
+            TelescopePromptPrefix = { bg = colors.mantle, fg = colors.red, },
+            TelescopePromptTitle = { bg = colors.red, fg = colors.crust, },
+            TelescopeSelection = { bg = colors.surface1, fg = colors.text, },
+            TelescopeResultsDiffAdd = { fg = colors.green, },
+            TelescopeResultsDiffChange = { fg = colors.yellow, },
+            TelescopeResultsDiffDelete = { fg = colors.red, },
+            TelescopeNormal = { bg = colors.mantle, },
+            TelescopeBorder = { bg = colors.mantle, fg = colors.mantle, },
+            TelescopePromptBorder = { bg = colors.mantle, fg = colors.mantle, },
+            TelescopePromptNormal = { bg = colors.mantle, fg = colors.text, },
+            TelescopeResultsTitle = { bg = colors.red, fg = colors.crust, },
 
-          ScrollbarErrorHandle = { fg = colors.red, bg = scrollbarHandle },
-          ScrollbarError = { fg = colors.red },
+            NoiceCmdline = { bg = U.lighten(colors.mantle, 0.95, colors.base) },
 
-          ScrollbarWarnHandle = { fg = colors.yellow, bg = scrollbarHandle },
-          ScrollbarWarn = { fg = colors.yellow },
+            LspInlayHint = { fg = U.darken(colors.text, 0.25, colors.mantle), bg = "" },
 
-          ScrollbarInfoHandle = { fg = colors.sky, bg = scrollbarHandle },
-          ScrollbarInfo = { fg = colors.sky },
+            ScrollbarHandle = { bg = scrollbarHandle },
+            ScrollbarCursorHandle = { bg = U.darken(colors.text, 0.65, colors.base) },
+            ScrollbarCursor = { bg = "#e3d5ad" },
 
-          ScrollbarHintHandle = { fg = colors.teal, bg = scrollbarHandle },
-          ScrollbarHint = { fg = colors.teal },
+            ScrollbarSearchHandle = { fg = colors.yellow, bg = scrollbarHandle },
+            ScrollbarSearch = { fg = colors.yellow },
 
-          ScrollbarMiscHandle = { fg = colors.pink, bg = scrollbarHandle },
-          ScrollbarMisc = { fg = colors.pink },
+            ScrollbarErrorHandle = { fg = colors.red, bg = scrollbarHandle },
+            ScrollbarError = { fg = colors.red },
 
-          ScrollbarGitAddHandle = { fg = colors.green, bg = scrollbarHandle },
-          ScrollbarGitAdd = { fg = colors.green },
+            ScrollbarWarnHandle = { fg = colors.yellow, bg = scrollbarHandle },
+            ScrollbarWarn = { fg = colors.yellow },
 
-          ScrollbarGitChangeHandle = { fg = colors.yellow, bg = scrollbarHandle },
-          ScrollbarGitChange = { fg = colors.yellow },
+            ScrollbarInfoHandle = { fg = colors.sky, bg = scrollbarHandle },
+            ScrollbarInfo = { fg = colors.sky },
 
-          ScrollbarGitDeleteHandle = { fg = colors.red, bg = scrollbarHandle },
-          ScrollbarGitDelete = { fg = colors.red },
+            ScrollbarHintHandle = { fg = colors.teal, bg = scrollbarHandle },
+            ScrollbarHint = { fg = colors.teal },
 
-          -- Blink
-          BlinkCmpMenu = { bg = colors.mantle },
+            ScrollbarMiscHandle = { fg = colors.pink, bg = scrollbarHandle },
+            ScrollbarMisc = { fg = colors.pink },
 
-          ["@error"] = { fg = U.brighten(colors.text, 0.75), style = { "underline" } },
+            ScrollbarGitAddHandle = { fg = colors.green, bg = scrollbarHandle },
+            ScrollbarGitAdd = { fg = colors.green },
 
-        }
+            ScrollbarGitChangeHandle = { fg = colors.yellow, bg = scrollbarHandle },
+            ScrollbarGitChange = { fg = colors.yellow },
+
+            ScrollbarGitDeleteHandle = { fg = colors.red, bg = scrollbarHandle },
+            ScrollbarGitDelete = { fg = colors.red },
+
+            BlinkCmpMenu = { bg = colors.mantle },
+
+            ["@error"] = { fg = U.darken(colors.text, 0.5), style = { "underline" } },
+          }
+        elseif colors.name == "latte" then
+          local scrollbarHandle = U.darken(colors.text, 0.10, colors.base)
+          return {
+            Comment = { fg = U.darken(colors.text, 0.35, colors.base) },
+            -- Spelling
+            Spell = { fg = colors.red },
+            SpellBad = { fg = colors.red },
+            SpellCap = { fg = colors.red },
+            SpellLocal = { fg = colors.red },
+
+            NormalBorder = { bg = colors.mantle, fg = colors.mantle },
+            FloatBorder = { bg = colors.mantle, fg = colors.mantle },
+            FloatTitle = { bg = colors.red, fg = colors.crust },
+            MsgArea = { bg = colors.mantle, fg = colors.text },
+
+            -- Custom diagnostic highlights using the 'U.darken' function
+            DiagnosticVirtualTextError = {
+              bg = U.darken(colors.red, 0.07, colors.base),
+              fg = U.darken(colors.red, 0.65, colors.base)
+            },
+            DiagnosticVirtualTextWarn = {
+              bg = U.darken(colors.yellow, 0.04, colors.base),
+              fg = U.darken(colors.yellow, 0.25, colors.base)
+            },
+            DiagnosticVirtualTextInfo = {
+              bg = U.darken(colors.sky, 0.04, colors.base),
+              fg = U.darken(colors.sky, 0.25, colors.base)
+            },
+            DiagnosticVirtualTextHint = {
+              bg = U.darken(colors.teal, 0.02, colors.base),
+              fg = U.darken(colors.teal, 0.5, colors.base)
+            },
+
+            -- TODO: Move to telescope.lua
+            -- currently, that breaks this highlighting
+            TelescopePromptPrefix = { bg = colors.mantle, fg = colors.red, },
+            TelescopePromptTitle = { bg = colors.red, fg = colors.crust, },
+            TelescopeSelection = { bg = colors.base, fg = colors.text, },
+            TelescopeResultsDiffAdd = { fg = colors.green, },
+            TelescopeResultsDiffChange = { fg = colors.yellow, },
+            TelescopeResultsDiffDelete = { fg = colors.red, },
+            TelescopeNormal = { bg = colors.mantle, },
+            TelescopeBorder = { bg = colors.mantle, fg = colors.mantle, },
+            TelescopePromptBorder = { bg = colors.mantle, fg = colors.mantle, },
+            TelescopePromptNormal = { bg = colors.mantle, fg = colors.text, },
+            TelescopeResultsTitle = { bg = colors.red, fg = colors.crust, },
+
+            -- TODO: move to notify
+            -- Does not work
+            -- NotifyBackground = { bg = colors.red, fg = colors.text },
+            NoiceCmdline = { bg = U.darken(colors.mantle, 0.45, colors.base) },
+
+
+            -- TODO: Move to LSP
+            LspInlayHint = { fg = U.darken(colors.text, 0.15, colors.mantle), bg = "" },
+
+            -- TODO: Move to noice / notify
+            -- Bug: does not work
+            NotifyBackground = { bg = colors.red },
+
+            -- Scrollbar highlights
+
+            ScrollbarHandle = { bg = scrollbarHandle },
+            ScrollbarCursorHandle = { bg = U.darken(colors.text, 0.25, colors.base) },
+            -- link to CursorLine
+            ScrollbarCursor = { bg = "#2a2b3c" },
+
+            ScrollbarSearchHandle = { fg = colors.yellow, bg = scrollbarHandle },
+            ScrollbarSearch = { fg = colors.yellow },
+
+            ScrollbarErrorHandle = { fg = colors.red, bg = scrollbarHandle },
+            ScrollbarError = { fg = colors.red },
+
+            ScrollbarWarnHandle = { fg = colors.yellow, bg = scrollbarHandle },
+            ScrollbarWarn = { fg = colors.yellow },
+
+            ScrollbarInfoHandle = { fg = colors.sky, bg = scrollbarHandle },
+            ScrollbarInfo = { fg = colors.sky },
+
+            ScrollbarHintHandle = { fg = colors.teal, bg = scrollbarHandle },
+            ScrollbarHint = { fg = colors.teal },
+
+            ScrollbarMiscHandle = { fg = colors.pink, bg = scrollbarHandle },
+            ScrollbarMisc = { fg = colors.pink },
+
+            ScrollbarGitAddHandle = { fg = colors.green, bg = scrollbarHandle },
+            ScrollbarGitAdd = { fg = colors.green },
+
+            ScrollbarGitChangeHandle = { fg = colors.yellow, bg = scrollbarHandle },
+            ScrollbarGitChange = { fg = colors.yellow },
+
+            ScrollbarGitDeleteHandle = { fg = colors.red, bg = scrollbarHandle },
+            ScrollbarGitDelete = { fg = colors.red },
+
+            -- Blink
+            BlinkCmpMenu = { bg = colors.mantle },
+
+            ["@error"] = { fg = U.brighten(colors.text, 0.75), style = { "underline" } },
+          }
+        else
+          return {}
+        end
       end,
     },
   },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin",
+      colorscheme = "catppuccin-latte",
       --colorscheme = "zenbones",
     },
   },

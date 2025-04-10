@@ -9,14 +9,14 @@
                :focusable false
   (bar0 :monitor "eDP-1"))
 
-(defwindow win1 :monitor 1
+(defwindow win1 :monitor 0
                :geometry (geometry :x 0 :y 0 :height "15px" :width "100.01%" :anchor "center top")
                :stacking "fg" 
                :exclusive true
                :focusable false
   (bar0 :monitor "DP-2"))
 
-(defwindow win2 :monitor 2
+(defwindow win2 :monitor 0
                :geometry (geometry :x 0 :y 0 :height "15px" :width "100.01%" :anchor "center top")
                :stacking "fg" 
                :exclusive true
@@ -29,6 +29,12 @@
                :exclusive true
                :focusable false
   (bar0 :monitor "HDMI-A-1"))
+(defwindow win4 :monitor 1
+               :geometry (geometry :x 0 :y 0 :height "15px" :width "100.01%" :anchor "center top")
+               :stacking "fg" 
+               :exclusive true
+               :focusable false
+  (bar0 :monitor "DP-2"))
 
 ; ━━━━ bars ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
 
@@ -102,15 +108,16 @@
 (deflisten workspaces "eww-niri-workspaces")
 
 (defwidget workspaces [monitor]
-  (box :orientation "h" :class "workspaces"
-                :space-evenly false
-      (for wsp in {"${workspaces.outputs[monitor].workspaces}"}
+  (box :orientation "h" 
+       :class "workspaces"
+       :space-evenly false
+    (for wsp in {"${workspaces.outputs[monitor].workspaces}"}
       (eventbox :cursor "pointer"
-        (box :class "workspace ${wsp.is_active ? 'active' : ''} ${arraylength(wsp.columns) == 0 ? 'empty' : ''}"
-          (for col in "${wsp.columns}"
-            (box :halign "center"
-              :class "column ${col.has_focused_window ? 'focused' : ''}"
-              (label :text ""))))))))
+        (button :onclick "niri msg action focus-workspace ${wsp.index}"
+          (box :class "workspace ${wsp.is_active ? 'active' : ''} ${arraylength(wsp.columns) == 0 ? 'empty' : ''}"
+            (for col in "${wsp.columns}"
+              (box :halign "center" :class "column ${col.has_focused_window ? 'focused' : ''}"
+                (label :text "")))))))))
 
 ; ━━━━ tray ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
 

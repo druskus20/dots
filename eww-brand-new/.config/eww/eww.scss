@@ -103,7 +103,7 @@ window {
   }
 
   .workspace.empty {
-    padding: 2px 9px;
+    padding: 9px 9px;
   }
 
   .workspace.active {
@@ -135,16 +135,35 @@ window {
     }
   }
 
+
   widget:nth-child(5) .workspace {
     .column {
-      color: $teal;
+      color: $sky;
+    }
+  }
+
+  widget:nth-child(6) .workspace {
+    .column {
+      color: $sapphire;
+    }
+  }
+
+
+  widget:nth-child(7) .workspace {
+    .column {
+      color: $pink;
+    }
+  }
+
+  widget .workspace {
+    .column {
+      color: $overlay2;
     }
   }
 
   widget .workspace .column.focused {
     color: $text;
   }
-
 }
 
 
