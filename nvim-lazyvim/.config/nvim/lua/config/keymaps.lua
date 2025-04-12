@@ -21,14 +21,34 @@ local function cmd_string(s)
 end
 
 -- Buffer navigation
-map('n', '<leader>h', cmd_string('bprevious'), { desc = 'Previous buffer' })
-map('n', '<leader>l', cmd_string('bnext'), { desc = 'Next buffer' })
-map('n', '<C-h>', cmd_string('bprevious'), { desc = 'Previous buffer' })
-map('n', '<C-l>', cmd_string('bnext'), { desc = 'Next buffer' })
-map('i', '<C-h>', cmd_string('bprevious'), { desc = 'Previous buffer' })
-map('i', '<C-l>', cmd_string('bnext'), { desc = 'Next buffer' })
-map('v', '<C-h>', cmd_string('bprevious'), { desc = 'Previous buffer' })
-map('v', '<C-l>', cmd_string('bnext'), { desc = 'Next buffer' })
+local function is_floating_window()
+  local win_id = vim.api.nvim_get_current_win()
+  local win_config = vim.api.nvim_win_get_config(win_id)
+
+  -- Check if it's a floating window
+  return win_config.relative and win_config.relative ~= ""
+end
+
+local function smart_buffer_nav(cmd)
+  return function()
+    if not is_floating_window() then
+      vim.cmd(cmd)
+    end
+    -- In floating windows, do nothing and let the window handle its own keymaps
+  end
+end
+
+-- Buffer navigation
+map('n', '<leader>h', function() smart_buffer_nav('bprevious')() end, { desc = 'Previous buffer' })
+map('n', '<leader>l', function() smart_buffer_nav('bnext')() end, { desc = 'Next buffer' })
+map('n', '<C-h>', function() smart_buffer_nav('bprevious')() end, { desc = 'Previous buffer' })
+map('n', '<C-l>', function() smart_buffer_nav('bnext')() end, { desc = 'Next buffer' })
+map('i', '<C-h>', function() smart_buffer_nav('bprevious')() end, { desc = 'Previous buffer' })
+map('i', '<C-l>', function() smart_buffer_nav('bnext')() end, { desc = 'Next buffer' })
+map('v', '<C-h>', function() smart_buffer_nav('bprevious')() end, { desc = 'Previous buffer' })
+map('v', '<C-l>', function() smart_buffer_nav('bnext')() end, { desc = 'Next buffer' })
+
+
 map('n', '<C-x>', cmd_string('bdelete'), { desc = 'Close buffer' })
 
 -- Buffer management
@@ -118,6 +138,10 @@ vim.keymap.del('v', '<C-s>')
 -- Unmap insert mode C-w (deletes a word back)
 vim.api.nvim_set_keymap('i', '<C-w>', '', { noremap = true, silent = true })
 
+
+-- Unmap Shift-L and Shift-H for previous/next buffer
+vim.api.nvim_set_keymap('n', '<S-l>', '', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<S-h>', '', { noremap = true, silent = true })
 
 
 -- diagnostic
