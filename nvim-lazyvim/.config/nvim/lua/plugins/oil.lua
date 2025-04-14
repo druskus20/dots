@@ -18,12 +18,29 @@ return {
 
       -- Control+h is one directory back
       -- Control+l is one directory forward
-      ['<C-H>'] = { "actions.parent", mode = "n" },
-      ['<C-L>'] = { "actions.select", mode = "n" },
+      ['<C-h>'] = { "actions.parent", mode = "n" },
+      ['<C-l>'] = { "actions.select", mode = "n" },
 
       -- Disable Control i and o
       ['<C-i>'] = false,
       ['<C-o>'] = false,
+    },
+    confirmation = {
+      max_width = 0.7,
+      min_width = { 5, 0.2 },
+      -- optionally define an integer/float for the exact width of the preview window
+      -- Height dimensions can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
+      -- min_height and max_height can be a single value or a list of mixed integer/float types.
+      -- max_height = {80, 0.9} means "the lesser of 80 columns or 90% of total"
+      max_height = 0.9,
+      -- min_height = {5, 0.1} means "the greater of 5 columns or 10% of total"
+      min_height = { 5, 0.1 },
+      -- optionally define an integer/float for the exact height of the preview window
+      height = nil,
+      border = "rounded",
+      win_options = {
+        winblend = 0,
+      },
     },
   },
   keys = {
