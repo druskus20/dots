@@ -26,34 +26,64 @@
 //$mantle: #181825;
 //$crust: #11111b;
 
-// Gruvbox
-$rosewater: #d4be98; // Gruvbox light beige
-$flamingo: #ea6962; // Gruvbox light red
-$pink: #d3869b; // Gruvbox purple
-$mauve: #d3869b; // Gruvbox purple (reused as closest match)
-$red: #ea6962; // Gruvbox red
-$maroon: #c14a4a; // Gruvbox dark red
-$peach: #e78a4e; // Gruvbox orange
-$yellow: #d8a657; // Gruvbox yellow
-$green: #a9b665; // Gruvbox green
-$teal: #89b482; // Gruvbox aqua
-$sky: #89b482; // Gruvbox aqua (reused)
-$sapphire: #7daea3; // Gruvbox blue-green
-$blue: #7daea3; // Gruvbox blue
-$lavender: #89b482; // Gruvbox aqua (reused)
-$text: #ebdbb2; // Gruvbox fg
-$subtext1: #d5c4a1; // Gruvbox fg1
-$subtext0: #bdae93; // Gruvbox fg2
-$overlay2: #a89984; // Gruvbox fg3
-$overlay1: #928374; // Gruvbox fg4
-$overlay0: #7c6f64; // Gruvbox gray
-$surface2: #504945; // Gruvbox bg2
-$surface1: #3c3836; // Gruvbox bg1
-$surface0: #32302f; // Gruvbox bg0_s
-$base: #282828; // Gruvbox bg0
-$mantle: #1d2021; // Gruvbox bg0_h
-$crust: #1b1b1b; // Gruvbox bg0_h (slightly darker)
+// Gruvbox dark
+//$rosewater: #d4be98; // Gruvbox light beige
+//$flamingo: #ea6962; // Gruvbox light red
+//$pink: #d3869b; // Gruvbox purple
+//$mauve: #d3869b; // Gruvbox purple (reused as closest match)
+//$red: #ea6962; // Gruvbox red
+//$maroon: #c14a4a; // Gruvbox dark red
+//$peach: #e78a4e; // Gruvbox orange
+//$yellow: #d8a657; // Gruvbox yellow
+//$green: #a9b665; // Gruvbox green
+//$teal: #89b482; // Gruvbox aqua
+//$sky: #89b482; // Gruvbox aqua (reused)
+//$sapphire: #7daea3; // Gruvbox blue-green
+//$blue: #7daea3; // Gruvbox blue
+//$lavender: #89b482; // Gruvbox aqua (reused)
+//$text: #ebdbb2; // Gruvbox fg
+//$subtext1: #d5c4a1; // Gruvbox fg1
+//$subtext0: #bdae93; // Gruvbox fg2
+//$overlay2: #a89984; // Gruvbox fg3
+//$overlay1: #928374; // Gruvbox fg4
+//$overlay0: #7c6f64; // Gruvbox gray
+//$surface2: #504945; // Gruvbox bg2
+//$surface1: #3c3836; // Gruvbox bg1
+//$surface0: #32302f; // Gruvbox bg0_s
+//$base: #282828; // Gruvbox bg0
+//$mantle: #1d2021; // Gruvbox bg0_h
+//$crust: #1b1b1b; // Gruvbox bg0_h (slightly darker)
 
+
+// Gruvbox light
+$rosewater: #af3a03;
+$flamingo: #9d2b22;
+$pink: #8f3f71;
+$mauve: #8f3f71;
+$red: #b83229;
+$maroon: #9a3a34;
+$peach: #d65d0e;
+$yellow: #b57e22;
+$green: #7c7b20;
+$teal: #4a8568;
+$sky: #427b58;
+$sapphire: #076678;
+$blue: #1a7088;
+$lavender: #427b58;
+
+$text: #3c3836;
+$subtext1: #504945;
+$subtext0: #665c54;
+$overlay2: #7c6f64;
+$overlay1: #928374;
+$overlay0: #a89984;
+
+$surface2: #d5c4a1;
+$surface1: #ebdbb2;
+$surface0: #f2e5bc;
+$base: #fbf1c7;
+$mantle: #e9dbb1;
+$crust: #e0cfa0;
 
 * {
   all: unset;
