@@ -1,13 +1,5 @@
 return {
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    opts = {
-      no_italic = true,
-      no_bold = true,
-    },
-  },
-  {
     "nvim-telescope/telescope.nvim",
     keys = {
       { "<C-p>", LazyVim.pick("live_grep"), desc = "Grep (Root Dir)" },

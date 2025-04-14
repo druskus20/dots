@@ -9,4 +9,8 @@ return {
       end,
     },
   },
+  {
+    'mrcjkb/rustaceanvim',
+    commit = '0f7e844', -- lock to nvim 0.10
+  }
 }
