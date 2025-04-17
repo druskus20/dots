@@ -29,6 +29,7 @@ include /etc/sway/config-vars.d/*
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /home/drusk/img/bg/leaves2.jpg fill
 output * bg /home/drusk/img/bg/purple_coast.jpg fill
+
 #
 # Example configuration:
 #

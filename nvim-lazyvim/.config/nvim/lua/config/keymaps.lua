@@ -169,7 +169,9 @@ map("n", "<leader>C",
   { noremap = true, silent = false, desc = "Get highlight group under cursor" }
 )
 
-
+-- trouble
+map("n", "<C-t>", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Trouble Diagnostics" })
+map("n", "<leader>t", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Trouble Diagnostics" })
 
 -- Fix for Telescope's race condition with default C-F
 map("n", "<C-F>", LazyVim.pick("files"), { noremap = true, silent = false })
