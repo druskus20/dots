@@ -7,16 +7,16 @@ return {
       throttle_ms = 50, -- default: 100
       marks = {
         Error = {
-          text = { "-" },
+          text = { "▪" },
         },
         Warn = {
-          text = { "-" },
+          text = { "▪" },
         },
         Info = {
-          text = { "-" },
+          text = { "▪" },
         },
         Hint = {
-          text = { "-" },
+          text = { "▪" },
         },
         Cursor = {
           text = " ",
