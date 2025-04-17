@@ -146,18 +146,20 @@ return {
       }
     end
   },
-  {
-    "chrisgrieser/nvim-lsp-endhints",
-    event = "LspAttach",
-    opts = {
-      icons = {
-        type = "» ",
-        parameter = "« ",
-        offspec = " ", -- hint kind not defined in official LSP spec
-        unknown = " ", -- hint kind is nil
-      },
-    },
-  },
+  --{
+  --  "chrisgrieser/nvim-lsp-endhints",
+  --  event = "LspAttach",
+  --  opts = {
+  --    icons = {
+  --      type = "» ",
+  --      parameter = "« ",
+  --      offspec = " ", -- hint kind not defined in official LSP spec
+  --      unknown = " ", -- hint kind is nil
+  --    },
+  --    autoEnableHints = false,
+
+  --  },
+  --},
   {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)

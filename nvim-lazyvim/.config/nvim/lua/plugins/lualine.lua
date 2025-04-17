@@ -23,6 +23,9 @@ return {
               use_mode_colors = true,
               padding = { left = 1, right = 1 },
               show_filename_only = false,
+              buffers_color = {
+                inactive = 'LualineInnactiveBufferFix' -- fixes an issue with catppuccin (gruv) light theme
+              },
             }
           },
         }

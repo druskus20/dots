@@ -239,11 +239,12 @@ return {
             BlinkCmpMenu = { bg = colors.mantle },
 
             ["@error"] = { fg = U.brighten(colors.text, 0.75), style = { "underline" } },
+            LualineInnactiveBufferFix = { fg = colors.subtext1, bg = colors.surface2 },
           }
         end,
         latte = function(colors)
           local U = require("catppuccin.utils.colors")
-          local scrollbarHandle = U.darken(colors.text, 0.10, colors.base)
+          local scrollbarHandle = U.darken(colors.surface2, 0.55, colors.base)
           return {
             Comment = { fg = U.darken(colors.text, 0.40, colors.base) },
 
@@ -294,7 +295,6 @@ return {
             TelescopePromptPrefix = { bg = colors.mantle, fg = colors.red, },
 
             TelescopePromptTitle = { bg = colors.red, fg = colors.crust, },
-            TelescopeSelection = { bg = colors.surface1, fg = colors.text, },
             TelescopeResultsDiffAdd = { fg = colors.green, },
             TelescopeResultsDiffChange = { fg = colors.yellow, },
             TelescopeResultsDiffDelete = { fg = colors.red, },
@@ -344,6 +344,21 @@ return {
             ["@error"] = { fg = U.darken(colors.text, 0.5), style = { "underline" } },
 
             GitSignsAdd = { fg = colors.greener },
+            PmenuSel = { bg = U.darken(colors.surface1, 0.55, colors.base) },
+            TelescopeSelection = { bg = U.darken(colors.surface1, 0.55, colors.base) },
+            LualineInnactiveBufferFix = { fg = colors.subtext1, bg = colors.surface2 },
+            Visual = { bg = U.darken(colors.surface2, 0.75, colors.crust) },
+
+
+            -- Flash
+            FlashPromptIcon = { bg = U.darken(colors.mantle, 0.65, colors.peach), fg = colors.text },
+            FlashPrompt = { bg = U.darken(colors.mantle, 0.6, colors.surface0), fg = colors.text },
+            FlashCursor = { bg = U.darken(colors.mantle, 0.6, colors.yellow), fg = colors.text },
+            FlashMatch = { bg = U.darken(colors.mantle, 0.65, colors.blue), fg = colors.text },
+            FlashLabel = { bg = U.darken(colors.mantle, 0.65, colors.red), fg = colors.text },
+            FlashCurrent = { bg = U.darken(colors.mantle, 0.65, colors.green), fg = colors.text },
+
+
           }
         end,
       },
