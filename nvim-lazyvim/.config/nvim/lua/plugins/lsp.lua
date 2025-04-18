@@ -61,6 +61,8 @@ return {
         end
       end
 
+      -- Bug: after pressing "next_breadcrumb", (if no "popup" is open) it goes back
+      -- 1 more breadcrumb than it should
       local function prev_breadcrumb()
         local menu = utils.menu.get_current()
         if menu.prev_menu then
@@ -84,6 +86,7 @@ return {
       end
 
 
+      -- Bug: only works once
       local function next_breadcrumb()
         local menu = utils.menu.get_current()
         if menu.prev_menu then
