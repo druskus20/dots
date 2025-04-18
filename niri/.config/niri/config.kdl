@@ -254,6 +254,7 @@ binds {
     Win+Escape { spawn "makoctl" "dismiss" "-a"; }
 
     Win+Return { spawn "foot"; }
+    Win+T { spawn "foot"; }
     Win+B { spawn "~/.config/niri/start-browser.sh"; }
     //Win+Space { spawn "rofi" "-show" "drun"; }
     Win+Space { spawn "~/launch.sh"; }
@@ -449,5 +450,7 @@ binds {
     Win+Ctrl+P { screenshot-screen; }
     Win+Alt+P { screenshot-window; }
     Win+P { screenshot; }
+
+    Win+O { toggle-overview; }
 
 }
