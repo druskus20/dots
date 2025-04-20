@@ -106,10 +106,10 @@ layout {
     focus-ring {
         // off
         width 1
-        //active-color "#ea6962dd"
+        active-color "#000000"
         //active-gradient from="#00ffffff" to="#ff00ffff" angle=45
         //active-gradient from="#ff00ffff" to="#ea6962a0" angle=45 //relative-to="workspace-view"
-        active-gradient from="#ea696255" to="#a9b66555" angle=180 in="oklch longer hue"
+        //active-gradient from="#ea696255" to="#a9b66555" angle=180 in="oklch longer hue"
     }
 
     insert-hint {
@@ -130,8 +130,8 @@ layout {
         spread 6
         offset x=0 y=5
         draw-behind-window true
-        //color "#00000070"
-        color "#ffffff20"
+        color "#00000070"
+        //color "#ffffff20"
         inactive-color "#00000050"
     }
 
@@ -145,6 +145,20 @@ layout {
         // right 64
         // top 64
         // bottom 64
+    }
+}
+
+layer-rule {
+  //  eww
+    match namespace="gtk-layer-shell"
+    match at-startup=true
+    shadow {
+        on
+        softness 10
+        spread 1
+        offset x=0 y=1
+        draw-behind-window true
+        color "#00000030"
     }
 }
 
@@ -231,7 +245,13 @@ window-rule {
 window-rule {
   match is-floating=false
     shadow {
-      off
+      on
+      color "#00000060"
+      softness 10
+      spread 3
+      offset x=0 y=3
+      draw-behind-window true
+
   }
 }
 
