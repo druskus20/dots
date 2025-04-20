@@ -36,7 +36,7 @@ touchpad {
 }
 
 overview {
-    zoom 0.35 // The default
+    zoom 0.45 // The default
 
 }
 
@@ -106,7 +106,7 @@ layout {
     focus-ring {
         // off
         width 1
-        active-color "#000000"
+        active-color "#00000060"
         //active-gradient from="#00ffffff" to="#ff00ffff" angle=45
         //active-gradient from="#ff00ffff" to="#ea6962a0" angle=45 //relative-to="workspace-view"
         //active-gradient from="#ea696255" to="#a9b66555" angle=180 in="oklch longer hue"
@@ -126,9 +126,9 @@ layout {
 
     shadow {
         on
-        softness 30
-        spread 6
-        offset x=0 y=5
+      softness 30
+      spread 5
+      offset x=0 y=5
         draw-behind-window true
         color "#00000070"
         //color "#ffffff20"
@@ -151,6 +151,20 @@ layout {
 layer-rule {
   //  eww
     match namespace="gtk-layer-shell"
+    match at-startup=true
+    shadow {
+        on
+        softness 10
+        spread 1
+        offset x=0 y=1
+        draw-behind-window true
+        color "#00000030"
+    }
+}
+
+layer-rule {
+  //  eww
+    match namespace="rofi"
     match at-startup=true
     shadow {
         on
