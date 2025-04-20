@@ -1,0 +1,106 @@
+* {
+  /* Enhanced Gruvbox-inspired color palette with better contrast */
+  accent: #fe8019;
+  /* Brighter orange for more pop */
+  background: #f2e5bc;
+  /* More distinct light background */
+  background-light: #ebdbb2;
+  /* Secondary background color */
+  background-focus: #d5c4a1;
+  /* Darker shade for selected elements */
+  foreground: #1d2021;
+  /* Nearly black text for maximum readability */
+  on: #427b58;
+  /* Teal-green for "on" state - more distinct */
+  off: #cc241d;
+  /* Brighter red for "off" state */
+}
+
+* {
+  text-font: "NotoSans Nerd Font 11";
+  inputbar-margin: 4px 4px;
+  prompt-padding: 12px 14px;
+  entry-padding: 12px 0px 12px 0px;
+  list-element-padding: 10px 12px;
+  list-element-margin: 4px;
+  list-element-border: 0px 0px 0px 3px;
+  apps-textbox-prompt-colon-padding: 10px -5px 0px 0px;
+}
+
+element-icon {
+  padding: 6px 8px 6px 0px;
+  size: 2.2ch;
+}
+
+#window {
+  width: 50%;
+  height: 45%;
+  padding: 35px 35px;
+  border-radius: 8px;
+}
+
+* {
+  background-color: @background;
+  text-color: @foreground;
+  font: @text-font;
+}
+
+inputbar,
+prompt,
+textbox-prompt-colon,
+entry {
+  background-color: @background-light;
+  border-radius: 4px;
+}
+
+inputbar {
+  children: [ prompt, textbox-prompt-colon, entry];
+  margin: @inputbar-margin;
+}
+
+prompt {
+  padding: @prompt-padding;
+  background-color: @accent;
+  text-color: @background;
+  border-radius: 4px 0px 0px 4px;
+}
+
+textbox-prompt-colon {
+  expand: false;
+  str: "  ::  ";
+  padding: @apps-textbox-prompt-colon-padding;
+}
+
+entry {
+  text-color: @accent;
+  padding: @entry-padding;
+}
+
+element {
+  padding: @list-element-padding;
+  margin: @list-element-margin;
+  border: @list-element-border;
+  background-color: @background-light;
+  border-color: @background-light;
+  border-radius: 4px;
+}
+
+element,
+element-icon,
+element-text {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+element.selected,
+element-icon.selected,
+element-text.selected {
+  background-color: @background-focus;
+  text-color: @accent;
+  border-color: @accent;
+  font-weight: bold;
+}
+
+/*
+vim:ft=css 
+*/
