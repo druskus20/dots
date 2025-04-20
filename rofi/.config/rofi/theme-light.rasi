@@ -20,7 +20,7 @@
   text-font: "NotoSans Nerd Font 11";
   inputbar-margin: 4px 4px;
   prompt-padding: 12px 14px;
-  entry-padding: 12px 0px 12px 0px;
+  entry-padding: 7px 0px 7px 0px;
   list-element-padding: 10px 12px;
   list-element-margin: 4px;
   list-element-border: 0px 0px 0px 3px;
@@ -35,7 +35,7 @@ element-icon {
 #window {
   width: 50%;
   height: 45%;
-  padding: 35px 35px;
+  padding: 15px 15px;
   border-radius: 8px;
 }
 
@@ -72,7 +72,7 @@ textbox-prompt-colon {
 }
 
 entry {
-  text-color: @accent;
+  text-color: black;
   padding: @entry-padding;
 }
 
@@ -96,7 +96,7 @@ element.selected,
 element-icon.selected,
 element-text.selected {
   background-color: @background-focus;
-  text-color: @accent;
+  text-color: black;
   border-color: @accent;
   font-weight: bold;
 }

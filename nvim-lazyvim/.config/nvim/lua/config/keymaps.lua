@@ -170,8 +170,20 @@ map("n", "<leader>C",
 )
 
 -- trouble
-map("n", "<C-t>", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Trouble Diagnostics" })
+map("n", "<C-t>", "<cmd>Trouble diagnostics toggle filter.not.severity=vim.diagnostic.severity.HINT<cr>",
+  { desc = "Trouble Diagnostics" })
 map("n", "<leader>t", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Trouble Diagnostics" })
+vim.keymap.set("n", "<C-n>", function()
+  if require("trouble").is_open() then
+    require("trouble").next({ skip_groups = true, jump = true })
+  end
+end, { desc = "Next Trouble item if Trouble is open" })
+
+vim.keymap.set("n", "<C-p>", function()
+  if require("trouble").is_open() then
+    require("trouble").prev({ skip_groups = true, jump = true })
+  end
+end, { desc = "Previous Trouble item if Trouble is open" })
 
 -- Fix for Telescope's race condition with default C-F
 map("n", "<C-F>", LazyVim.pick("files"), { noremap = true, silent = false })
