@@ -35,6 +35,10 @@ touchpad {
     focus-follows-mouse max-scroll-amount="0%"
 }
 
+overview {
+    zoom 0.35 // The default
+
+}
 
 gestures {
     // Increase the trigger area and maximum speed.
@@ -48,8 +52,8 @@ gestures {
 output "HDMI-A-1" {
     mode "2560x1440@59.951"
     position x=1920 y=0
-    background-color "#3a2f27"
-    // background-color "#e8dab2" 
+    background-color "#2a2421"
+    backdrop-color "#3c3836"
 }
 
 
@@ -144,7 +148,7 @@ layout {
     }
 }
 
-// spawn-at-startup "swaybg" "-i" "/home/drusk/img/bg/wallhaven-yjvgx7e.jpg" "-m" "fill"
+spawn-at-startup "swaybg" "-i" "/home/drusk/img/bg/warm-dunes.jpg" "-m" "fill"
 spawn-at-startup "mako"
 spawn-at-startup "eww" "open-many" "win0"  "win1" "win2"
 spawn-at-startup "xwayland-satellite" ":0"
