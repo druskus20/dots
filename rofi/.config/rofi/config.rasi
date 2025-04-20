@@ -6,9 +6,9 @@ configuration {
   show-icons: true;
   icon-theme: "Papirus";
 
-  kb-row-up:                      "Up,Control+k";
-  kb-row-down:                    "Down,Control+j";
-  kb-accept-entry:                "Return,Control+Return";  
+  kb-row-up: "Up,Control+k";
+  kb-row-down: "Down,Control+j";
+  kb-accept-entry: "Return,Control+Return";
   /* Unset conflicting kb */
   kb-accept-custom: "";
   kb-remove-to-eol: "";
@@ -76,7 +76,9 @@ configuration {
 /*	color-window: ;*/
 /*	max-history-size: 25;*/
 /*	combi-hide-mode-prefix: false;*/
-/*	matching-negate-char: '-' /* unsupported */;*/
+/*	matching-negate-char: '-' /* unsupported */
+;
+*/
 /*	cache-dir: ;*/
 /*	window-thumbnail: false;*/
 /*	drun-use-desktop-cache: false;*/
@@ -164,7 +166,7 @@ configuration {
 /*	me-accept-entry: "MouseDPrimary";*/
 /*	me-accept-custom: "Control+MouseDPrimary";*/
 
-@theme "theme"
+@theme "theme-light"
 
 /*
 vim:ft=css 
