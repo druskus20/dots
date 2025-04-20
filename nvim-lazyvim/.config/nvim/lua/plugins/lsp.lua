@@ -220,8 +220,9 @@ return {
                 Snacks.words.is_enabled()
           end
         },
-        { "<leader>mf", function() Snacks.rename.rename_file() end, desc = "Rename File", mode = { "n" }, has = { "workspace/didRenameFiles", "workspace/willRenameFiles" } },
-        { "<leader>mR", vim.lsp.buf.references,                     desc = "References",  nowait = true },
+        { "<leader>mf",     function() Snacks.rename.rename_file() end, desc = "Rename File",            mode = { "n" }, has = { "workspace/didRenameFiles", "workspace/willRenameFiles" } },
+        { "<leader>mR",     vim.lsp.buf.references,                     desc = "References",             nowait = true },
+        { "<leader>m<C-r>", LazyVim.pick("lsp_references"),             desc = "References (Telescope)", nowait = true },
       }
       -- BUG: Does not work
       --{

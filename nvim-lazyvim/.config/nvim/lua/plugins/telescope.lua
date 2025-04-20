@@ -2,8 +2,9 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     keys = {
-      { "<C-p>", LazyVim.pick("live_grep"), desc = "Grep (Root Dir)" },
-      { "<C-f>", LazyVim.pick("files"),     desc = "Find Files (Root Dir)" },
+      { "<C-l>", LazyVim.pick("lsp_workspace_symbols"), desc = "Lsp Symbols (Root Dir)" },
+      { "<C-g>", LazyVim.pick("live_grep"),             desc = "Grep (Root Dir)" },
+      { "<C-f>", LazyVim.pick("files"),                 desc = "Find Files (Root Dir)" },
     },
     opts = function(_, opts)
       local actions = require("telescope.actions")
