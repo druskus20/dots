@@ -21,7 +21,6 @@ return {
   },
   {
     "Bekaboo/dropbar.nvim",
-    commit = "d08bf6b", -- pinned for nvim 0.10
     event = "LspAttach",
     keys = {
       {
