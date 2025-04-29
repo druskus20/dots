@@ -11,7 +11,6 @@ return {
   },
   {
     'mrcjkb/rustaceanvim',
-    commit = '0f7e844', -- lock to nvim 0.10
     opts = {
       server = {
         on_attach = function(_, bufnr)
@@ -21,7 +20,7 @@ return {
           vim.keymap.set("n", "<leader>dr", function()
             vim.cmd.RustLsp("debuggables")
           end, { desc = "Rust Debuggables", buffer = bufnr })
-          vim.lsp.inlay_hint.enable(false)  -- TODO: not working
+          vim.lsp.inlay_hint.enable(false) -- TODO: not working
         end,
       }
     }
