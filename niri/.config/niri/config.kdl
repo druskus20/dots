@@ -289,7 +289,6 @@ window-rule {
 
 
 binds {
-    Win+Escape { spawn "makoctl" "dismiss" "-a"; }
 
     Win+Return { spawn "foot"; }
     Win+T { spawn "foot"; }
@@ -490,5 +489,6 @@ binds {
     Win+P { screenshot; }
 
     Win+O { toggle-overview; }
+    Win+Escape { toggle-overview; }
 
 }
