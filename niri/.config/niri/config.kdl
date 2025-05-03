@@ -180,6 +180,7 @@ spawn-at-startup "swaybg" "-i" "/home/drusk/img/bg/warm-dunes.jpg" "-m" "fill"
 spawn-at-startup "mako"
 spawn-at-startup "eww" "open-many" "win0"  "win1" "win2"
 spawn-at-startup "xwayland-satellite" ":0"
+spawn-at-startup "sherlock --daemonize"
 
 prefer-no-csd
 
