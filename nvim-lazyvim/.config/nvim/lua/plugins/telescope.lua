@@ -25,4 +25,8 @@ return {
       }
     end,
   },
+  {
+    "druskus20/telescope-scoped-crate.nvim",
+    path = "~/telescope-scoped-crate.nvim",
+  }
 }

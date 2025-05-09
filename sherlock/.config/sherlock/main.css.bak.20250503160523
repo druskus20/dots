@@ -17,9 +17,7 @@ overshoot:backdrop {
 * {
   padding: 0px;
   margin: 0px;
-  -gtk-secondary-caret-color: hsl(43, 71%, 92%
-      /* Gruvbox light bg0 (#fbf1c7) */
-    );
+  -gtk-secondary-caret-color: hsl(var(--background));
   outline-width: 0px;
   outline-offset: -3px;
   outline-style: dashed;
@@ -28,9 +26,7 @@ overshoot:backdrop {
 }
 
 #overlay spinner {
-  color: hsl(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-    );
+  color: hsl(var(--text));
 }
 
 #overlay * {
@@ -44,45 +40,30 @@ overshoot:backdrop {
 scrolledwindow>viewport,
 scrolledwindow>viewport>*,
 window {
-  background: hsl(43, 71%, 92%
-      /* Gruvbox light bg0 (#fbf1c7) */
-    );
+  background: hsl(var(--background));
 }
 
 
 label {
-  color: hsl(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-    );
+  color: hsl(var(--text));
 }
 
 
 window {
-  color: hsl(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-    );
-  /* border-radius: 5px; */
-  border: 1px solid hsl(40, 23%, 75%
-      /* Gruvbox light bg2 (#d5c4a1) */
-    );
+  color: hsl(var(--text));
+  border-radius: 5px;
+  border: 2px solid hsl(var(--border));
 }
 
 /* STATUS BAR */
 .status-bar {
-  background: hsla(40, 19%, 80%
-      /* Gruvbox light bg0_s (#f2e5bc) */
-      , 0.2);
-
-  border-top: 1px solid hsl(40, 23%, 75%
-      /* Gruvbox light bg2 (#d5c4a1) */
-    );
+  background: hsla(var(--foreground), 0.2);
+  border-top: 1px solid hsl(var(--border));
   padding: 4px 10px 4px 20px;
 }
 
 .status-bar label {
-  color: hsl(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-      , 0.3);
+  color: hsl(var(--text), 0.3);
 }
 
 .spinner-disappear {
@@ -99,21 +80,15 @@ window {
 #search-bar {
   outline: none;
   border: none;
-  background: hsla(43, 71%, 92%
-      /* Gruvbox light bg0 (#fbf1c7) */
-      , 1);
+  background: hsla(var(--background), 1);
   min-height: 40px;
-  color: hsl(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-    );
+  color: hsl(var(--text));
   font-size: 15px;
   padding-left: 20px;
 }
 
 #search-bar-holder {
-  border-bottom: 2px solid hsl(40, 23%, 75%
-      /* Gruvbox light bg2 (#d5c4a1) */
-    );
+  border-bottom: 2px solid hsl(var(--border));
   padding: 5px 10px 4px 10px;
 }
 
@@ -152,24 +127,21 @@ window {
 #search-bar placeholder {
   background: transparent;
   background-color: transparent;
-  color: hsla(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-      , 0.7);
+  color: hsla(var(--text), 0.7);
   font-weight: 500;
 }
 
 #category-type {
   font-size: 13px;
   font-weight: bold;
-  color: hsl(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-    );
+  color: hsl(var(--text));
   opacity: 0.3;
   padding: 10px 20px 0px 20px;
 }
 
 .scrolled-window {
   padding: 10px 10px 5px 10px;
+  min-width: var(--width) * 0.8;
 }
 
 scrollbar {
@@ -179,9 +151,7 @@ scrollbar {
 }
 
 scrollbar slider {
-  background: hsla(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-      , 0.1);
+  background: hsla(var(--text), 0.1);
   border: none;
 }
 
@@ -265,9 +235,7 @@ image {
 
 .tile #title {
   font-size: 15px;
-  color: hsl(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-    );
+  color: hsl(var(--text));
 }
 
 .tile #icon {
@@ -277,12 +245,8 @@ image {
 
 .tile:selected {
   transition: 0.1s ease;
-  background: hsla(40, 19%, 80%
-      /* Gruvbox light bg0_s (#f2e5bc) */
-      , 1);
-  background-color: hsla(40, 19%, 80%
-      /* Gruvbox light bg0_s (#f2e5bc) */
-      , 1);
+  background: hsla(var(--foreground), 1);
+  background-color: hsla(var(--foreground), 1);
   outline: none;
   border: none;
 }
@@ -292,28 +256,20 @@ image {
   font-size: 11px;
   border-radius: 3px;
   padding: 2px 8px;
-  color: hsl(0, 0%, 15%
-      /* Gruvbox dark text */
-    );
+  color: hsl(var(--tag-color));
   box-shadow: 0px 0px 10px 0px rgba(2, 2, 2, 0.4);
-  border: 1px solid hsla(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-      , 0.1);
+  border: 1px solid hsla(var(--text), 0.1);
   margin-left: 7px;
 }
 
 .tile:selected .tag-start,
 .tag-start {
-  background: hsla(40, 23%, 75%
-      /* Gruvbox light bg2 (#d5c4a1) */
-      , 0.7);
+  background: hsla(var(--tag-background), 0.7);
 }
 
 .tile:selected .tag-end,
 .tag-end {
-  background: hsla(62, 58%, 31%
-      /* Softer green (#7c7b20) */
-      , 1);
+  background: hsla(var(--success), 1);
 }
 
 .tile:focus {
@@ -322,9 +278,7 @@ image {
 
 #launcher-type {
   font-size: 10px;
-  color: hsla(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-      , 0.4);
+  color: hsla(var(--text), 0.4);
   margin-left: 0px;
 }
 
@@ -337,42 +291,26 @@ image {
 #shortcut-holder {
   margin-right: 25px;
   padding: 5px 10px;
-  background: hsla(40, 19%, 80%
-      /* Gruvbox light bg0_s (#f2e5bc) */
-      , 0.5);
+  background: hsla(var(--foreground), 0.5);
   border-radius: 5px;
-  border: 1px solid hsla(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-      , 0.1);
+  border: 1px solid hsla(var(--text), 0.1);
   box-shadow: 0px 0px 6px 0px rgba(15, 15, 15, 1);
 }
 
 .tile:selected #shortcut-holder {
-  background: hsla(43, 71%, 92%
-      /* Gruvbox light bg0 (#fbf1c7) */
-      , 0.5);
-  background-color: hsla(43, 71%, 92%
-      /* Gruvbox light bg0 (#fbf1c7) */
-      , 0.5);
-  color: hsla(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-      , 0.5);
+  background: hsla(var(--background), 0.5);
+  background-color: hsla(var(--background), 0.5);
+  color: hsla(var(--text), 0.5);
   box-shadow: 0px 0px 6px 0px rgba(22, 22, 22, 1);
 }
 
 #shortcut,
 #shortcut-modkey {
-  background: hsla(43, 71%, 92%
-      /* Gruvbox light bg0 (#fbf1c7) */
-      , 0);
-  background-color: hsla(43, 71%, 92%
-      /* Gruvbox light bg0 (#fbf1c7) */
-      , 0);
+  background: hsla(var(--background), 0);
+  background-color: hsla(var(--background), 0);
   font-size: 11px;
   font-weight: bold;
-  color: hsla(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-      , 0.5);
+  color: hsla(var(--text), 0.5);
 }
 
 #shortcut-modkey {
@@ -434,17 +372,13 @@ image {
 #bulk-text-content-title {
   font-size: 17px;
   font-weight: bold;
-  color: hsl(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-    );
+  color: hsl(var(--text));
   min-height: 20px;
 }
 
 #bulk-text-content-body {
   font-size: 14px;
-  color: hsl(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-    );
+  color: hsl(var(--text));
   line-height: 1.4;
   min-height: 20px;
 }
@@ -470,22 +404,14 @@ image {
 
 /* NEXT PAGE */
 .next_tile {
-  color: hsl(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-    );
-  background: hsl(43, 71%, 92%
-      /* Gruvbox light bg0 (#fbf1c7) */
-    );
+  color: hsl(var(--text));
+  background: hsl(var(--background));
 }
 
 .next_tile #content-body {
-  background: hsl(43, 71%, 92%
-      /* Gruvbox light bg0 (#fbf1c7) */
-    );
+  background: hsl(var(--background));
   padding: 10px;
-  color: hsl(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-    );
+  color: hsl(var(--text));
 }
 
 .raw_text,
@@ -515,21 +441,13 @@ image {
 }
 
 .error {
-  border: 1px solid hsla(6, 57%, 44%
-      /* Less saturated red (#b83229) */
-      , 0.5);
-  background: hsla(6, 57%, 44%
-      /* Less saturated red (#b83229) */
-      , 0.1);
+  border: 1px solid hsla(var(--error), 0.5);
+  background: hsla(var(--error), 0.1);
 }
 
 .warning {
-  border: 1px solid hsla(40, 67%, 40%
-      /* Softer yellow (#b57e22) */
-      , 0.5);
-  background: hsla(40, 67%, 40%
-      /* Softer yellow (#b57e22) */
-      , 0.1);
+  border: 1px solid hsla(var(--warning), 0.5);
+  background: hsla(var(--warning), 0.1);
 }
 
 .error-tile #title {
@@ -542,17 +460,13 @@ image {
   margin-left: 10px;
   font-size: 16px;
   font-weight: bold;
-  color: hsl(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-    );
+  color: hsl(var(--text));
 }
 
 .error-tile #content-body {
   margin-left: 10px;
   font-size: 14px;
-  color: hsl(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-    );
+  color: hsl(var(--text));
   line-height: 1.4;
   color: gray;
 }
@@ -560,19 +474,13 @@ image {
 
 /* STATUS BAR */
 .status-bar {
-  background: hsla(40, 19%, 80%
-      /* Gruvbox light bg0_s (#f2e5bc) */
-      , 0.2);
-  border-top: 1px solid hsl(40, 23%, 75%
-      /* Gruvbox light bg2 (#d5c4a1) */
-    );
+  background: hsla(var(--foreground), 0.2);
+  border-top: 1px solid hsl(var(--border));
   padding: 4px 10px 4px 20px;
 }
 
 .status-bar label {
-  color: hsl(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-      , 0.3);
+  color: hsl(var(--text), 0.3);
 }
 
 
@@ -628,152 +536,116 @@ image {
 
 /*WEATHER CLASSES*/
 .tile.weather-tile.weather-clear {
-  background: hsl(151, 25%, 41%
-      /* Softer teal (#4a8568) */
-    );
+  background: hsl(var(--weather-clear));
   /* Light sky blue */
 }
 
 .tile.weather-tile.weather-clear label {
-  color: hsl(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-    );
+  color: hsl(var(--text));
 }
 
 .tile.weather-tile.weather-few-clouds {
-  background: hsl(151, 25%, 41%
-      /* Softer teal (#4a8568) */
-    );
+  background: hsl(var(--weather-few-clouds));
   /* Very light */
 }
 
-.tile.weather-tile.weather-few-clouds label {}
+.tile.weather-tile.weather-few-clouds label {
+  color: hsl(var(--text-alternate));
+}
 
 .tile.weather-tile.weather-many-clouds {
-  background: hsl(191, 62%, 31%
-      /* Softer blue (#1a7088) */
-    );
+  background: hsl(var(--weather-many-clouds));
   /* Medium-light */
 }
 
 .tile.weather-tile.weather-many-clouds label {
-  color: hsl(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-    );
+  color: hsl(var(--text));
 }
 
 .tile.weather-tile.weather-mist {
-  background: hsl(50, 11%, 80%
-      /* Gruvbox light bg1 (#ebdbb2) */
-    );
+  background: hsl(var(--weather-mist));
   /* Light beige */
 }
 
-.tile.weather-tile.weather-mist label {}
+.tile.weather-tile.weather-mist label {
+  color: hsl(var(--text-alternate));
+}
 
 .tile.weather-tile.weather-showers {
-  background: hsl(191, 62%, 31%
-      /* Softer blue (#1a7088) */
-    );
+  background: hsl(var(--weather-showers));
   /* Medium-dark blue */
 }
 
 .tile.weather-tile.weather-showers label {
-  color: hsl(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-    );
+  color: hsl(var(--text));
 }
 
 .tile.weather-tile.weather-freezing-scattered-rain-storm {
-  background: hsl(196, 88%, 24%
-      /* Gruvbox light blue (#076678) */
-    );
+  background: hsl(var(--weather-freezing-scattered-rain-storm));
 }
 
 .tile.weather-tile.weather-freezing-scattered-rain-storm label {
-  color: hsl(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-    );
+  color: hsl(var(--text));
 }
 
 .tile.weather-tile.weather-freezing-scattered-rain {
-  background: hsl(191, 62%, 31%
-      /* Softer blue (#1a7088) */
-    );
+  background: hsl(var(--weather-freezing-scattered-rain));
 }
 
 .tile.weather-tile.weather-freezing-scattered-rain label {
-  color: hsl(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-    );
+  color: hsl(var(--text));
 }
 
 .tile.weather-tile.weather-snow-scattered-day {
-  background: hsl(43, 71%, 92%
-      /* Gruvbox light bg0 (#fbf1c7) */
-    );
+  background: hsl(var(--weather-snow-scattered-day));
 }
 
-.tile.weather-tile.weather-snow-scattered-day label {}
+.tile.weather-tile.weather-snow-scattered-day label {
+  color: hsl(var(--text-alternate));
+}
 
 .tile.weather-tile.weather-storm {
-  background: hsl(335, 47%, 32%
-      /* Purple (#8f3f71) */
-    );
+  background: hsl(var(--weather-storm));
   /* Very dark */
 }
 
 .tile.weather-tile.weather-storm label {
-  color: hsl(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-    );
+  color: hsl(var(--text));
 }
 
 .tile.weather-tile.weather-snow-storm {
-  background: hsl(40, 23%, 75%
-      /* Gruvbox light bg2 (#d5c4a1) */
-    );
+  background: hsl(var(--weather-snow-storm));
   /* Light */
 }
 
-.tile.weather-tile.weather-snow-storm label {}
+.tile.weather-tile.weather-snow-storm label {
+  color: hsl(var(--text-alternate));
+}
 
 .tile.weather-tile.weather-snow-scattered-storm {
-  background: hsl(196, 88%, 24%
-      /* Gruvbox light blue (#076678) */
-    );
+  background: hsl(var(--weather-snow-scattered-storm));
   /* Still light */
 }
 
 .tile.weather-tile.weather-snow-scattered-storm label {
-  color: hsla(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-      , 0.8);
+  color: hsla(var(--text), 0.8);
 }
 
 .tile.weather-tile.weather-showers-scattered {
-  background: hsl(191, 62%, 31%
-      /* Softer blue (#1a7088) */
-    );
+  background: hsl(var(--weather-showers-scattered));
 }
 
 .tile.weather-tile.weather-showers-scattered label {
-  color: hsl(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-    );
+  color: hsl(var(--text));
 }
 
 .tile.weather-tile.weather-none-available {
-  background: hsl(0, 0%, 65%
-      /* Medium gray */
-    );
+  background: hsl(var(--weather-none-available));
   /* Neutral gray */
 }
 
 .tile.weather-tile.weather-none-available label {
-  color: hsl(24, 10%, 22%
-      /* Gruvbox light fg0 (#3c3836) */
-    );
+  color: hsl(var(--text));
 }
 
 
