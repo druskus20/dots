@@ -1,7 +1,7 @@
 [default_apps]
 teams = "teams-for-linux --enable-features=UseOzonePlatform --ozone-platform=wayland --url {meeting_url}"
 calendar_client = "thunderbird"
-terminal = "kitty"
+terminal = "foot"
 
 [debug]
 try_suppress_errors = false
@@ -23,7 +23,7 @@ icon_paths = ["~/.config/sherlock/icons"]
 icon_size = 22
 search_icon = true
 use_base_css = false
-status_bar = true
+status_bar = false
 
 [behavior]
 caching = true
@@ -34,8 +34,8 @@ global_prefix = ""
 global_flags = ""
 
 [binds]
-prev = "None"
-next = "None"
+prev = "control+k"   # not working with k yet
+next = "control+j"   # not working with j yet
 modifier = "control"
 
 [files]
