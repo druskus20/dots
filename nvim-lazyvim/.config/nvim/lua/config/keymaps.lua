@@ -131,6 +131,8 @@ vim.keymap.del('n', '<leader>cs')
 vim.keymap.del('n', '<leader>cS')
 
 -- Unmap saving
+-- TODO: conflicts with other plugins
+-- Maybe the way is just to fork the keymaps.lua file
 vim.keymap.del('n', '<C-s>')
 vim.keymap.del('i', '<C-s>')
 vim.keymap.del('v', '<C-s>')

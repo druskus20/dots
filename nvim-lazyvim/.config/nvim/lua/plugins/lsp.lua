@@ -181,7 +181,6 @@ return {
       -- are correctly overwritten by noice
       -- stylua: ignore
       local custom_keymaps = {
-        { "<c-s>",      function() vim.lsp.buf.signature_help() end, mode = { "n", "i" },            desc = "Signature Help", has = "signatureHelp" },
         { "K",          function() vim.lsp.buf.signature_help() end, mode = "n",                     desc = "Signature Help", has = "signatureHelp" },
         { "<leader>mh", function() vim.lsp.buf.hover() end,          desc = "Hover" },
         { "H",          function() vim.lsp.buf.hover() end,          desc = "Hover" },
