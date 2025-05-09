@@ -35,3 +35,8 @@ profile work-bjorn {
 
 
 
+profile uni-weird { 
+  output "Dell Inc. DELL P2723D 45PW1L3" mode 1920x1080 position 0,0 scale 1
+  output "BOE 0x09DE Unknown" mode 1920x1080 position 0,960 scale 1
+}
+

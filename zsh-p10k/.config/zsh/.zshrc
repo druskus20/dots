@@ -46,6 +46,7 @@ function completions() {
   # Competions
   autoload bashcompinit && bashcompinit
   complete -C '/usr/local/bin/aws_completer' aws
+  source <(just --completions zsh)
   source <(helm completion zsh)
   source <(kubectl completion zsh)
   compdef kubecolor=kubectl
