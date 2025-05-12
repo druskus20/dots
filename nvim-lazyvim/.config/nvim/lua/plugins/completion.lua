@@ -8,6 +8,8 @@ return {
   {
     "saghen/blink.cmp",
     opts = {
+      -- FIX: temporary fix for https://github.com/Saghen/blink.cmp/issues/1727
+      fuzzy = { implementation = "lua" },
       -- Disable for some filetypes
       enabled = function()
         return not vim.tbl_contains({ "DressingInput" }, vim.bo.filetype)
