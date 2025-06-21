@@ -137,8 +137,6 @@ vim.keymap.del('n', '<C-s>')
 vim.keymap.del('i', '<C-s>')
 vim.keymap.del('v', '<C-s>')
 
--- Unmap insert mode C-w (deletes a word back)
-vim.api.nvim_set_keymap('i', '<C-w>', '', { noremap = true, silent = true })
 
 
 -- Unmap Shift-L and Shift-H for previous/next buffer
@@ -189,3 +187,8 @@ end, { desc = "Previous Trouble item if Trouble is open" })
 
 -- Fix for Telescope's race condition with default C-F
 map("n", "<C-F>", LazyVim.pick("files"), { noremap = true, silent = false })
+
+-- TODO: this wont work unless I use custom kb binds  delete last word with Backspace (C-BS == C-H)
+--map("i", "<C-H>", "<C-w>", { noremap = true, silent = true })
+-- C-w deletes a word
+map("i", "<C-w>", "<Nop>", { noremap = true, silent = true })

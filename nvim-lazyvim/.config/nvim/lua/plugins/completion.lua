@@ -8,8 +8,6 @@ return {
   {
     "saghen/blink.cmp",
     opts = {
-      -- FIX: temporary fix for https://github.com/Saghen/blink.cmp/issues/1727
-      fuzzy = { implementation = "lua" },
       -- Disable for some filetypes
       enabled = function()
         return not vim.tbl_contains({ "DressingInput" }, vim.bo.filetype)
@@ -29,7 +27,6 @@ return {
         },
       },
       sources = {
-        -- https://github.com/Saghen/blink.cmp/blob/00ad008cbea4d0d2b5880e7c7386caa9fc4e5e2b/lua/blink/cmp/config/sources.lua#L60
         providers = {
           lsp = {
             transform_items = function(_, items)
