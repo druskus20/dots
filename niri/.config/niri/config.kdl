@@ -2,10 +2,11 @@ input {
     keyboard { repeat-delay 250
         repeat-rate 45
         xkb {
-          layout "es"
+            layout "es,us"
             variant "nodeadkeys"
             options "caps:escape,compose:prsc"
         }
+
     }
 touchpad {
         // off
@@ -289,7 +290,7 @@ window-rule {
 
 
 window-rule {
-    match title="idkwhat"
+    match title="ritual"
     open-on-output "DP-2"
     open-floating true
 }
@@ -500,4 +501,5 @@ binds {
     Win+O { toggle-overview; }
     Win+Escape { toggle-overview; }
 
+    F12      { spawn "~/.config/niri/switch-kb-layout.sh"; }
 }
