@@ -2,7 +2,7 @@ input {
     keyboard { repeat-delay 250
         repeat-rate 45
         xkb {
-            layout "es,us"
+            layout "es"
             variant "nodeadkeys"
             options "caps:escape,compose:prsc"
         }
