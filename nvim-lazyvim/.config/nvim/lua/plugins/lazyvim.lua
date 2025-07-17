@@ -48,5 +48,35 @@ return {
         enabled = false,
       },
     }
+  },
+  {
+    "snacks.nvim",
+    opts = {
+      zen = {
+        toggles = {
+          dim = false,
+          git_signs = false,
+          mini_diff_signs = false,
+        }
+      },
+      styles = {
+        zen = {
+          enter = true,
+          fixbuf = false,
+          minimal = false,
+          width = 160,
+          height = 0,
+          backdrop = { transparent = false, blend = 20 },
+          keys = { q = false },
+          zindex = 40,
+          wo = {
+            winhighlight = "NormalFloat:Normal",
+          },
+          w = {
+            snacks_main = true,
+          },
+        }
+      },
+    }
   }
 }

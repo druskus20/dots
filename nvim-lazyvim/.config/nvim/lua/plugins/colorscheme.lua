@@ -237,6 +237,8 @@ return {
 
             -- Blink
             BlinkCmpMenu = { bg = colors.mantle },
+            BlinkCmpMenuSelection = { bg = U.darken(colors.mantle, 0.25, colors.text) },
+
 
             ["@error"] = { fg = U.brighten(colors.text, 0.75), style = { "underline" } },
             LualineInnactiveBufferFix = { fg = colors.subtext1, bg = colors.surface2 },
@@ -340,6 +342,7 @@ return {
             ScrollbarGitDelete = { fg = colors.red },
 
             BlinkCmpMenu = { bg = colors.mantle },
+            BlinkCmpMenuSelection = { bg = U.darken(colors.mantle, 0.10, colors.crust) },
 
             ["@error"] = { fg = U.darken(colors.text, 0.5), style = { "underline" } },
 
