@@ -248,6 +248,12 @@ window-rule {
     }
 }
 
+window-rule {
+   match title=r#"Oculus"#
+
+    open-floating true
+}
+
 //window-rule {
 //   match app-id=r#"Tracy"#
 //   match app-id=r#"tracy"#
