@@ -83,4 +83,6 @@ opt.splitkeep = "screen"           -- Keep view stable when splitting
 opt.statuscolumn = ""              -- Customize status column
 opt.clipboard = ""                 -- Do not use system clipboard
 
+opt.virtualedit = "all"            -- Move on empty space
+
 vim.g.lazyvim_blink_main = true
