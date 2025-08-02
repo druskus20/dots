@@ -172,4 +172,3 @@ load-prompt
 
 export PATH=$PATH:/home/drusk/.spicetify
 
-# pnpm end

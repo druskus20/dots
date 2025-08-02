@@ -240,7 +240,8 @@ return {
             BlinkCmpMenuSelection = { bg = U.darken(colors.mantle, 0.25, colors.text) },
 
 
-            ["@error"] = { fg = U.brighten(colors.text, 0.75), style = { "underline" } },
+            -- ["@error"] = { fg = U.brighten(colors.text, 0.75), style = { "underline" } },
+            ["@error"] = { bg = U.darken(colors.red, 0.4, colors.base), fg = U.brighten(colors.text, 0.75), style = { "underline" }, },
             LualineInnactiveBufferFix = { fg = colors.subtext1, bg = colors.surface2 },
           }
         end,
@@ -344,7 +345,8 @@ return {
             BlinkCmpMenu = { bg = colors.mantle },
             BlinkCmpMenuSelection = { bg = U.darken(colors.mantle, 0.10, colors.crust) },
 
-            ["@error"] = { fg = U.darken(colors.text, 0.5), style = { "underline" } },
+            --["@error"] = { fg = U.darken(colors.text, 0.5), style = { "underline" } },
+            ["@error"] = { bg = U.darken(colors.red, 0.2, colors.base), fg = U.darken(colors.text, 0.75), style = { "underline" }, },
 
             GitSignsAdd = { fg = colors.greener },
             PmenuSel = { bg = U.darken(colors.surface1, 0.55, colors.base) },
