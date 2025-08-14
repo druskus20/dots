@@ -149,7 +149,7 @@ function modules() {
 # Should go last 
 # no "emulate -L zsh" - p10k does not like it
 function load-prompt() {
-  source "$ZDOTDIR"/plugins/powerlevel10k/powerlevel10k.zsh-theme
+  source "$ZDOTDIR"/plugins/powerlevel10k.git/powerlevel10k.zsh-theme
   # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
   [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 }
