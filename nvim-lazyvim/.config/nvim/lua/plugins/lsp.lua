@@ -180,24 +180,35 @@ return {
       -- NOTE: some mappings are wrapped in "function() ... end" so that they
       -- are correctly overwritten by noice
       -- stylua: ignore
+      local builtin = require("telescope.builtin")
+
       local custom_keymaps = {
-        { "K",          function() vim.lsp.buf.signature_help() end, mode = "n",                     desc = "Signature Help", has = "signatureHelp" },
-        { "<leader>mh", function() vim.lsp.buf.hover() end,          desc = "Hover" },
-        { "H",          function() vim.lsp.buf.hover() end,          desc = "Hover" },
-        { "<leader>ms", function() vim.lsp.buf.signature_help() end, desc = "Signature Help",        has = "signatureHelp" },
-        { "<leader>md", vim.lsp.buf.definition,                      desc = "Goto Definition",       has = "definition" },
-        { "<leader>mi", vim.lsp.buf.implementation,                  desc = "Goto Implementation" },
-        { "<leader>my", vim.lsp.buf.type_definition,                 desc = "Goto T[y]pe Definition" },
-        { "<leader>mD", vim.lsp.buf.declaration,                     desc = "Goto Declaration" },
-        { "gd",         vim.lsp.buf.definition,                      desc = "Goto Definition",       has = "definition" },
-        { "gi",         vim.lsp.buf.implementation,                  desc = "Goto Implementation" }, -- overwrites "go to last insert"
-        { "gy",         vim.lsp.buf.type_definition,                 desc = "Goto T[y]pe Definition" },
-        { "gD",         vim.lsp.buf.declaration,                     desc = "Goto Declaration" },
-        { "<leader>md", vim.diagnostic.open_float,                   desc = "Line Diagnostics" },
-        { "<leader>ma", vim.lsp.buf.code_action,                     desc = "Code Action",           has = "codeAction",      mode = { "n", "v" } },
-        { "<leader>mA", LazyVim.lsp.action.source,                   desc = "Source Action",         has = "codeAction" },
-        { "<leader>ml", vim.lsp.codelens.run,                        desc = "Run Codelens",          mode = { "n", "v" },     has = "codeLens" },
-        { "<leader>mr", vim.lsp.buf.rename,                          desc = "Rename",                has = "rename" },
+        { "K",          function() vim.lsp.buf.signature_help() end,       mode = "n",                     desc = "Signature Help", has = "signatureHelp" },
+        { "<leader>mh", function() vim.lsp.buf.hover() end,                desc = "Hover" },
+        { "H",          function() vim.lsp.buf.hover() end,                desc = "Hover" },
+        { "<leader>ms", function() vim.lsp.buf.signature_help() end,       desc = "Signature Help",        has = "signatureHelp" },
+
+        -- Goto actions via Telescope
+        { "<leader>mf", builtin.lsp_definitions,                           desc = "Goto De[f]inition",     has = "definition" },
+        { "<leader>md", vim.diagnostic.open_float,                         desc = "Line Diagnostics" },
+        { "gd",         builtin.lsp_definitions,                           desc = "Goto Definition",       has = "definition" },
+        { "<leader>mi", builtin.lsp_implementations,                       desc = "Goto Implementation" },
+        { "gi",         builtin.lsp_implementations,                       desc = "Goto Implementation" },
+        { "<leader>my", builtin.lsp_type_definitions,                      desc = "Goto T[y]pe Definition" },
+        { "gy",         builtin.lsp_type_definitions,                      desc = "Goto T[y]pe Definition" },
+        { "<leader>mD", vim.lsp.buf.declaration,                           desc = "Goto Declaration" },
+        { "gD",         vim.lsp.buf.declaration,                           desc = "Goto Declaration" },
+        ---- Diagnostics (Telescope list instead of just floating window)
+        { "<leader>me", builtin.diagnostics,                               desc = "Workspace Diagnostics" },
+        { "<leader>mE", function() builtin.diagnostics({ bufnr = 0 }) end, desc = "Buffer Diagnostics" },
+
+        ---- Code actions via Telescope
+        { "<leader>ma", vim.lsp.buf.code_action,                           desc = "Code Action",           has = "codeAction",      mode = { "n", "v" } },
+        { "<leader>mA", LazyVim.lsp.action.source,                         desc = "Source Action",         has = "codeAction" },
+
+        { "<leader>ml", vim.lsp.codelens.run,                              desc = "Run Codelens",          mode = { "n", "v" },     has = "codeLens" },
+        { "<leader>mr", vim.lsp.buf.rename,                                desc = "Rename",                has = "rename" },
+
         {
           "]]",
           function() Snacks.words.jump(vim.v.count1) end,
@@ -218,9 +229,8 @@ return {
                 Snacks.words.is_enabled()
           end
         },
-        { "<leader>mf",     function() Snacks.rename.rename_file() end, desc = "Rename File",            mode = { "n" }, has = { "workspace/didRenameFiles", "workspace/willRenameFiles" } },
-        { "<leader>mR",     vim.lsp.buf.references,                     desc = "References",             nowait = true },
-        { "<leader>m<C-r>", LazyVim.pick("lsp_references"),             desc = "References (Telescope)", nowait = true },
+        { "<leader>mF", function() Snacks.rename.rename_file() end, desc = "Rename File", mode = { "n" },    has = { "workspace/didRenameFiles", "workspace/willRenameFiles" } },
+        { "<leader>mR", builtin.lsp_references,                     desc = "References",  has = "references" },
       }
       -- BUG: Does not work
       --{

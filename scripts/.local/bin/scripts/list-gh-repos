@@ -1,0 +1,98 @@
+#!/bin/bash
+
+# Script to list all your GitHub repositories
+# Usage: ./list_repos.sh [options]
+# Options:
+#   --public     Show only public repos
+#   --private    Show only private repos
+#   --archived   Include archived repos
+#   --format     Output format: table (default), json, csv
+
+# Default values
+VISIBILITY=""
+INCLUDE_ARCHIVED=""
+FORMAT="table"
+
+# Parse command line arguments
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --public)
+            VISIBILITY="--visibility public"
+            shift
+            ;;
+        --private)
+            VISIBILITY="--visibility private"
+            shift
+            ;;
+        --archived)
+            INCLUDE_ARCHIVED="--archived"
+            shift
+            ;;
+        --format)
+            FORMAT="$2"
+            shift 2
+            ;;
+        -h|--help)
+            echo "Usage: $0 [options]"
+            echo "Options:"
+            echo "  --public     Show only public repos"
+            echo "  --private    Show only private repos"
+            echo "  --archived   Include archived repos"
+            echo "  --format     Output format: table, json, csv"
+            exit 0
+            ;;
+        *)
+            echo "Unknown option: $1"
+            exit 1
+            ;;
+    esac
+done
+
+# Check if gh CLI is installed
+if ! command -v gh &> /dev/null; then
+    echo "Error: GitHub CLI (gh) is not installed."
+    echo "Install it from: https://cli.github.com/"
+    exit 1
+fi
+
+# Check if user is authenticated
+if ! gh auth status &> /dev/null; then
+    echo "Error: Not authenticated with GitHub CLI."
+    echo "Run 'gh auth login' to authenticate."
+    exit 1
+fi
+
+echo "Fetching your repositories..."
+
+case $FORMAT in
+    "json")
+        gh repo list -L 500 --json name,visibility,isPrivate,isFork,isArchived,url,description,createdAt,updatedAt,pushedAt,stargazerCount,forkCount $VISIBILITY $INCLUDE_ARCHIVED
+        ;;
+    "csv")
+        echo "Name,Visibility,Private,Fork,Archived,Stars,Forks,Description,URL"
+        gh repo list -L 500 --json name,visibility,isPrivate,isFork,isArchived,url,description,stargazerCount,forkCount $VISIBILITY $INCLUDE_ARCHIVED | \
+        jq -r '.[] | [.name, .visibility, .isPrivate, .isFork, .isArchived, .stargazerCount, .forkCount, .description, .url] | @csv'
+        ;;
+    "table"|*)
+        gh repo list -L 500 $VISIBILITY $INCLUDE_ARCHIVED
+        ;;
+esac
+
+# Save detailed repo information to files for use with the privacy script
+echo ""
+echo "Saving repository data to files..."
+
+# Save full JSON data with all properties
+gh repo list -L 500 --json name,visibility,isPrivate,isFork,isArchived,url,description,createdAt,updatedAt,pushedAt,stargazerCount,forkCount $VISIBILITY $INCLUDE_ARCHIVED > repos_full_data.json
+
+# Save just repo names for simple processing
+gh repo list -L 500 --json name $VISIBILITY $INCLUDE_ARCHIVED | jq -r '.[].name' > repo_list.txt
+
+# Save detailed CSV format for easy viewing/editing
+echo "Name,Visibility,Private,Fork,Archived,Stars,Forks,Description,URL" > repos_detailed.csv
+jq -r '.[] | [.name, .visibility, .isPrivate, .isFork, .isArchived, .stargazerCount, .forkCount, .description, .url] | @csv' repos_full_data.json >> repos_detailed.csv
+
+echo "Repository data saved to:"
+echo "  - repos_full_data.json (complete data)"
+echo "  - repo_list.txt (names only)"
+echo "  - repos_detailed.csv (detailed spreadsheet format)"

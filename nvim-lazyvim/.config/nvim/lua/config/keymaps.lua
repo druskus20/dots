@@ -188,6 +188,17 @@ end, { desc = "Previous Trouble item if Trouble is open" })
 -- Fix for Telescope's race condition with default C-F
 map("n", "<C-F>", LazyVim.pick("files"), { noremap = true, silent = false })
 
+-- Function to trigger diagnostics refresh
+local function refresh_diagnostics()
+  vim.diagnostic.setloclist({ open = false }) -- Update location list with latest diagnostics
+  vim.diagnostic.show()                       -- Refresh signs and virtual text
+  print("Diagnostics refreshed")
+end
+
+
+-- Map Enter key in insert mode to insert a newline AND refresh diagnostics
+map('n', '<leader>r', refresh_diagnostics, { desc = 'Refresh diagnostics' })
+
 -- TODO: this wont work unless I use custom kb binds  delete last word with Backspace (C-BS == C-H)
 --map("i", "<C-H>", "<C-w>", { noremap = true, silent = true })
 -- C-w deletes a word

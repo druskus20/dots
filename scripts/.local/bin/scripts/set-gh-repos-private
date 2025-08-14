@@ -1,0 +1,71 @@
+#!/bin/bash
+
+# Script to set GitHub repositories to private
+# Criteria: Not forks, 0 stars, currently public
+
+set -e
+
+# Check if JSON file is provided
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <repos.json>"
+    echo "Please provide the JSON file containing repository data"
+    exit 1
+fi
+
+json_file="$1"
+
+if [ ! -f "$json_file" ]; then
+    echo "Error: File '$json_file' not found"
+    exit 1
+fi
+
+echo "Reading repositories from $json_file..."
+
+# Read repositories from JSON file
+repos=$(cat "$json_file")
+
+# Filter repositories that meet criteria: not forks, 0 stars, public
+# Extract both name and URL to get the full repo path
+candidates=$(echo "$repos" | jq -r '.[] | select(.isFork == false and .stargazerCount == 0 and .visibility == "PUBLIC") | .url')
+
+if [ -z "$candidates" ]; then
+    echo "No repositories match the criteria (non-fork, 0 stars, public)"
+    exit 0
+fi
+
+# Extract repo names for display
+repo_names=$(echo "$repos" | jq -r '.[] | select(.isFork == false and .stargazerCount == 0 and .visibility == "PUBLIC") | .name')
+
+echo "Found repositories matching criteria (non-fork, 0 stars, public):"
+echo "$repo_names"
+echo
+
+# Ask for confirmation
+read -p "Do you want to set these repositories to private? (y/N): " confirm
+
+if [[ $confirm != [yY] ]]; then
+    echo "Operation cancelled"
+    exit 0
+fi
+
+echo
+echo "Setting repositories to private..."
+
+# Process each repository URL
+echo "$candidates" | while IFS= read -r repo_url; do
+    if [ -n "$repo_url" ]; then
+        # Extract owner/repo from GitHub URL
+        repo_path=$(echo "$repo_url" | sed 's|https://github.com/||')
+        repo_name=$(basename "$repo_path")
+        
+        echo "Setting $repo_name to private..."
+        if gh repo edit "$repo_path" --visibility private; then
+            echo "✓ $repo_name is now private"
+        else
+            echo "✗ Failed to update $repo_name"
+        fi
+    fi
+done
+
+echo
+echo "Done!"
