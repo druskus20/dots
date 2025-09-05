@@ -283,11 +283,14 @@ window-rule {
   }
 }
 
+// Block out certain windows from screen capture.
 window-rule {
     match app-id=r#"1Password"#
+    match app-id=r#"[bB]itwarden"#
     match title=r#"[gG]mail"#
     match app-id=r#".*[mM]ako.*"#
     match title=r#".*[Ww]hats[aA]pp.*$"#
+
     // opacity 0.5
 
     block-out-from "screen-capture"
