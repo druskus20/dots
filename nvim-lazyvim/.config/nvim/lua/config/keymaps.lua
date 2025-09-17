@@ -203,3 +203,6 @@ map('n', '<leader>r', refresh_diagnostics, { desc = 'Refresh diagnostics' })
 --map("i", "<C-H>", "<C-w>", { noremap = true, silent = true })
 -- C-w deletes a word
 map("i", "<C-w>", "<Nop>", { noremap = true, silent = true })
+
+-- Terminal mode ESC to exit to normal mode
+map('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })

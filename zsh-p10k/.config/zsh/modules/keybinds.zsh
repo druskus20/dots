@@ -66,6 +66,8 @@ bindkey '^R' history-incremental-search-backward
 
 bindkey "^E"      end-of-line             # C-E
 bindkey "^B"      beginning-of-line       # C-B
+bindkey "^K"      up-line-or-history      # C-K (up arrow equivalent)
+bindkey "^J"      down-line-or-history    # C-J (down arrow equivalent)
 
 # / to search through history
 bindkey -M vicmd '^O' fzf-history
