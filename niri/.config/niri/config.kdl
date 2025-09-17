@@ -83,7 +83,7 @@ layout {
         // The default preset widths are 1/3, 1/2 and 2/3 of the output.
         proportion 0.33333
         proportion 0.66666
-        proportion 0.98
+        proportion 1.0
     }
 
     preset-window-heights { 
@@ -309,6 +309,19 @@ window-rule {
     open-on-output "DP-2"
     open-floating true
 }
+window-rule {
+    match title="[lL]judspår"
+    open-on-output "DP-2"
+    open-floating true
+}
+ 
+
+
+window-rule {
+  match app-id="xdg-desktop-portal-gnome"
+  open-floating true 
+}
+
 
 
 
