@@ -17,7 +17,7 @@ return {
   { "lucas-reineke/indent-blankline.nvim", enabled = false },
   --{ "folke/flash.nvim",                    enabled = true, }
   { "folke/todo-comments.nvim",            enabled = false },
-  { "nvim-neo-tree/neo-tree.nvim",         enabled = false },
+  { "nvim-neo-tree/neo-tree.nvim",         enabled = true },
   { "folke/persistence.nvim",              enabled = false },
   { "rafamadriz/friendly-snippets",        enabled = false },
   { "garymjr/nvim-snippets",               enabled = false },

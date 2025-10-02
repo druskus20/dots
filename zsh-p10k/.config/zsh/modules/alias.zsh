@@ -3,9 +3,9 @@ for command in mount umount sv apt pacman updatedb su shutdown poweroff reboot d
 	alias $command="sudo $command"
 done; unset command
 
-alias ls="eza"
-alias la="eza -A"
-alias lh="eza -d -A .?*" # Shows only hidden files (only on current directory)
+alias ls="eza --group-directories-first"
+alias la="eza --group-directories-first -A"
+alias lh="eza --group-directories-first -d -A .?*" # Shows only hidden files (only on current directory)
 alias rm="rm -i"
 alias rm='echo "Fuck you"' 
 alias "git reset --hard"='echo "Fuck you"' 
@@ -24,7 +24,7 @@ alias sudo='sudo '
 alias visudo="EDITOR=nvim visudo"
 
 # Colored utilities 
-alias ls='eza --color=auto'
+alias ls='eza --group-directories-first --color=auto'
 alias grep='grep --colour=auto' alias egrep='egrep --colour=auto'
 alias fgrep='fgrep --colour=auto'
 alias diff="colordiff"
