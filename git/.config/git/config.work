@@ -1,0 +1,6 @@
+[user]
+    email = pedro@elk.audio
+    name = PedroBurgos
+[core]
+    sshCommand = ssh -i ~/.ssh/bitbucket
+
