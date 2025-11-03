@@ -3,9 +3,9 @@ for command in mount umount sv apt pacman updatedb su shutdown poweroff reboot d
 	alias $command="sudo $command"
 done; unset command
 
-alias ls="eza"
-alias la="eza -A"
-alias lh="eza -d -A .?*" # Shows only hidden files (only on current directory)
+alias ls="eza --group-directories-first"
+alias la="eza --group-directories-first -A"
+alias lh="eza --group-directories-first -d -A .?*" # Shows only hidden files (only on current directory)
 alias rm="rm -i"
 alias rm='echo "Fuck you"' 
 alias "git reset --hard"='echo "Fuck you"' 
@@ -24,7 +24,7 @@ alias sudo='sudo '
 alias visudo="EDITOR=nvim visudo"
 
 # Colored utilities 
-alias ls='eza --color=auto'
+alias ls='eza --group-directories-first --color=auto'
 alias grep='grep --colour=auto' alias egrep='egrep --colour=auto'
 alias fgrep='fgrep --colour=auto'
 alias diff="colordiff"
@@ -48,26 +48,22 @@ alias code="code --enable-features=UseOzonePlatform --ozone-platform=wayland"
 alias vscode="code --enable-features=UseOzonePlatform --ozone-platform=wayland"
 
 # Shorthands
-alias k="kubectl"
+alias kubectl="kubecolor"
+alias k="kubecolor"
 alias g="git"
-alias ga="git add"
-alias gA="git add -A"
+alias ga="git diff && git add"
+alias gaa="git diff && git add -A"
 alias gc="git commit"
 alias gcm="git commit -m"
 alias gca="git commit -a"
 alias gp="git push"
 alias gw="git switch"
 alias GG="git add -A && git commit && git push"
+alias cr="cargo run"
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
-# Swallow some applications
-alias devour="devour"
-#alias google-chrome-stable="devour google-chrome-stable"
-#alias chrome="devour google-chrome-stable"
-#alias sxiv="devour sxiv"
-#alias zathura="devour zathura"
-#alias thunar="devour thunar"
-#alias pavucontrol="devour pavucontrol"
 
+# Virtualbox
 alias vblist="vboxmanage list runningvms"
 alias vbstop="vboxmanage controlvm kali poweroff"
 alias vbstart="vboxmanage startvm kali --type headless"
@@ -79,6 +75,7 @@ alias tf=terraform
 alias tfa="terraform apply"
 
 alias docker=podman
+alias docker-compose=podman-compose
 
 alias ".."="cd .."
 alias "..."="cd ../.."
@@ -87,18 +84,12 @@ alias "....."="cd ../../../.."
 alias "......"="cd ../../../../.."
 alias "......."="cd ../../../../../.."
 alias "........"="cd ../../../../../../.."
-alias "cd .."="cd .."
-alias "cd ..."="cd ../.."
-alias "cd ...."="cd ../../.."
-alias "cd ....."="cd ../../../.."
-alias "cd ......"="cd ../../../../.."
-alias "cd ......."="cd ../../../../../.."
-alias "cd ........"="cd ../../../../../../.."
-
-alias npm="pnpm"
 
 alias "~"="cd ~"
 
+alias fd=fdfind
+
+alias npm="pnpm"
 
 #alias 'exit'="[ -z "$TMUX" ] && exit || tmux detach -P"
 #alias ':q'="[ -z "$TMUX" ] && exit || tmux detach -P"
