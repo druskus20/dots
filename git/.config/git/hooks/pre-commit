@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+
+confirm_commit() {
+  echo "$1"
+  printf "Do you still want to commit these files? (yes/no): "
+  read -r answer < /dev/tty
+  case "$answer" in
+    y|Y|yes|YES|Yes)
+      echo "✅ Proceeding with commit..."
+      ;;
+    *)
+      echo "❌ Commit aborted."
+      exit 1
+      ;;
+  esac
+}
+
+check_blocked_extensions() {
+  BLOCKED_EXTENSIONS="
+  png jpg jpeg gif bmp tiff webp heic svg
+  ai eps psd doc docx xls xlsx ods ppt pptx pdf rtf
+  zip tar gz bz2 xz 7z rar iso
+  exe dll msi dmg pkg bin so o a out wasm
+  mp3 wav flac ogg m4a mp4 mov avi mkv flv wmv
+  sqlite db mdb accdb pkl feather parquet
+  ttf otf woff woff2 eot
+  log bak tmp swp DS_Store Thumbs.db
+  "
+
+  EXT_REGEX=$(echo "$BLOCKED_EXTENSIONS" | tr ' ' '|' | tr '\n' '|' | sed 's/|$//')
+  local staged_files
+  staged_files=$(git diff --cached --name-only | grep -E "\.($EXT_REGEX)$")
+
+  if [ -n "$staged_files" ]; then
+    echo "⚠️  Blocked file types detected:"
+    echo "$staged_files"
+    confirm_commit "These files match blocked extensions: $BLOCKED_EXTENSIONS"
+  fi
+}
+
+check_binary_files() {
+  local binary_files
+  binary_files=$(git diff --cached --numstat | grep "^-\s\+-" | cut -f3)
+
+  if [ -n "$binary_files" ]; then
+    echo "⚠️  Binary files detected in staged changes:"
+    echo "$binary_files"
+    confirm_commit "These files appear to be binary."
+  fi
+}
+
+run_gitleaks() {
+  if ! git diff --cached --quiet; then
+    if ! gitleaks git -v --staged; then
+      echo "❌ Gitleaks detected leaks. Commit aborted."
+      exit 1
+    fi
+  fi
+}
+
+check_blocked_extensions
+check_binary_files
+run_gitleaks
+
