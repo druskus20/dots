@@ -44,16 +44,51 @@ function completions() {
   # zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'
 
   # Competions
-  autoload bashcompinit && bashcompinit
-  complete -C '/usr/local/bin/aws_completer' aws
-  source <(just --completions zsh)
-  source <(helm completion zsh)
-  source <(kubectl completion zsh)
-  compdef kubecolor=kubectl
-  source <(gh completion -s zsh)
-  source <(rustup completions zsh rustup)
-  source <(podman completion zsh)
-  source <(asdf completion zsh)
+  autoload -Uz bashcompinit && bashcompinit
+
+  # AWS CLI
+  if command -v aws_completer >/dev/null 2>&1; then
+    complete -C "$(command -v aws_completer)" aws
+  fi
+
+  # just
+  if command -v just >/dev/null 2>&1; then
+    source <(just --completions zsh)
+  fi
+
+  # helm
+  if command -v helm >/dev/null 2>&1; then
+    source <(helm completion zsh)
+  fi
+
+  # kubectl / kubecolor
+  if command -v kubectl >/dev/null 2>&1; then
+    source <(kubectl completion zsh)
+  fi
+  if command -v kubecolor >/dev/null 2>&1; then
+    compdef kubecolor=kubectl
+  fi
+
+  # gh (GitHub CLI)
+  if command -v gh >/dev/null 2>&1; then
+    source <(gh completion -s zsh)
+  fi
+
+  # rustup
+  if command -v rustup >/dev/null 2>&1; then
+    source <(rustup completions zsh rustup)
+  fi
+
+  # podman
+  if command -v podman >/dev/null 2>&1; then
+    source <(podman completion zsh)
+  fi
+
+  # asdf
+  if command -v asdf >/dev/null 2>&1; then
+    source <(asdf completion zsh)
+  fi
+
 
   # TODO: find a way to source the "non compdef" completions without breaking fast start
   # (adding them to fpath - breaks fast start)
