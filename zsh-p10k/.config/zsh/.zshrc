@@ -53,6 +53,7 @@ function completions() {
   source <(gh completion -s zsh)
   source <(rustup completions zsh rustup)
   source <(podman completion zsh)
+  source <(asdf completion zsh)
 
   # TODO: find a way to source the "non compdef" completions without breaking fast start
   # (adding them to fpath - breaks fast start)
@@ -180,3 +181,5 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+. "$HOME/.local/share/../bin/env"

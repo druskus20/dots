@@ -99,6 +99,12 @@ export PATH="$GOPATH"/bin:"$PATH"
 export FLYCTL_INSTALL="/home/drusk/.local/share/fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
+# asdf
+export PATH="$XDG_DATA_HOME"/asdf/shims:"$PATH"
+export ASDF_DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}"/asdf
+
+
+
 
 # Fails with LightDM
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
