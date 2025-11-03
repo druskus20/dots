@@ -7,6 +7,7 @@ export BROWSER="/usr/bin/google-chrome"
 export MONITOR="HDMI-0"
 export TERMINAL="/bin/alacritty"
 export TERM=xterm-color
+export DISPLAY=:0
 
 # idk if it works
 export XCURSOR_SIZE=16
@@ -26,7 +27,7 @@ export PATH="$HOME"/.local/bin/elk:"$HOME"/.local/bin:"$HOME"/.local/bin/scripts
 export PATH="$HOME"/.local/bin:"$HOME"/.local/share/npm/bin:"$HOME"/.local/share/cargo/bin:"$PATH"
 
 # Include all subdirectories inside ~/.local/bin
-export PATH=$(find "$HOME/.local/bin" -type d -exec echo {}/bin \; | tr '\n' ':' | sed 's/:$//'):$PATH
+#export PATH=$(find "$HOME/.local/bin" -type d -exec echo {}/bin \; | tr '\n' ':' | sed 's/:$//'):$PATH
 
 # Force XDG base directories
 export XDG_CONFIG_HOME="$HOME/.config" export XDG_CACHE_HOME="$HOME/.cache"
@@ -82,12 +83,27 @@ export XINITRC="$XDG_CONFIG_HOME"/x11/xinitrc
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
 export ELM_HOME="$XDG_CONFIG_HOME"/elm
 
+
+
+# Not super tested
+export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME"/aws/credentials
+export AWS_CONFIG_FILE="$XDG_CONFIG_HOME"/aws/config
+export DEVPOD_CONFIG="$XDG_CONFIG_HOME"/devpod/config
+export MINIKUBE_HOME="$XDG_DATA_HOME"/minikube
+
+
 export GOPATH="$XDG_DATA_HOME"/go 
 export GOMODCACHE="$XDG_CACHE_HOME"/go/mod
 export PATH="$GOPATH"/bin:"$PATH"
 
 export FLYCTL_INSTALL="/home/drusk/.local/share/fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
+# asdf
+export PATH="$XDG_DATA_HOME"/asdf/shims:"$PATH"
+export ASDF_DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}"/asdf
+
+
 
 
 # Fails with LightDM
@@ -113,12 +129,6 @@ fi
 
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 
-
-export PNPM_HOME="/home/drusk/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
 
 # Nodejs
 export NVM_DIR="$HOME/.config/nvm"

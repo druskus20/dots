@@ -6,7 +6,7 @@ plugins=(
 	 'https://github.com/zdharma/fast-syntax-highlighting'
 	 'https://github.com/zsh-users/zsh-history-substring-search'
 	 'https://github.com/MichaelAquilina/zsh-you-should-use'
-	 'https://github.com/romkatv/gitstatus'
+	 'https://github.com/romkatv/powerlevel10k.git'
 )
 
 for plugin in $plugins ; do

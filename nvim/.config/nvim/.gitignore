@@ -1,5 +1,8 @@
-lua
-plugin
-spell
-undo
-autoload
+tt.*
+.tests
+doc/tags
+debug
+.repro
+foo.*
+*.log
+data
