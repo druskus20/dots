@@ -2,10 +2,10 @@
 # Should go first
 
 # Start tmux (only if not already in a tmux session)
+emulate -L zsh
 function safe-start-tmux() {
-  emulate -L zsh
   # Needs to go before tmux
-  export TERM=xterm-256color
+  #export TERM=xterm-256color
   case $- in *i*)
     if [ -z "$TMUX" ]; then  
       # Custom tmux stuff - buffer one tmux session ahead to make startup instant
@@ -43,8 +43,8 @@ function completions() {
   # Autocomplete from the middle of a word 
   # zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'
 
-  # Competions
   autoload -Uz bashcompinit && bashcompinit
+  # Competions
 
   # AWS CLI
   if command -v aws_completer >/dev/null 2>&1; then
@@ -192,8 +192,11 @@ function load-prompt() {
 
 # -------------------------------------------------
 
-safe-start-tmux
-instant-prompt
+export TERM=xterm-256color
+if [[ $TMUX_ENABLED == "true" ]]; then
+  safe-start-tmux
+  instant-prompt
+fi
 completions
 history-settings
 zsh-options
@@ -209,3 +212,7 @@ load-prompt
 export PATH=$PATH:/home/drusk/.spicetify
 
 
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
