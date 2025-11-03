@@ -5,14 +5,14 @@
 
 device="/dev/video4"
 
-exposure_auto=false 
+exposure_auto=true 
 # if exposure_auto is true, the camera will automatically adjust the exposure time
 exposure_time_absolute=500 # default: 512 (156 to 500)
 
-brightness=2  # default: 0 (-10 to 10)
+brightness=0  # default: 0 (-10 to 10)
 contrast=12    # default: 15 (1 to 32)
 saturation=12  # default: 10 (0 to 20)
-gamma=150      # default: 192 (100 to 200)
+gamma=200      # default: 192 (100 to 200)
 sharpness=5    # default: 7 (0 to 10)
 
 set_controls() {

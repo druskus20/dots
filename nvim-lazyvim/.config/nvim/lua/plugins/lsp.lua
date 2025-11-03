@@ -172,6 +172,29 @@ return {
             underline = false,
           })
 
+      -- Configure LSP servers with long line formatting
+      --opts.servers = opts.servers or {}
+      --opts.servers.svelte = {
+      --  settings = {
+      --    svelte = {
+      --      plugin = {
+      --        html = {
+      --          format = {
+      --            printWidth = 150,
+      --            wrapAttributes = "auto",
+      --          }
+      --        },
+      --        svelte = {
+      --          format = {
+      --            printWidth = 150
+      --          }
+      --        }
+      --      }
+      --    }
+      --  }
+      --}
+
+
       -- Disable all the default LazyVim keymaps
       for _, keymap in ipairs(keymaps) do
         keymap[2] = false
