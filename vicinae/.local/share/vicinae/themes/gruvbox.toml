@@ -1,0 +1,114 @@
+[meta]
+name = "Gruvbox Light"
+description = "Gruvbox Light theme for Vicinae using custom Gruvbox colors"
+variant = "light"
+inherits = "vicinae-light"
+
+# ============================================================================
+# Core Colors
+# ============================================================================
+
+[colors.core]
+accent = "#1a7088"               # $blue
+accent_foreground = "#fbf1c7"    # $base (text on accent)
+background = "#fbf1c7"           # $base
+foreground = "#3c3836"           # $text
+secondary_background = "#ebdbb2" # $surface1
+border = "#d5c4a1"               # $surface2
+
+# ============================================================================
+# Window-Specific Colors
+# ============================================================================
+
+[colors.main_window]
+border = "#d5c4a1"
+
+[colors.settings_window]
+border = "#d5c4a1"
+
+# ============================================================================
+# Accent Colors
+# ============================================================================
+
+[colors.accents]
+blue = "#1a7088"
+green = "#7c7b20"
+magenta = "#8f3f71"
+orange = "#d65d0e"
+red = "#b83229"
+yellow = "#b57e22"
+cyan = "#4a8568"
+purple = "#8f3f71"
+
+# ============================================================================
+# Text Colors
+# ============================================================================
+
+[colors.text]
+default = "#3c3836"                                            # $text
+muted = "#504945"                                              # $subtext1
+danger = "#b83229"                                             # $red
+success = "#7c7b20"                                            # $green
+placeholder = "#928374"                                        # $overlay1
+selection = { background = "#1a7088", foreground = "#fbf1c7" }
+
+[colors.text.links]
+default = "#076678" # $sapphire
+visited = "#8f3f71" # $mauve
+
+# ============================================================================
+# Input Fields
+# ============================================================================
+
+[colors.input]
+border = "#d5c4a1"       # $surface2
+border_focus = "#1a7088" # $blue
+border_error = "#b83229" # $red
+
+# ============================================================================
+# Buttons
+# ============================================================================
+
+[colors.button.primary]
+background = "#ebdbb2"                     # $surface1
+foreground = "#3c3836"                     # $text
+hover = { background = "#d5c4a1" }         # $surface2
+focus = { outline = "colors.core.accent" }
+
+# ============================================================================
+# Lists
+# ============================================================================
+
+[colors.list.item.hover]
+background = "#ebdbb2"
+foreground = "#3c3836"
+
+[colors.list.item.selection]
+background = "#d5c4a1"
+foreground = "#3c3836"
+secondary_background = "#ebdbb2"
+secondary_foreground = "#3c3836"
+
+# ============================================================================
+# Grid Items
+# ============================================================================
+
+[colors.grid.item]
+background = "#ebdbb2"
+hover = { outline = "#504945" }
+selection = { outline = "#1a7088" }
+
+# ============================================================================
+# Scrollbars
+# ============================================================================
+
+[colors.scrollbars]
+background = "#d5c4a1"
+
+# ============================================================================
+# Loading Indicators
+# ============================================================================
+
+[colors.loading]
+bar = "#504945"
+spinner = "#504945"

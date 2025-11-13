@@ -1,0 +1,15 @@
+[Unit]
+Description=Vicinae Server
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/home/drusk/.local/bin/vicinae server
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target
+
