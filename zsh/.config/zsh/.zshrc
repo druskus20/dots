@@ -2,7 +2,6 @@
 # Should go first
 
 # Start tmux (only if not already in a tmux session)
-emulate -L zsh
 function safe-start-tmux() {
   # Needs to go before tmux
   #export TERM=xterm-256color
@@ -127,6 +126,7 @@ function zsh-options() {
 
   setopt IGNORE_EOF               # ignore EOF, do not exit shell with Ctrl-D 
   setopt NOBEEP
+
 }
 
 function plugins() {
@@ -206,8 +206,8 @@ zsh-options
 plugins
 modules
 load-prompt
-#
-#
+p10k finalize
+
 ## More? https://github.com/romkatv/zsh4humans/tree/v5/fn
 ## TODO: teleportation
 ## TODO: compile completions
@@ -220,4 +220,5 @@ load-prompt
 #export NVM_DIR="$HOME/.config/nvm"
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 

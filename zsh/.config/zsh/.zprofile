@@ -129,6 +129,10 @@ fi
 
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 
+# opencode
+if [ -d /home/drusk/.opencode/bin ]; then
+  export PATH=/home/drusk/.opencode/bin:$PATH
+fi
 
 # Nodejs
 export NVM_DIR="$HOME/.config/nvm"
