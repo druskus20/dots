@@ -176,6 +176,19 @@ layer-rule {
         color "#00000030"
     }
 }
+layer-rule {
+  //  eww
+    match namespace="vicinae"
+    match at-startup=true
+    shadow {
+        on
+        softness 10
+        spread 1
+        offset x=0 y=1
+        draw-behind-window true
+        color "#00000030"
+    }
+}
 
 spawn-at-startup "swaybg" "-i" "/home/drusk/img/bg/warm-dunes.jpg" "-m" "fill"
 spawn-at-startup "mako"
@@ -332,7 +345,7 @@ binds {
     Win+T { spawn "foot"; }
     Win+B { spawn "~/.config/niri/start-browser.sh"; }
     //Win+Space { spawn "rofi" "-show" "drun"; }
-    Win+Space { spawn "~/launch.sh"; }
+    Win+Space { spawn "~/.config/niri/launch.sh"; }
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
