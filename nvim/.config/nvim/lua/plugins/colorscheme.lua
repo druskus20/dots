@@ -9,16 +9,16 @@ return {
       }
     },
   },
-  {
-    "zenbones-theme/zenbones.nvim",
-    -- I dont want lush
-    --dependencies = "rktjmp/lush.nvim",
-    priority = 1000,
-    lazy = true,
-    config = function()
-      vim.g.zenbones_compat = 1 -- needed if lush is disabled
-    end
-  },
+  --{
+  --  "zenbones-theme/zenbones.nvim",
+  --  -- I dont want lush
+  --  --dependencies = "rktjmp/lush.nvim",
+  --  priority = 1000,
+  --  lazy = true,
+  --  config = function()
+  --    vim.g.zenbones_compat = 1 -- needed if lush is disabled
+  --  end
+  --},
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -369,6 +369,13 @@ return {
       },
     },
   },
+  --
+  --{
+  --  "catppuccin/nvim",
+  --  dir = "~/code/nvim-catppuccin",
+  --  name = "catppuccin",
+  --  priority = 1000,
+  --},
   {
     "LazyVim/LazyVim",
     opts = {
