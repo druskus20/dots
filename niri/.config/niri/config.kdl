@@ -338,6 +338,35 @@ window-rule {
 
 
 
+recent-windows {
+    // off
+    open-delay-ms 0
+
+    highlight {
+        active-color "#999999ff"
+        urgent-color "#ff9999ff"
+        padding 10
+        corner-radius 5
+    }
+
+    previews {
+        max-height 300
+        max-scale 0.5
+    }
+
+    binds {
+        //Alt+Tab         { next-window; }
+        //Alt+Shift+Tab   { previous-window; }
+        //Alt+grave       { next-window     filter="app-id"; }
+        //Alt+Shift+grave { previous-window filter="app-id"; }
+
+        Mod+Tab         { next-window; }
+        Mod+Shift+Tab   { previous-window; }
+        Mod+grave       { next-window     filter="app-id"; }
+        Mod+Shift+grave { previous-window filter="app-id"; }
+    }
+}
+
 
 binds {
 
