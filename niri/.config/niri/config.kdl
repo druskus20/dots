@@ -36,10 +36,6 @@ touchpad {
     focus-follows-mouse max-scroll-amount="0%"
 }
 
-overview {
-    zoom 0.45 // The default
-
-}
 
 gestures {
     // Increase the trigger area and maximum speed.
@@ -53,8 +49,6 @@ gestures {
 output "HDMI-A-1" {
     mode "2560x1440@59.951"
     position x=1920 y=0
-    background-color "#2a2421"
-    backdrop-color "#3c3836"
 }
 
 
@@ -68,6 +62,17 @@ output "eDP-1" {
     transform "normal"
     position x=3630 y=0
 }
+
+layer-rule {
+    match namespace="backdrop"
+    place-within-backdrop true
+}
+
+overview {
+    zoom 0.45 // The default
+
+}
+
 
 
 layout {
@@ -190,7 +195,12 @@ layer-rule {
     }
 }
 
-spawn-at-startup "swaybg" "-i" "/home/drusk/img/bg/warm-dunes.jpg" "-m" "fill"
+spawn-at-startup "swww-daemon" "-n" "wallpaper"
+spawn-at-startup "swww-daemon" "-n" "backdrop"
+spawn-at-startup "swww" "img" "/home/drusk/img/bg/warm-dunes.jpg" "-n" "wallpaper"
+spawn-at-startup "swww" "img" "/home/drusk/img/bg/warm-dunes-blur.jpg" "-n" "backdrop"
+
+
 spawn-at-startup "mako"
 spawn-at-startup "eww" "open-many" "win0"  "win1" "win2"
 spawn-at-startup "xwayland-satellite" ":0"
