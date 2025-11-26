@@ -263,6 +263,16 @@ return {
       --},
     end,
   },
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      inlay_hints = {
+        enabled = false,
+      },
+    }
+  }
 }
+
+
 
 -- try: https://github.com/Saghen/blink.cmp?tab=readme-ov-file#compared-to-nvim-cmp
