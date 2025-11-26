@@ -78,5 +78,27 @@ return {
         }
       },
     }
+  },
+
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    opts = {
+      default_component_configs = {
+        git_status = {
+          symbols = {
+            added = "✚",
+            modified = "",
+            deleted = "✖", -- this can only be used in the git_status source
+            renamed = "󰁕", -- this can only be used in the git_status source
+            -- Status type
+            untracked = "",
+            ignored = "",
+            unstaged = "",
+            staged = "",
+            conflict = "",
+          },
+        },
+      },
+    },
   }
 }
