@@ -165,7 +165,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
-      local keymaps = require("lazyvim.plugins.lsp.keymaps").get()
       vim.lsp.handlers["textDocument/publishDiagnostics"] =
           vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
             -- Disable underline of errors (it's annoying)
@@ -194,18 +193,15 @@ return {
       --  }
       --}
 
-
-      -- Disable all the default LazyVim keymaps
-      for _, keymap in ipairs(keymaps) do
-        keymap[2] = false
-      end
-
       -- NOTE: some mappings are wrapped in "function() ... end" so that they
       -- are correctly overwritten by noice
       -- stylua: ignore
       local builtin = require("telescope.builtin")
 
-      local custom_keymaps = {
+      -- Configure custom keymaps for all LSP servers using the new approach
+      opts.servers = opts.servers or {}
+      opts.servers['*'] = opts.servers['*'] or {}
+      opts.servers['*'].keys = {
         { "K",          function() vim.lsp.buf.signature_help() end,       mode = "n",                     desc = "Signature Help", has = "signatureHelp" },
         { "<leader>mh", function() vim.lsp.buf.hover() end,                desc = "Hover" },
         { "H",          function() vim.lsp.buf.hover() end,                desc = "Hover" },
@@ -265,9 +261,6 @@ return {
       --  desc = "Rename (inc)",
       --  has = "rename"
       --},
-
-      vim.list_extend(keymaps, custom_keymaps)
-      opts.keymaps = keymaps
     end,
   },
 }
