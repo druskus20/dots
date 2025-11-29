@@ -1,0 +1,205 @@
+binds {
+
+    Win+Return { spawn "foot"; }
+    Win+T { spawn "foot"; }
+    Win+B { spawn "~/.config/niri/start-browser.sh"; }
+    //Win+Space { spawn "rofi" "-show" "drun"; }
+    Win+Space { spawn "~/.config/niri/launch.sh"; }
+
+    // Example volume keys mappings for PipeWire & WirePlumber.
+    // The allow-when-locked=true property makes them work even when the session is locked.
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+    XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+    XF86MonBrightnessDown { spawn "brightnessctl" "set" "10%-"; }
+    XF86MonBrightnessUp   { spawn "brightnessctl" "set" "10%+"; }
+
+    Win+Shift+Q { close-window; }
+
+    Win+Left  { focus-column-left; }
+    Win+Down  { focus-window-or-workspace-down; }
+    Win+Up    { focus-window-or-workspace-up; }
+    Win+Right { focus-column-right; }
+    Win+H     { focus-column-left; }
+    Win+J     { focus-workspace-down; }
+    Win+K     { focus-workspace-up; }
+    Win+L     { focus-column-right; }
+    Win+U     { focus-window-down-or-top; }
+    Win+I     { focus-window-up-or-bottom; }
+
+
+    Win+Ctrl+Left  { move-column-left; }
+    Win+Ctrl+Down  { move-window-down; }
+    Win+Ctrl+Up    { move-window-up; }
+    Win+Ctrl+Right { move-column-right; }
+    Win+Ctrl+H     { move-column-left; }
+    Win+Ctrl+J     { move-window-down-or-to-workspace-down; }
+    Win+Ctrl+K     { move-window-up-or-to-workspace-up; }
+    Win+Ctrl+L     { move-column-right; }
+
+    Win+Home { focus-column-first; }
+    Win+End  { focus-column-last; }
+    Win+Ctrl+Home { move-column-to-first; }
+    Win+Ctrl+End  { move-column-to-last; }
+
+    Win+Shift+Left  { focus-monitor-left; }
+    Win+Shift+Down  { focus-monitor-down; }
+    Win+Shift+Up    { focus-monitor-up; }
+    Win+Shift+Right { focus-monitor-right; }
+    Win+Shift+H     { focus-monitor-left; }
+    Win+Shift+J     { focus-monitor-down; }
+    Win+Shift+K     { focus-monitor-up; }
+    Win+Shift+L     { focus-monitor-right; }
+
+    Win+Shift+Ctrl+Left  { move-column-to-monitor-left; }
+    Win+Shift+Ctrl+Down  { move-column-to-monitor-down; }
+    Win+Shift+Ctrl+Up    { move-column-to-monitor-up; }
+    Win+Shift+Ctrl+Right { move-column-to-monitor-right; }
+    Win+Shift+Ctrl+H     { move-column-to-monitor-left; }
+    Win+Shift+Ctrl+J     { move-column-to-monitor-down; }
+    Win+Shift+Ctrl+K     { move-column-to-monitor-up; }
+    Win+Shift+Ctrl+L     { move-column-to-monitor-right; }
+
+    // Alternatively, there are commands to move just a single window:
+    // Win+Shift+Ctrl+Left  { move-window-to-monitor-left; }
+    // ...
+
+    // And you can also move a whole workspace to another monitor:
+    // Win+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
+    // ...
+
+    Win+Page_Down      { focus-workspace-down; }
+    Win+Page_Up        { focus-workspace-up; }
+    Win+Ctrl+Page_Down { move-column-to-workspace-down; }
+    Win+Ctrl+Page_Up   { move-column-to-workspace-up; }
+    Win+Ctrl+U         { move-column-to-workspace-down; }
+    Win+Ctrl+I         { move-column-to-workspace-up; }
+
+    // Alternatively, there are commands to move just a single window:
+    // Win+Ctrl+Page_Down { move-window-to-workspace-down; }
+    // ...
+
+    Win+Shift+Page_Down { move-workspace-down; }
+    Win+Shift+Page_Up   { move-workspace-up; }
+    Win+Shift+U         { move-workspace-down; }
+    Win+Shift+I         { move-workspace-up; }
+
+
+    //Win+W { toggle-column-tabbed-display; }
+
+    // You can bind mouse wheel scroll ticks using the following syntax.
+    // These binds will change direction based on the natural-scroll setting.
+    //
+    // To avoid scrolling through workspaces really fast, you can use
+    // the cooldown-ms property. The bind will be rate-limited to this value.
+    // You can set a cooldown on any bind, but it's most useful for the wheel.
+    Win+WheelScrollDown      cooldown-ms=150 { focus-window-or-workspace-down; }
+    Win+WheelScrollUp        cooldown-ms=150 { focus-window-or-workspace-up; }
+    Win+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+    Win+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+
+    Win+WheelScrollRight      { focus-column-right; }
+    Win+WheelScrollLeft       { focus-column-left; }
+    Win+Ctrl+WheelScrollRight { move-column-right; }
+    Win+Ctrl+WheelScrollLeft  { move-column-left; }
+
+    // Usually scrolling up and down with Shift in applications results in
+    // horizontal scrolling; these binds replicate that.
+    Win+Shift+WheelScrollDown      { focus-column-right; }
+    Win+Shift+WheelScrollUp        { focus-column-left; }
+    Win+Ctrl+Shift+WheelScrollDown { move-column-right; }
+    Win+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+
+    // Similarly, you can bind touchpad scroll "ticks".
+    // Touchpad scrolling is continuous, so for these binds it is split into
+    // discrete intervals.
+    // These binds are also affected by touchpad's natural-scroll, so these
+    // example binds are "inverted", since we have natural-scroll enabled for
+    // touchpads by default.
+    // Win+TouchpadScrollDown { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"; }
+    // Win+TouchpadScrollUp   { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
+
+    // You can refer to workspaces by index. However, keep in mind that
+    // niri is a dynamic workspace system, so these commands are kind of
+    // "best effort". Trying to refer to a workspace index bigger than
+    // the current workspace count will instead refer to the bottommost
+    // (empty) workspace.
+    //
+    // For example, with 2 workspaces + 1 empty, indices 3, 4, 5 and so on
+    // will all refer to the 3rd workspace.
+    Win+1 { focus-workspace 1; }
+    Win+2 { focus-workspace 2; }
+    Win+3 { focus-workspace 3; }
+    Win+4 { focus-workspace 4; }
+    Win+5 { focus-workspace 5; }
+    Win+6 { focus-workspace 6; }
+    Win+7 { focus-workspace 7; }
+    Win+8 { focus-workspace 8; }
+    Win+9 { focus-workspace 9; }
+    Win+Ctrl+1 { move-column-to-workspace 1; }
+    Win+Ctrl+2 { move-column-to-workspace 2; }
+    Win+Ctrl+3 { move-column-to-workspace 3; }
+    Win+Ctrl+4 { move-column-to-workspace 4; }
+    Win+Ctrl+5 { move-column-to-workspace 5; }
+    Win+Ctrl+6 { move-column-to-workspace 6; }
+    Win+Ctrl+7 { move-column-to-workspace 7; }
+    Win+Ctrl+8 { move-column-to-workspace 8; }
+    Win+Ctrl+9 { move-column-to-workspace 9; }
+
+
+    Win+Ctrl+Space       { toggle-window-floating; }
+    Win+Shift+Space { switch-focus-between-floating-and-tiling; }
+
+
+    // Alternatively, there are commands to move just a single window:
+    // Win+Ctrl+1 { move-window-to-workspace 1; }
+
+    // Switches focus between the current and the previous workspace.
+    // Win+Tab { focus-workspace-previous; }
+
+    Win+Comma  { consume-window-into-column; }
+    Win+Period { expel-window-from-column; }
+
+    // There are also commands that consume or expel a single window to the side.
+    Win+BracketLeft  { consume-or-expel-window-left; }
+    Win+BracketRight { consume-or-expel-window-right; }
+
+    Win+R { switch-preset-column-width; }
+    Win+Shift+R { switch-preset-window-height; }
+    Win+Ctrl+R { reset-window-height; }
+    Win+F { fullscreen-window; }
+    //Win+C { center-column; }
+
+    // Finer width adjustments.
+    // This command can also:
+    // * set width in pixels: "1000"
+    // * adjust width in pixels: "-5" or "+5"
+    // * set width as a percentage of screen width: "25%"
+    // * adjust width as a percentage of screen width: "-10%" or "+10%"
+    // Pixel sizes use logical, or scaled, pixels. I.e. on an output with scale 2.0,
+    // set-column-width "100" will make the column occupy 200 physical screen pixels.
+    Win+Minus { set-column-width "-10%"; }
+    Win+Equal { set-column-width "+10%"; }
+
+    // Finer height adjustments when in column with other windows.
+    Win+Shift+Minus { set-window-height "-10%"; }
+    Win+Shift+Equal { set-window-height "+10%"; }
+
+    // Actions to switch layouts.
+    // Note: if you uncomment these, make sure you do NOT have
+    // a matching layout switch hotkey configured in xkb options above.
+    // Having both at once on the same hotkey will break the switching,
+    // since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
+    // Win+Space       { switch-layout "next"; }
+    // Win+Shift+Space { switch-layout "prev"; }
+
+    Win+Ctrl+P { screenshot-screen; }
+    Win+Alt+P { screenshot-window; }
+    Win+P { screenshot; }
+
+    Win+O { toggle-overview; }
+    Win+Escape { toggle-overview; }
+
+    F12      { spawn "~/.config/niri/switch-kb-layout.sh"; }
+}
