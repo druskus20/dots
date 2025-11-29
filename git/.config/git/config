@@ -77,16 +77,15 @@
     line-numbers-plus-style = bold "#7c7b20"
     line-numbers-right-style = "#7c6f64"
     line-numbers-zero-style = "#7c6f64"
-    # 25% red 75% base - more subtle highlight
-    minus-emph-style = bold syntax "#f0d8d5"
-    # 10% red 90% base - very subtle highlight
-    minus-style = syntax "#f7e9e7"
-    # 25% green 75% base - more subtle highlight
-    plus-emph-style = bold syntax "#e8e9d9"
-    # 10% green 90% base - very subtle highlight
-    plus-style = syntax "#f5f5ed"
     # Should match the name of the bat theme
     syntax-theme = gruvbox-light
+
+    # Stronger but still light-friendly colors for removed/added lines
+    minus-emph-style = bold syntax "#f2a8a0"   # deeper red, readable on light
+    minus-style = syntax "#f9d4d1"            # soft red background
+    plus-emph-style = bold syntax "#a8c087"    # deeper green
+    plus-style = syntax "#e0e4d3"             # soft green background
+    
 
 [delta "unobtrusive-line-numbers"]
     line-numbers = true
