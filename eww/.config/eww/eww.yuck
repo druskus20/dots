@@ -23,13 +23,13 @@
                :focusable false
   (bar0 :monitor "DP-2"))
 
-(defwindow win3 :monitor 0
+(defwindow win3 :monitor 1
                :geometry (geometry :x 0 :y 0 :height "15px" :width "100.01%" :anchor "center top")
                :stacking "fg" 
                :exclusive true
                :focusable false
   (bar0 :monitor "HDMI-A-1"))
-(defwindow win4 :monitor 1
+(defwindow win4 :monitor 0
                :geometry (geometry :x 0 :y 0 :height "15px" :width "100.01%" :anchor "center top")
                :stacking "fg" 
                :exclusive true

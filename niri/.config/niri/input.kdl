@@ -1,0 +1,46 @@
+input {
+    keyboard { repeat-delay 250
+        repeat-rate 45
+        xkb {
+            layout "es"
+            variant "nodeadkeys"
+            options "caps:escape,compose:prsc"
+        }
+
+    }
+touchpad {
+        // off
+        tap
+        dwt
+        // dwtp
+        natural-scroll
+         accel-speed 0.7
+         accel-profile "adaptive"
+        // scroll-method "two-finger"
+        // disabled-on-external-mouse
+    }
+
+    mouse {
+        // off
+        // natural-scroll
+        // accel-speed 0.2
+        // accel-profile "flat"
+        // scroll-method "no-scroll"
+    }
+
+    // Uncomment this to make the mouse warp to the center of newly focused windows.
+    // warp-mouse-to-focus
+
+    // Focus windows and outputs automatically when moving the mouse into them.
+    // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
+    focus-follows-mouse max-scroll-amount="0%"
+}
+
+gestures {
+    // Increase the trigger area and maximum speed.
+    dnd-edge-view-scroll {
+        trigger-width 200
+        delay-ms 350
+        max-speed 5000
+    }
+}

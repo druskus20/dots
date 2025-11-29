@@ -1,0 +1,251 @@
+layer-rule {
+    match namespace="backdrop"
+    place-within-backdrop true
+}
+
+overview {
+    zoom 0.45 // The default
+
+}
+
+layout {
+    gaps 8
+
+    //center-focused-column "always"
+    always-center-single-column
+    //empty-workspace-above-first
+
+    preset-column-widths {
+        // Proportion sets the width as a fraction of the output width, taking gaps into account.
+        // For example, you can perfectly fit four windows sized "proportion 0.25" on an output.
+        // The default preset widths are 1/3, 1/2 and 2/3 of the output.
+        proportion 0.33333
+        proportion 0.66666
+        proportion 1.0
+    }
+
+    preset-window-heights {
+      proportion 0.5
+      proportion 1.0
+    }
+
+    default-column-width { proportion 0.66666; }
+    default-column-display "tabbed"
+
+     tab-indicator {
+        // off
+        hide-when-single-tab
+        gap -2
+        width 2
+        length total-proportion=1.0
+        position "top"
+        active-gradient from="#ea6962ff" to="#a9b665ff" angle=180 in="oklch longer hue"
+    }
+
+    focus-ring {
+        // off
+        width 1
+        active-color "#00000060"
+        //active-gradient from="#00ffffff" to="#ff00ffff" angle=45
+        //active-gradient from="#ff00ffff" to="#ea6962a0" angle=45 //relative-to="workspace-view"
+        //active-gradient from="#ea696255" to="#a9b66555" angle=180 in="oklch longer hue"
+    }
+
+    insert-hint {
+        // off
+        //color "#ffc87f80"
+        color "#ea696280"
+        gradient from="#ea696280" to="#ea6962a0" angle=45 //relative-to="workspace-view"
+
+    }
+
+    border {
+        off
+    }
+
+    shadow {
+        on
+      softness 30
+      spread 5
+      offset x=0 y=5
+        draw-behind-window true
+        color "#00000070"
+        //color "#ffffff20"
+        inactive-color "#00000050"
+    }
+
+    // Struts shrink the area occupied by windows, similarly to layer-shell panels.
+    // You can think of them as a kind of outer gaps. They are set in logical pixels.
+    // Left and right struts will cause the next window to the side to always be visible.
+    // Top and bottom struts will simply add outer gaps in addition to the area occupied by
+    // layer-shell panels and regular gaps.
+    struts {
+        // left 64
+        // right 64
+        // top 64
+        // bottom 64
+    }
+}
+
+layer-rule {
+  //  eww
+    match namespace="gtk-layer-shell"
+    match at-startup=true
+    shadow {
+        on
+        softness 10
+        spread 1
+        offset x=0 y=1
+        draw-behind-window true
+        color "#00000030"
+    }
+}
+
+layer-rule {
+  //  eww
+    match namespace="rofi"
+    match at-startup=true
+    shadow {
+        on
+        softness 10
+        spread 1
+        offset x=0 y=1
+        draw-behind-window true
+        color "#00000030"
+    }
+}
+layer-rule {
+  //  eww
+    match namespace="vicinae"
+    match at-startup=true
+    shadow {
+        on
+        softness 10
+        spread 1
+        offset x=0 y=1
+        draw-behind-window true
+        color "#00000030"
+    }
+}
+
+window-rule {
+   geometry-corner-radius 4
+    clip-to-geometry true
+}
+
+// Indicate screencasted windows with red colors.
+window-rule {
+    match is-window-cast-target=true
+
+    focus-ring {
+        active-color "#ca4b4b"
+    }
+
+    shadow {
+        color "#f38ba850"
+    }
+
+    tab-indicator {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+}
+
+window-rule {
+   match title=r#"Oculus"#
+
+    open-floating true
+}
+
+window-rule {
+   match title=r#"Crappy SVG Viewer"#
+
+    open-floating true
+}
+
+//window-rule {
+//   match app-id=r#"Tracy"#
+//   match app-id=r#"tracy"#
+//   match app-id=r#"tracy-profiler"#
+//   match app-id=r#"Tracy-profiler"#
+//   match app-id=r#"Tracy-Profiler"#
+//
+//    open-floating true
+//}
+
+window-rule {
+  match is-floating=false
+    shadow {
+      on
+      color "#00000060"
+      softness 10
+      spread 3
+      offset x=0 y=3
+      draw-behind-window true
+
+  }
+}
+
+// Block out certain windows from screen capture.
+window-rule {
+    match app-id=r#"1Password"#
+    match app-id=r#"[bB]itwarden"#
+    match title=r#"[gG]mail"#
+    match app-id=r#".*[mM]ako.*"#
+    match title=r#".*[Ww]hats[aA]pp.*$"#
+
+    // opacity 0.5
+
+    block-out-from "screen-capture"
+
+}
+
+window-rule {
+    match app-id=r"tracy"
+    open-on-output "DP-2"
+}
+
+window-rule {
+    match title="ritual"
+    open-on-output "DP-2"
+    open-floating true
+}
+window-rule {
+    match title="[lL]judspår"
+    open-on-output "DP-2"
+    open-floating true
+}
+
+window-rule {
+  match app-id="xdg-desktop-portal-gnome"
+  open-floating true
+}
+
+recent-windows {
+    // off
+    open-delay-ms 0
+
+    highlight {
+        active-color "#999999ff"
+        urgent-color "#ff9999ff"
+        padding 10
+        corner-radius 5
+    }
+
+    previews {
+        max-height 300
+        max-scale 0.5
+    }
+
+    binds {
+        //Alt+Tab         { next-window; }
+        //Alt+Shift+Tab   { previous-window; }
+        //Alt+grave       { next-window     filter="app-id"; }
+        //Alt+Shift+grave { previous-window filter="app-id"; }
+
+        Mod+Tab         { next-window; }
+        Mod+Shift+Tab   { previous-window; }
+        Mod+grave       { next-window     filter="app-id"; }
+        Mod+Shift+grave { previous-window filter="app-id"; }
+    }
+}
