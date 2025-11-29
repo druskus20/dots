@@ -19,6 +19,23 @@
 [[ ! -o 'no_brace_expand' ]] || p10k_config_opts+=('no_brace_expand')
 'builtin' 'setopt' 'no_aliases' 'no_sh_glob' 'brace_expand'
 
+
+#########################[ background_jobs_names ]#############################
+
+# Custom function to list job names.
+function prompt_background_jobs_names() {
+  local jobs_output
+  jobs_output=$(jobs -l)
+
+  # If no jobs, print nothing → segment will hide automatically.
+  [[ -z "$jobs_output" ]] && return
+    # Extract only the command name: e.g. "1:nvim"
+    local formatted=$(jobs -l | sed -E 's/^\[([0-9]+)\][[:space:]]+[+-][[:space:]]+[0-9]+[[:space:]]+[a-zA-Z]+[[:space:]]+(.*)$/\1:\2/' | tr '\n' ' | ')
+    formatted=${formatted% | }
+  p10k segment -f 160  -i '' -t "$formatted"
+}
+
+
 () {
   emulate -L zsh -o extended_glob
 
@@ -37,6 +54,7 @@
     vcs                     # git status
     # =========================[ Line #2 ]=========================
     newline                 # \n
+    background_jobs_names
     prompt_char             # prompt symbol
   )
 
@@ -48,7 +66,7 @@
     # =========================[ Line #1 ]=========================
     status                  # exit code of the last command
     command_execution_time  # duration of the last command
-    background_jobs         # presence of background jobs
+    #background_jobs         # presence of background jobs
     direnv                  # direnv status (https://direnv.net/)
     asdf                    # asdf version manager (https://github.com/asdf-vm/asdf)
     virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)

@@ -169,6 +169,7 @@ binds {
     Win+Shift+R { switch-preset-window-height; }
     Win+Ctrl+R { reset-window-height; }
     Win+F { fullscreen-window; }
+    Win+Shift+F { toggle-windowed-fullscreen; }
     //Win+C { center-column; }
 
     // Finer width adjustments.
