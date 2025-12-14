@@ -165,12 +165,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
-      vim.lsp.handlers["textDocument/publishDiagnostics"] =
-          vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-            -- Disable underline of errors (it's annoying)
-            underline = false,
-          })
-
       -- Configure LSP servers with long line formatting
       --opts.servers = opts.servers or {}
       --opts.servers.svelte = {
@@ -197,6 +191,30 @@ return {
       -- are correctly overwritten by noice
       -- stylua: ignore
       local builtin = require("telescope.builtin")
+
+      --opts.diagnostics = {
+      --  underline = true,
+      --  update_in_insert = false,
+      --  virtual_text = {
+      --    spacing = 4,
+      --    source = "if_many",
+      --    prefix = "●",
+      --    -- this will set set the prefix to a function that returns the diagnostics icon based on the severity
+      --    -- prefix = "icons",
+      --  },
+      --  severity = {
+      --    min = vim.diagnostic.severity.ERROR, -- do not show HINT
+      --  }
+      --  severity_sort = true,
+      --  signs = {
+      --    text = {
+      --      [vim.diagnostic.severity.ERROR] = LazyVim.config.icons.diagnostics.Error,
+      --      [vim.diagnostic.severity.WARN] = LazyVim.config.icons.diagnostics.Warn,
+      --      [vim.diagnostic.severity.HINT] = LazyVim.config.icons.diagnostics.Hint,
+      --      [vim.diagnostic.severity.INFO] = LazyVim.config.icons.diagnostics.Info,
+      --    }
+      --  }
+      --}
 
       -- Configure custom keymaps for all LSP servers using the new approach
       opts.servers = opts.servers or {}
@@ -268,6 +286,13 @@ return {
     opts = {
       inlay_hints = {
         enabled = false,
+      },
+      diagnostics = {
+        virtual_text = {
+          severity = {
+            min = vim.diagnostic.severity.ERROR,
+          },
+        }
       },
     }
   }

@@ -43,10 +43,11 @@ map('n', '<leader>h', function() smart_buffer_nav('bprevious')() end, { desc = '
 map('n', '<leader>l', function() smart_buffer_nav('bnext')() end, { desc = 'Next buffer' })
 map('n', '<C-h>', function() smart_buffer_nav('bprevious')() end, { desc = 'Previous buffer' })
 map('n', '<C-l>', function() smart_buffer_nav('bnext')() end, { desc = 'Next buffer' })
-map('i', '<C-h>', function() smart_buffer_nav('bprevious')() end, { desc = 'Previous buffer' })
-map('i', '<C-l>', function() smart_buffer_nav('bnext')() end, { desc = 'Next buffer' })
-map('v', '<C-h>', function() smart_buffer_nav('bprevious')() end, { desc = 'Previous buffer' })
-map('v', '<C-l>', function() smart_buffer_nav('bnext')() end, { desc = 'Next buffer' })
+-- C+h conflicts with <esc>+<delete>
+-- map('i', '<C-h>', function() smart_buffer_nav('bprevious')() end, { desc = 'Previous buffer' })
+-- map('i', '<C-l>', function() smart_buffer_nav('bnext')() end, { desc = 'Next buffer' })
+-- map('v', '<C-h>', function() smart_buffer_nav('bprevious')() end, { desc = 'Previous buffer' })
+-- map('v', '<C-l>', function() smart_buffer_nav('bnext')() end, { desc = 'Next buffer' })
 
 
 map('n', '<C-x>', cmd_string('bdelete'), { desc = 'Close buffer' })
