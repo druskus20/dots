@@ -1,7 +1,7 @@
 spawn-at-startup "swww-daemon" "-n" "wallpaper"
 spawn-at-startup "swww-daemon" "-n" "backdrop"
-spawn-at-startup "swww" "img" "/home/drusk/img/bg/warm-dunes.jpg" "-n" "wallpaper"
-spawn-at-startup "swww" "img" "/home/drusk/img/bg/warm-dunes-blur.jpg" "-n" "backdrop"
+spawn-at-startup "swww" "img" "/home/drusk/img/bg/12.jpg" "-n" "wallpaper"
+spawn-at-startup "swww" "img" "/home/drusk/img/bg/12-blur.jpg" "-n" "backdrop"
 
 spawn-at-startup "mako"
 spawn-at-startup "eww" "open-many" "win0"  "win1" "win2"
