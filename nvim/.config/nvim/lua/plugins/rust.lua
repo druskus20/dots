@@ -20,6 +20,18 @@ return {
         end,
       }
     },
+    keys = {
+      {
+        "<leader>cr",
+        ":Cargo run<CR>",
+        desc = "Cargo Run"
+      },
+      {
+        "<leader>cc",
+        ":Cargo clean<CR>",
+        desc = "Cargo Clean"
+      },
+    },
     config = function(_, opts)
       -- Set up CSS injection for style! macro
       vim.treesitter.query.set("rust", "injections", [[
