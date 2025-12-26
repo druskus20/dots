@@ -14,6 +14,7 @@ binds {
     XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
     XF86MonBrightnessDown { spawn "brightnessctl" "set" "10%-"; }
     XF86MonBrightnessUp   { spawn "brightnessctl" "set" "10%+"; }
+    XF86Display           { spawn "~/.config/niri/output-toggle.sh" "eDP-1"; }
 
     Win+Shift+Q { close-window; }
 
@@ -27,7 +28,6 @@ binds {
     Win+L     { focus-column-right; }
     Win+U     { focus-window-down-or-top; }
     Win+I     { focus-window-up-or-bottom; }
-
 
     Win+Ctrl+Left  { move-column-left; }
     Win+Ctrl+Down  { move-window-down; }
