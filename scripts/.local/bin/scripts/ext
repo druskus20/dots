@@ -1,9 +1,5 @@
 #!/bin/sh
 
-# A general, all-purpose extraction script.
-# Default behavior: Extract archive into new directory
-# Behavior with `-c` option: Extract contents into current directory
-
 while getopts "hc" o; do
     case "${o}" in
         c) extracthere="True" ;;
@@ -17,7 +13,26 @@ archive="$(readlink -f "$1")"
 [ -z "$archive" ] && printf "Give archive to extract as argument.\n" && exit 1
 [ ! -f "$archive" ] && printf "File \"%s\" not found.\n" "$archive" && exit 1
 
-# Determine if this is a single-file compression format
+if command -v pv >/dev/null 2>&1; then
+    progress() { pv "$archive"; }
+else
+    if [ -t 0 ] && command -v apt >/dev/null 2>&1; then
+        printf "Optional dependency 'pv' not found.\n"
+        printf "Install it for progress indicators? [y/N]: "
+        read -r answer
+        if [ "$answer" = "y" ] || [ "$answer" = "Y" ]; then
+            sudo apt install -y pv
+            progress() { pv "$archive"; }
+        fi
+    fi
+
+    # fallback 
+    if ! command -v progress >/dev/null 2>&1; then
+        progress() { cat "$archive"; }
+    fi
+fi
+
+# determine if this is a single-file compression format
 case "$archive" in
     *.bz2|*.gz|*.xz|*.lzma)
         singlefile="True"
@@ -37,25 +52,41 @@ if [ -z "$extracthere" ] && [ -z "$singlefile" ]; then
     cd "$directory" || exit 1
 fi
 
-# Extract
 case "$archive" in
-    *.tar.bz2|*.tbz2) tar xvjf "$archive" ;;
-    *.tar.xz) tar -xf "$archive" ;;
-    *.tar.gz|*.tgz) tar xvzf "$archive" ;;
-    *.tar.zst) tar -I zstd -xf "$archive" ;;
-    *.tar) tar xvf "$archive" ;;
+    *.tar.bz2|*.tbz2)
+        progress | tar xjf -
+        ;;
+    *.tar.gz|*.tgz)
+        progress | tar xzf -
+        ;;
+    *.tar.xz)
+        progress | tar xJf -
+        ;;
+    *.tar.zst)
+        progress | tar -I zstd -xf -
+        ;;
+    *.tar)
+        progress | tar xf -
+        ;;
+    *.bz2)
+        progress | bunzip2 > "${archive%.bz2}"
+        ;;
+    *.gz)
+        progress | gunzip > "${archive%.gz}"
+        ;;
+    *.xz)
+        progress | unxz > "${archive%.xz}"
+        ;;
+    *.lzma)
+        progress | unlzma > "${archive%.lzma}"
+        ;;
     *.zip) unzip "$archive" ;;
     *.rar) unrar x -ad "$archive" ;;
     *.7z) 7z x "$archive" ;;
     *.Z) uncompress "$archive" ;;
     *.exe) cabextract "$archive" ;;
-    *.bz2) bunzip2 "$archive" ;;
-    *.gz) gunzip "$archive" ;;
-    *.xz) unxz "$archive" ;;
-    *.lzma) unlzma "$archive" ;;
     *)
         printf "extract: '%s' - unknown archive method\n" "$archive"
         exit 1
         ;;
 esac
-
