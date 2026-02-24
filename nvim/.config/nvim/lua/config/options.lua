@@ -76,8 +76,8 @@ opt.foldcolumn = "0"               -- No fold column on the left
 opt.signcolumn = "yes"             -- Always show the sign column
 opt.laststatus = 3                 -- Global status line
 opt.shell = "zsh"                  -- Set default shell to zsh
-opt.cmdheight = 1                  -- Set height of command line to 1
-opt.showcmd = false                -- Hide command in progress in command line
+--opt.cmdheight = 1                  -- Set height of command line to 1
+opt.showcmd = true                 -- Hide command in progress in command line
 opt.cmdheight = 0                  -- Hide command line when not in use
 opt.splitkeep = "screen"           -- Keep view stable when splitting
 opt.statuscolumn = ""              -- Customize status column
@@ -85,4 +85,4 @@ opt.clipboard = ""                 -- Do not use system clipboard
 
 opt.virtualedit = "all"            -- Move on empty space
 
-vim.g.lazyvim_blink_main = true
+vim.g.lazyvim_blink_main = false

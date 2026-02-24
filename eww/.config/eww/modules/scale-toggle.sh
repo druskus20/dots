@@ -11,6 +11,8 @@ current_scale=$(niri msg -j outputs | jq -r '."'"$MONITOR_NAME"'"."logical"."sca
 
 if [ "$current_scale" = "1.0" ]; then
   niri msg output "$MONITOR_NAME" scale 1.5
+elif [ "$current_scale" = "1.5" ]; then
+  niri msg output "$MONITOR_NAME" scale 0.75
 else
   niri msg output "$MONITOR_NAME" scale 1.0
 fi

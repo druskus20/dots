@@ -158,7 +158,7 @@ binds {
     // Switches focus between the current and the previous workspace.
     // Win+Tab { focus-workspace-previous; }
 
-    Win+Comma  { consume-window-into-column; }
+    Win+Shift+Period  { consume-window-into-column; }
     Win+Period { expel-window-from-column; }
 
     // There are also commands that consume or expel a single window to the side.
