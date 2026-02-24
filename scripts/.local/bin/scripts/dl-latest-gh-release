@@ -1,0 +1,68 @@
+#!/bin/bash
+
+set -euo pipefail
+
+usage() {
+    echo "Usage: $0 <github-repo-url>"
+    echo "Example: $0 https://github.com/user/repo"
+    echo "         $0 user/repo"
+    exit 1
+}
+
+if [[ $# -ne 1 ]]; then
+    usage
+fi
+
+REPO_URL="$1"
+
+# Extract owner/repo from various URL formats
+if [[ "$REPO_URL" =~ ^https://github\.com/([^/]+)/([^/]+)/?$ ]]; then
+    OWNER="${BASH_REMATCH[1]}"
+    REPO="${BASH_REMATCH[2]}"
+elif [[ "$REPO_URL" =~ ^([^/]+)/([^/]+)$ ]]; then
+    OWNER="${BASH_REMATCH[1]}"
+    REPO="${BASH_REMATCH[2]}"
+else
+    echo "Error: Invalid GitHub repository format"
+    echo "Expected: https://github.com/owner/repo or owner/repo"
+    exit 1
+fi
+
+echo "Fetching latest release for $OWNER/$REPO..."
+
+# Get latest release info
+RELEASE_INFO=$(curl -s "https://api.github.com/repos/$OWNER/$REPO/releases/latest")
+
+if [[ "$RELEASE_INFO" == *"Not Found"* ]]; then
+    echo "Error: Repository not found or no releases available"
+    exit 1
+fi
+
+# Extract download URLs for x86_64 Linux binaries
+DOWNLOAD_URLS=$(echo "$RELEASE_INFO" | grep -o '"browser_download_url": "[^"]*"' | cut -d'"' -f4)
+
+# Filter for x86_64 Linux binaries (common patterns)
+LINUX_X64_URL=""
+while IFS= read -r url; do
+    if [[ "$url" =~ (linux.*x86_64|linux.*amd64|x86_64.*linux|amd64.*linux) ]] &&
+       [[ ! "$url" =~ (arm|aarch64|i386|i686) ]]; then
+        LINUX_X64_URL="$url"
+        break
+    fi
+done <<< "$DOWNLOAD_URLS"
+
+if [[ -z "$LINUX_X64_URL" ]]; then
+    echo "Error: No x86_64 Linux binary found in latest release"
+    echo "Available assets:"
+    echo "$DOWNLOAD_URLS"
+    exit 1
+fi
+
+# Extract filename from URL
+FILENAME=$(basename "$LINUX_X64_URL")
+
+echo "Downloading $FILENAME..."
+curl -L -o "$FILENAME" "$LINUX_X64_URL"
+
+echo "Downloaded: $FILENAME"
+
