@@ -1,0 +1,103 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [ "$#" -lt 2 ]; then
+    echo "Usage: $0 <source_image> <target_device> [dd_flags...]"
+    exit 1
+fi
+
+IMAGE="$1"
+DEVICE="$2"
+DD_ARGS=("${@:3}")
+if [ ${#DD_ARGS[@]} -eq 0 ]; then
+    DD_ARGS=(bs=4M status=progress conv=fsync)
+fi
+
+if [ ! -f "$IMAGE" ]; then
+    echo "Input file not found: $IMAGE"
+    exit 1
+fi
+
+if [ ! -b "$DEVICE" ]; then
+    echo "Output target is not a block device: $DEVICE"
+    exit 1
+fi
+
+# Refuse partitions
+#if [ "$(lsblk -no TYPE "$DEVICE")" != "disk" ]; then
+#    echo "Refusing to write to a partition."
+#    exit 1
+#fi
+
+# refuse non-removable devices
+if  lsblk -no RM "$DEVICE" | grep -q 0 ; then
+    echo "Refusing to write to non-removable device (RM=0)."
+    exit 1
+fi
+
+# refuse mounted devices
+if lsblk -nr -o MOUNTPOINT "$DEVICE" | grep -q .; then
+    echo "Device has mounted partitions. Unmount first."
+    exit 1
+fi
+
+IMAGE_SIZE=$(stat -c%s "$IMAGE")
+DEVICE_SIZE=$(blockdev --getsize64 "$DEVICE")
+
+IMAGE_GB=$(awk "BEGIN {printf \"%.2f\", $IMAGE_SIZE/1024/1024/1024}")
+DEVICE_GB=$(awk "BEGIN {printf \"%.2f\", $DEVICE_SIZE/1024/1024/1024}")
+
+if [ "$IMAGE_SIZE" -gt "$DEVICE_SIZE" ]; then
+    echo
+    echo "ERROR: Image is larger than target device."
+    echo "Image : ${IMAGE_GB} GiB"
+    echo "Device: ${DEVICE_GB} GiB"
+    exit 1
+fi
+
+
+DEVICE_MODEL=$(lsblk -no MODEL "$DEVICE" | sed 's/^ *//')
+DEVICE_VENDOR=$(lsblk -no VENDOR "$DEVICE" 2>/dev/null | sed 's/^ *//')
+
+echo
+echo "Source image : $IMAGE"
+echo "Image size   : $IMAGE_GB GiB"
+echo
+echo "Target device: $DEVICE"
+echo "Device size  : $DEVICE_GB GiB"
+echo "Device model : ${DEVICE_VENDOR:-Unknown} ${DEVICE_MODEL:-Unknown}"
+echo
+echo "ALL DATA ON $DEVICE WILL BE DESTROYED!"
+echo
+echo "dd command to be executed:"
+echo "  sudo dd if=\"$IMAGE\" of=\"$DEVICE\" ${DD_ARGS[*]}" 
+echo
+
+
+read -rp "Type 'YES' to proceed: " CONFIRM
+if [ "$CONFIRM" != "YES" ]; then
+    echo "Aborting."
+    exit 1
+fi
+
+echo
+echo "Flashing..."
+
+ARGS=("${DD_ARGS[@]}")
+if ! printf "%s\n" "${ARGS[@]}" | grep -q '^bs='; then
+    ARGS+=("bs=4M")
+fi
+if ! printf "%s\n" "${ARGS[@]}" | grep -q 'conv='; then
+    ARGS+=("conv=fsync")
+fi
+
+if command -v pv >/dev/null 2>&1; then
+    pv -pter -s "$IMAGE_SIZE" "$IMAGE" | sudo dd of="$DEVICE" "${ARGS[@]}" status=none
+else
+    sudo dd if="$IMAGE" of="$DEVICE" "${ARGS[@]}" status=progress
+fi
+
+sync
+
+echo
+echo "Flash complete. You may now safely remove the device."
