@@ -3,34 +3,44 @@ profile home-desk {
   output "BOE 0x09DE Unknown" mode 1920x1080 position 3630,0 scale 1
   output "Samsung Electric Company S27E390 0x30343939" mode 1920x1080 position 0,0 scale 1
   output "Lenovo Group Limited LEN P27q-10 0x01010101" mode 2560x1440 position 1920,0 scale 1.0
-  exec "pkill eww; eww open-many win4 win3"
+  exec "pkill eww; sleep 2; eww open-many win3 win4"
+}
+
+profile spain-2-monitor {
+  output "PNP(BNQ) BenQ GW2480 ET4BL05190SL0" mode 1920x1080 position 0,0 scale 1
+  output "BOE 0x09DE Unknown" mode 1920x1080 position 0,1080 scale 1
+  exec "pkill eww; sleep 2; eww open-many win0 win3"
+}
+profile spain-1-monitor {
+  output "PNP(BNQ) BenQ GW2480 ET4BL05190SL0" mode 1920x1080 position 0,0 scale 1
+  exec "pkill eww; sleep 2; eww open-many win1"
 }
 
 profile home-desk-two {
   exec "niri msg output 'eDP-1' off"
   output "Lenovo Group Limited LEN P27q-10 0x01010101" mode 2560x1440 position 1920,0 scale 1.5 
   output "Samsung Electric Company S27E390 0x30343939" mode 1920x1080 position 0,0 scale 1
-  exec "pkill eww; eww open-many win0 win1 win2"
+  exec "pkill eww; sleep 2; eww open-many win0 win1 win2"
 }
 
 profile standalone {
   exec "niri msg output 'eDP-1' on"
   output "BOE 0x09DE Unknown" mode 1920x1080 position 0,0 scale 1
-  exec "pkill eww; eww open-many win0"
+  exec "pkill eww; sleep 2; eww open-many win0"
 }
 
 profile work {
   exec "niri msg output 'eDP-1' off"
   output "Samsung Electric Company LS27A600N HNMX400145" mode 2560x1440 position 108,0 scale 1.0
   output "BOE 0x09DE Unknown" mode 1920x1080 position 0,960 scale 1
-  exec "pkill eww; eww open-many win0 win3"
+  exec "pkill eww; sleep 2; eww open-many win0 win3"
 }
 
 profile work-bjorn {
   exec "niri msg output 'eDP-1' on"
   output "Samsung Electric Company LS27A600N HNMX200287" mode 2560x1440 position 108,0 scale 1.0
   output "BOE 0x09DE Unknown" mode 1920x1080 position 0,960 scale 1
-  exec "pkill eww; eww open-many win3"
+  exec "pkill eww; sleep 2; eww open-many win3"
 }
 
 
