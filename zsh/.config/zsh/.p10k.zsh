@@ -22,18 +22,51 @@
 
 #########################[ background_jobs_names ]#############################
 
-# Custom function to list job names.
-function prompt_background_jobs_names() {
-  local jobs_output
-  jobs_output=$(jobs -l)
 
-  # If no jobs, print nothing → segment will hide automatically.
-  [[ -z "$jobs_output" ]] && return
-    # Extract only the command name: e.g. "1:nvim"
-    local formatted=$(jobs -l | sed -E 's/^\[([0-9]+)\][[:space:]]+[+-][[:space:]]+[0-9]+[[:space:]]+[a-zA-Z]+[[:space:]]+(.*)$/\1:\2/' | tr '\n' ' | ')
-    formatted=${formatted% | }
-  p10k segment -f 160  -i '' -t "$formatted"
+function prompt_background_jobs_names2() {
+  local jobs_lines=("${(@f)$(jobs -l)}")
+  local jobs_state="${(j::)jobs_lines}"
+
+  [[ "$jobs_state" == "$_last_jobs_state" ]] && return  # no change
+
+  _last_jobs_state="$jobs_state"
+
+  # build formatted string
+  local -a out
+  local line id cmd
+  for line in "${jobs_lines[@]}"; do
+    if [[ $line =~ '^\[([0-9]+)\][[:space:]]+[+-]?[[:space:]]+[0-9]+[[:space:]]+[A-Za-z]+[[:space:]]+(.*)$' ]]; then
+      id=$match[1]
+      cmd=$match[2]
+      out+="$id:$cmd"
+    fi
+  done
+
+  (( ${#out} == 0 )) && return
+
+  p10k segment -f 160 -i '4' -t "${(j: | :)out}"
 }
+
+typeset -g _cached_jobs=""
+typeset -g _cached_jobs_count=0
+
+# not working
+function prompt_background_jobs_names_cached() {
+  local count=${#jobstates}
+  (( count == 0 )) && { _cached_jobs=""; return; }
+
+  # Only rebuild if jobs changed
+  if (( count != _cached_jobs_count )); then
+    _cached_jobs_count=$count
+    _cached_jobs=("${(@)jobstates[@]}")  # or format as needed
+  fi
+
+  p10k segment -f 160 -i '' -t "${(j: | :)_cached_jobs}"
+}
+
+
+
+
 
 
 () {
@@ -54,7 +87,8 @@ function prompt_background_jobs_names() {
     vcs                     # git status
     # =========================[ Line #2 ]=========================
     newline                 # \n
-    background_jobs_names
+    #prompt_background_jobs_names
+    background_jobs         # presence of background jobs
     prompt_char             # prompt symbol
   )
 
@@ -66,15 +100,14 @@ function prompt_background_jobs_names() {
     # =========================[ Line #1 ]=========================
     status                  # exit code of the last command
     command_execution_time  # duration of the last command
-    #background_jobs         # presence of background jobs
     direnv                  # direnv status (https://direnv.net/)
-    asdf                    # asdf version manager (https://github.com/asdf-vm/asdf)
+    #asdf                    # asdf version manager (https://github.com/asdf-vm/asdf)
     virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
     anaconda                # conda environment (https://conda.io/)
     pyenv                   # python environment (https://github.com/pyenv/pyenv)
     goenv                   # go environment (https://github.com/syndbg/goenv)
     nodenv                  # node.js version from nodenv (https://github.com/nodenv/nodenv)
-    nvm                     # node.js version from nvm (https://github.com/nvm-sh/nvm)
+    #nvm                     # node.js version from nvm (https://github.com/nvm-sh/nvm)
     nodeenv                 # node.js environment (https://github.com/ekalinin/nodeenv)
     # node_version          # node.js version
     # go_version            # go version (https://golang.org)
@@ -84,15 +117,15 @@ function prompt_background_jobs_names() {
     # laravel_version       # laravel php framework version (https://laravel.com/)
     # java_version          # java version (https://www.java.com/)
     # package               # name@version from package.json (https://docs.npmjs.com/files/package.json)
-    rbenv                   # ruby version from rbenv (https://github.com/rbenv/rbenv)
-    rvm                     # ruby version from rvm (https://rvm.io)
-    fvm                     # flutter version management (https://github.com/leoafarias/fvm)
-    luaenv                  # lua version from luaenv (https://github.com/cehoffman/luaenv)
-    jenv                    # java version from jenv (https://github.com/jenv/jenv)
-    plenv                   # perl version from plenv (https://github.com/tokuhirom/plenv)
-    perlbrew                # perl version from perlbrew (https://github.com/gugod/App-perlbrew)
-    phpenv                  # php version from phpenv (https://github.com/phpenv/phpenv)
-    scalaenv                # scala version from scalaenv (https://github.com/scalaenv/scalaenv)
+    #rbenv                   # ruby version from rbenv (https://github.com/rbenv/rbenv)
+    #rvm                     # ruby version from rvm (https://rvm.io)
+    #fvm                     # flutter version management (https://github.com/leoafarias/fvm)
+    #luaenv                  # lua version from luaenv (https://github.com/cehoffman/luaenv)
+    #jenv                    # java version from jenv (https://github.com/jenv/jenv)
+    #plenv                   # perl version from plenv (https://github.com/tokuhirom/plenv)
+    #perlbrew                # perl version from perlbrew (https://github.com/gugod/App-perlbrew)
+    #phpenv                  # php version from phpenv (https://github.com/phpenv/phpenv)
+    #scalaenv                # scala version from scalaenv (https://github.com/scalaenv/scalaenv)
     haskell_stack           # haskell version from stack (https://haskellstack.org/)
     kubecontext             # current kubernetes context (https://kubernetes.io/)
     terraform               # terraform workspace (https://www.terraform.io)
@@ -119,9 +152,9 @@ function prompt_background_jobs_names() {
     # disk_usage            # disk usage
     # ram                   # free RAM
     # swap                  # used swap
-    todo                    # todo items (https://github.com/todotxt/todo.txt-cli)
-    timewarrior             # timewarrior tracking status (https://timewarrior.net/)
-    taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
+    #todo                    # todo items (https://github.com/todotxt/todo.txt-cli)
+    #timewarrior             # timewarrior tracking status (https://timewarrior.net/)
+    #taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
     #per_directory_history   # Oh My Zsh per-directory-history local/global indicator
     # cpu_arch              # CPU architecture
     # time                  # current time
@@ -1079,6 +1112,8 @@ function prompt_background_jobs_names() {
   typeset -g POWERLEVEL9K_NVM_SHOW_SYSTEM=true
   # Custom icon.
   # typeset -g POWERLEVEL9K_NVM_VISUAL_IDENTIFIER_EXPANSION='⭐'
+  # show on command
+  typeset -g POWERLEVEL9K_NVM_SHOW_ON_COMMAND='node|npm|npx|yarn|pnpm'
 
   ############[ nodeenv: node.js environment (https://github.com/ekalinin/nodeenv) ]############
   # Nodeenv color.

@@ -7,6 +7,8 @@ return {
   },
   {
     "saghen/blink.cmp",
+    enabled = true,
+    --commit = "d7f1c64",
     opts = {
       -- Disable for some filetypes
       enabled = function()
@@ -14,10 +16,15 @@ return {
             and vim.bo.buftype ~= "prompt"
             and vim.b.completion ~= false
       end,
+      cmdline = {
+        enabled = true,
+      },
       -- Disable scrollbars in favor of scrollbar.nvim
       completion = {
         menu = {
           scrollbar = false,
+          auto_show = true,
+          --auto_show_delay = 1000, ??
         },
         documentation = {
           auto_show = true,

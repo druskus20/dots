@@ -14,7 +14,7 @@
                :stacking "fg" 
                :exclusive true
                :focusable false
-  (bar0 :monitor "DP-2"))
+  (bar0 :monitor "HDMI-A-1"))
 
 (defwindow win2 :monitor 0
                :geometry (geometry :x 0 :y 0 :height "15px" :width "100.01%" :anchor "center top")

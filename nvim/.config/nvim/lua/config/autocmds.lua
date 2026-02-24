@@ -75,3 +75,18 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.formatoptions = "tcqjn"
   end,
 })
+
+-- Register nvim session on startup
+vim.api.nvim_create_autocmd("VimEnter", {
+  group = augroup("nvim_session_register"),
+  callback = function()
+    local socket = vim.v.servername
+    if socket and socket ~= "" then
+      local f = io.open("/tmp/nvim-sessions", "a")
+      if f then
+        f:write(socket .. "\n")
+        f:close()
+      end
+    end
+  end,
+})

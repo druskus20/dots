@@ -14,8 +14,9 @@ return {
           },
           -- the completion menu for the cmdline
           popupmenu = {
-            enabled = true,
-            backend = "nui" -- do not use the "vscode style" middle of the screen popup (nui?)
+            -- workaround: enabled=false to solve completion menu remaining after :w
+            enabled = false, -- just use the basic nvim
+            backend = "nui"  -- do not use the "vscode style" middle of the screen popup (nui?)
             -- Side effect: apparently fixed an issue with "Save changes to ..." popup being slow to respond(?)
           }
           -- + others: fancier hover and signature help for example

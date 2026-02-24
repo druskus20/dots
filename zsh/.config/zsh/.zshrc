@@ -6,9 +6,14 @@ function safe-start-tmux() {
   # Needs to go before tmux
   #export TERM=xterm-256color
   case $- in *i*)
-    if [ -z "$TMUX" ]; then  
+    if [ -z "$TMUX" ] && [ -z "$ZELLIJ" ] ; then  
       # Custom tmux stuff - buffer one tmux session ahead to make startup instant
       tmux attach -t buffer || (tmux new -d -s buffer && tmux new -t buffer -A )
+      #zellij 
+
+
+      #zellij a -b "buffer" # start a background session called buffer
+      #zellij attach "buffer" && zellij action rename-session "main" && zellij a -b "buffer"
     fi
   esac
 }
@@ -28,7 +33,7 @@ function instant-prompt() {
 function completions() {
   emulate -L zsh
   # 1. Load
-  autoload -U compinit
+  autoload -Uz compinit
   compinit -u  # Avoid unnecessary recompilation of completion cache
 
   # 2. Enhanced completion listing
@@ -78,10 +83,10 @@ function completions() {
     source <(rustup completions zsh rustup)
   fi
 
-  # podman
-  if command -v podman >/dev/null 2>&1; then
-    source <(podman completion zsh)
-  fi
+  ## podman
+  #if command -v podman >/dev/null 2>&1; then
+  #  source <(podman completion zsh)
+  #fi
 
   # asdf
   if command -v asdf >/dev/null 2>&1; then
@@ -163,6 +168,13 @@ function plugins() {
   # Some quick plugin settings
   ZSH_HIGHLIGHT_MAXLENGTH=100  
   ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#85858f,bold,underline"
+  
+  ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="100"
+  ZSH_AUTOSUGGEST_USE_ASYNC=1 # should be default anyway
+  
+  # Huge performance increase
+  # https://github.com/zsh-users/zsh-autosuggestions?tab=readme-ov-file#disabling-automatic-widget-re-binding
+  ZSH_AUTOSUGGEST_MANUAL_REBIND=no 
 
   # vicmd '^[[A' shouldnt be bound because its the same keycode as ESC (causes problems with vi-mode)
   bindkey -M viins '^[[A' history-substring-search-up    # Arrow up
