@@ -5,6 +5,8 @@ input {
             layout "es"
             variant "nodeadkeys"
             options "caps:escape,compose:prsc"
+            //file "/home/drusk/.config/niri/keymap.kbd"
+
         }
 
     }

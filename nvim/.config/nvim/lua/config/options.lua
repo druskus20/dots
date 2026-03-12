@@ -85,4 +85,7 @@ opt.clipboard = ""                 -- Do not use system clipboard
 
 opt.virtualedit = "all"            -- Move on empty space
 
-vim.g.lazyvim_blink_main = false
+opt.cinoptions:append("L0")        -- Don't break lines in insert mode
+
+
+vim.g.lazyvim_blink_main = true

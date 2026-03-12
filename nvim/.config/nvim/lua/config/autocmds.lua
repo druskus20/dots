@@ -58,6 +58,14 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- Disable autoformat on save for C++ projects
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "cpp", "c", "h", "hpp" },
+  callback = function()
+    vim.b.autoformat = false
+  end,
+})
+
 
 -- Set filetype to "html" for web components
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
