@@ -127,6 +127,18 @@ fi
 #export VIMINIT=":source $XDG_CONFIG_HOME/nvim/init.vim"
 # foldend
 
+# Load SSH agent from systemd or start it if not running
+function setup_ssh_agent() {
+  eval "export $(systemctl --user show-environment | grep SSH_AUTH_SOCK)"
+
+  # If still not set or running, start ssh-agent
+  if [ -z "$SSH_AUTH_SOCK" ]; then
+      eval $(ssh-agent -s)
+      systemctl --user set-environment SSH_AUTH_SOCK=$SSH_AUTH_SOCK SSH_AGENT_PID=$SSH_AGENT_PID
+  fi
+}
+setup_ssh_agent
+
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 
 # opencode

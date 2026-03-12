@@ -7,7 +7,7 @@ alias ls="eza --group-directories-first"
 alias la="eza --group-directories-first -A"
 alias lh="eza --group-directories-first -d -A .?*" # Shows only hidden files (only on current directory)
 alias rm="rm -i"
-alias rm='echo "Fuck you"' 
+alias rm='echo "NOPE"' 
 alias "git reset --hard"='echo "Fuck you"' 
 
 alias open="xdg-open"
@@ -15,6 +15,8 @@ alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
 
+
+alias "cargo run"="cargo lrun"
 # Fix commands
 alias fehs="feh --scale-down --auto-zoom"
 alias zathura="nohup zathura > /dev/null 2> /dev/null" 
