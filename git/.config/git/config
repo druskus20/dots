@@ -40,6 +40,7 @@
 [alias]
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   log = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	cleanall = "!f() { \n  git reset --hard && \n  git clean -fd && \n  if [ -z \"$(git status --porcelain)\" ]; then\n    echo \"Repository is clean.\";\n  else\n    echo \"Repository still has changes:\";\n    git status;\n    return 1;\n  fi\n}; f"
 [color]
   ui = true
 [user]
@@ -54,6 +55,7 @@
   diffFilter = delta --color-only --diff-so-fancy
 [merge]
   conflictstyle = zdiff3
+	tool = vimdiff
 
 [delta]
   navigate = true    # use n and N to move between diff sections
