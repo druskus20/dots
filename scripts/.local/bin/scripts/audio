@@ -1,29 +1,37 @@
 #!/bin/bash
 
+# Get the current default sink
+CURRENT_DEFAULT=$(pactl get-default-sink)
+
 list_sinks_with_details() {
-    pactl list sinks | awk '
-    BEGIN { 
+    pactl list sinks | awk -v current="$CURRENT_DEFAULT" '
+    BEGIN {
+        prev_id = ""; prev_name = ""; prev_desc = ""
         sink_id = ""; sink_name = ""; desc = ""
     }
-    /^Sink / { 
-        if (sink_id != "" && desc != "Ignore") {
-            print sink_id"\t"desc
+    /^Sink / {
+        if (prev_id != "" && prev_desc != "Ignore") {
+            indicator = (prev_name == current) ? "→" : " "
+            print prev_id"\t"prev_desc"\t"indicator
         }
-        sink_id = $2; 
-        sink_name = ""; 
-        desc = ""; 
+        prev_id = sink_id; prev_name = sink_name; prev_desc = desc
+        sink_id = $2;
+        sink_name = "";
+        desc = "";
     }
     /Name:/ {
         gsub(/Name: /, "", $0);
+        gsub(/^[ \t]+|[ \t]+$/, "", $0);
         sink_name = $0
     }
     /Description: / {
         gsub(/Description: /, "", $0);
         desc = $0
     }
-    END { 
-    if (sink_id != "" && desc != "Ignore") {
-            print sink_id"\t"desc
+    END {
+        if (sink_id != "" && desc != "Ignore") {
+            indicator = (sink_name == current) ? "→" : " "
+            print sink_id"\t"desc"\t"indicator
         }
     }'
 }

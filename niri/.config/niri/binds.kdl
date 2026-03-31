@@ -202,5 +202,7 @@ binds {
     Win+O { toggle-overview; }
     Win+Escape { toggle-overview; }
 
+
+    Win+F12      { spawn "swaylock"; }
     F12      { spawn "~/.config/niri/switch-kb-layout.sh"; }
 }
