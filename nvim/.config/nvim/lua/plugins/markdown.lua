@@ -1,5 +1,18 @@
 return {
   {
+    "iamcco/markdown-preview.nvim",
+    enabled = false,
+  },
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        marksman = {},
+      },
+    },
+  },
+
+  {
     "MeanderingProgrammer/render-markdown.nvim",
     opts = {
       html = {
@@ -10,14 +23,26 @@ return {
         },
       },
 
+      bullet = {
+        enabled = true,
+        icons = {
+          "•",
+          "◦",
+          "▪",
+          "▫",
+
+        },
+      },
       checkbox = {
         enabled = true,
         checked = {
-          icon = ""
+          --icon = "▪",
+          icon = "",
           -- 
         },
         unchecked = {
-          icon = ""
+          -- icon = "▫",
+          icon = "",
           -- 
         }
       },

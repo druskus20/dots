@@ -3,7 +3,7 @@
 
 # Set utilities
 export EDITOR="$HOME/.local/bin/nvim"
-export BROWSER="/usr/bin/helium"
+export BROWSER="helium"
 export MONITOR="HDMI-0"
 export TERMINAL="/bin/alacritty"
 export TERM=xterm-color
@@ -104,6 +104,8 @@ export PATH="$XDG_DATA_HOME"/asdf/shims:"$PATH"
 export ASDF_DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}"/asdf
 
 
+
+export LS_COLORS="$(dircolors)"
 
 
 # Fails with LightDM
