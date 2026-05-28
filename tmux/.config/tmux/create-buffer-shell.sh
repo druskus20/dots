@@ -1,8 +1,14 @@
 #!/bin/bash
 
+# Don't rename the popup session
+CURRENT_SESSION=$(tmux display-message -p '#{session_name}')
+if [ "$CURRENT_SESSION" = "popup" ]; then
+    exit 0
+fi
+
 SESSION_FILE="/tmp/next_tmux_session"
 if [ ! -f "$SESSION_FILE" ]; then
-    echo "0" > "$SESSION_FILE" 
+    echo "0" > "$SESSION_FILE"
 fi
 
 SESSION_NUMBER=$(cat "$SESSION_FILE")
