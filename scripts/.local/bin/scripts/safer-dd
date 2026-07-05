@@ -18,6 +18,20 @@ if [ ! -f "$IMAGE" ]; then
     exit 1
 fi
 
+# Detect compressed images by extension
+DECOMPRESSOR=""
+case "${IMAGE,,}" in
+    *.bz2)
+        DECOMPRESSOR="bzcat"
+        ;;
+    *.gz)
+        DECOMPRESSOR="zcat"
+        ;;
+    *.xz)
+        DECOMPRESSOR="xzcat"
+        ;;
+esac
+
 if [ ! -b "$DEVICE" ]; then
     echo "Output target is not a block device: $DEVICE"
     exit 1
@@ -30,10 +44,10 @@ fi
 #fi
 
 # refuse non-removable devices
-if  lsblk -no RM "$DEVICE" | grep -q 0 ; then
-    echo "Refusing to write to non-removable device (RM=0)."
-    exit 1
-fi
+#if  lsblk -no RM "$DEVICE" | grep -q 0 ; then
+#    echo "Refusing to write to non-removable device (RM=0)."
+#    exit 1
+#fi
 
 # refuse mounted devices
 if lsblk -nr -o MOUNTPOINT "$DEVICE" | grep -q .; then
@@ -41,19 +55,16 @@ if lsblk -nr -o MOUNTPOINT "$DEVICE" | grep -q .; then
     exit 1
 fi
 
-IMAGE_SIZE=$(stat -c%s "$IMAGE")
-DEVICE_SIZE=$(blockdev --getsize64 "$DEVICE")
-
-IMAGE_GB=$(awk "BEGIN {printf \"%.2f\", $IMAGE_SIZE/1024/1024/1024}")
-DEVICE_GB=$(awk "BEGIN {printf \"%.2f\", $DEVICE_SIZE/1024/1024/1024}")
-
-if [ "$IMAGE_SIZE" -gt "$DEVICE_SIZE" ]; then
-    echo
-    echo "ERROR: Image is larger than target device."
-    echo "Image : ${IMAGE_GB} GiB"
-    echo "Device: ${DEVICE_GB} GiB"
-    exit 1
+# Verify decompressor is available if needed
+if [ -n "$DECOMPRESSOR" ]; then
+    if ! command -v "$DECOMPRESSOR" >/dev/null 2>&1; then
+        echo "Error: $DECOMPRESSOR not found. Install it to use compressed images."
+        exit 1
+    fi
 fi
+
+DEVICE_SIZE=$(blockdev --getsize64 "$DEVICE")
+DEVICE_GB=$(awk "BEGIN {printf \"%.2f\", $DEVICE_SIZE/1024/1024/1024}")
 
 
 DEVICE_MODEL=$(lsblk -no MODEL "$DEVICE" | sed 's/^ *//')
@@ -61,7 +72,9 @@ DEVICE_VENDOR=$(lsblk -no VENDOR "$DEVICE" 2>/dev/null | sed 's/^ *//')
 
 echo
 echo "Source image : $IMAGE"
-echo "Image size   : $IMAGE_GB GiB"
+if [ -n "$DECOMPRESSOR" ]; then
+    echo "Compression  : detected (will decompress with $DECOMPRESSOR)"
+fi
 echo
 echo "Target device: $DEVICE"
 echo "Device size  : $DEVICE_GB GiB"
@@ -69,8 +82,13 @@ echo "Device model : ${DEVICE_VENDOR:-Unknown} ${DEVICE_MODEL:-Unknown}"
 echo
 echo "ALL DATA ON $DEVICE WILL BE DESTROYED!"
 echo
-echo "dd command to be executed:"
-echo "  sudo dd if=\"$IMAGE\" of=\"$DEVICE\" ${DD_ARGS[*]}" 
+if [ -n "$DECOMPRESSOR" ]; then
+    echo "Command to be executed:"
+    echo "  $DECOMPRESSOR \"$IMAGE\" | sudo dd of=\"$DEVICE\" ${DD_ARGS[*]}"
+else
+    echo "dd command to be executed:"
+    echo "  sudo dd if=\"$IMAGE\" of=\"$DEVICE\" ${DD_ARGS[*]}"
+fi
 echo
 
 
@@ -91,10 +109,20 @@ if ! printf "%s\n" "${ARGS[@]}" | grep -q 'conv='; then
     ARGS+=("conv=fsync")
 fi
 
-if command -v pv >/dev/null 2>&1; then
-    pv -pter -s "$IMAGE_SIZE" "$IMAGE" | sudo dd of="$DEVICE" "${ARGS[@]}" status=none
+if [ -n "$DECOMPRESSOR" ]; then
+    # Compressed image - pipe through decompressor
+    if command -v pv >/dev/null 2>&1; then
+        $DECOMPRESSOR "$IMAGE" | pv -pter | sudo dd of="$DEVICE" "${ARGS[@]}" status=none
+    else
+        $DECOMPRESSOR "$IMAGE" | sudo dd of="$DEVICE" "${ARGS[@]}"
+    fi
 else
-    sudo dd if="$IMAGE" of="$DEVICE" "${ARGS[@]}" status=progress
+    # Uncompressed image - original logic
+    if command -v pv >/dev/null 2>&1; then
+        pv -pter "$IMAGE" | sudo dd of="$DEVICE" "${ARGS[@]}" status=none
+    else
+        sudo dd if="$IMAGE" of="$DEVICE" "${ARGS[@]}" status=progress
+    fi
 fi
 
 sync

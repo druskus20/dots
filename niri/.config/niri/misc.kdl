@@ -4,9 +4,9 @@ spawn-at-startup "swww" "img" "/home/drusk/img/bg/leaves3.jpg" "-n" "wallpaper"
 spawn-at-startup "swww" "img" "/home/drusk/img/bg/leaves3-blur.jpg" "-n" "backdrop"
 
 spawn-at-startup "mako"
-spawn-at-startup "eww" "open-many" "win0"  "win1" "win2"
-spawn-at-startup "xwayland-satellite" ":0"
-spawn-at-startup "sherlock --daemonize"
+//spawn-at-startup "eww" "open-many" "win0"  "win1" "win2"
+//spawn-at-startup "xwayland-satellite" ":0"
+//spawn-at-startup "sherlock --daemonize"
 
 prefer-no-csd
 

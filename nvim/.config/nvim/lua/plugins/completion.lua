@@ -8,7 +8,7 @@ return {
   {
     "saghen/blink.cmp",
     enabled = true,
-    --commit = "d7f1c64",
+    version = "1.*",
     opts = {
       -- Disable for some filetypes
       enabled = function()
