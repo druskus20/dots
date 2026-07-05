@@ -10,7 +10,7 @@ export TERM=xterm-color
 export DISPLAY=:0
 
 # idk if it works
-export XCURSOR_SIZE=16
+#export XCURSOR_SIZE=16
 # also:  gsettings set org.gnome.desktop.interface cursor-size 16 
 
 # Screen sharing and flameshot 

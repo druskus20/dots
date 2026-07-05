@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Don't rename the popup session
+# Don't rename popup sessions (popup or popup-*)
 CURRENT_SESSION=$(tmux display-message -p '#{session_name}')
-if [ "$CURRENT_SESSION" = "popup" ]; then
+if [[ "$CURRENT_SESSION" =~ ^popup(-.*)?$ ]]; then
     exit 0
 fi
 

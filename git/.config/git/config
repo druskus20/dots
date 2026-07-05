@@ -52,7 +52,7 @@
   pager = delta
   hooksPath = ~/.config/git/hooks
 [interactive]
-  diffFilter = delta --color-only --diff-so-fancy
+  diffFilter = delta --color-only #--diff-so-fancy
 [merge]
   conflictstyle = zdiff3
 	tool = vimdiff
@@ -152,3 +152,7 @@
 # [merge]
 #   conflictstyle = zdiff3
 # 
+[http]
+	lowSpeedLimit = 1000
+	lowSpeedTime = 60
+	postBuffer = 524288000

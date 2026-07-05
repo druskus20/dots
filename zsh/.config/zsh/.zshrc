@@ -8,7 +8,7 @@ function safe-start-tmux() {
   case $- in *i*)
     if [ -z "$TMUX" ] && [ -z "$ZELLIJ" ] ; then  
       # Custom tmux stuff - buffer one tmux session ahead to make startup instant
-      tmux attach -t buffer || (tmux new -d -s buffer && tmux new -t buffer -A )
+      tmux attach -t buffer > /dev/null || (tmux new -d -s buffer > /dev/null && tmux new -t buffer -A > /dev/null )
       #zellij 
 
 
@@ -234,3 +234,6 @@ p10k finalize
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
+
+# opencode
+export PATH=/home/drusk/.opencode/bin:$PATH

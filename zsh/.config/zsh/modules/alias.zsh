@@ -16,7 +16,8 @@ alias vi="nvim"
 alias v="nvim"
 
 
-alias "cargo run"="cargo lrun"
+alias j=just
+
 # Fix commands
 alias fehs="feh --scale-down --auto-zoom"
 alias zathura="nohup zathura > /dev/null 2> /dev/null" 
@@ -41,11 +42,6 @@ alias svn="svn --config-dir "$XDG_CONFIG_HOME"/subversion"
 alias picom="picom --config $PICOM_CONFIG_PATH"
 alias startx="startx \"$XDG_CONFIG_HOME/X11/xinitrc\""
 
-alias ewwt="eww -c ~/.config/eww-testing"
-alias ewwc="cargo run -- --config ~/.config/eww-circular"
-alias ewwg="cargo run -- --config ~/.config/eww-graph"
-alias ewwt="cargo run -- --config ~/.config/eww-trans"
-
 alias code="code --enable-features=UseOzonePlatform --ozone-platform=wayland"
 alias vscode="code --enable-features=UseOzonePlatform --ozone-platform=wayland"
 
@@ -61,7 +57,7 @@ alias gca="git commit -a"
 alias gp="git push"
 alias gw="git switch"
 alias GG="git add -A && git commit && git push"
-alias cr="cargo run"
+alias cr="cargo lrun"
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
 

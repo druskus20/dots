@@ -9,6 +9,11 @@ return {
     },
     opts = function(_, opts)
       local actions = require("telescope.actions")
+      opts.defaults = opts.defaults or {}
+      opts.defaults.vimgrep_arguments = vim.list_extend(
+        require('telescope.config').values.vimgrep_arguments,
+        { '--fixed-strings' }
+      )
       opts.defaults.mappings = {
         i = {
           ["<C-n>"] = actions.move_selection_next,

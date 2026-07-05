@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+OUT="/tmp/gif-recording.mp4"
+GIF="$HOME/recording-$(date +%s).gif"
+
+echo "Select area..."
+
+GEOM=$(slurp)
+
+if [ -z "$GEOM" ]; then
+    echo "Cancelled."
+    exit 1
+fi
+
+echo "Recording... Press Ctrl+C to stop."
+
+wf-recorder \
+  -g "$GEOM" \
+  --codec libx264 \
+  --pixel-format yuv420p \
+  --framerate 15 \
+  -f "$OUT" >/dev/null 2>&1
+
+echo "Converting to GIF..."
+
+ffmpeg -y -i "$OUT" -r 15 \
+  -vf "fps=15,scale=2000:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" \
+  -loop 0 "$GIF" 2>&1 | grep -i error
+
+rm "$OUT"
+
+wl-copy -t image/gif < "$GIF"
+
+echo "Saved to $GIF"

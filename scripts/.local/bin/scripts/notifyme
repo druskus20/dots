@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Play system bell
+printf '\a'
+
+# Send desktop notification with critical urgency (shows as red)
+notify-send --urgency=critical "Command Completed" "Your long-running command has finished!"
+
+
+# Optional: play a sound if available
+if command -v paplay &> /dev/null && [ -f /usr/share/sounds/freedesktop/stereo/window-attention.oga ]; then
+    paplay /usr/share/sounds/freedesktop/stereo/window-attention.oga
+fi

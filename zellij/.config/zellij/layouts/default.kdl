@@ -1,0 +1,49 @@
+layout {
+    default_tab_template {
+        children
+        pane size=1 borderless=true {
+            plugin location="file:/home/drusk/.config/zellij/plugins/zjstatus.wasm" {
+                format_left   "{mode} {tabs}"
+                format_center ""
+                format_right  "#[bg=#98971a,fg=#f2e5bc]  {session} {command_user}{command_host}"
+                format_space   "#[bg=#ebdbb2]"
+
+                border_enabled  "false"
+                border_char     "─"
+                border_format   "#[fg=#504945]{char}"
+                border_position "top"
+
+                //hide_frame_for_single_pane "true"
+                hide_frame_except_for_fullscreen  "true"
+
+                mode_normal      "#[bg=#458588,fg=#f2e5bc]◼ NORMAL"
+                mode_locked      "#[bg=#cc241d,fg=#f2e5bc]🔒 LOCKED"
+                mode_resize      "#[bg=#d65d0e,fg=#f2e5bc]↔ RESIZE"
+                mode_pane        "#[bg=#d79921,fg=#3c3836]⊞ PANE"
+                mode_tab         "#[bg=#98971a,fg=#f2e5bc]⊡ TAB"
+                mode_scroll      "#[bg=#b16286,fg=#f2e5bc]↕ SCROLL"
+                mode_enter_search "#[bg=#689d6a,fg=#f2e5bc]🔍 SEARCH"
+                mode_search      "#[bg=#689d6a,fg=#f2e5bc]🔍 SEARCH"
+                mode_rename_tab  "#[bg=#83a598,fg=#f2e5bc]✏ RENAME"
+                mode_rename_pane "#[bg=#83a598,fg=#f2e5bc]✏ RENAME"
+                mode_session     "#[bg=#fe8019,fg=#3c3836]📋 SESSION"
+                mode_move        "#[bg=#8ec07c,fg=#3c3836]↗ MOVE"
+                mode_tmux        "#[bg=#d65d0e,fg=#f2e5bc]🖥 TMUX"
+
+                tab_normal   "#[bg=#ebdbb2,fg=#076678]#[bg=#076678,fg=#f2e5bc] {index} #[bg=#ebdbb2,fg=#076678] {name} "
+                tab_active   "#[bg=#e0cfa9,fg=#af3a03]#[bg=#af3a03,fg=#f2e5bc] {index} #[bg=#e0cfa9,fg=#af3a03] {name} "
+
+
+                command_user_command "whoami"
+                command_user_format "#[bg=#83a598,fg=#f2e5bc]  {stdout} "
+                command_user_interval "0"
+                command_user_rendermode "static"
+
+                command_host_command "hostname"
+                command_host_format "#[bg=#b16286,fg=#f2e5bc]  {stdout} "
+                command_host_interval "0"
+                command_host_rendermode "static"
+            }
+        }
+    }
+}

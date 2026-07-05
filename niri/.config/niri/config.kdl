@@ -4,3 +4,19 @@ include "layout.kdl"
 include "animations.kdl"
 include "misc.kdl"
 include "binds.kdl"
+
+cursor {
+    xcursor-theme "phinger-cursors-light"
+    //xcursor-theme "Phinger Cursors Light"
+    xcursor-size 32
+
+
+    shake {
+        on
+        max-multiplier 5.5
+        behavior "hold"
+        shake-interval-ms 4000
+        min-diagonal 100.0
+        sensitivity 4.5
+    }
+}

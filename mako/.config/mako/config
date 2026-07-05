@@ -10,3 +10,9 @@ background-color=#303030
 text-color=#ebdbb2
 border-size=0
 border-radius=5
+
+
+[urgency=critical]
+background-color=#cc241d
+default-timeout=10000
+
