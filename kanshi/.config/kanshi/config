@@ -15,5 +15,5 @@ profile work-desk {
 
 profile standalone {
   exec "niri msg output 'eDP-1' on"
-  output "BOE 0x09DE Unknown" mode 1920x1080 position 0,0 scale 1
+  output "BOE 0x09DE Unknown" mode 1920x1080 position 0,0 scale 1.5
 }

@@ -46,8 +46,6 @@
 [user]
   email = "43417195+druskus20@users.noreply.github.com"
   name = druskus20
-[includeIf "gitdir:~/work/"]
-  path = ./config.work
 [core]
   pager = delta
   hooksPath = ~/.config/git/hooks
@@ -156,3 +154,6 @@
 	lowSpeedLimit = 1000
 	lowSpeedTime = 60
 	postBuffer = 524288000
+
+[includeIf "gitdir:~/work/"]
+  path = ./config.work

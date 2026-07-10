@@ -175,6 +175,11 @@ window-rule {
 
     open-floating true
 }
+window-rule {
+   match title=r#"Volume Control"#
+
+    open-floating true
+}
 
 window-rule {
    match title=r#"zenity"#
