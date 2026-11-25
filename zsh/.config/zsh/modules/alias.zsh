@@ -5,11 +5,12 @@ done; unset command
 
 alias ls="eza --group-directories-first"
 alias la="eza --group-directories-first -A"
-alias lh="eza --group-directories-first -d -A .?*" # Shows only hidden files (only on current directory)
+alias lh="eza --group-directories-first -d -A .?*(N)" # Shows only hidden files (only on current directory)
 alias rm="rm -i"
 alias rm='echo "NOPE"' 
 alias "git reset --hard"='echo "Fuck you"' 
 
+alias sai="sudo apt install"
 alias open="xdg-open"
 alias vim="nvim"
 alias vi="nvim"
@@ -87,7 +88,7 @@ alias "~"="cd ~"
 
 alias fd=fdfind
 
-alias npm="pnpm"
+#alias npm="pnpm"
 
 #alias 'exit'="[ -z "$TMUX" ] && exit || tmux detach -P"
 #alias ':q'="[ -z "$TMUX" ] && exit || tmux detach -P"
@@ -100,3 +101,4 @@ alias gunwip='git rev-list --max-count=1 --format="%s" HEAD | grep -q "\--wip--"
 # create or attach to main and restore session
 #alias tm="[ -z "$TMUX" ] && (tmux attach-session -t main || (tmux new-session -s main \; run-shell /home/drusk/.config/tmux/plugins/tmux-resurrect/scripts/restore.sh))"
 #alias tm="tmux switch-client -t main || (tmux new-session -s main \; run-shell /home/drusk/.config/tmux/plugins/tmux-resurrect/scripts/restore.sh)"
+alias qrenderdoc="QT_QPA_PLATFORM=xcb DISPLAY=:0 ~/renderdoc/build/bin/qrenderdoc"

@@ -60,7 +60,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- Disable autoformat on save for C++ projects
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "cpp", "c", "h", "hpp" },
+  pattern = { "cpp", "c", "h", "hpp", "bash", "sh", "zsh" },
   callback = function()
     vim.b.autoformat = false
   end,
@@ -72,6 +72,24 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   pattern = { "*.webc" },
   callback = function()
     vim.opt_local.filetype = "html"
+  end,
+})
+
+
+-- Set filetype to "liquid" for nunjucks
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = { "*.njk" },
+  callback = function()
+    vim.opt_local.filetype = "liquid"
+  end,
+})
+
+
+-- Set filetype to "bitbake" for .inc files (same as .bb files)
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = { "*.inc" },
+  callback = function()
+    vim.opt_local.filetype = "bitbake"
   end,
 })
 

@@ -182,6 +182,11 @@ window-rule {
 }
 
 window-rule {
+   match title=r#"definitiv"#
+
+    open-floating true
+}
+window-rule {
    match title=r#"zenity"#
 
     open-floating true
@@ -228,6 +233,15 @@ window-rule {
 
     block-out-from "screen-capture"
 
+}
+
+
+window-rule {
+  match title=r#"DevTools*"#
+  open-floating true
+  // position at the bottom corner
+  default-floating-position x=50 y=50 relative-to="bottom-right"
+  
 }
 
 window-rule {

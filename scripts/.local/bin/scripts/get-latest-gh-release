@@ -1,0 +1,67 @@
+#!/bin/bash
+
+# Get the latest release from any GitHub repository
+FORMAT="json"
+REPO_INPUT=""
+
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    --json)
+      FORMAT="json"
+      shift
+      ;;
+    --just-url)
+      FORMAT="url"
+      shift
+      ;;
+    --just-tag)
+      FORMAT="tag"
+      shift
+      ;;
+    *)
+      REPO_INPUT="$1"
+      shift
+      ;;
+  esac
+done
+
+if [ -z "$REPO_INPUT" ]; then
+  echo "Usage: $0 [--json|--just-url|--just-tag] <github-url-or-owner/repo>" >&2
+  echo "Default: --json" >&2
+  exit 1
+fi
+
+# Extract owner/repo from various URL formats
+REPO=$(echo "$REPO_INPUT" | sed -E 's|https?://||' | sed -E 's|github\.com/||' | sed -E 's|\.git$||' | sed -E 's|/$||')
+
+API_URL="https://api.github.com/repos/${REPO}/releases/latest"
+
+response=$(curl -sL \
+  -H "Accept: application/vnd.github+json" \
+  -H "X-GitHub-Api-Version: 2026-03-10" \
+  "${API_URL}")
+
+# Extract key information
+tag_name=$(echo "$response" | jq -r '.tag_name')
+name=$(echo "$response" | jq -r '.name')
+published_at=$(echo "$response" | jq -r '.published_at')
+url=$(echo "$response" | jq -r '.html_url')
+
+# Output based on format
+case $FORMAT in
+  json)
+    jq -n \
+      --arg name "$name" \
+      --arg tag "$tag_name" \
+      --arg date "$published_at" \
+      --arg url "$url" \
+      '{name: $name, tag: $tag, date: $date, url: $url}'
+    ;;
+  url)
+    echo "$url"
+    ;;
+  tag)
+    echo "$tag_name"
+    ;;
+esac

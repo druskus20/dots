@@ -98,6 +98,9 @@ function completions() {
   # (adding them to fpath - breaks fast start)
   # I am not sure why - maybe I am not caching the compdump properly?
   #source <(rustup completions zsh cargo) # breaks fast start
+  if command -v deno >/dev/null 2>&1; then
+    source $ZDOTDIR/completions/_deno.zsh # avoid breaking fast start
+  fi
   source $ZDOTDIR/completions/_eza # avoid breaking fast start
 }
 
@@ -234,6 +237,3 @@ p10k finalize
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
-
-# opencode
-export PATH=/home/drusk/.opencode/bin:$PATH
