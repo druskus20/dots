@@ -1,7 +1,9 @@
 # -------------------------------------------------
 # Should go first
 
+export TMUX_ENABLED=true
 export TMUX_THEME="oled"
+
 # Start tmux (only if not already in a tmux session)
 function safe-start-tmux() {
   # Needs to go before tmux

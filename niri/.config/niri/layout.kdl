@@ -64,9 +64,9 @@ layout {
     }
 
     border {
-	width 1
-	active-color "#ffffff"
-        on
+      width 1
+      active-color "#444444"
+      on
     }
 
     shadow {

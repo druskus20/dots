@@ -124,6 +124,7 @@ init-module=${XDG_CONFIG_HOME}/npm/config/npm-init.js
 EOF
 fi
 
+
 # Gives too many problems
 #export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 #export VIMINIT=":source $XDG_CONFIG_HOME/nvim/init.vim"
@@ -170,4 +171,5 @@ XDG_PROJECTS_DIR="$HOME/code"
 #XDG_VIDEOS_DIR="$HOME/Videos"
 
 
+COPILOT_HOME="$XDG_CONFIG_HOME"/copilot
 # vim:foldmarker=foldstart,foldend
