@@ -1,0 +1,100 @@
+colourful: true
+filekinds:
+  normal: {foreground: "#bfb191"}      # text
+  directory: {foreground: "#7daea3", is_bold: true}    # blue
+  symlink: {foreground: "#89b482"}     # teal
+  pipe: {foreground: "#d8a657"}        # yellow
+  block_device: {foreground: "#d8a657", is_bold: true} # yellow bold
+  char_device: {foreground: "#d8a657", is_bold: true}  # yellow bold
+  socket: {foreground: "#ea6962", is_bold: true}       # red bold
+  special: {foreground: "#d8a657"}     # yellow
+  executable: {foreground: "#a9b665", is_bold: true}   # green bold
+  mount_point: {foreground: "#7daea3", is_bold: true, is_underlined: true} # blue bold underline
+
+perms:
+  user_read: {foreground: "#d8a657", is_bold: true}    # yellow bold
+  user_write: {foreground: "#ea6962", is_bold: true}   # red bold
+  user_execute_file: {foreground: "#a9b665", is_bold: true, is_underlined: true} # green bold underline
+  user_execute_other: {foreground: "#a9b665", is_bold: true}    # green bold
+  group_read: {foreground: "#d8a657"}   # yellow
+  group_write: {foreground: "#ea6962"}  # red
+  group_execute: {foreground: "#a9b665"} # green
+  other_read: {foreground: "#d8a657"}   # yellow
+  other_write: {foreground: "#ea6962"}  # red
+  other_execute: {foreground: "#a9b665"} # green
+  special_user_file: {foreground: "#d3869b"} # pink
+  special_other: {foreground: "#d3869b"}     # pink
+  attribute: {foreground: "#ebdbb2"}    # text
+
+size:
+  major: {foreground: "#a9b665", is_bold: true}  # green bold
+  minor: {foreground: "#a9b665"}                 # green
+  number_byte: {foreground: "#a9b665", is_bold: true}   # green bold
+  number_kilo: {foreground: "#a9b665", is_bold: true}   # green bold
+  number_mega: {foreground: "#a9b665", is_bold: true}   # green bold
+  number_giga: {foreground: "#a9b665", is_bold: true}   # green bold
+  number_huge: {foreground: "#a9b665", is_bold: true}   # green bold
+  unit_byte: {foreground: "#a9b665"}    # green
+  unit_kilo: {foreground: "#a9b665"}    # green
+  unit_mega: {foreground: "#a9b665"}    # green
+  unit_giga: {foreground: "#a9b665"}    # green
+  unit_huge: {foreground: "#a9b665"}    # green
+
+users:
+  user_you: {foreground: "#d8a657", is_bold: true}    # yellow bold
+  user_root: {foreground: "#ebdbb2"}    # text
+  user_other: {foreground: "#ebdbb2"}   # text
+  group_yours: {foreground: "#d8a657", is_bold: true} # yellow bold
+  group_other: {foreground: "#ebdbb2"}  # text
+  group_root: {foreground: "#ebdbb2"}   # text
+
+links:
+  normal: {foreground: "#ea6962", is_bold: true}      # red bold
+  multi_link_file: {foreground: "#ea6962", background: "#d8a657"} # red on yellow
+
+git:
+  new: {foreground: "#a9b665"}          # green
+  modified: {foreground: "#7daea3"}     # blue
+  deleted: {foreground: "#ea6962"}      # red
+  renamed: {foreground: "#d8a657"}      # yellow
+  typechange: {foreground: "#d3869b"}   # pink
+  ignored: {foreground: "#ebdbb2", is_dimmed: true}   # dimmed text
+  conflicted: {foreground: "#ea6962"}   # red
+
+git_repo:
+  branch_main: {foreground: "#a9b665"}  # green
+  branch_other: {foreground: "#d8a657"} # yellow
+  git_clean: {foreground: "#a9b665"}    # green
+  git_dirty: {foreground: "#d8a657"}    # yellow
+
+security_context:
+  colon: {foreground: "#ebdbb2", is_dimmed: true}     # dimmed text
+  user: {foreground: "#7daea3"}         # blue
+  role: {foreground: "#a9b665"}         # green
+  typ: {foreground: "#d8a657"}          # yellow
+  range: {foreground: "#89b482"}        # teal
+
+file_type:
+  image: {foreground: "#d3869b"}        # pink
+  video: {foreground: "#d3869b", is_bold: true}       # pink bold
+  music: {foreground: "#89b482"}        # teal
+  lossless: {foreground: "#89b482", is_bold: true}    # teal bold
+  crypto: {foreground: "#a9b665", is_bold: true}      # green bold
+  document: {foreground: "#a9b665"}     # green
+  compressed: {foreground: "#ea6962"}   # red
+  temp: {foreground: "#ebdbb2"}         # text
+  compiled: {foreground: "#d8a657"}     # yellow
+  build: {foreground: "#d8a657", is_bold: true, is_underlined: true}    # yellow bold underline
+  source: {foreground: "#d8a657", is_bold: true}      # yellow bold
+
+punctuation: {foreground: "#928374", is_bold: true}   # overlay1 bold
+date: {foreground: "#7daea3"}           # blue
+inode: {foreground: "#d3869b"}          # pink
+blocks: {foreground: "#89b482"}         # teal
+header: {foreground: "#ebdbb2", is_underlined: true}  # text underline
+octal: {foreground: "#d3869b"}          # pink
+flags: {foreground: "#ebdbb2"}          # text
+symlink_path: {foreground: "#89b482"}   # teal
+control_char: {foreground: "#ea6962"}   # red
+broken_symlink: {foreground: "#ea6962"} # red
+broken_path_overlay: {foreground: "#ebdbb2", is_underlined: true}   # text underline
