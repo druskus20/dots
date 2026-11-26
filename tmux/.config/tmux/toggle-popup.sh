@@ -25,7 +25,7 @@ if ! tmux has-session -t "$POPUP_SESSION" >/dev/null; then
     tmux set -t "$POPUP_SESSION" status off > /dev/null
 fi
 
-# Open the popup and track the PID
+# Open the popup and track the PID (styling from theme files)
 echo $$ > "$STATE_FILE"
-tmux display-popup -E -s "bg=#ede0b5" -S "fg=#ede0b5,bg=#ede0b5" -d "#{pane_current_path}" -w 90% -h 90% "tmux attach -t $POPUP_SESSION"
+tmux display-popup -E -d "#{pane_current_path}" -w 90% -h 90% "tmux attach -t $POPUP_SESSION"
 rm -f "$STATE_FILE"
