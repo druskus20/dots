@@ -1,0 +1,40 @@
+[delta]
+  navigate = true    # use n and N to move between diff sections
+  side-by-side = true
+  features = unobtrusive-line-numbers gruvbox-dark
+  dark = true
+
+[delta "gruvbox-dark"]
+    blame-palette = "#282828 #1d2021 #32302f #3c3836 #504945"
+    commit-decoration-style = ul
+    dark = true
+    file-decoration-style = "#bfb191"
+    file-style = "#bfb191"
+    hunk-header-decoration-style = box ul
+    hunk-header-file-style = bold
+    hunk-header-line-number-style = bold "#928374"
+    hunk-header-style = file line-number syntax
+    line-numbers-left-style = "#928374"
+    line-numbers-minus-style = bold "#ea6962"
+    line-numbers-plus-style = bold "#a9b665"
+    line-numbers-right-style = "#928374"
+    line-numbers-zero-style = "#928374"
+    syntax-theme = gruvbox-dark
+
+    # Soft backgrounds for diff lines (similar contrast to light mode)
+    minus-emph-style = bold syntax "#4a2a27"   # deeper red background
+    minus-style = syntax "#3a2320"             # soft red background
+    plus-emph-style = bold syntax "#3d4228"    # deeper green background
+    plus-style = syntax "#313625"              # soft green background
+
+[delta "unobtrusive-line-numbers"]
+    line-numbers = true
+    line-numbers-minus-style = "#665c54"
+    line-numbers-zero-style = "#665c54"
+    line-numbers-plus-style = "#665c54"
+    line-numbers-left-format = "{nm:>4} "
+    line-numbers-right-format = "{np:>4} "
+    line-numbers-left-style = "#928374"
+    line-numbers-right-style = "#928374"
+
+# vim:ft=gitconfig
