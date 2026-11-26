@@ -24,7 +24,7 @@ perms:
   other_execute: {foreground: "#a9b665"} # green
   special_user_file: {foreground: "#d3869b"} # pink
   special_other: {foreground: "#d3869b"}     # pink
-  attribute: {foreground: "#ebdbb2"}    # text
+  attribute: {foreground: "#928374"}    # overlay1 (more subtle)
 
 size:
   major: {foreground: "#a9b665", is_bold: true}  # green bold
