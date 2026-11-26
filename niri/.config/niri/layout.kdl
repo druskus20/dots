@@ -5,9 +5,11 @@ layer-rule {
 
 overview {
     zoom 0.45 
+    backdrop-color "#000000"
 }
 
 layout {
+    background-color "#000000"
     gaps 8
 
     //center-focused-column "always"
@@ -62,7 +64,9 @@ layout {
     }
 
     border {
-        off
+	width 1
+	active-color "#ffffff"
+        on
     }
 
     shadow {

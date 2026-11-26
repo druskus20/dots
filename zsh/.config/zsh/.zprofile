@@ -2,7 +2,7 @@
 # Loads on session start
 
 # Set utilities
-export EDITOR="$HOME/.local/bin/nvim"
+export EDITOR="nvim"
 export BROWSER="helium"
 export MONITOR="HDMI-0"
 export TERMINAL="/bin/alacritty"
@@ -157,5 +157,17 @@ export NVM_DIR="$HOME/.config/nvm"
 #  echo "Starting wayland session"
 #  niri --session
 #fi
+
+
+#XDG_DESKTOP_DIR="$HOME/Desktop"
+XDG_DOCUMENTS_DIR="$HOME/doc"
+XDG_DOWNLOAD_DIR="$HOME/dl"
+#XDG_MUSIC_DIR="$HOME/Music"
+XDG_PICTURES_DIR="$HOME/img"
+XDG_PROJECTS_DIR="$HOME/code"
+#XDG_PUBLICSHARE_DIR="$HOME/Public"
+#XDG_TEMPLATES_DIR="$HOME/Templates"
+#XDG_VIDEOS_DIR="$HOME/Videos"
+
 
 # vim:foldmarker=foldstart,foldend

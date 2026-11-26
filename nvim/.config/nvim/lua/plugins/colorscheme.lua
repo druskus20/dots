@@ -128,6 +128,46 @@ return {
 
 
         },
+        macchiato = {
+          -- Gruvbox OLED accents
+          -- Gruvbox Material inspired accents
+          rosewater = "#d4be98",
+          flamingo = "#ea6962",
+          pink = "#d3869b",
+          mauve = "#d3869b",
+
+          red = "#ea6962",
+          maroon = "#cc5650",
+          peach = "#e78a4e",
+          yellow = "#d8a657",
+
+          green = "#a9b665",
+          teal = "#89b482",
+          sky = "#89b482",
+          sapphire = "#7daea3",
+          blue = "#7daea3",
+          lavender = "#89b482",
+
+          -- Foreground
+          text = "#d4be98",
+          subtext1 = "#c6b18a",
+          subtext0 = "#bdae93",
+
+          -- Comments and muted text
+          overlay2 = "#a89984",
+          overlay1 = "#928374",
+          overlay0 = "#665c54",
+
+          -- Surfaces
+          surface2 = "#3c3836",
+          surface1 = "#282828",
+          surface0 = "#181818",
+
+          -- OLED backgrounds
+          base = "#000000",
+          mantle = "#080808",
+          crust = "#050505",
+        }
       },
       no_italic = true,
       no_bold = true,
@@ -243,6 +283,172 @@ return {
             -- ["@error"] = { fg = U.brighten(colors.text, 0.75), style = { "underline" } },
             ["@error"] = { bg = U.darken(colors.red, 0.4, colors.base), fg = U.brighten(colors.text, 0.75), style = { "underline" }, },
             LualineInnactiveBufferFix = { fg = colors.subtext1, bg = colors.surface2 },
+          }
+        end,
+        macchiatto = function(colors)
+          local U = require("catppuccin.utils.colors")
+
+          local scrollbarHandle = "#504945"
+
+          return {
+            Comment = { fg = "#928374" },
+
+
+            -- Spelling
+            Spell = { fg = colors.red },
+            SpellBad = { fg = colors.red },
+            SpellCap = { fg = colors.red },
+            SpellLocal = { fg = colors.red },
+
+            -- OLED floating windows
+            NormalBorder = { bg = colors.base, fg = colors.surface1 },
+            FloatBorder = { bg = colors.base, fg = colors.surface1 },
+            FloatTitle = { bg = colors.surface1, fg = colors.yellow },
+            MsgArea = { bg = colors.base, fg = colors.text },
+
+            -- Diagnostics
+            DiagnosticVirtualTextError = {
+              bg = "#160909",
+              fg = "#ea6962",
+            },
+            DiagnosticVirtualTextWarn = {
+              bg = "#161006",
+              fg = "#d8a657",
+            },
+            DiagnosticVirtualTextInfo = {
+              bg = "#091311",
+              fg = "#7daea3",
+            },
+            DiagnosticVirtualTextHint = {
+              bg = "#0c1309",
+              fg = "#89b482",
+            },
+
+            -- Telescope
+            TelescopePromptPrefix = {
+              bg = colors.mantle,
+              fg = colors.peach,
+            },
+            TelescopePromptTitle = {
+              bg = colors.surface1,
+              fg = colors.yellow,
+            },
+            TelescopeResultsTitle = {
+              bg = colors.surface1,
+              fg = colors.yellow,
+            },
+            TelescopeSelection = {
+              bg = colors.surface1,
+              fg = colors.text,
+            },
+            TelescopeResultsDiffAdd = { fg = colors.green },
+            TelescopeResultsDiffChange = { fg = colors.yellow },
+            TelescopeResultsDiffDelete = { fg = colors.red },
+
+            TelescopeNormal = { bg = colors.base },
+            TelescopeBorder = {
+              bg = colors.base,
+              fg = colors.surface1,
+            },
+            TelescopePromptBorder = {
+              bg = colors.base,
+              fg = colors.surface1,
+            },
+            TelescopePromptNormal = {
+              bg = colors.base,
+              fg = colors.text,
+            },
+
+            -- Noice
+            NoiceCmdline = {
+              bg = colors.surface0,
+              fg = colors.text,
+            },
+
+            -- LSP
+            LspInlayHint = {
+              fg = "#928374",
+              bg = "NONE",
+            },
+
+            -- Scrollbar
+            ScrollbarHandle = { bg = scrollbarHandle },
+            ScrollbarCursorHandle = { bg = colors.overlay1 },
+            ScrollbarCursor = { bg = colors.surface1 },
+
+            ScrollbarSearchHandle = {
+              fg = colors.yellow,
+              bg = scrollbarHandle,
+            },
+            ScrollbarSearch = { fg = colors.yellow },
+
+            ScrollbarErrorHandle = {
+              fg = colors.red,
+              bg = scrollbarHandle,
+            },
+            ScrollbarError = { fg = colors.red },
+
+            ScrollbarWarnHandle = {
+              fg = colors.yellow,
+              bg = scrollbarHandle,
+            },
+            ScrollbarWarn = { fg = colors.yellow },
+
+            ScrollbarInfoHandle = {
+              fg = colors.sky,
+              bg = scrollbarHandle,
+            },
+            ScrollbarInfo = { fg = colors.sky },
+
+            ScrollbarHintHandle = {
+              fg = colors.teal,
+              bg = scrollbarHandle,
+            },
+            ScrollbarHint = { fg = colors.teal },
+
+            ScrollbarMiscHandle = {
+              fg = colors.pink,
+              bg = scrollbarHandle,
+            },
+            ScrollbarMisc = { fg = colors.pink },
+
+            ScrollbarGitAddHandle = {
+              fg = colors.green,
+              bg = scrollbarHandle,
+            },
+            ScrollbarGitAdd = { fg = colors.green },
+
+            ScrollbarGitChangeHandle = {
+              fg = colors.yellow,
+              bg = scrollbarHandle,
+            },
+            ScrollbarGitChange = { fg = colors.yellow },
+
+            ScrollbarGitDeleteHandle = {
+              fg = colors.red,
+              bg = scrollbarHandle,
+            },
+            ScrollbarGitDelete = { fg = colors.red },
+
+            -- Blink
+            BlinkCmpMenu = { bg = colors.base },
+            BlinkCmpMenuSelection = {
+              bg = colors.surface1,
+              fg = colors.text,
+            },
+
+            -- Errors
+            ["@error"] = {
+              bg = "#180605",
+              fg = colors.red,
+              style = { "underline" },
+            },
+
+            -- Lualine
+            LualineInnactiveBufferFix = {
+              fg = colors.subtext1,
+              bg = colors.surface1,
+            },
           }
         end,
         latte = function(colors)
@@ -370,12 +576,12 @@ return {
     },
   },
 
-  {
-    "druskus20/nvim-zenith",
-    dir = "~/code/nvim-zenith",
-    name = "zenith",
-    priority = 1000,
-  },
+  --{
+  --  "druskus20/nvim-zenith",
+  --  dir = "~/code/nvim-zenith",
+  --  name = "zenith",
+  --  priority = 1000,
+  --},
 
   --{
   --  "catppuccin/nvim",
@@ -386,7 +592,8 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin-latte",
+      --colorscheme = "catppuccin-latte",
+      colorscheme = "catppuccin-macchiato",
       --colorscheme = "zenith-light",
       --colorscheme = "zenbones",
     },

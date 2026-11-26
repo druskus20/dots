@@ -86,7 +86,7 @@ alias "........"="cd ../../../../../../.."
 
 alias "~"="cd ~"
 
-alias fd=fdfind
+#alias fd=fdfind
 
 #alias npm="pnpm"
 
@@ -102,3 +102,12 @@ alias gunwip='git rev-list --max-count=1 --format="%s" HEAD | grep -q "\--wip--"
 #alias tm="[ -z "$TMUX" ] && (tmux attach-session -t main || (tmux new-session -s main \; run-shell /home/drusk/.config/tmux/plugins/tmux-resurrect/scripts/restore.sh))"
 #alias tm="tmux switch-client -t main || (tmux new-session -s main \; run-shell /home/drusk/.config/tmux/plugins/tmux-resurrect/scripts/restore.sh)"
 alias qrenderdoc="QT_QPA_PLATFORM=xcb DISPLAY=:0 ~/renderdoc/build/bin/qrenderdoc"
+
+
+dnf() {
+    if [[ $EUID -ne 0 ]]; then
+        sudo dnf "$@"
+    else
+        command dnf "$@"
+    fi
+}
