@@ -1,5 +1,13 @@
 [credential "https://github.com"]
-  helper = !/usr/bin/gh auth git-credential
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
 [column]
   ui = auto
 [branch]
@@ -32,11 +40,6 @@
   insteadOf = git@:
 [safe]
   directory = *
-[filter "lfs"]
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true
-  clean = git-lfs clean -- %f
 [alias]
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   log = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
@@ -55,101 +58,6 @@
   conflictstyle = zdiff3
 	tool = vimdiff
 
-[delta]
-  navigate = true    # use n and N to move between diff sections
-  side-by-side = true
-  features = unobtrusive-line-numbers gruvbox-light
-  # delta detects terminal colors automatically; set one of these to disable auto-detection
-  # dark = false
-  light = true
-[delta "gruvbox-light"]
-    blame-palette = "#fbf1c7 #f9f5d7 #f2e5bc #ebdbb2 #d5c4a1"
-    commit-decoration-style = ul
-    dark = false
-    file-decoration-style = "#3c3836"
-    file-style = "#3c3836"
-    hunk-header-decoration-style = box ul
-    hunk-header-file-style = bold
-    hunk-header-line-number-style = bold "#7c6f64"
-    hunk-header-style = file line-number syntax
-    line-numbers-left-style = "#7c6f64"
-    line-numbers-minus-style = bold "#a04235"
-    line-numbers-plus-style = bold "#7c7b20"
-    line-numbers-right-style = "#7c6f64"
-    line-numbers-zero-style = "#7c6f64"
-    # Should match the name of the bat theme
-    syntax-theme = gruvbox-light
-
-    # Stronger but still light-friendly colors for removed/added lines
-    minus-emph-style = bold syntax "#f2a8a0"   # deeper red, readable on light
-    minus-style = syntax "#f9d4d1"            # soft red background
-    plus-emph-style = bold syntax "#a8c087"    # deeper green
-    plus-style = syntax "#e0e4d3"             # soft green background
-    
-
-[delta "unobtrusive-line-numbers"]
-    line-numbers = true
-    line-numbers-minus-style = "#bebebe"
-    line-numbers-zero-style = "#bebebe"
-    line-numbers-plus-style = "#bebebe"
-    line-numbers-left-format = "{nm:>4} "
-    line-numbers-right-format = "{np:>4} "
-    line-numbers-left-style = "#7c6f64"
-    line-numbers-right-style = "#7c6f64"
-
-# dark 
-# [delta]
-#     navigate = true    # use n and N to move between diff sections
-#     side-by-side = true
-#     features = unobtrusive-line-numbers gruvbox-dark-hard
-#     # delta detects terminal colors automatically; set one of these to disable auto-detection
-#     # dark = true
-#     # light = true
-# 
-# [delta "unobtrusive-line-numbers"]
-#     line-numbers = true
-#     line-numbers-minus-style = "#444444"
-#     line-numbers-zero-style = "#444444"
-#     line-numbers-plus-style = "#444444"
-#     line-numbers-left-format = "{nm:>4} "
-#     line-numbers-right-format = "{np:>4} "
-#     line-numbers-left-style = blue
-#     line-numbers-right-style = blue
-# 
-# [delta "gruvbox-dark-hard"]
-#     blame-palette = "#1d2021 #1b1b1b #32302f #3c3836 #504945"
-#     commit-decoration-style = ul
-#     dark = true
-#     file-decoration-style = "#fbf1c7"
-#     file-style = "#fbf1c7"
-#     hunk-header-decoration-style = box ul
-#     hunk-header-file-style = bold
-#     hunk-header-line-number-style = bold "#928474"
-#     hunk-header-style = file line-number syntax
-#     line-numbers-left-style = "#928474"
-#     line-numbers-minus-style = bold "#fb4a35"
-#     line-numbers-plus-style = bold "#b8bb25"
-#     line-numbers-right-style = "#928474"
-#     line-numbers-zero-style = "#928474"
-#     # 25% red 75% base
-#     minus-emph-style = bold syntax "#4f2622"
-#     # 10% red 90% base
-#     minus-style = syntax "#32201e"
-#     # 25% green 75% base
-#     plus-emph-style = bold syntax "#3d4220"
-#     # 10% green 90% base
-#     plus-style = syntax "#2d301e"
-#     #map-styles = \
-#     #    bold purple => syntax "#4a3f4e", \
-#     #    bold blue => syntax "#2d3e44", \
-#     #    bold cyan => syntax "#304744", \
-#     #    bold yellow => syntax "#4f4122"
-#     # Should match the name of the bat theme
-#     syntax-theme = gruvbox-dark
-# 
-# [merge]
-#   conflictstyle = zdiff3
-# 
 [http]
 	lowSpeedLimit = 1000
 	lowSpeedTime = 60
@@ -157,3 +65,7 @@
 
 [includeIf "gitdir:~/work/"]
   path = ./config.work
+
+
+[include]
+    path = ./config.delta
