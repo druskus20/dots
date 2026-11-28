@@ -32,6 +32,7 @@ export PATH="$HOME"/.local/bin:"$HOME"/.local/share/npm/bin:"$HOME"/.local/share
 # Force XDG base directories
 export XDG_CONFIG_HOME="$HOME/.config" export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
+export XCURSOR_PATH="$XDG_DATA_HOME/icons"
 
 # Man pages color support
 export LESS_TERMCAP_mb=$'\e[1;32m'
@@ -161,15 +162,15 @@ export NVM_DIR="$HOME/.config/nvm"
 
 
 #XDG_DESKTOP_DIR="$HOME/Desktop"
-XDG_DOCUMENTS_DIR="$HOME/doc"
-XDG_DOWNLOAD_DIR="$HOME/dl"
+export XDG_DOCUMENTS_DIR="$HOME/doc"
+export XDG_DOWNLOAD_DIR="$HOME/dl"
 #XDG_MUSIC_DIR="$HOME/Music"
-XDG_PICTURES_DIR="$HOME/img"
-XDG_PROJECTS_DIR="$HOME/code"
+export XDG_PICTURES_DIR="$HOME/img"
+export XDG_PROJECTS_DIR="$HOME/code"
 #XDG_PUBLICSHARE_DIR="$HOME/Public"
 #XDG_TEMPLATES_DIR="$HOME/Templates"
 #XDG_VIDEOS_DIR="$HOME/Videos"
 
 
-COPILOT_HOME="$XDG_CONFIG_HOME"/copilot
+export COPILOT_HOME="$XDG_CONFIG_HOME"/copilot
 # vim:foldmarker=foldstart,foldend

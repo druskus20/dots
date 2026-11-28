@@ -29,7 +29,8 @@ alias visudo="EDITOR=nvim visudo"
 
 # Colored utilities 
 alias ls='eza --group-directories-first --color=auto'
-alias grep='grep --colour=auto' alias egrep='egrep --colour=auto'
+alias grep='grep --colour=auto' 
+alias egrep='egrep --colour=auto'
 alias fgrep='fgrep --colour=auto'
 alias diff="colordiff"
 alias cat="bat --plain --wrap=never --paging=never"
@@ -43,8 +44,8 @@ alias svn="svn --config-dir "$XDG_CONFIG_HOME"/subversion"
 alias picom="picom --config $PICOM_CONFIG_PATH"
 alias startx="startx \"$XDG_CONFIG_HOME/X11/xinitrc\""
 
-alias code="code --enable-features=UseOzonePlatform --ozone-platform=wayland"
-alias vscode="code --enable-features=UseOzonePlatform --ozone-platform=wayland"
+#alias code="code --enable-features=UseOzonePlatform --ozone-platform=wayland"
+#alias vscode="code --enable-features=UseOzonePlatform --ozone-platform=wayland"
 
 # Shorthands
 alias kubectl="kubecolor"

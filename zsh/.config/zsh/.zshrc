@@ -105,6 +105,7 @@ function completions() {
     source $ZDOTDIR/completions/_deno.zsh # avoid breaking fast start
   fi
   source $ZDOTDIR/completions/_eza # avoid breaking fast start
+  source $ZDOTDIR/completions/_cargo # avoid breaking fast start
 }
 
 function history-settings() {
